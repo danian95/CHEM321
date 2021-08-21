@@ -1,3 +1,2 @@
-# CourseSkeleton
-
-Folder structure and templates for course development
+# CHEM321 Analytical Chemistry 1
+Lecture notes and handouts for CHEM321: Analytical Chemistry 1
