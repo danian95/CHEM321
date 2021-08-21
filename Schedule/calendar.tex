@@ -1,0 +1,249 @@
+\documentclass[10pt,letterpaper,landscape]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{termcal}
+\usepackage{palatino}
+\usepackage{fontawesome}
+\usepackage{fancyhdr}
+\usepackage{titling}
+\usepackage{lastpage}
+\usepackage{datatool}
+\usepackage{ifthen}
+\usepackage{enumitem}
+
+\setlist{nosep,wide=0.5em}
+\newenvironment{details}{\begin{footnotesize}\begin{itemize}}{\end{itemize}\end{footnotesize}}
+
+\newcounter{examnumber}
+\newcounter{quiznumber}
+\newcounter{labnumber}
+\newcounter{labdaynumber}
+\newcounter{weekcounter}
+\newcommand{\exam}{\stepcounter{examnumber}\faEdit~\textbf{Exam
+\arabic{examnumber}}}
+\newcounter{homeworknumber}
+\newcommand{\hw}{%
+	\ifthenelse{\isodd{\theweekcounter}}{}{\stepcounter{homeworknumber} \faCalculator~\textbf{HW Set \arabic{homeworknumber} Due}}
+}
+
+\title{Analytical Chemistry 1 Semester Schedule}
+\newcommand{\semester}{FA21}
+\author{McCurry}
+
+% Turn off 1st, 2nd, 3rd, etc.
+\renewcommand{\calprintdate}{%
+	\ifnewmonth\framebox{\monthname\ \arabic{date}}%
+	\else \arabic{date}\fi
+}
+
+\lhead{\sffamily \thetitle}
+\chead{}
+\rhead{\sffamily \semester\ --- CHEM321 --- \theauthor}
+\lfoot{\sffamily\footnotesize\em Exam dates are set. All other material subject
+to change.}
+\cfoot{}
+\rfoot{\sffamily\thepage\ of \pageref{LastPage}}
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+\pagestyle{fancy}
+
+\DTLnewdb{321labs}
+\DTLaddcolumn{321labs}{title}
+\DTLaddcolumn{321labs}{type}
+\DTLnewrow{321labs}
+\DTLnewdbentry{321labs}{title}{Synthesis and Characterization of Gold Nanoparticles}
+\DTLnewdbentry{321labs}{type}{short}
+\DTLnewrow{321labs}
+\DTLnewdbentry{321labs}{title}{Balance and Volumetric Introduction}
+\DTLnewdbentry{321labs}{type}{short}
+\DTLnewrow{321labs}
+\DTLnewdbentry{321labs}{title}{Determination of Sodium Carbonate in Soda Ash by Titration}
+\DTLnewdbentry{321labs}{type}{spreadsheet}
+\DTLnewrow{321labs}
+\DTLnewdbentry{321labs}{title}{Determination of Sodium Carbonate in Soda Ash by Titration cont'd}
+\DTLnewdbentry{321labs}{type}{spreadsheet}
+\DTLnewrow{321labs}
+\DTLnewdbentry{321labs}{title}{Activity Corrected $K_\text{sp}$ for
+Cu(IO\textsubscript{3})\textsubscript{2}}
+\DTLnewdbentry{321labs}{type}{short}
+\DTLnewrow{321labs}
+\DTLnewdbentry{321labs}{title}{Potentiometric Titration of a Phosphate Mixture}
+\DTLnewdbentry{321labs}{type}{long}
+\DTLnewrow{321labs}
+\DTLnewdbentry{321labs}{title}{Determination of \% Ca by Titration with EDTA}
+\DTLnewdbentry{321labs}{type}{spreadsheet}
+\DTLnewrow{321labs}
+\DTLnewdbentry{321labs}{title}{Determination of Bleaching Power by Iodometry}
+\DTLnewdbentry{321labs}{type}{short}
+\DTLnewrow{321labs}
+\DTLnewdbentry{321labs}{title}{Spectrophotometric Titration of Ca and Cu}
+\DTLnewdbentry{321labs}{type}{short}
+\DTLnewrow{321labs}
+\DTLnewdbentry{321labs}{title}{Determination of Metals by AA}
+\DTLnewdbentry{321labs}{type}{long}
+\DTLnewrow{321labs}
+\DTLnewdbentry{321labs}{title}{Evaluation of a Fluoride ISE}
+\DTLnewdbentry{321labs}{type}{spreadsheet}
+\DTLnewrow{321labs}
+\DTLnewdbentry{321labs}{title}{Analysis of Beverages Using UV/Vis Spectrophotometry}
+\DTLnewdbentry{321labs}{type}{short}
+\DTLnewrow{321labs}
+\DTLnewdbentry{321labs}{title}{Analysis of Beverages Using HPLC}
+\DTLnewdbentry{321labs}{type}{long}
+%\DTLnewrow{321labs}
+%\DTLnewdbentry{321labs}{title}{TBD}
+%\DTLnewdbentry{321labs}{type}{TBD}
+
+\begin{document}
+
+\begin{calendar}{8/23/21}{16}
+	%\setlength{\calboxdepth}{3em}
+
+	% Description of the Week
+	\skipday
+	\calday[Tuesday]{\classday\stepcounter{weekcounter}}
+	\calday[Wednesday]{\noclassday
+			\weeklytext{%
+				\stepcounter{labnumber}
+				\textbf{\faFlask\ Expt~\arabic{labnumber}} 
+				\par
+				\DTLgetvalue{\labtitle}{321labs}{\arabic{labnumber}}{1}
+				\DTLgetvalue{\labtype}{321labs}{\arabic{labnumber}}{2}
+				\labtitle\par
+				(\labtype)
+			}
+		}
+	\calday[Thursday]{\classday}
+	\skipday\skipday\skipday
+
+	% Holidays
+	\options{9/6/21}{\noclassday\weeklytext{}} % Labor Day
+	\caltext{9/6/21}{\em Labor Day --- No Class}
+	\options{11/23/21}{\noclassday\weeklytext{}\stepcounter{weekcounter}} % Thanksgiving
+	\caltext{11/23/21}{\em Thanksgiving Recess --- No Class}
+	\options{11/24/21}{\noclassday\weeklytext{}} % Thanksgiving
+	\caltext{11/24/21}{\em Thanksgiving Recess --- No Class}
+	\options{11/25/21}{\noclassday\weeklytext{}} % Thanksgiving
+	\caltext{11/25/21}{\em Thanksgiving Recess --- No Class}
+
+	% Final Exam
+	\options{12/1/21}{\noclassday\weeklytext{}}
+	\options{12/7/21}{\noclassday\weeklytext{}}
+	\options{12/8/21}{\noclassday\weeklytext{}}
+	\options{12/9/21}{\noclassday\weeklytext{}}
+	\caltext{12/1/21}{\faEdit~\textbf{ACS Exam}}
+	\caltext{12/7/21}{\faEdit~\textbf{Final Exam} \\
+		\hspace{1em} 10:15 am -- 12:15 pm}
+
+	% Topics
+		\caltexton{1}{1: Introduction
+		\begin{details}
+	\item Ch.\ 1 --- Intro to Analytical Chem.
+	\item Ch.\ 3 --- The Vocabulary of Analytical Chem.
+\end{details}}%0: The Analytical Process}
+	\caltextnext{1: Introduction
+		\begin{details}
+	\item Ch.\ 3 --- The Vocabulary of Analytical Chem.
+	\item Ch.\ 7.1--7.4 --- Obtaining and Preparing Samples
+\end{details}}%0: The Analytical Process}
+
+
+	\caltextnext{2: Data Processing
+	\begin{details}
+\item Ch.\ 4 --- Evaluating Analytical Data
+\end{details}
+}
+	\caltextnext{2: Data Processing
+	\begin{details}
+\item Ch.\ 4 --- Evaluating Analytical Data
+\end{details}}
+	\caltextnext{2: Data Processing
+	\begin{details}
+\item Ch.\ 5 --- Standardizing Analytical Methods
+\end{details}
+}
+	\caltextnext{2: Data Processing
+		\begin{details}
+		\item Ch.\ 5 --- Standardizing Analtyical Methods
+		\item Ch.\ 15 --- Quality Assurance
+		\end{details}
+	}
+	\caltextnext{\exam}
+	\caltextnext{3: Equilibrium
+	\begin{details}
+\item Ch.\ 6 --- Equilibrium Chemistry
+\end{details}}
+	\caltextnext{3: Equilibrium
+	\begin{details}
+\item Ch.\ 6 --- Equilibrium Chemistry
+\end{details}}
+	\caltextnext{3: Equilibrium
+	\begin{details}
+\item Ch.\ 6 --- Equilibrium Chemistry
+\end{details}}
+	\caltextnext{3: Equilibrium
+	\begin{details}
+\item Ch.\ 6 --- Equilibrium Chemistry
+\end{details}}
+\caltextnext{3: Equilibrium \begin{details} \item Ch.\ 9 --- Titrimetric Methods
+\end{details}}
+\caltextnext{3: Equilibrium \begin{details} \item Ch.\ 9 --- Titrimetric Methods
+\end{details}}
+\caltextnext{3: Equilibrium \begin{details} \item Ch.\ 9 --- Titrimetric Methods
+\end{details}}
+\caltextnext{3: Equilibrium \begin{details} \item Ch.\ 9 --- Titrimetric Methods
+\end{details}}
+	\caltextnext{4: Spectroscopy
+		\begin{details} \item Ch.\ 10 --- Spectroscopic Methods
+		\end{details}
+	}
+	\caltextnext{\exam}
+	\caltextnext{4: Spectroscopy
+		\begin{details} \item Ch.\ 10 --- Spectroscopic Methods
+		\end{details}
+	}
+	\caltextnext{4: Spectroscopy
+		\begin{details} \item Ch.\ 10 --- Spectroscopic Methods
+		\end{details}
+	}
+	\caltextnext{5: Electrochemistry
+		\begin{details} \item Ch.\ 11 --- Electrochemical Methods
+		\end{details}
+	}
+	\caltextnext{5: Electrochemistry
+		\begin{details} \item Ch.\ 11 --- Electrochemical Methods
+		\end{details}
+	}
+	\caltextnext{5: Electrochemistry
+		\begin{details} \item Ch.\ 11 --- Electrochemical Methods
+		\end{details}
+	}
+	\caltextnext{5: Electrochemistry
+		\begin{details} \item Ch.\ 11 --- Electrochemical Methods
+		\end{details}
+	}
+	\caltextnext{6: Separations
+		\begin{details} \item Ch.\ 7.5--7.8 --- Obtaining and Preparing
+			Samples \item Ch.\ 12 --- Chromatographic and
+			Electrophoretic Methods
+		\end{details}
+	}
+	\caltextnext{\exam}
+	\caltextnext{6: Separations
+		\begin{details} \item Ch.\ 12 --- Chromatographic and
+			Electrophoretic Methods
+		\end{details}
+	}
+	\caltextnext{6: Separations
+		\begin{details} \item Ch.\ 12 --- Chromatographic and
+			Electrophoretic Methods
+		\end{details}
+	}
+	\caltextnext{6: Separations
+		\begin{details} \item Ch.\ 12 --- Chromatographic and
+			Electrophoretic Methods
+		\end{details}
+	}
+\end{calendar}
+
+\end{document}
