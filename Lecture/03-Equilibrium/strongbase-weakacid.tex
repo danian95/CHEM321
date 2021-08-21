@@ -1,0 +1,45 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{mathtools}
+\usepackage{mhchem}
+\usepackage{siunitx}
+\DeclareSIUnit{\Molar}{\textsc{m}}
+
+\setlength{\textwidth}{3in}
+\setlength{\textheight}{4in}
+
+\begin{document}
+
+\begin{tikzpicture}
+	\begin{axis} [
+			width=\linewidth,
+			height=16em,
+			xmax=20,
+			xmin=0,
+			ymax=13,
+			ymin=2,
+			xlabel={$V_b$ (mL)},
+			ylabel={pH},
+			label style={font=\footnotesize},
+			tick label style={font=\footnotesize},
+			xtick={0,5,...,20},
+			ytick={2,3,...,13},
+			no markers,
+    			every axis plot/.append style={ultra thick},
+		%	title={Titration of \SI{50}{\milli\liter}
+		%	\SI{0.02}{\Molar}~\ch{CH3COOH} with
+		%	\SI{0.1}{\Molar}~\ch{NaOH}},
+		%	title style={font=\footnotesize}
+			]
+		\addplot table [
+			x=V_b,
+			y=pH,
+			col sep=comma
+			]
+		{strongbase-weakacid.csv};
+	\end{axis}
+\end{tikzpicture}
+
+\end{document}

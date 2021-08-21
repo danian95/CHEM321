@@ -1,0 +1,920 @@
+% !TEX program = xelatex
+%\documentclass[notes=show]{beamer}
+\documentclass[notes=onlyslideswithnotes,notes=hide]{beamer}
+%\documentclass[letterpaper,11pt]{article}
+%\usepackage{beamerarticle}
+
+\usepackage{analchem}
+\usepackage{lecture}
+\usepackage{multicol}
+\usepackage{tabu}
+
+\title{Activity and the Systematic Treatment of Equilibrium}
+\subtitle{Chapter 8}
+\institute{CHEM321 - Analytical Chemistry I \\ Bloomsburg University}
+\author{D.A. McCurry}
+\date{Fall 2019}
+
+\begin{document}
+
+\maketitle
+\mode<article>{\thispagestyle{fancy}}
+
+\begin{frame}[allowframebreaks=0.7]{Why is the equilibrium constant not enough?}
+	\begin{itemize}
+		\item Consider the solubility of mercury(I) bromide, $K_{sp} =
+			\num{5.6e-23}$.
+		\item The equilibrium is:
+			\begin{align*}
+				\ch{Hg2Br2\sld{} <=> Hg2^{2+}\aq{} + 2
+				Br^{-}\aq{}}
+				\qquad K_{sp} &= \num{5.6e-23} \\
+				&= [\ch{Hg2^{2+}}][\ch{Br-}]^2
+			\end{align*}
+		\item Using ICE, $x = [\ch{Hg2^{2+}}] = \SI{2.4e-8}{\Molar}$
+		\item Yet when a very soluble salt such as \ch{KNO3} is added,
+			more solid dissolves!
+		\item This is not a Le Ch\^atelier response since neither
+			\ch{K+} nor \ch{NO3-} is a common ion nor do either
+			react with mercury(I) or bromide ions.
+		\item In fact, if \SI{0.100}{\Molar}~\ch{KNO3} is added, the
+			solubility increases such that $[\ch{Hg2^{2+}}] =
+			\SI{4.1e-8}{\Molar}$, a 46\% increase in solubility!
+		\item We find that whenever an \emph{inert salt} is added to a
+			solution of a sparingly soluble salt, the solubility of
+			the latter is increased.
+	\end{itemize}
+
+	\begin{block}{Inert salt}
+		Any electrolyte that is neither a common ion nor will react with
+		the ions of the sparingly soluble species.
+	\end{block}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Ionic vs. Hydrated Radii}
+	\begin{columns}
+		\column{0.45\linewidth}
+		\begin{itemize}
+			\item Every dissolved species is surrounded by water
+				molecules.
+			\item For ionic species, the number of \ch{H2O}
+				molecules depends on the ions charge density.
+		\end{itemize}
+		\column{0.45\linewidth}
+		\includegraphics[scale=0.75]{estimated-hydration.jpg}
+	\end{columns}
+
+	\framebreak
+
+	\begin{columns}
+		\column{0.45\linewidth}
+		\begin{itemize}
+			\item A smaller ion of like charge has a larger charge
+				density thus \ch{Li+} attracts more water than
+				\ch{K+} and a 3+ ion attracts more than a 2+.
+			\item In fact, the largest hydrated ion is \ch{H3O+} at
+				\SI{900}{\pico\meter}!
+				\begin{itemize}
+					\item By comparison, hydrated \ch{Li+}
+						is only about
+						\SI{600}{\pico\meter}.
+				\end{itemize}
+		\end{itemize}
+		\column{0.45\linewidth}
+		\includegraphics[scale=0.25]{ionic-v-hydrated-radii.jpg}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Ionic Atmosphere}
+	\begin{columns}
+		\column{0.6\linewidth}
+	\begin{itemize}[<+->]
+		\item Ions attract (or repel) other ions.
+			\begin{itemize}
+				\item Otherwise we would not be able to have
+					insoluble salts!
+			\end{itemize}
+		\item What happens when an inert electrolyte is added to the
+			solution?
+			\begin{itemize}
+				\item The ionic atmosphere causes \emph{less}
+					attraction between the ions of the
+					insoluble salt!
+				\item Less attraction means less crashing and a
+					\emph{higher} solubility!
+			\end{itemize}
+		\item The more ions we have in solution, the less attraction we
+			have, thus the greater solubility.
+	\end{itemize}
+		\column{0.4\linewidth}
+		\includegraphics[scale=0.85]{ionic-atmosphere.jpg}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{The Equilibrium ``Constant'' is Not Constant!}
+	\begin{columns}
+		\column{0.6\linewidth}
+		\begin{itemize}
+			\item We will see the same effect for all equilibria.
+			\item For example, from CHEM 116:
+				\begin{align*}
+					\ch{Fe^{3+} + SCN- <=> FeSCN^{2+}}
+				\end{align*}
+			\item Note that as the ionic atmosphere increases, we
+				get more of the reactant ions present shifting
+				the equilibrium position.
+		\end{itemize}
+		\column{0.4\linewidth}
+		\includegraphics[scale=0.35]{FeSCN.jpg}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Ionic Strength}
+	\begin{itemize}
+		\item We will measure the size or strength of the ionic
+			atmosphere by calculating the \emph{ionic strength}
+			($\mu$) of the solution.
+		\item $\mu$ is the total ion concentration in the solution:
+			\begin{align*}
+				\mu = \frac{1}{2}(c_1z_1^2 + c_2z_2^2 + \cdots)
+				= \frac{1}{2}\sum_{i}c_iz_i^2
+			\end{align*}
+			where $c_i$ is the ion concentration of the
+			$i$\textsuperscript{th} species and $z_i$ is its ionic
+			charge.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Ionic Strength Example}
+	\begin{itemize}
+		\item Find the ionic strength of the following solutions:
+			\begin{itemize}
+				\item \SI{0.10}{\Molar} \ch{AgNO3}
+				\item \SI{0.10}{\Molar} \ch{Na2SO4}
+				\item \SI{0.20}{\Molar} \ch{KCl} and
+					\SI{0.10}{\Molar} \ch{K2SO4}
+			\end{itemize}
+		\item Recognize that these values are approximations. All salts
+			over 1\%~(w/w) will have some soluble ion pairs. Using
+			\SI{0.025}{\formal} solutions as an example,
+			\begin{itemize}
+				\item \ch{NaCl} is 99.6\% dissociated
+				\item \ch{Na2SO4} is 96\%
+				\item \ch{MgSO4} is 65\%
+				\item \ch{La2(SO4)3} is 4\%
+			\end{itemize}
+			See Box 8-1, page 164
+	\end{itemize}
+
+	\mode<article>{\vspace{15em}}
+
+\note{
+	\begin{multicols}{2}
+	\textbf{\ch{AgNO3}}
+	\begin{align*}
+		\mu &= \frac{1}{2} \sum_{i} c_i z_i^2 \\
+		&= \frac{1}{2} (0.10 \times 1^2 + 0.10 \times (-1)^2) \\
+		&= \SI{0.10}{\Molar}
+	\end{align*}
+
+	\textbf{\ch{Na2SO4}}
+	\begin{align*}
+		\mu &= \frac{1}{2} \sum_{i} c_i z_i^2 \\
+		&= \frac{1}{2} (0.20 \times 1^2 + 0.10 \times (-2)^2) \\
+		&= \SI{0.30}{\Molar}
+	\end{align*}
+
+	\textbf{\ch{KCl} and \ch{K2SO4}}
+	\begin{align*}
+		\mu &= \frac{1}{2} \sum_{i} c_i z_i^2 \\
+		&= \frac{1}{2} (0.20 \times 1^2 + 0.2 \times (-1)^2 \\
+		&\qquad {} + 0.20
+		\times 1^2 + 0.10 \times (-2)^2) \\
+		&= \SI{0.5}{\Molar}
+	\end{align*}
+	\end{multicols}
+	}
+\end{frame}
+
+\begin{frame}{Working Ionic Strengths into K's}
+	\begin{itemize}
+		\item To account for the effect ionic strength has on the
+			chemistry of a salt, we replace molar concentrations
+			with activities:
+			\begin{align*}
+				\mathcal{A}_{\ch{C}} = [\ch{C}]\gamma_{\ch{C}}
+			\end{align*}
+			where the molar concentration of species \ch{C}
+			([\ch{C}]) is multiplied by its activity coefficient
+			($\gamma_{\ch{C}}$).
+		\item The \emph{extended Debye-Huckel equation} gives the
+			activity coefficient which is dependent on the size of
+			the ionic strength.
+			\begin{align*}
+				\log \gamma = \dfrac{-0.51z^2\sqrt{\mu}}{1 +
+				(\alpha \sqrt{\mu}/305)} \qquad\text{(at
+				\SI{25}{\celsius})}
+			\end{align*}
+			where $\alpha$ is the size of the ion in
+			\si{\pico\meter}. Note that this relation only works
+			well up to \SI{0.10}{\Molar} ionic strength.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The \emph{Real} Equilibrium Constant}
+	\begin{itemize}
+		\item Consider the solubity of mercury (I) bromide, with
+			equilibrium,
+			\begin{align*}
+				\ch{Hg2Br2(s) <=> Hg2^{2+}(aq) + 2 Br^{-}(aq)}
+			\end{align*}
+		\item The new equilibrium constant including activity
+			coefficients is
+			\begin{align*}
+				K_{sp} = \mathcal{A}_{\ch{Hg2^{2+}}}
+				\mathcal{A}_{\ch{Br-}}^2 =
+				[\ch{Hg2^{2+}}]\gamma_{\ch{Hg2^{2+}}}
+				[\ch{Br-}]^2\gamma_{\ch{Br-}}^2
+			\end{align*}
+	\end{itemize}
+
+	\pause
+
+	\begin{block}{General Form of the Equilibrium Constant}
+		\begin{align*}
+			K = \dfrac{\mathcal{A}^c_{\ch{C}}
+			\mathcal{A}^d_{\ch{D}}}{\mathcal{A}^a_{\ch{A}}
+			\mathcal{A}^b_{\ch{B}}} = \dfrac{[\ch{C}]^c
+			\gamma_{\ch{C}}^c [\ch{D}]^d \gamma_{\ch{D}}^d}
+			{[\ch{A}]^a \gamma_{\ch{A}}^a [\ch{B}]^b
+			\gamma_{\ch{B}}^b}
+		\end{align*}
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{Effect of $\mu$, $z_i$, and $\alpha$ on $\gamma$}
+	\begin{columns}
+		\column{0.4\linewidth}
+		\includegraphics[scale=0.85]{activity-v-ionic-strength.png}
+		\column{0.6\linewidth}
+		\begin{enumerate}
+			\item<1-> As ionic strength increase, the activity
+				coefficient decreases.
+
+				\only<1|handout:0>{\begin{itemize}
+					\item The activity coefficient
+						($\gamma$) approaches unity as
+						the ionic strength ($\mu$)
+						approaches 0.
+					\item At $\mu \leq \SI{0.0001}{\Molar}$,
+						$\gamma \approx 1$.
+				\end{itemize}}
+
+			\item<2-> As the charge on an ion increases, the
+				departure of its activity coefficient from unity
+				increases.
+
+				\only<2|handout:0>{\begin{itemize}
+					\item Activity coefficients are much
+						more important for highly
+						charged species ($\pm3$ or
+						$\pm4$).
+					\item Let $\gamma_i = 1$ for all
+						uncharged species at any $\mu$.
+				\end{itemize}}
+
+			\item<3-> The smaller the hydrated radius of the ion,
+				the more important the activity coefficient
+				becomes.
+
+				\only<3|handout:0>{\begin{itemize}
+					\item At fixed ionic strength, however,
+						species of similar charge will
+						have similar activity
+						coefficients.
+				\end{itemize}}
+
+			\item<4-> Activity coefficient values are independent of
+				counter ions.
+
+				\only<4|handout:0>{\begin{itemize}
+					\item The key is the species itself --
+						its hydrated size, its charge,
+						its being affected by ionic
+						strength!
+				\end{itemize}}
+		\end{enumerate}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[t]{Activity Example}
+	What is the solubility of calcium fluoride in \SI{0.050}{\formal} sodium
+	fluoride? Calculate the solubility both with and without activity
+	correction.
+
+	\smallskip
+
+	$K_{sp} = \num{3.9e-11}$ for calcium fluoride
+
+	\mode<article>{\vfill}
+
+\note{
+	\footnotesize
+	\begin{tabu} to \linewidth {c r c r c r}
+		& \ch{CaF2(s)} & \ch{<=>} & \ch{Ca^{2+}(aq)} & \ch{+} &
+		\ch{2 F^{-}(aq)} \\
+		I & & & 0 & & 0.050 \\
+		C & $-x$ & & $+x$ & & $+2x$ \\ \tabucline{2-}
+		E & $-x$ & & $x$ & & $0.050 + 2x$
+	\end{tabu}
+
+	\begin{columns}
+		\column{0.5\linewidth}
+		\begin{align*}
+			K_{sp} &= [\ch{Ca^{2+}}][\ch{F-}]^2 \\
+			\num{3.9e-11} &= (x)(0.050+2x)^2 \\
+			x &= \SI{1.6e-8}{\Molar}
+		\end{align*}
+		\column{0.5\linewidth}
+		\begin{align*}
+			K_{sp} &= [\ch{Ca^{2+}}]\gamma_{\ch{Ca^{2+}}}
+			[\ch{F-}]^2\gamma_{\ch{F-}}^2 \\
+			\num{3.9e-11} &= (x)(0.050+2x)^2
+			\gamma_{\ch{Ca^{2+}}}\gamma_{\ch{F-}}^2 \\
+			x &= \dfrac{\num{3.9e-11}}{0.050^2 \times 0.485 \times
+			0.81^2} \\
+			&= \SI{4.9e-8}{\Molar}
+		\end{align*}
+	\end{columns}
+
+	\begin{align*}
+		\mu &= 0.5 \left( [\ch{Na+}]\times1^2 +
+		[\ch{F-}]\times-1^2 + [\ch{Ca^{2+}}]\times2^2 \right) \\
+		&= 0.5 \left(0.050 + (0.050+2x) + 4x\right) \\
+		&= \SI{0.050}{\Molar} \text{~and via Table 8-1,~}
+		\gamma_{\ch{Ca^{2+}}} = 0.485 \text{~and~}
+		\gamma_{\ch{F-}} = 0.81
+	\end{align*}
+	}
+\end{frame}
+
+\begin{frame}{pH Revisited}
+	\begin{itemize}
+		\item pH is also affected by ionic strength because it is an
+			equilibrium involving charged species.
+		\item What is the real pH of pure distilled water?
+			\begin{align*}
+				\ch{2 H2O <=> H3O+ + OH-} \qquad K_w =
+				[\ch{H3O+}]\gamma_{\ch{H3O+}}
+				[\ch{OH-}]\gamma_{\ch{OH-}}
+			\end{align*}
+		\item At very low ionic strength, $\gamma \approx 1$
+		\item At \SI{1.0e-7}{\Molar},
+			\begin{align*}
+				\text{pH} &= -\log \mathcal{A}_{\ch{H3O+}} \\
+				&= -\log [\ch{H3O+}]\gamma_{\ch{H3O+}}
+				\\
+				&= -\log (\num{1.0e-7})(1.00) \\
+				&= 7.00
+			\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{pH Example}
+	What is the pH of real distilled water with \SI{0.50}{\Molar}~\ch{KCl}
+	added?
+
+	\mode<article>{\vfill}
+
+	\note{
+	\begin{align*}
+		\ch{2 H2O <=> H3O+ + OH-} \qquad K_w &=
+				[\ch{H3O+}]\gamma_{\ch{H3O+}}
+				[\ch{OH-}]\gamma_{\ch{OH-}} \\
+		\intertext{$\mu$ = \SI{0.50}{\Molar}, $\gamma_{\ch{H3O+}} =
+		0.28$, and $\gamma_{\ch{OH-}} = 0.38$}
+		\num{1.0e-14} &= (0.28x)(0.38x) \\
+		\num{9.4e-14} &= x^2 \\
+		x &= [\ch{H3O+}] = \SI{3.1e-7}{\Molar} \\
+		pH &= -\log \mathcal{A}_{\ch{H3O+}} = -\log
+		[\ch{H3O+}]\gamma_{\ch{H3O+}} \\
+		&= -\log (\num{3.1e-7})(0.28) \\
+		&= 7.06
+	\end{align*}
+	}
+\end{frame}
+
+\mode<article>{\clearpage}
+
+\begin{frame}{Systematic Treatment of Equilibrium}
+	\begin{itemize}
+		\item Many chemical systems are complex due to the number of
+			simultaneous reactions occuring.
+		\item Recall:
+			 \begin{center}
+				 \scriptsize
+                \begin{tabular} {r @{\ch{<=>}} l               
+                r@{ = }S[table-format=1.2e-2]}
+                     \ch{CaCO3(s)} & \ch{Ca^{2+}(aq)} + \ch{CO3^{2-}(aq)} & $K_{sp}$ & 4.5e-9 \\
+                     \ch{CO3^{2-}(aq)} + \ch{H2O(l)} & \ch{HCO3^{-}(aq)} + \ch{OH^{-}(aq)} & $K_b$ & 2.1e-4 \\
+                     \ch{CO2(aq)} + \ch{H2O(l)} & \ch{H2CO3(aq)} & $K_h$ &         1.7e-3 \\
+                     \ch{H2CO3(aq)} + \ch{H2O(l)} & \ch{HCO3^{-}(aq)} + \ch{H3O^{+}(aq)} & $K_a$ & 4.46e-7 \\
+                     \ch{H3O^{+}(aq)} + \ch{OH^{-}(aq)} & \ch{2 H2O(l)} & $1/K_w$ & 1.0e14  \\ \midrule
+                     \ch{CaCO3(s) + CO2(aq) + H2O(l)} & \ch{Ca^{2+}(aq) +    
+                2 HCO3^{-}(aq)} & $K_{eq}$ & 7.2e-8 \\                          
+        \end{tabular}                                                              
+        \end{center}
+		\item How do we solve a problem with so many unknowns?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{$n$ equations\ldots}
+	\begin{itemize}[<+->]
+		\item In order to solve a problem containing 1 unknown, you
+			simply need 1 equation containing that value:
+			\begin{align*}
+				\si{\gram}~\ch{Ca^{2+}} =
+				y~\si{\mole}~\ch{Y^{4-}} \times
+				\dfrac{\SI{1}{\mole}~\ch{Ca^{2+}}}
+				{\SI{1}{\mole}~\ch{Y^{4-}}} \times
+				\dfrac{\SI{40.08}{\gram}~\ch{Ca^{2+}}}
+				{\SI{1}{\mole}}
+			\end{align*}
+		\item To solve for 2 unknowns, you need 2 equations:
+			\begin{align*}
+				A^1_{\text{T}} &=
+				\epsilon^1_{\ch{Mn}}bC_{\ch{Mn}} +
+				\epsilon^1_{\ch{Cr}}bC_{\ch{Cr}} \\
+				A^2_{\text{T}} &=
+				\epsilon^2_{\ch{Mn}}bC_{\ch{Mn}} +
+				\epsilon^2_{\ch{Cr}}bC_{\ch{Cr}}
+			\end{align*}
+		\item To solve $n$ unknowns, you need $n$ equations.
+			\begin{itemize}
+				\item Include \emph{all} the \alert{equilibrium
+					constants}
+				\item Include a statement of electroneutrality
+					-- the \alert{charge balance}
+				\item Include a statement of the conservation of
+					matter -- the \alert{mass balance}
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Charge Balance}
+	\begin{itemize}
+		\item An algebraic statement of electroneutrality.
+		\item The sum of the positive charges in solution \emph{equals}
+			the sum of negative charges in solution.
+
+			\begin{align*}
+				\sum(\text{positive charges}) &=
+				\sum(\text{negative charges}) \\
+				n_1[\ch{C1}] + n_2[\ch{C2}] + \cdots &=
+				m_1[\ch{A1}] + m_2[\ch{A2}] + \cdots
+			\end{align*}
+		
+			where
+		
+			\begin{tabu} to \linewidth {X}
+				$n$ is the charge of each \emph{cation} of
+				concentration [\ch{C}] \\
+				$m$ is the charge of each \emph{anion} of
+				concentration [\ch{A}]
+			\end{tabu}
+	
+		\item Activity coefficients \emph{do not} appear in the charge
+			balance!
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Charge Balance Example 1}
+	Write the charge balance for an aqueous solution containing
+	\SI{0.10}{\Molar}~\ch{Mg(NO3)2}, \SI{0.20}{\Molar}~\ch{HCN},
+	\SI{0.15}{\Molar}~\ch{KCN}, \SI{0.10}{\Molar}~\ch{Ag4Fe(CN)6},
+	\ch{H3O+}, \ch{OH-}, ignoring any further equilibria for this problem.
+	Show that it balances.
+
+	\mode<article>{\vfill}
+
+	\note{\scriptsize
+	What species do we have present?
+	\begin{align*}
+		\ch{Mg(NO3)2 &<=> Mg^{2+} + 2 NO3-} \\
+		\ch{HCN &<=> H+ + CN-} \\
+		\ch{KCN &<=> K+ + CN-} \\
+		\ch{Ag4Fe(CN)6 &<=> 4 Ag+ + Fe(CN)6^{4-}} \\
+		\ch{2 H2O &<=> H3O+ + OH-}
+	\end{align*}
+
+	\begin{align*}
+		2[\ch{Mg^{2+}}] + [\ch{H3O+}] + [\ch{K+}] + [\ch{Ag+}] &=
+		[\ch{NO3-}] + [\ch{CN-}] + 4[\ch{Fe(CN)6^{4-}}] + [\ch{OH-}] \\
+		2(0.10) + (0.20 + \num{1e-7}) + 0.15 + 0.40 &= 0.20 + (0.20 +
+		0.15) + 4(0.10) + \num{1e-7}
+		\\
+		\SI{0.95}{\Molar} &= \SI{0.95}{\Molar}
+	\end{align*}
+	}
+\end{frame}
+
+\begin{frame}[t]{Charge Balance Example 2}
+	Write the charge balance for a solution of sodium dihydrogen phosphate
+	(including equilibria).
+
+	\mode<article>{\vfill}
+
+	\note{\scriptsize
+	What species do we have present?
+	\begin{align*}
+		\ch{NaH2PO4 &<=> Na+ + H2PO4-} \\
+		\ch{H2PO4- &<=> H3O+ + HPO4^{2-}} \\
+		\ch{H2PO4- + H3O+ &<=> H3PO4} \\
+		\ch{HPO4^{2-} &<=> H3O+ + PO4^{3-}} \\
+		\ch{2 H2O &<=> H3O+ + OH-}
+	\end{align*}
+
+
+	\begin{align*}
+		[\ch{Na+}] + [\ch{H3O+}] &= [\ch{H2PO4-}] + 2[\ch{HPO4^{2-}}] +
+		3[\ch{PO4^{3-}}] + [\ch{OH-}]
+	\end{align*}
+	}
+\end{frame}
+
+\begin{frame}{Mass Balance}
+	\begin{itemize}
+		\item A statement of the conservation of matter.
+		\item The quantity of all species in a solution containing a
+			particular atom (or group of atoms) \emph{must equal}
+			the amount of that atom (or group) delivered to the
+			solution.
+		\item We generally have two mass balances, one for the anion and
+			another for the cation. These can be combined into a
+			single expression.
+	\end{itemize}
+\end{frame}
+
+\mode<article>{\clearpage}
+
+\begin{frame}[t]{Mass Balance Example 1}
+	Write the mass balances for an aqueous solution containing
+	\SI{0.10}{\formal}~\ch{Mg(NO3)2}.
+
+	\mode<article>{\vspace{\fill}}
+
+\note{
+	\begin{center}
+		\ch{Mg(NO3)2 <=> Mg^{2+} + 2 NO3-}
+	\end{center}
+
+	\begin{align*}
+		\SI{0.10}{\formal} &= [\ch{Mg^{2+}}] \\
+		2[\ch{Mg^{2+}}] &= [\ch{NO3-}] \\
+		\SI{0.20}{\formal} &= [\ch{NO3-}]
+	\end{align*}
+	}
+\end{frame}
+
+\begin{frame}[t]{Mass Balance Example 2}
+	Write the mass balances for a \SI{0.20}{\formal} solution of sodium
+	sulfate.
+
+	\mode<article>{\vspace{\fill}}
+
+	\note{
+	\begin{reaction*}
+		Na2SO4 <=> 2 Na+ + SO4^{2-} + HSO4-
+	\end{reaction*}
+
+	\begin{align*}
+		\SI{0.20}{\formal} &= [\ch{SO4^{2-}}] + [\ch{HSO4-}] \\
+		2[\text{total sulfates}] &= [\ch{Na+}] \\
+		\SI{0.40}{\formal} &= [\ch{Na+}]
+	\end{align*}
+	}
+\end{frame}
+	
+\begin{frame}[t]{Mass Balance Example 3}
+	Write the mass balance for a saturated solution of copper(II) iodate.
+
+	\mode<article>{\vspace{\fill}}
+
+	\note{
+		\begin{reaction*}
+			Cu(IO3)2 <=> Cu^{2+} + 2 IO3-
+		\end{reaction*}
+	
+		\begin{align*}
+			2[\ch{Cu^{2+}}] &= [\ch{IO3-}] \\
+		\end{align*}
+	}
+\end{frame}
+
+\begin{frame}[t]{Mass Balance Example 4}
+	Write the mass balance for a saturated silver phosphate solution.
+
+	\mode<article>{\vspace{\fill}}
+
+\note{
+	\begin{reactions*}
+		Ag3PO4 &<=> 3 Ag+ + PO4^{3-} \\
+		PO4^{3-} + H2O &<=> HPO4^{2-} + OH- \\
+		HPO4^{2-} + H2O &<=> H2PO4- + OH- \\
+		H2PO4- + H2O &<=> H3PO4 + OH-
+	\end{reactions*}
+
+	\begin{align*}
+		3[\text{total phosphates}] &= [\ch{Ag+}] \\
+		3\big( [\ch{PO4^{3-}}] + [\ch{HPO4^{2-}}] + [\ch{H2PO4-}] +
+		[\ch{H3PO4}]
+		\big) &= [\ch{Ag+}]
+	\end{align*}
+	}
+\end{frame}
+
+\mode<article>{\clearpage}
+
+\begin{frame}{The Systematic Treatment of Equilibrium}
+	\begin{enumerate}
+		\item Write the \emph{pertinent reactions}.
+		\item Write the \emph{charge balance} equation.
+		\item Write the \emph{mass balance} equation(s).
+		\item Write the \emph{equilibrium constant} for each chemical
+			reaction.
+			\begin{itemize}
+				\item This is the only step where activity
+					coefficients may appear.
+			\end{itemize}
+		\item \emph{Count the equations and unknowns}.
+			\begin{itemize}
+				\item The numbers should equal or you need to
+					find more equilibria or fix some
+					concentrations.
+			\end{itemize}
+		\item \emph{Solve} for all the unknowns.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{Systematic Treatment Example 1}
+	Calculate the solubility of calcium fluoride in a pH 4.00 buffer.
+
+	\mode<article>{\vfill}
+	
+	\note{
+	\begin{multicols}{2}
+		\footnotesize
+		\begin{enumerate}
+			\item Pertinent reactions
+				\begin{reactions*}
+					CaF2 &<=> Ca^{2+} + 2 F- \\
+					F- + H2O &<=> HF + OH- \\
+					2 H2O &<=> H3O+ + OH-
+				\end{reactions*}
+			\item Charge balance?
+			\item Mass balance
+				\begin{align*}
+					2[\ch{Ca^{2+}}] &= [\ch{HF}] + [\ch{F-}]
+					\\
+					[\ch{H3O+}] &= \SI{1.0e-4}{\Molar}
+				\end{align*}
+			\item Equilibrium constants
+				\begin{align*}
+					K_{sp} &= [\ch{Ca^{2+}}][\ch{F-}]^2 =
+					\num{3.9e-11} \\
+					K_b &=
+					\dfrac{[\ch{HF}][\ch{OH-}]}{[\ch{F-}]} =
+					\num{1.5e-11} \\
+					K_w &= [\ch{H3O+}][\ch{OH-}] =
+					\num{1.0e-14}
+				\end{align*}
+			\item Count equations and unknowns
+				\begin{itemize}
+					\item 5 unknowns 
+					\item 5 equations
+				\end{itemize}
+			\item Solve
+		\end{enumerate}
+	\end{multicols}
+	}
+
+\end{frame}
+	\note{
+		\footnotesize
+		$[\ch{H3O+}] = \SI{1.0e-4}{\Molar}$ is both an equation and a
+		solution.
+		\begin{align*}
+			[\ch{OH-}] &= \dfrac{\num{1.0e-14}}{\num{1.0e-4}} =
+			\SI{1.0e-10}{\Molar}
+		\end{align*}
+		$K_b$ contains [\ch{OH-}], so:
+		\begin{align*}
+			\dfrac{\num{1.5e-11}}{\num{1.0e-10}} = 0.15 =
+			\dfrac{[\ch{HF}]}{[\ch{F-}]} \qquad \therefore
+			0.15[\ch{F-}] = [\ch{HF}]
+		\end{align*}
+		From mass balance,
+		\begin{align*}
+			2[\ch{Ca^{2+}}] &= [\ch{HF}] + [\ch{F-}] \\
+			2[\ch{Ca^{2+}}] &= 0.15[\ch{F-}] +
+			[\ch{F-}] = 1.15[\ch{F-}] \\
+			1.74[\ch{Ca^{2+}}] &= [\ch{F-}]
+		\end{align*}
+		}
+
+	\note{
+		\footnotesize
+		Using $K_{sp}$,
+		\begin{align*}
+			\num{3.9e-11} &= [\ch{Ca^{2+}}](1.74[\ch{Ca^{2+}}])^2 \\
+			&= 3.02[\ch{Ca^{2+}}]^3 \\
+			[\ch{Ca^{2+}}] &= \SI{2.3e-4}{\Molar}
+		\end{align*}
+		Therefore,
+		\begin{align*}
+			[\ch{F-}] &= 1.74[\ch{Ca^{2+}}] = \SI{4.1e-4}{\Molar} \\
+			[\ch{HF}] &= 0.15[\ch{F-}] = \SI{6.1e-5}{\Molar} \\
+		\end{align*}
+		
+		\begin{framed}
+			\begin{columns}
+				\column{0.5\textwidth}
+				\begin{align*}
+					[\ch{H3O+}] &= \SI{1.0e-4}{\Molar} \\
+					[\ch{OH-}] &= \SI{1.0e-10}{\Molar} \\
+					[\ch{F-}] &= \SI{4.1e-4}{\Molar}
+				\end{align*}
+				\column{0.5\textwidth}
+				\begin{align*}
+					[\ch{HF}] &= \SI{6.1e-5}{\Molar} \\
+					[\ch{Ca^{2+}}] &= \SI{2.3e-4}{\Molar}
+				\end{align*}
+			\end{columns}
+		\end{framed}
+		}
+
+%\begin{frame}<handout:0>{Quiz}
+%	\begin{enumerate}
+%		\item Write the $K$ expressions for the following
+%			reactions:
+%
+%			\begin{align*}
+%				\ch{Pb(NO3)2(aq) &<=> Pb^{2+}(aq) + 2 NO3-(aq)}
+%				&\qquad &K_{d1}	\\
+%				\ch{Na2SO4(aq) &<=> 2Na+(aq) + SO4^{2-}(aq)}
+%				&\qquad &K_{d2} \\
+%				\ch{NaNO3(aq) &<=> Na+(aq) + NO3-(aq)} &\qquad
+%				&K_{d3} \\
+%				\ch{PbSO4(s) &<=> Pb^{2+}(aq) + SO4^{2-}(aq)}
+%				&\qquad &K_{sp}
+%			\end{align*}
+%		
+%		\item Write the $K_{eq}$ for the following reaction in terms of
+%			the $K$ found above:
+%
+%			\begin{align*}
+%				\ch{Pb(NO3)2(aq) + Na2SO4(aq) &<=> PbSO4(s) +
+%				2NaNO3(aq)}
+%			\end{align*}
+%	\end{enumerate}
+%\end{frame}
+
+		\mode<article>{\clearpage}
+
+\begin{frame}[t]{Systematic Treatment Example 2}
+	Calculate the solubility of silver phosphate in a pH~5.00 buffer.
+
+	\mode<article>{\vfill}
+
+	\note{
+	\scriptsize
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item Pertinent reactions
+				\begin{reactions*}
+					Ag3PO4 &<=> 3 Ag+ + PO4^{3-} \\
+					PO4^{3-} + H2O &<=> HPO4^{2-} + OH- \\
+					HPO4^{2-} + H2O &<=> H2PO4- + OH- \\
+					H2PO4- + H2O &<=> H3PO4 + OH- \\
+					2 H2O &<=> H3O+ + OH-
+				\end{reactions*}
+			\item Charge balance
+			\item Mass balance
+				\begin{align*}
+					[\ch{Ag+}] &= 3(\ch{[PO4^{3-}] +
+					[HPO4^{2-}]} \\
+					&\qquad + \ch{[H2PO4^-] + [H3PO4]}) \\
+					[\ch{H3O+}] &= \SI{1.0e-5}{\Molar}
+				\end{align*}
+			\item Equilibrium constants
+				\begin{align*}
+					K_{sp} &= [\ch{Ag+}]^3[\ch{PO4^{3-}}] =
+					\num{2.8e-18} \\
+					K_{b1} &=
+					\dfrac{[\ch{HPO4^{2-}}][\ch{OH-}]}{[\ch{PO4^{3-}}]} =
+					\num{0.0237} \\
+					K_{b2} &=
+					\dfrac{[\ch{H2PO4-}][\ch{OH-}]}{[\ch{HPO4^{2-}}]} =
+					\num{1.58e-7} \\
+					K_{b3} &=
+					\dfrac{[\ch{H3PO4}][\ch{OH-}]}{[\ch{H2PO4-}]}
+					= \num{1.41e-12} \\
+					K_w &= [\ch{H3O+}][\ch{OH-}] =
+					\num{1.0e-14}
+				\end{align*}
+			\item Count equations and unknowns
+				\begin{itemize}\tiny
+					\item 7 unknowns 
+					\item 7 equations
+				\end{itemize}
+			\item Solve
+		\end{enumerate}
+	\end{multicols}
+	}
+\end{frame}
+
+\note{\scriptsize
+	$[\ch{H3O+}] = \SI{1.0e-5}{\Molar}$ is both an equation and a
+	solution.
+	\begin{align*}
+		[\ch{OH-}] &= \dfrac{\num{1.0e-14}}{\num{1.0e-5}} =
+		\SI{1.0e-9}{\Molar}
+	\end{align*}
+	All $K_b$ contain [\ch{OH-}], so:
+	\begin{align*}
+		\dfrac{\num{1.41e-12}}{\num{1.0e-9}} = \num{1.41e-3} &=
+		\dfrac{[\ch{H3PO4}]}{[\ch{H2PO4-}]} \\
+		(\num{1.41e-3})[\ch{H2PO4-}] &= [\ch{H3PO4}] \\
+		(\num{1.58e2})[\ch{HPO4^{2-}}] &= [\ch{H2PO4-}] \\
+		(\num{2.37e7})[\ch{PO4^{3-}}] &= [\ch{HPO4^{2-}}]
+	\end{align*}
+}
+
+\note{\scriptsize
+	From mass balance,
+	\begin{align*}
+		[\ch{Ag+}] &= 3(\ch{[PO4^{3-}] + [HPO4^{2-}] + [H2PO4^-] +
+		[H3PO4]}) \\
+		&= 3(\ch{[PO4^{3-}]} + (\num{2.37e7})\ch{[PO4^{3-}]} +
+		(\num{1.58e2})\ch{[PO4^{2-}]} + (\num{1.41e-3})\ch{[H2PO4-]}) \\
+		&= 3(\ch{[PO4^{3-}]} + (\num{2.37e7})\ch{[PO4^{3-}]}
+		(\num{1.58e2})(\num{2.37e7})\ch{[PO4^{3-}]} \\
+		& \qquad\qquad {} +
+		(\num{1.41e-3})(\num{1.58e2})\ch{[PO4^{2-}]}) \\
+		&= 3(\ch{[PO4^{3-}]} + (\num{2.37e7})\ch{[PO4^{3-}]} +
+		(\num{1.58e2})(\num{2.37e7})\ch{[PO4^{3-}]}  \\
+		& \qquad\qquad {} +
+		(\num{1.41e-3})(\num{1.58e2})(\num{2.37e7})\ch{[PO4^{3-}]}) \\
+		&= \num{1.13e10}\ch{[PO4^{3-}]}
+	\end{align*}
+	}
+
+\note{\scriptsize
+	Using $K_{sp}$,
+	\begin{align*}
+		\num{2.8e-18} &=
+		((\num{1.13e10})[\ch{PO4^{3-}}])^3[\ch{PO4^{3-}}] \\
+		&= (\num{1.44e30})[\ch{PO4^{3-}}]^4 \\
+		[\ch{PO4^{3-}}] &= \SI{1.18e-12}{\Molar}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		[\ch{HPO4^{2-}}] &= (\num{2.37e7})[\ch{PO4^{3-}}] =
+		\SI{2.80e-5}{\Molar} \\
+		[\ch{H2PO4-}] &= (\num{1.58e2})[\ch{HPO4^{2-}}] =
+		\SI{4.41e-3}{\Molar} \\
+		[\ch{H3PO4}] &= (\num{1.41e-3})[\ch{H2PO4-}] =
+		\SI{6.20e-6}{\Molar} \\
+		[\ch{Ag+}] &= 3[\text{total phosphates}] = \SI{1.33e-2}{\Molar}
+	\end{align*}
+	
+%	\begin{framed}
+%		\begin{columns}
+%			\column{0.5\textwidth}
+%			\begin{align*}
+%				[\ch{H3O+}] &= \SI{1.0e-4}{\Molar} \\
+%				[\ch{OH-}] &= \SI{1.0e-10}{\Molar} \\
+%				[\ch{F-}] &= \SI{4.1e-4}{\Molar}
+%			\end{align*}
+%			\column{0.5\textwidth}
+%			\begin{align*}
+%				[\ch{HF}] &= \SI{6.1e-5}{\Molar} \\
+%				[\ch{Ca^{2+}}] &= \SI{2.3e-4}{\Molar}
+%			\end{align*}
+%		\end{columns}
+%	\end{framed}
+	}
+
+
+\begin{frame}{Some for you to try:}
+	\begin{enumerate}
+		\item Calculate the solubility of aluminum phosphate ($K_{sp} =
+			\num{9.84e-22}$) at pH~4.00.
+		\item Using a spreadsheet, calculate the solubility of \ch{CaF2}
+			between pH's 1--10. Finally, plot [\ch{Ca^{2+}}] vs pH.
+		\item Calculate the solubility of barium oxalate at pH~2.00.
+	\end{enumerate}
+\end{frame}
+
+\end{document}

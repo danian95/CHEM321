@@ -1,0 +1,51 @@
+% !TEX program = xelatex
+\documentclass{article}
+
+\title{Chapter 4 Practice Problem Solutions}
+\date{}
+\author{D.A. McCurry}
+
+\usepackage{analchem}
+\usepackage[inline]{enumitem}
+\usepackage[letterpaper,margin=1in]{geometry}
+\sisetup{math-micro=\text{µ},text-micro=µ}
+\usepackage{amssymb}
+%\usepackage{graphicx}
+%\DeclareSIUnit{\ounce}{oz}
+%\DeclareSIUnit{\calorie}{cal}
+%\DeclareSIUnit{\inch}{in.}
+
+\setlist[enumerate,1]{leftmargin=0pt}
+\setlist[enumerate,2]{label = (\alph*)}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[start=1]
+	\item See answer in back of text.
+\end{enumerate}
+
+\begin{enumerate}[start=9]
+	\item See answer in back in text.
+\end{enumerate}
+
+\begin{enumerate}[start=12]
+	\item Let's first find the average, $\bar{x}$ and standard deviation,
+		$s$:
+		\begin{align*}
+			\bar{x} &= \frac{\sum_i x_i}{n} \\
+			        &= \frac{0.13 + 0.12 + 0.16 + 0.17 + 0.20 +
+				0.11}{6} \\
+				&= \num{0.148333333} \\
+			s &= \sqrt{\frac{\sum_i (x_i - \bar{x})^2}{n-1}} \\
+			&= \sqrt{\frac{(0.13-0.0143\ldots)^2 + (0.12 -
+			0.0143\ldots)^2 + \ldots}{5}} \\
+			&= \num{0.034302575}
+			\intertext{Then we can use this info for the confidence
+			intervals:}
+			\text{CI}_{90\%} &= 
+		\end{align*}
+\end{enumerate}
+
+\end{document}

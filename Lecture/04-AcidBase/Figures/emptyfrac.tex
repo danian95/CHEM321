@@ -1,0 +1,39 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{mathtools}
+\usepackage{mhchem}
+\usepackage{siunitx}
+\DeclareSIUnit{\Molar}{\textsc{m}}
+
+\setlength{\textwidth}{3in}
+\setlength{\textheight}{4in}
+
+\begin{document}
+
+\begin{tikzpicture}
+	\begin{axis} [
+			width=\linewidth,
+			height=18em,
+			grid=both,
+			minor tick num=1,
+			major grid style={draw=gray!50},
+			minor grid style={draw=gray!10},
+			xmax=13.5,
+			xmin=0,
+			ymax=1,
+			ymin=0,
+			xlabel={pH},
+			ylabel={$\alpha$},
+			label style={font=\footnotesize},
+			tick label style={font=\footnotesize},
+			xtick={0,1,...,14},
+			ytick={0.0,0.1,...,4},
+			no markers,
+    			every axis plot/.append style={ultra thick},
+			]
+	\end{axis}
+\end{tikzpicture}
+
+\end{document}

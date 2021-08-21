@@ -1,0 +1,48 @@
+% !TEX program = xelatex
+\documentclass[12pt,letterpaper]{article}
+
+\usepackage{analchem}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+\setlist{leftmargin=0pt,label=}
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{sffamily}
+	Name:\enspace\hrulefill
+
+	CHEM321 Homework
+\end{sffamily}
+
+\bigskip
+
+The voltage for the following cell is \SI{-0.246}{\volt}. The right
+half-cell contains the metal ion \ch{M^{2+}}, whose standard reduction
+potential is \SI{-0.266}{\volt}. Calculate $K_\textrm{f}$ for the
+metal-EDTA complex.
+
+\begin{center}
+	\begin{tikzpicture}[every node/.style={font=\footnotesize},node
+		distance=5pt]
+		\node(cell)
+		{\includegraphics[width=0.5\linewidth]{metal-EDTA-cell.png}};
+		\node[left = of cell,text width=0.2\linewidth]{
+			\begin{itemize}
+				\item \SI{28.0}{\mL} \SI{10.0}{\milli\Molar}
+					pyrophosphoric acid
+				\item \SI{72.0}{\mL} \SI{10.0}{\milli\Molar} \ch{KOH}
+				\item $P_{\ch{H2}} = \SI{0.50}{\atm}$
+		\end{itemize}};
+		\node[right = of cell,text width=0.21\linewidth]{
+			\begin{itemize}
+				\item \SI{28.0}{\mL} \SI{10.0}{\milli\Molar} \ch{M^{2+}}
+				\item \SI{72.0}{\milli\liter} \SI{10.0}{\milli\Molar} EDTA 
+				\item buffered to $\pH = 8$
+		\end{itemize}};
+	\end{tikzpicture}
+\end{center}
+
+\end{document}

@@ -1,0 +1,810 @@
+\documentclass[handout]{beamer}
+
+\usepackage{lecture}
+\usepackage{multicol}
+
+\title{Methods of Detection}
+\subtitle{Primarily Chapter 20, but also some 22, 24, and 25}
+\institute{Bloomsburg University}
+\author{CHEM321 - Analytical Chemistry I}
+\date{December 4, 2018}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}{Chromatography is Only for Separations}
+	\begin{itemize}
+		\item How do we \alert{detect} what has come out of the column?
+		\item What makes a chemical signal turn into a \alert{digital}
+			signal?
+		\item We must \alert{interface} a chromatographic technique (GC,
+			HPLC, CE) with some type of detector.
+
+			\bigskip
+
+			\pause
+
+		\item Let's revisit the construction of a spectrophotometer.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Anatomy of a UV/Vis Spectrometer}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{Harr9e_fig_18_05.jpg}
+	\end{center}
+
+	\begin{itemize}
+		\only<1>{
+		\item A \alert{single-beam} spectrometer is the simplest design,
+			in which light from the \alert{source} is split into
+			component wavelengths through a \alert{monochromator}
+			before passing through the \alert{sample} and striking
+			the \alert{detector}.
+		\item We can easily replace a sample cuvette with a \alert{flow
+			cell} for continuous flow applications.}
+		\only<2>{
+		\item Disadvantages:
+			\begin{itemize}
+				\item A reference sample must continuously be
+					checked to account for deviations in
+					source intensity or instrument
+					\alert{drift}.
+				\item If multiple wavelengths are to be
+					monitored, the reference will have to be
+					checked at each wavelength.
+			\end{itemize}}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Anatomy of a Double-Beam Spectrometer}
+	\begin{center}
+		\includegraphics[width=\linewidth]{Harr9e_fig_20_01.jpg}
+	\end{center}
+
+	\begin{itemize}
+		\item Using \alert{choppers}, we can alternate the path that the
+			light follows.
+		\item A reference cuvet placed in the second path permits
+			continuous monitoring of changes in the light source or
+			detector response.
+	\end{itemize}
+
+	\framebreak
+
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{Harr9e_fig_20_02.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Components of Optical Instruments}{Skoog,
+	Holler, Crouch. Principles of Instrumental Analysis,
+	7\textsuperscript{th} Ed.}
+	\includegraphics[width=\linewidth]{02_ch07_Fig02a.jpg}
+
+	\includegraphics[width=\linewidth]{02_ch07_Fig02b.jpg}
+
+	\includegraphics[width=\linewidth]{03_ch07_Fig03a.jpg}
+
+	\includegraphics[width=\linewidth]{03_ch07_Fig03b.jpg}
+\end{frame}
+
+\begin{frame}{Common Light Sources}
+	\begin{columns}
+		\column{0.45\linewidth}
+		\only<1-3|handout:1>{
+			\textbf{UV-Visible-Near IR Region}
+		\begin{itemize}
+			\item<1-> \ch{H2}/\ch{D2}
+				\begin{itemize}
+					\item 160--375 nm
+					\item must use Quartz windows and
+						cuvettes
+				\end{itemize}
+			\item<2-> Xe arc lamps
+		        	\begin{itemize}
+					\item 250--600 nm, max I at 500 nm
+				\end{itemize}
+			\item<3-> W filament
+				\begin{itemize}
+					\item 320--2500 nm, needs close V
+						control
+				\end{itemize}
+		\end{itemize}}
+
+		\only<4|handout:0>{
+			\begin{center}
+				\includegraphics[width=\linewidth]{nernst-glower.png}
+			\end{center}}
+
+		\only<5|handout:0>{
+			\begin{center}
+				\includegraphics[width=\linewidth]{globar.png}
+			\end{center}}
+
+		\only<6|handout:0>{
+			\begin{center}
+				\includegraphics[width=\linewidth]{incandescent-wire.png}
+			\end{center}}
+
+
+
+		\column{0.45\linewidth}
+		
+		\only<4-6|handout:1>{
+			\textbf{IR Region}
+		\begin{itemize}
+			\item<4-> Nernst glower
+				\begin{itemize}
+					\item rare earth oxides
+				\end{itemize}
+			\item<5-> globar
+				\begin{itemize}
+					\item silicon carbide rod
+				\end{itemize}
+			\item<6-> incandescent wire
+				\begin{itemize}
+					\item nichrome wire
+				\end{itemize}
+		\end{itemize}}
+		
+		\only<1|handout:0>{
+			\begin{center}
+				\includegraphics[width=0.7\linewidth]{deuterium.png}
+			\end{center}}
+
+		\only<2|handout:0>{
+			\begin{center}
+				\includegraphics[width=\linewidth]{xe-arc.png}
+			\end{center}}
+
+		\only<3|handout:0>{
+			\begin{center}
+				\includegraphics[width=\linewidth]{w-filament.png}
+			\end{center}}
+
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Deuterium and Tungsten-Filament Emission Spectra}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{Harr9e_fig_20_04.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Arc Lamp Emission Spectra}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{arc-emission.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Lasers!}
+	\begin{center}
+	\bfseries
+	\alert{L}ight \alert{A}mplification by \alert{S}timulated
+	\alert{E}mission of \alert{R}adiation
+
+		\bigskip
+
+		\includegraphics[width=0.8\linewidth]{04_ch07_Fig04.jpg}\footnotetext{Skoog
+		et al. Principles of Instrumental Analysis,
+		7\textsuperscript{th} Ed.}
+	\end{center}
+
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item Monochromatic
+			\item High power at one wavelength
+			\item Collimated - all waves parallel
+			\item Polarized - electric field oscillates in one plane
+			\item Coherent - all waves in phase
+		\end{itemize}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}
+	\includegraphics[width=\linewidth]{ruby-laser.jpg}
+\end{frame}
+
+\begin{frame}{Wavelength Selection}
+	\begin{columns}
+		\column{0.4\linewidth}
+		A \alert{monochromator} disperses light into the
+		component wavelengths and selects a narrow band
+		of wavelengths (ideally one -- mono, but this is
+		not physically possible) to pass through an exit
+		slit.
+		\column{0.5\linewidth}
+		\includegraphics[width=\linewidth]{20_ch07_Fig18.jpg}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Czerny-Turner Grating Monochromator}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{Harr9e_fig_20_06.jpg}
+	\end{center}
+
+	\framebreak
+
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{Harr9e_fig_20_07.jpg}
+	\end{center}
+
+	\begin{equation*}
+		\text{Grating equation:} \qquad n\lambda = d(\sin\theta +
+		\sin\phi)
+	\end{equation*}
+
+	where $n$ is the order of diffraction and $d$ is the distance between
+	grooves. For each incident angle, $\theta$, there is a series of
+	reflection angles, $\phi$, at which a given $\lambda$ will produce
+	maximum constructive interference.
+
+	\framebreak
+
+	\begin{center}
+		\includegraphics[width=0.7\linewidth,trim={0 1.5in 0 0},clip]{order-of-light.png}
+	\end{center}
+
+	\begin{equation*}
+		n\lambda = a - b
+	\end{equation*}
+
+	where $n$ is the order of diffraction and $a - b$ is the difference in
+	pathlength between grooves.
+\end{frame}
+
+\begin{frame}{Angular Dispersion of Gratings}
+	Dispersion is a ``measure'' of the angle the grating must be rotated to
+	change wavelength of the exiting light by a unit wavelength.
+
+	i.e. angular separation $\Delta \phi$ obtained for two wavelengths
+	separated by $\Delta \lambda$.
+
+	\begin{equation*}
+		\frac{\Delta\phi}{\Delta\lambda} = \frac{n}{d\cos\phi}
+	\end{equation*}
+
+	Smaller $d$ values (\#\si{\nano\meter}/blaze) of the grating generate
+	larger dispersions leading to higher \alert{resolutions}.
+\end{frame}
+
+\begin{frame}{Resolution of a Grating}
+	The ability of a grating to disperse wavelengths -- ideally the number
+	of grating groves illuminated (lines/\si{\milli\meter}).
+
+	\begin{equation*}
+		\frac{\lambda}{\Delta \lambda} = n N
+	\end{equation*}
+
+	where $N$ is the number of grooves of the grating that are illuminated.
+	The more grooves in a grating, the better the resolution between closely
+	spaced wavelengths.
+	
+	\alert{Resolution is directly related to the size of
+	the illuminated region.}
+\end{frame}
+
+\begin{frame}{Resolution is Related to Bandpass}
+%	\begin{itemize}
+%		\item Spectral slit width
+%			\begin{equation*}
+%				d\lambda_\text{eff} = WD^{-1}
+%			\end{equation*}
+%			where $W$ is physical slit width and $D^{-1}$ is the
+%			reciprocal linear dispersion of the grating.
+%		\item If $D^{-1}$ is \SI{1.2}{\nano\meter\per\milli\meter}, what
+%			slit width is needed to resolve
+%			\SIlist{589.0;589.6}{\nano\meter}?
+%	\end{itemize}
+	\begin{columns}
+		\column{0.4\linewidth}
+		\begin{itemize}
+			\item We want to keep the slit width large to allow
+				increased light to reach the detector and
+				improve \alert{signal to noise}.
+			\item The slit width needs to be minimized to improve
+				resolution.
+			\item Choosing a monochromator bandwidth that is
+				$\frac{1}{5}$ as wide as the absorption peak is
+				generally OK.
+		\end{itemize}
+		\column{0.5\linewidth}
+	\begin{center}
+		\includegraphics[width=\linewidth]{Harr9e_fig_20_10.jpg}
+	\end{center}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Filters}
+	\begin{itemize}
+		\item Different orders of diffraction ($\frac{\lambda}{2}$,
+			$\frac{\lambda}{3}$, \ldots) can still pass through
+			monochromator.
+		\item A \alert{filter} can be added to remove this interference.
+		\item The simplest filter is colored glass that can absorb at
+			the undesired $\lambda$.
+	\end{itemize}
+
+	\begin{center}
+		\includegraphics[width=\linewidth,trim={0 0.25in 0 0},clip]{bandpass-filter.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{So how do we detect the light?}
+	\begin{columns}
+		\column{0.45\linewidth}
+	\begin{itemize}
+		\item A \alert{phototube} is a vacuum tube with a
+			\alert{photoemissive cathode}. When the cathode is
+			struck by light, electrons are ejected and flow to the
+			positively charged electrode (the anode).
+		\item The response is sensitive to the wavelength of the
+			incident photon.
+	\end{itemize}
+		\column{0.45\linewidth}
+		\includegraphics[width=\linewidth]{phototube.png}
+	\end{columns}
+
+	\framebreak
+
+	\includegraphics[width=\linewidth]{Harr9e_fig_20_13.jpg}
+
+	A single beam spectrometer needs to be recalibrated for each $\lambda$
+	whereas a double beam spectrometer can automatically readjust for
+	100\%T.
+\end{frame}
+
+\begin{frame}{Photomultiplier Tubes}
+	For \emph{very} low intensity applications, a \alert{photomultiplier
+	tube} has the ability to produce $>10^6$ electrons from a single photon.
+
+	\begin{center}
+	\includegraphics[scale=0.75]{Harr9e_fig_20_14a.jpg} \quad
+	\includegraphics[scale=0.75]{Harr9e_fig_20_14b.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Photodiode Arrays}
+	\begin{itemize}
+		\item Phototubes are slow (and large).
+		\item A photodiode array (PDA) can record an entire spectrum in
+			under a second.
+		\item This is \emph{very} useful for chromatography when we need
+			to scan samples eluting from a column.
+	\end{itemize}
+
+	\begin{center}
+		\includegraphics[width=\linewidth]{Harr9e_fig_20_15ab.jpg} \quad 
+	\end{center}
+
+	\framebreak
+
+	\begin{center}
+	\includegraphics[width=0.8\linewidth]{Harr9e_fig_20_16.jpg}
+	\end{center}
+
+	A \alert{polychromator} can be used to direct component wavelengths to
+	\alert{different regions} of the PDA.
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Charge Coupled Devices}
+	\begin{itemize}
+		\item Even more sensitivity can be gained by using a
+			\alert{charge coupled device} (CCD).
+		\item CCDs \alert{store} electrons in each \alert{pixel} of what
+			is most often a \alert{two-dimensional} array.
+		\item CCDs can use the columns to average multiple scans at once
+			if operated in a one-dimensional mode or they can be
+			used for two-dimensional imaging.
+	\end{itemize}
+
+	\begin{center}
+		\includegraphics[width=0.9\linewidth]{Harr9e_fig_20_17.jpg}
+	\end{center}
+
+	\framebreak
+
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{Harr9e_fig_20_22.jpg}
+	\end{center}
+
+	The Ocean Optics USB 4000 spectrometer used in lab uses a polychromator
+	and CCD detector (along with a few filters and lenses here and there).
+\end{frame}
+
+\begin{frame}{Recall the Z-Cell}
+	\begin{columns}
+		\column{0.45\linewidth}
+		\begin{itemize}
+			\item UV/Vis spectrophotometers are easily interfaced to
+				a HPLC or LC via fiber optics.
+			\item The eulate needs to travel through a known path
+				length and the absorbance can be read through
+				a PDA.
+			\item Most often, ultraviolet light is used as this can
+				detect most compounds of interest.
+		\end{itemize}
+		\column{0.45\linewidth}
+		\includegraphics[width=\linewidth]{Harr9e_fig_25_21.jpg}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{But wait! How did we detect ethanol/propanol in GC?}
+	\textbf{Some Common GC Detectors:}
+	\begin{itemize}
+		\item Thermal Conductivity Detector
+			\begin{itemize}
+				\item Measures changes in thermal conductivity
+					of gas
+				\item Universal -- detects all analytes
+				\item Nondestructive -- can be used \alert{in
+					tandem} with other techniques
+				\item Low sensitivity
+			\end{itemize}
+		\item \alert{Flame Ionization Detector} (what we used in lab)
+			\begin{itemize}
+				\item Eluate is burned in \ch{H2} and air,
+					producing \ch{CHO+} (for organic
+					compounds)
+				\item Insensitive to nonhydrocarbons
+				\item More sensitive than thermal conductivity
+			\end{itemize}
+		\item Electron Capture Detector
+			\begin{itemize}
+				\item Conductivity of a gas plasma is measured
+				\item Useful for halogen-containing molecules
+					and organometallics
+				\item Insensitive to hydrocarbons
+				\item Extremely sensitive
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Thermal Conductivity Detector}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{Harr9e_fig_24_19.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Flame Ionization Detector}
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{Harr9e_fig_24_20.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Electron Capture Detector}
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{Harr9e_fig_24_22.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Mass Spectrometry}{A Standalone Technique or \alert{Tandem}
+	Detector}
+	\begin{itemize}
+		\item You may have seen in the past HPLC- or GC-MS
+		\item or perhaps a GC-MS-MS
+		\item or perhaps a GC-MS-MS-MS\ldots
+		\item \alert{Mass spectrometry} is a very sensitive detector
+			that provides both \alert{qualitative} and
+			\alert{quantitative} analysis.
+		\item MS analyzes the mass to charge ratio ($m/z$) of analyte.
+			If $z =$
+			\begin{itemize}
+				\item[1] then $m/z$ is equal to the mass of the
+					ion.
+				\item[2] then $m/z$ is half of the mass.
+			\end{itemize}
+		\item Peak area is proportional to the abundance of the specific
+			\alert{mass fragment}.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Mass Spectrometry}{A Detector for GC}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{Harr9e_fig_24_24.jpg}
+	\end{center}
+
+	Selected ion monitoring permits viewing a \alert{single} $m/z$ value,
+	greatly simplifying the chromatogram.
+\end{frame}
+
+\begin{frame}[allowframebreaks]{How does MS work?}
+	\begin{enumerate}
+		\item Ions are created by an \alert{ion source}:
+			\begin{itemize}
+				\item \textbf{Electron ionization} produces a
+					molecular ion, \ch{M^{+.}} and many
+					\alert{fragments}. (Hard ionization)
+				\item \textbf{Chemical ionization} produces
+					\ch{MH+} and few \alert{fragments}.
+					(Soft ionization)
+			\end{itemize}
+		\item Ions are accelerated by an electric field and separated
+			based on their mass-to-charge ratio in the \alert{mass
+			selector}.
+		\item At the \alert{electron multiplier detector}, each arriving
+			ion starts a cascade of electrons that reach the anode,
+			where current is measured.
+		\item The \alert{mass spectrum} shows detector response as a
+			function of $m/z$.
+	\end{enumerate}
+
+	\framebreak
+
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{Harr9e_fig_22_02.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Electron Ionization}
+	\begin{itemize}
+		\item Electrons emitted from a hot filament are accelerated
+			through \SI{70}{\volt} before interacting with incoming
+			molecules, \ch{M}.
+			\begin{reaction*}
+				M + !(\SI{70}{eV})(\el{})
+				-> !(\text{molecular~ion})( M^{+.} )
+				+ !(\SI{\sim55}{eV})(\el{})
+				+ !(\SI{0.1}{eV})(\el{})
+			\end{reaction*}
+		\item The resulting molecular ion, \ch{M^{+.}}, can have so much
+			extra energy that it breaks into fragments.
+			\begin{reaction*}
+				M^{+.} -> A+ + B+ + C+
+			\end{reaction*}
+		\item \ch{M^{+.}} and its fragment ions are then accelerated to
+			the mass analyzer.
+		\item There might be so little \ch{M^{+.}} that its peak is
+			small or absent in the mass spectrum.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Chemical Ionization}
+	\begin{itemize}
+		\item Produces less fragmentation than electron ionization.
+		\item The ionization source is filled with a reagent gas such as
+			methane, isobutane, or ammonia, at a pressure of about
+			\SI{1}{\milli\bar}.
+		\item Energetic electrons (100--200~eV) convert \ch{CH4} into
+			a variety of reactive products:
+			\begin{reactions*}
+				CH4 + \el{} &-> CH4^{+.} + 2 \el{} \\
+				CH4^{+.} + CH4 &-> \alert{CH5^+} + ^.CH3 \\
+				CH4^{+.} &-> CH3^+ + H^. \\
+				CH3^+ + CH4 &-> \alert{C2H5^+} + H2
+			\end{reactions*}
+		\item \alert{\ch{CH5^+}} reacts with analyte \ch{M} to give
+			\ch{MH+}, the most abundant ion in the chemical
+			ionization mass spectrum.
+			\begin{reactions*}
+				M + \alert{CH5^+} &-> MH^+ + CH4
+			\end{reactions*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The Mass Spectrum}
+	\begin{center}
+		\includegraphics[width=\linewidth]{Harr9e_fig_22_04.jpg}
+	\end{center}
+
+	\begin{itemize}
+		\item The molecular ion, \ch{M^{+.}}, tells us the molecular
+			mass of the unknown.
+		\item When electron ionization causes some compounds to not
+			exhibit a molecular ion, \ch{M^{+.}}, fragments can
+			provide clues to the structure of an unknown.
+		\item The \alert{nitrogen rule}, the \alert{ratio of two
+			isotopes}, and the \alert{isotopic patterns} are useful
+			clues for deciphering the mass spectrum.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Nitrogen Rule}
+	\begin{itemize}
+		\item If a compound has an \alert{odd} number of nitrogen (in
+			addition to C, H, halogens, O, S, Si, and P) atoms, then
+			\ch{M^{+.}} has an odd nominal mass.
+		\item If a compound has an \alert{even} number of nitrogen
+			atoms, \ch{M^{+.}} has an even nominal mass.
+		\item A molecular ion at $m/z$ 128 can have 0 or 2 \ch{N} atoms,
+			but it cannot have 1 \ch{N} atom.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Ratio of Two Isotopes}
+	\begin{columns}
+		\column{0.45\linewidth}
+		\begin{itemize}
+			\item Aromatic compounds usually have significant
+				intensity for \ch{M^{+.}}.
+			\item \ch{M^{+.}} is the \alert{base peak} (most
+				intense) in the spectra of benzene.
+		\end{itemize}
+		\column{0.45\linewidth}
+		\includegraphics[width=\linewidth]{Harr9e_fig_22_06.jpg}
+	\end{columns}
+	\begin{itemize}
+		\item We can predict the intensity of the \alert{M+1} peak from
+			isotopic ratios.
+			\begin{equation*}
+				\text{Intensity} = \underbrace{n \times
+				\SI{1.08}{\percent}}_{\mathclap{\text{From
+				\ch{^{13}C}}}}
+				+ \underbrace{m \times
+				\SI{0.012}{\percent}}_{\mathclap{\text{From
+				\ch{^{2}H}}}}
+			\end{equation*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Rings + Double Bonds}
+	If we know the composition of a molecular ion, and we want
+	to propose its structure, we can use the following
+	equation:
+	\begin{equation*}
+		\text{R} + \text{DB} = c - h/2 + n/2 + 1
+	\end{equation*}
+	where $c$ is the number of Group 14 atoms (that make 4
+	bonds), $h$ is the
+	number of H and halogen atoms (that make 1 bond), and
+	$n$ is the number of Group 15 atoms (that make 3 bonds).
+
+	\bigskip
+
+	\includegraphics[width=0.45\linewidth]{Harr9e_22UNEQ01.jpg}
+\end{frame}
+
+\note{
+	\begin{align*}
+		\text{R + DB} &= c - h/2 + n/2 + 1 \\
+		&= (14 + 1) - \frac{22 + 1 + 1}{2} + \frac{1 + 1}{2} + 1 = 5
+	\end{align*}
+
+	\(\underbrace{\ch{C_{14}Si}}_c
+	\underbrace{\ch{H_{22}ClBr}}_h
+	\underbrace{\ch{NAs}}_n\ch{O3S} \)}
+
+\begin{frame}[allowframebreaks]{Some Notes on Interpreting Mass Spectra}
+	\begin{itemize}
+		\item The molecular ion is found from the highest $m/z$ value of
+			any ``significant'' peak that cannot be attributed to
+			isotopes or background signals.
+		\item Intensities of the isotopic peaks must be consistent with
+			the proposed formula.
+		\item The peak for the heaviest \alert{fragment ion} should not
+			correspond to an improbable mass loss from \ch{M^{+.}}.
+			Common mass losses:
+		
+			\begin{center}
+			\begin{tabu} to \linewidth {c c}
+				\ch{CH3} & 15 \\
+				\ch{OH} or \ch{NH3} & 17 \\
+				\ch{H2O} & 18 \\
+				\ch{C2H5} & 29 \\
+				\ch{OCH3} & 31
+			\end{tabu}
+			\end{center}
+
+		\item If a fragment ion contains $x$ atoms of element \ch{X},
+			then there \emph{must} be at least $x$ atoms of \ch{X}
+			in the molecular ion.
+	\end{itemize}
+
+	\framebreak
+
+	\begin{center}
+		\includegraphics[width=\linewidth]{Harr9e_fig_22_12.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Let's try a few!}{Identify Major Peaks}
+	{\centering
+		\includegraphics[width=0.9\linewidth]{ethylbenzene.pdf}
+		\includegraphics[width=0.9\linewidth]{1-pentanol.pdf}
+		\includegraphics[width=0.9\linewidth]{methylene-chloride.pdf}
+		\includegraphics[width=0.9\linewidth]{1-decanol.pdf}
+		\par}
+\end{frame}
+
+\note{
+	\extrarowsep=^1.5em_0.25em
+	\begin{tabu} to \linewidth {l c X}
+		\rowfont{\bfseries} Compound & MW & Peaks \\ \tabucline-
+		\chemfig{[,0.4]*6(=-=(-CH_2CH_3)-=-)} & 106 & Base at 91 (lost methyl),
+		molecular ion at 106 \\
+		\ch{CH3(CH2)8CH2OH} & 158 & Base at 41 (\ch{C3H5+}), \ch{C8H16+}
+		at 112, \ch{M+} at 158, difference of 14 between many \\
+		\ch{CH2Cl2} & 84 & Base peak at 49 (\ch{CH2Cl+}), \ch{M+} at 84
+		\\
+		\ch{CH3(CH2)4OH} & 88 & Base at 42 (M - \ch{H2O} and
+		\ch{CH2=CH2}, 31 (\ch{CH2=OH+}), 55 (M - \ch{H2O} and
+		\ch{CH3}), 70 (M - \ch{H2O})
+	\end{tabu}
+	}
+
+\begin{frame}{Types of Mass Spectrometers}
+	\begin{itemize}
+		\item Magnetic sector (what we saw when MS was first introduced)
+		\item Transmission quadrupole
+		\item Time-of-flight (TOF)
+		\item Quadrupole ion trap (QIT)
+		\item Linear ion trap
+		\item Orbitrap
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Double-Focusing Mass Spectrometer}{Magnetic Sector}
+	Higher resolution can be be attained by using an electric field with the
+	magnetic sector so that ions with a narrow range of kinetic energy are
+	selected.
+
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{Harr9e_fig_22_13.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Transmission Quadrupole}{Cheap and good for GC!}
+	\begin{center}
+		\includegraphics[width=\linewidth]{Harr9e_fig_22_14.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Time-of-Flight}{Almost like a prism\ldots}
+	\begin{center}
+		\includegraphics[width=\linewidth]{Harr9e_fig_22_16.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Quadrupole Ion Trap}{Holds ions until ready to analyze}
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{Harr9e_fig_22_18.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Linear Quadrupole Ion Trap}{Holds more than the QIT}
+	\begin{center}
+		\includegraphics[width=0.45\linewidth]{Harr9e_fig_22_19a.jpg}
+		\quad
+		\includegraphics[width=0.45\linewidth]{Harr9e_fig_22_19b.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Orbitrap}{No magnetic field or oscillating electric field
+	necessary!}
+	\begin{center}
+		\includegraphics[width=0.9\linewidth]{Harr9e_fig_22_20.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{A final note on sample introduction\ldots}
+	\begin{itemize}
+		\item One interesting application for mass spectrometry is the
+			sample-prep free introduction.
+		\item \alert{Desorption electrospray ionization (DESI)} bombards
+			a sample with charged droplets to force ions from a
+			surface into the spectrometer.
+	\end{itemize}
+
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{Harr9e_fig_22_39.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Interested in Mass Spec?}
+	\begin{itemize}
+		\item Planning on going to graduate school?
+		\item Take a look at \alert{Graham Cooks} at \alert{Purdue}.
+	\end{itemize}
+
+	\begin{center}
+		\includegraphics[width=0.9\linewidth]{miniature1.jpg}
+	\end{center}
+
+	\footnotetext{https://aston.chem.purdue.edu}
+\end{frame}
+
+	
+\end{document}

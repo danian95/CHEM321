@@ -1,0 +1,379 @@
+% !TEX program = xelatex
+\documentclass{article}
+
+\title{Chapter 3 Practice Problem Solutions}
+\date{}
+\author{D.A. McCurry}
+
+\usepackage{analchem}
+\usepackage[inline]{enumitem}
+\usepackage[letterpaper,margin=1in]{geometry}
+\sisetup{math-micro=\text{µ},text-micro=µ}
+\usepackage{amssymb}
+%\usepackage{graphicx}
+%\DeclareSIUnit{\ounce}{oz}
+%\DeclareSIUnit{\calorie}{cal}
+%\DeclareSIUnit{\inch}{in.}
+
+\setlist[enumerate,1]{leftmargin=0pt}
+\setlist[enumerate,2]{label = (\alph*)}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label={3-\Alph*.}]
+	\item This wasn't assigned but I accidentally answered it, so here it is anyway.
+	\begin{enumerate}
+		\item Sig fig rules for subtraction (3 SFs):
+		\begin{center}
+		\begin{math}
+			\begin{array} {c S[table-format=2.4]<{\,\si{\gram}}}
+				& 12.5296 \\
+				- & 12.4372 \\ \midrule
+				& 0.0924
+			\end{array}
+		\end{math}
+		\end{center}
+	\item Propagation of error for subtraction:
+	\begin{align*}
+	e &= \sqrt{e_1^2 + e_2^2} \\
+	&= \sqrt{0.0003^2 + 0.0003^2} \\
+	&= \SI{0.000424264}{\gram}
+	\intertext{And then to determine relative percent error:}
+	\frac{0.000424264}{0.0924} \times 100 &= \SI{0.459160248}{\percent}
+	\end{align*}
+	Thus, our answer to a reasonable number of digits is \boxed{\SI{0.0924(4)}{\gram}} or
+	\boxed{\num{0.0924}\,(\pm \SI{0.5}{\percent})\,\si{\gram}}
+		\end{enumerate}
+\end{enumerate}
+
+\begin{enumerate}[start=1]
+	\item \begin{enumerate*}
+		\item 5
+		\item 4
+		\item 3
+		\end{enumerate*}
+	\item \begin{enumerate*}
+		\item \num{1.237}
+		\item \num{1.238}
+		\item \num{0.14}
+		\item \num{2.1}
+		\item \num{2.01} (However, the book follows the ``round to the even digit rule'')
+		\end{enumerate*}
+	\item Following the rule we learned in CHEM115,
+	\begin{enumerate*}
+		\item 0.217
+		\item 0.217
+		\item 0.217
+		\end{enumerate*}.
+	Understand that I have learned it both ways and now you have, too. Let the mathematicians and statisticians argue about which method is more correct. Whether you round up 1 digit or not with an insignificant 5 is often not going to matter as this last digit has the most uncertainty in it.
+\end{enumerate}
+
+\begin{enumerate}[start=5]
+	\item \begin{enumerate*}
+		\item \num{3.71}
+		\item \num{10.7}
+		\item \num{4.0e1}
+		\item \num{2.85e-6}
+		\item \num{12.6251}
+		\item \num{6.0e-4}
+		\item \num{242}
+	\end{enumerate*}
+	\item \begin{enumerate}
+		\item \ch{BaF2}:
+			\begin{center}
+				\begin{tabular} {
+					r @{ $\times$ }
+					c @{ @ }
+					S[table-format=3.7,table-space-text-post={\,\si{\gram\per\mole}}]<{\,\si{\gram\per\mole}} @{ $=$ }
+					S[table-format=3.7]<{\,\si{\gram\per\mole}}
+				}
+					1 & Ba & 137.327    & 137.327 \\
+					2 & F  & 18.9984032 & 37.9968064 \\ \midrule
+					\multicolumn{3}{l}{} & 175.324 \\
+				  \end{tabular}
+				\end{center}
+		\item \ch{C6H4O4}:
+			\begin{center}
+				\begin{tabular} {
+					r @{ $\times$ }
+					c @{ @ }
+					S[table-format=2.5,table-space-text-post={\,\si{\gram\per\mole}}]<{\,\si{\gram\per\mole}} @{ $=$ }
+					S[table-format=3.5]<{\,\si{\gram\per\mole}}
+				}
+					6 & C & 12.0106 & 72.0636 \\
+					4 & H & 1.00798 & 4.03192 \\
+					4 & O & 15.9994 & 63.9976 \\ \midrule
+					\multicolumn{3}{l}{} & 140.0931 \\
+				  \end{tabular}
+				\end{center}
+		\end{enumerate}
+	\item \begin{enumerate*}
+		\item \num{12.3}
+		\item \num{75.5}
+		\item \num{5.520e3}
+		\item \num{3.04}
+		\item \num{3.04e-10}
+		\item \num{11.9}
+		\item \num{4.600}
+		\item \num{4.9e-7}
+	\end{enumerate*}
+\item The data in the table \emph{is} the data for Figure 3-3. Just check to
+	see if it looks correct. While the gridlines make it easier, reports
+	require graphs to have \emph{no} gridlines. Note that directions for
+	more modern versions of Excel may require some adjustments.
+\end{enumerate}
+
+\begin{enumerate}[start=10]
+	\item Systematic error is a constant, correctable error. Random error
+		is always present. More trials should bring random error down.
+	\item The apparent mass will be lower because the crucible apparently
+		weighs more than it should. This is an example of systematic
+		error.
+	\item \begin{enumerate*}
+		\item systematic
+		\item systematic
+		\item random
+		\item random
+	\end{enumerate*}
+\end{enumerate}
+
+\begin{enumerate}[start=14]
+	\item The relative uncertainty is \SI{0.16789}{\percent}, so the absolute uncertainty is:
+		\begin{align*}
+			\frac{\num{0.16789}}{100} \times \num{3.12356} &= \num{0.005244145} \\
+			&\approx \num{0.005}
+		\end{align*}
+
+		Expressed to appropriate digits, our answer is \boxed{\num{3.124(5)}} or
+		\boxed{\num{3.124} \pm \SI{0.2}{\percent}}.
+	\item \begin{enumerate}
+		\item\label{3-15a} \begin{align*}
+				6.2 - 4.1 &= 2.1 \\
+				e = \sqrt{0.2^2 + 0.1^2} &= \num{0.223606798} \\
+				\%e = \frac{\num{0.223606798}}{2.1} \times 100 &= \SI{10.64794275}{\percent} \\
+				\therefore &\quad \boxed{\num{2.1(2)}} \\
+				&\quad \boxed{\num{2.1} \pm \SI{11}{\percent}}
+			\end{align*}
+		\item \begin{align*}
+				9.42 \times 0.016 &= \num{0.15088} \\
+				\%e = \sqrt{\bigg(\frac{0.05}{9.43}\times 100 \bigg)^2
+					+ \bigg(\frac{0.001}{0.016}\times 100 \bigg)^2
+				} &= \SI{6.272450566}{\percent} \\
+				e = \frac{\num{6.272450566}}{100} \times \num{0.15088} &=
+				\num{0.009463873} \\
+				\therefore &\quad \boxed{\num{0.151(9)}} \\
+				&\quad \boxed{\num{0.151} \pm \SI{6}{\percent}}
+			\end{align*}
+		\item We need to consider each operation sequentially (order of
+			operations). The first operation is the same as
+			\ref{3-15a}, so this question can be rewritten as:
+			\begin{align*}
+				\num{2.1(2)} \div \num{9.43(5)} &= \num{0.222693531} \\
+				\%e = \sqrt{\bigg(\frac{0.05}{9.43}\times 100 \bigg)^2
+					+ \bigg(\frac{2.1}{0.02}\times 100 \bigg)^2
+				} &= \SI{10.661136}{\percent} \\
+				e = \frac{\num{10.661136}}{100} \times \num{0.222693531} &=
+				\num{0.02374166} \\
+				\therefore &\quad \boxed{\num{0.22(2)}} \\
+				&\quad \boxed{\num{0.22} \pm \SI{11}{\percent}}
+			\end{align*}
+		\item Again, order of operations applies:
+			\begin{align*}
+				\num{6.2(2)e-3} + \num{4.1(1)e-3} &= \num{0.0103} \\
+				e = \sqrt{(\num{0.2e-3})^2 + (\num{0.1e-3})^2} &= \num{0.000223607} \\
+				\num{9.43} \times \num{0.0103} &= \num{0.097129} \\
+				\%e = \sqrt{\bigg(\frac{0.05}{9.43}\times 100 \bigg)^2
+					+ \bigg(\frac{0.000223607}{0.0103}\times 100 \bigg)^2
+				} &= \SI{2.23475181}{\percent} \\
+				e = \frac{\num{2.23475181}}{100} \times \num{0.097129} &=
+				\num{0.002170592} \\
+				\therefore &\quad \boxed{\num{0.097(2)}} \\
+				&\quad \boxed{\num{0.097} \pm \SI{2}{\percent}}
+			\end{align*}
+		\end{enumerate}
+	\item \begin{enumerate}
+		\item If each operation follows the same propagation rules, we
+			can just combine them into one step as follows:
+			\begin{align*}
+				9.23 + 4.21 - 3.26 &= 10.18 \\
+				e = \sqrt(0.03^2 + 0.02^2 + 0.06^2) &= 0.07 \\
+				\%e = \frac{0.07}{10.18} \times 100 &= \SI{0.68762279}{\percent} \\
+				\therefore &\quad \boxed{\num{10.18(7)}} \\
+				&\quad \boxed{10.18 \pm \SI{0.7}{\percent}}
+			\end{align*}
+		\item \begin{align*}
+				91.3 \times 40.3 \div 21.2 &= \num{174.378673} \\
+				\%e = \sqrt{\bigg(\frac{1.0}{91.3}\times 100 \bigg)^2
+					+ \bigg(\frac{0.2}{40.3}\times 100 \bigg)^2
+					+ \bigg(\frac{0.2}{21.1}\times 100 \bigg)^2
+				} &= \SI{1.531144971}{\percent} \\
+				e = \frac{\num{1.531144971}}{100} \times \num{174.378673} &=
+				\num{2.669990281} \\
+				\therefore &\quad \boxed{\num{174(3)}} \\
+				&\quad \boxed{174 \pm \SI{2}{\percent}}
+			\end{align*}
+		\item Order of operations:
+			\begin{align*}
+				4.97 - 1.86 &= 3.11 \\
+				e = \sqrt{0.05^2 + 0.01^2} &= \num{0.050990195} \\
+				3.11 \div 21.1 &= \num{0.147393365} \\
+				\%e = \sqrt{\bigg(\frac{\num{0.050990195}}{3.11}\times 100 \bigg)^2
+					+ \bigg(\frac{0.2}{21.1}\times 100 \bigg)^2
+				} &= \SI{1.893831214}{\percent} \\
+				e = \frac{\num{1.893831214}}{100} \times \num{0.147393365} &=
+				\num{0.002791382} \\
+				\therefore &\quad \boxed{\num{0.147(3)}} \\
+				&\quad \boxed{0.147 \pm \SI{2}{\percent}}
+			\end{align*}
+		\item \begin{align*}
+				\num{2.0164} + \num{1.233} + \num{4.61} &= \num{7.8594} \\
+				e = \sqrt{\num{0.0008}^2 + 0.002^2 + 0.01^2} &= \num{0.010229369} \\
+				\%e = \frac{\num{0.010229369}}{\num{7.8594}} \times 100 &= \num{0.130154585} \\
+				\therefore &\quad \boxed{\num{7.86(1)}} \\
+				&\quad \boxed{7.86 \pm \SI{0.1}{\percent}}
+			\end{align*}
+		\item \begin{align*}
+				\num{2.0164e3} + \num{1.233e2} + \num{4.61e1} &= \num{2.1858e3} \\
+				e = \sqrt{(\num{0.0008e3})^2 + (\num{0.002e2})^2 + (\num{0.01e1})^2} &= \num{0.830662386} \\
+				\%e = \frac{\num{0.830662386}}{\num{2.1858e3}} \times 100 &= \num{0.038002671} \\
+				\therefore &\quad \boxed{\num{2185.8(8)}} \\
+				&\quad \boxed{2185.8 \pm \SI{0.04}{\percent}}
+			\end{align*}
+		\item \begin{align*}
+				3.14^{\frac{1}{3}} &= \num{1.464344351} \\
+				\%e = \frac{1}{3} \times \frac{0.05}{3.14} \times 100 &= \num{0.530785563} \\
+				e = \frac{\num{0.530785563}}{100} \times \num{1.464344351} &=
+				\num{0.007772528} \\
+				\therefore &\quad \boxed{\num{1.464(8)}} \\
+				&\quad \boxed{1.464 \pm \SI{0.5}{\percent}}
+			\end{align*}
+		\item \begin{align*}
+				\log 3.14 &= \num{0.496929648} \\
+				e = \frac{1}{\ln 10} \frac{0.05}{3.14} &= \num{0.006915517} \\
+				\%e = \frac{\num{0.006915517}}{\num{0.496929648}} \times 100 &=
+				\num{1.391649151} \\
+				\therefore &\quad \boxed{\num{0.497(7)}} \\
+				&\quad \boxed{0.497 \pm \SI{1}{\percent}}
+			\end{align*}
+		\end{enumerate}
+\end{enumerate}
+
+\begin{enumerate}[start=18]
+	\item \begin{enumerate}
+		\item Formula mass of \ch{NaCl}:
+			\begin{center}
+				\begin{tabular} {
+					r @{ $\times$ }
+					c @{ @ }
+					S[table-format=2.9(1),table-space-text-post={\,\si{\gram\per\mole}}]<{\,\si{\gram\per\mole}} @{ $=$ }
+					S[table-format=2.9(1)]<{\,\si{\gram\per\mole}}
+				}
+				1 & Na & 22.98976928(2) & 22.98976928(2) \\
+				1 & Cl & 35.452(6)      & 35.452(6) \\ \midrule
+				\multicolumn{3}{l}{}    & 58.442(6)
+			\end{tabular}
+			\end{center}
+		\item Need to follow multiplication and division propagation rules:
+			\begin{align*}
+				\frac{\SI{2.634(2)}{\gram}}{\SI{0.10000(8)}{\liter}}
+				\times
+				\frac{\SI{1}{\mole}}{\SI{58.442(6)}{\gram}} &=
+				\SI{0.450705041}{\Molar} \\
+				\%e = \sqrt{\bigg(\frac{0.002}{2.634} \times 100 \bigg)^2
+					+ \bigg(\frac{0.00008}{0.10000} \times 100 \bigg)^2
+				+ \bigg(\frac{0.006}{58.442} \times 100 \bigg)^2}
+				&= \num{0.110773603} \\
+				e = \frac{\num{0.110773603}}{100} \times \num{0.450705041}
+				&= \num{0.000499262} \\
+				\therefore &\quad \boxed{\SI{0.4507(5)}{\Molar}} \\
+				&\quad \boxed{\num{0.4507} (\pm \SI{0.1}{\percent})\,\si{\Molar}}
+			\end{align*}
+	\end{enumerate}
+	\item This is a big one\ldots\ Let's solve this stepwise. The buoyancy equation is
+		\begin{align*}
+			m &= \frac{m^\prime \bigg(1 - \frac{d_a}{d_w}\bigg)}{\bigg(1 - \frac{d_a}{d}\bigg)}
+			\intertext{Let's solve for each term separately. Notice
+			that the ``1'' does not have any error associated with
+		it:}
+		\frac{d_a}{d_w} &= \frac{\SI{0.0012(1)}{\gram\per\milli\liter}}{\SI{8.0(5)}{\gram\per\milli\liter}} = \underbrace{\num{0.00015(2)}}_{\mathclap{
+		e_{\frac{d_a}{d_w}} = \sqrt{\big(\frac{0.0001}{0.0012}\big)^2 + \big(\frac{0.5}{8.0}\big)^2} \times \num{0.00015} = \num{0.00002}}} \\
+			1 - \frac{d_a}{d_w} &= \num{0.99985(2)} \\ \\
+		\frac{d_a}{d} &= \frac{\SI{0.0012(1)}{\gram\per\milli\liter}}{\SI{0.9972995(0)}{\gram\per\milli\liter}} = \underbrace{\num{0.0012(1)}}_{\mathclap{
+		e_{\frac{d_a}{d}} = \sqrt{\big(\frac{0.0001}{0.0012}\big)^2 + \big(\frac{0}{0.9972995}\big)^2} \times \num{0.0012} = \num{0.0001}}} \\
+			1 - \frac{d_a}{d} &= \num{0.9988(1)} \\ \\
+			m &= \frac{(\SI{1.0346(2)}{\gram})(\num{0.99985(2)})}{\num{0.9988(1)}} = \underbrace{\boxed{\SI{1.0357(2)}{\gram}}}_{\mathclap{e_m = \sqrt{\big(\frac{\num{0.00002}}{\num{0.00015}}\big)^2 + \big(\frac{\num{0.0001}}{\num{0.0012}}\big)^2 + \big(\frac{\num{0.0002}}{\num{1.0346}}\big)^2} \times \SI{1.0357}{\gram} = \SI{0.0002}{\gram}}}
+		\end{align*}
+	\item \begin{enumerate}
+		\item This should be routine by now:
+			\begin{center}
+				\begin{tabular} {
+					r @{ $\times$ }
+					c @{ @ }
+					S[table-format=2.8(2),table-space-text-post={\,\si{\gram\per\mole}}]<{\,\si{\gram\per\mole}} @{ $=$ }
+					S[table-format=3.8(2)]<{\,\si{\gram\per\mole}}
+				}
+					2 & Na & 22.98976928(2) & 45.97953856(4) \\
+					1 & C  & 12.0106(10)    & 12.0106(10)    \\
+					3 & O  & 15.9994(4)     & 47.9982(12)     \\ \midrule
+					\multicolumn{3}{l}{}    & 105.988(2)     \\
+				  \end{tabular}
+				\end{center}
+				The textbook seems to have this wrong according
+				to its own explanation. Harris seems to have
+				propagated this error assuming it was random
+				instead of systematic!
+			\item \label{3-20b} \begin{align*}
+					\SI{0.967(9)}{\gram} \times
+					\frac{\SI{1}{\mole}}{\SI{105.988(2)}{\gram}}
+					\times
+					\frac{\SI{2}{\mole}~\ch{HCl}}{\SI{1}{\mole}~\ch{Na2CO3}}
+					\times
+					\frac{1}{\SI{27.35(4)}{\milli\liter}}
+					\times
+					\frac{\SI{1000}{\milli\liter}}{\SI{1}{\liter}}
+					&= \boxed{\SI{0.667(1)}{\Molar}}
+				\end{align*}
+				The error was calculated as:
+				\begin{align*}
+					e &= \sqrt{\bigg(\frac{0.0009}{0.9674}\bigg)^2
+						+ \bigg(\frac{0.04}{27.35}\bigg)^2
+					+ \bigg(\frac{0.002}{105.988}\bigg)^2}
+					\times \SI{0.667}{\Molar} = \SI{0.001}{\Molar}
+				\end{align*}
+			\item I think this is a poorly worded problem. It's not
+				clear how Harris determines that he can
+				translate this into a mole ratio from a weight
+				ratio. I would add an additional term to
+				\ref{3-20b} as follows:
+				\begin{align*}
+					\SI{0.967(9)}{\gram}~\text{stock} &\times
+					\frac{\SI{100.00(5)}{\gram}~\ch{Na2CO3}}{\SI{100}{\gram}~\text{stock}}
+					\times
+					\frac{\SI{1}{\mole}}{\SI{105.988(2)}{\gram}}
+					\\
+					&\times
+					\frac{\SI{2}{\mole}~\ch{HCl}}{\SI{1}{\mole}~\ch{Na2CO3}}
+					\times
+					\frac{1}{\SI{27.35(4)}{\milli\liter}}
+					\times
+					\frac{\SI{1000}{\milli\liter}}{\SI{1}{\liter}}
+					= \boxed{\SI{0.667(1)}{\Molar}}
+				\end{align*}
+				The error was calculated as:
+				\begin{align*}
+					e &= \sqrt{\bigg(\frac{0.0009}{0.9674}\bigg)^2
+						+ \bigg(\frac{0.04}{27.35}\bigg)^2
+					+ \bigg(\frac{0.002}{105.988}\bigg)^2
+					+ \bigg(\frac{0.05}{100.00}\bigg)^2}
+					\times \SI{0.667}{\Molar} = \SI{0.001}{\Molar}
+				\end{align*}
+				The same answer? Yes! The relative error in the
+				weight percent is so small (\SI{0.05}{\percent})
+				that this doesn't affect our result
+				\emph{significantly}.
+		\end{enumerate}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,1620 @@
+% !TEX program = xelatex
+%\documentclass[notes=show]{beamer}
+%\documentclass[notes=hide]{beamer}
+%\documentclass[notes=only]{beamer}
+\documentclass[11pt,letterpaper]{article}
+\usepackage{beamerarticle}
+
+\usepackage{analchem}
+\usepackage{lecture}
+\usepackage{pgfplots}
+\usepackage{multicol}
+
+\title{Introduction to Analytical Separations}
+\subtitle{Chapter 23}
+\institute{Bloomsburg University}
+\author{CHEM321 --- Analytical Chemistry I}
+\date{Fall 2020}
+
+\begin{document}
+
+\maketitle
+\mode<article>{\thispagestyle{fancy}}
+
+\begin{frame}{Fall 2018 UV/Vis Beverage Lab}
+	Sodium benzoate and caffeine concentrations were determined using
+	UV-visible spectroscopy. For the sodium benzoate:
+
+	\begin{tabularx}{\linewidth} {p{0.5\linewidth} *{3}{S[table-format=3.0]}}
+		\toprule & \multicolumn{2}{c}{\bfseries mg/12 fl oz} \\
+		\cline{2-3}
+		{\bfseries Soda} & {\bfseries Class} &
+		{\bfseries Reported} & {\bfseries \% Diff} \\ \midrule
+		Cherry Vanilla Pepsi &		230 &   38 & 600 \\
+		Mountain Dew Kickstart	&	430 &	54 & 800 \\
+		Mountain Dew	&		210 &	54 & 390 \\
+		Mountain Dew Ice &		18  &   54 & 33  \\
+		Pepsi		&		110 &	38 & 280 \\
+		\bottomrule
+	\end{tabularx}
+
+	\begin{itemize}[<+->]
+		\item What went wrong?
+		\item We need some way to \alert{separate} the components.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{How do we separate things?}
+	\begin{itemize}[<+->]
+		\item Filtration
+			\begin{itemize}
+				\item Good for separate states of matter.
+			\end{itemize}
+		\item Evaporation/Distillation
+			\begin{itemize}
+				\item Need good range of boiling points.
+			\end{itemize}
+		\item Solvent Extraction
+			\begin{itemize}
+				\item Requires differences in solubility between
+					different compounds.
+				\item With an infinite range of solvents, we can
+					separate everything!
+					{\footnotesize (Let's pretend this is
+					possible for now\ldots)}
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\frame{\section{Solvent Extractions}
+	\begin{learningobjectives}
+	\item Determine the most efficient means of extracting an analyte using
+		different solvents.
+	\item Calculate the extraction efficiency of a solvent extraction.
+	\item Explain what affects the efficiency of an extraction.
+	\item Identify the limitations of simple solvent extractions.
+	\end{learningobjectives}
+}
+
+\vspace{\stretch{-1}}
+
+\begin{frame}{Solvent Extraction}
+	\begin{columns}
+		\column{0.5\textwidth}
+	\begin{itemize}
+		\item A solute (or analyte) is transferred from one phase to
+			another.
+		\item Two \alert{immiscible} liquids are required.
+	\end{itemize}
+
+		\column{0.5\textwidth}
+		\begin{center}
+			\includegraphics[scale=0.55]{immiscible.png}
+		\end{center}
+	\end{columns}
+
+	\begin{block}{Partition Coefficient}
+		The equilibrium constant for the reaction in which a solute is
+		partitioned between two phases.
+
+		\begin{equation*}
+			K =
+			\frac{\mathcal{A}_{\ch{S}_2}}{\mathcal{A}_{\ch{S}_1}}
+			\approx \frac{[\ch{S}]_2}{[\ch{S}]_1}
+		\end{equation*}
+
+		For $K > 1$, S prefers Phase 2. For $K < 1$, S prefers Phase 1.
+	\end{block}
+\end{frame}
+
+\vspace{\stretch{-1}}
+
+\begin{frame}{Extraction Efficiency}
+	\only<+>{%
+		If solute S in $V_1$ \si{\mL} of solvent 1 is extracted
+			with $V_2$ \si{\mL} of solvent 2, we can calculate the
+			\alert{fraction} of S remaining in solvent 1:
+			\begin{align*}
+				K = \frac{[\ch{S}]_2}{[\ch{S}]_1} &= \frac{(1 -
+				q)m/V_2}{qm/V_1}
+				\intertext{where $m$ is the number of moles of S
+				and $q$ is the fraction remaining ---
+				rearranging:}
+				q &= \frac{V_1}{V_1 + KV_2}
+			\end{align*}
+		}
+
+		\only<+>{%
+		If we replace solvent 2 and run another extraction, we are
+			taking a ``fraction of a fraction''. In other words, we
+			multiply:
+			\begin{align*}
+				q \cdot q &= \left( \frac{V_1}{V_1 + KV_2}
+				\right)^2 \\
+				\intertext{And if we keep going\ldots}
+					q^n &= \left( \frac{V_1}{V_1 + KV_2}
+				\right)^n
+			\end{align*}
+		So the amount of solute remaining in a phase is
+			\alert{exponentially} related to the number of
+			extractions we perform.
+		}
+\end{frame}
+
+\vspace{\stretch{-1}}
+
+\begin{frame}[t]{Extraction Efficiency Example}
+	Solute A has a partition coefficient of 3 between toluene and water,
+	with three times as much in the toluene phase. Suppose that
+	\SI{100}{\milli\liter} of a \SI{0.010}{\Molar} aqueous solution of A are
+	extracted with toluene. What fraction of A remains in the aqueous phase
+	if \emph{one} extraction with \emph{\SI{500}{\mL}} is performed or if
+	\emph{five} extractions with \emph{\SI{100}{\mL}} are performed?
+\end{frame}
+
+\note{
+	For a single extraction, we can use
+	\begin{align*}
+		q &= \frac{V_1}{V_1 + KV_2} \\
+		&= \frac{100}{100 + (3)(500)} = 0.062 \approx \SI{6}{\percent}
+		\intertext{and for 5 extractions, we take $q^n$, or $q^5$,}
+		q^5 &= \bigg( \frac{V_1}{V_1 + KV_2} \bigg)^5 \\
+		&= \bigg( \frac{100}{100 + (3)(100)} \bigg)^5 = \num{0.00098}
+		\approx \SI{0.1}{\percent}
+	\end{align*}
+
+	It is more efficient to do several small extractions than one big one.
+	}
+
+\begin{frame}{Effects of Charge on Partition Coefficients}
+	\begin{itemize}[<+->]
+		\item Charged species prefer polar solvents.
+		\item pH can alter charge:
+			\begin{reaction*}
+				HA + H2O <=> A- + \Oxo 
+			\end{reaction*}
+				The conjugate base is more soluble in more
+					polar solvents.
+				\item The different species can be
+					\alert{distributed} between two phases:
+					\begin{align*}
+						\text{Distribution Coefficient}
+						= D &= \frac{\text{total
+						concentration in phase
+						2}}{\text{total concentration in
+						phase 1}} \\
+						&=
+						\frac{[\ch{HA}]_2}{[\ch{HA}]_1 +
+						[\ch{A-}]_1}
+					\end{align*}
+%					{\footnotesize (See the
+%					\alert{Challenge} on page 606 -- good
+%					math manipulation practice for the
+%					final!)}
+		\item Similarly, chelation of metals can alter charge:
+			\begin{reactions*}
+				$n$L- + M^{$n+$} &<=> ML_{$n$} \\
+				Ca^2+ + EDTA^4- &<=> CaEDTA^2-
+			\end{reactions*}
+			This is a great method of \alert{preconcentration} from
+			environmental samples.
+	\end{itemize}
+\end{frame}
+
+\vspace{\stretch{-1}}
+\clearpage
+
+\begin{frame}{Issues with Solvent Extractions}
+	\begin{itemize}
+		\item It can take quite a bit of time to perform $n$ extractions
+			with a large number of solutes.
+			\begin{itemize}
+				\item Cherry Vanilla Pepsi has high fructose
+					corn syrup, caramel color, ``natural
+					flavor'', phosphoric acid, potassium
+					sorbate, potassium citrate, citric acid,
+					caffeine, potassium benzoate, and
+					calcium disodium EDTA. 
+			\end{itemize}
+		\item We don't actually have infinite solvents for every solute.
+%
+%			\bigskip
+%			\pause
+%
+%		\item Recall the microfluidic devices from the previous chapter:
+%			\begin{itemize}[<+->]
+%				\item What helped speed up analysis?
+%				\item ``Let the solvent do the work.''
+%			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\vspace{\stretch{-1}}
+
+\begin{frame}{Chromatography}
+	\only<+>{%
+	\begin{columns}
+		\column{0.6\linewidth}
+		Pigments from plants could be separated as
+			they each interacted to a different extent with another
+			phase leaving colored bands behind.
+			\begin{center}
+				\begin{tabular} {>{\bfseries}l l}
+					chromatos & ``color'' \\
+					graphein & ``to write''
+				\end{tabular}
+			\end{center}
+		You may have observed this before in thin layer
+			chromatography (TLC)
+				\begin{itemize}
+					\item The key features are the
+						\alert{stationary} powder on the
+						glass slide and the
+						\alert{mobile} solvent.
+				\end{itemize}
+		\column{0.3\linewidth}
+		\mode<presentation>{\includegraphics[scale=0.5]{tlc.jpg}}
+	\end{columns}
+}
+
+\only<+>{%
+		Rather than a small plate, we can fill a column with the
+			\alert{stationary phase} and continuously run the
+			\alert{mobile phase} through it.
+			\begin{center}
+		\includegraphics[scale=0.6]{fig23-5.png}
+			\end{center}
+		A detector placed at the end of the column can be used to
+			quantify analyte.
+}
+\end{frame}
+
+\begin{frame}{Stationary Phases for Different Applications}
+	\begin{center}
+		\only<+>{\includegraphics[scale=0.8]{fig23-6-1.png}}
+
+		\mode<article>{\clearpage}
+
+		\only<+>{\includegraphics[scale=0.8]{fig23-6-2.png}}
+
+		\only<+>{\includegraphics[scale=0.8]{fig23-6-3.png}}
+	\end{center}
+\end{frame}
+
+\vspace{\stretch{-1}}
+
+\frame{\section{Physical Basis of Chromatography}
+	\begin{learningobjectives}
+	\item Explain the difference between the mobile phase volume and column
+		volume.
+	\item Compare different peaks on a chromatogram in terms of retention
+		time.
+	\item Relate chromatography back to partition coefficients.
+	\end{learningobjectives}
+}
+
+\vspace{\stretch{-1}}
+
+\begin{frame}{Chromatography Parameters}
+	\only<+>{%
+	Consider a column with an inner diameter of \SI{0.60}{\cm} in which
+	\SI{20}{\percent} of the volume is occupied by
+	the mobile phase, thus the volume of the column is
+	\begin{align*}
+		V &= \pi r^2 \times \text{length} \\
+		\frac{V}{\text{length}} &= \pi (\SI{0.30}{\cm})^2 =
+		\SI{0.283}{\mL\per\cm}
+	\end{align*}
+	and the volume occupied by the mobile phase is $
+		\SI{20}{\percent} \times \SI{0.283}{\mL\per\cm} =
+		\SI{0.0565}{\mL}$.
+	}
+
+	\only<+>{%
+	\begin{itemize}
+		\item The \alert{volume flow rate} is the volume of
+			solvent that travels per minute through the
+			column. For example, \SI{0.30}{\mL\per\minute}.
+		\item The \alert{linear velocity} is the distance, in
+			centimeters, traveled by the solvent in 1 min.
+			At a flow rate of \SI{0.30}{\mL\per\minute},
+			\begin{align*}
+				\frac{\SI{0.30}{\mL}}{\SI{1}{\minute}}
+				\times
+				\frac{\SI{1}{\cm}}{\SI{0.0565}{\mL}} =
+				\SI{5.3}{\cm\per\minute}
+			\end{align*}
+	\end{itemize}
+}
+	
+\only<+>{%	
+	\begin{itemize}
+		\item The column geometry/material and mobile phase flow rate
+			directly affect the \alert{time} that the solute is
+			exposed to the stationary phase.
+		\item \alert{More} interactions with the stationary phase mean a
+			\alert{longer} period of time before we see the solute
+			at the detector.
+		\item In separations, we measure in terms of \alert{retention}.
+	\end{itemize}
+	
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{retention.png}
+	\end{center}
+}
+\end{frame}
+
+\vspace{\stretch{-1}}
+
+\begin{frame}{Retention Time}
+	\only<1-3>{%
+	\begin{center}
+		\includegraphics[scale=0.55]{retention.png}
+	\end{center}
+
+	\begin{description}[<+->]
+		\item[Retention time ($\bm{t_r}$):] The time
+			elapsed between injection and arrival at the
+			detector.
+%		\item \textbf{Retention volume ($\bm{V_t}$):} The volume
+%			of mobile phase required to elute the solute
+%			from the column.
+		\item[Minimum possible time ($\bm{t_m}$):] The
+			time elapsed for an \alert{unretained} solute to
+			travel through the column.
+		\item[Adjusted retention time ($\bm{t'_t}$):] A
+			correction to account for delays in pressing the
+			``Start'' button. Yes, really.
+			\begin{equation*}
+				t'_r = t_r - t_m
+			\end{equation*}
+	\end{description}
+}
+
+\only<4->{%
+	\begin{description}
+		\item[Relative retention ($\bm{\alpha}$):] The ratio of
+			\alert{adjusted} retention times for two components.
+			\begin{equation*}
+				\alpha = \frac{t'_{r_2}}{t'_{r_1}} =
+				\frac{k_2}{k_1}
+			\end{equation*}
+			where $t'_{r_2} > t'_{r_1}$ so that $\alpha > 1$.
+		\item[Retention factor ($\bm{k}$):] The relative
+			retention time expressed in multiples of $t_m$.
+			\begin{equation*}
+				k = \frac{t_r - t_m}{t_m} = \frac{t'_r}{t_m}
+			\end{equation*}
+	\end{description}
+}
+\end{frame}
+
+\vspace{\stretch{-1}}
+
+\begin{frame}{How is $t_r$ Related to $K$?}
+	\only<+>{%
+		If the solute is not retained at all, $t_r = t_m$,
+		thus
+	\begin{align*}
+		k &= \frac{t_r - t_m}{t_m} = \frac{t_m - t_m}{t_m} =
+		\frac{0}{t_m} = 0
+		\intertext{If the solute spends 50\% of its time in the
+		stationary phase and 50\% in the mobile phase, it will take
+		twice as long to get through the column, so $t_r = 2t_m$
+		and}
+		k &= \frac{2t_m - t_m}{t_m} = \frac{t_m}{t_m} = 1
+		\intertext{So, effectively}
+		k &= \frac{\text{time solute spends in stationary
+		phase}}{\text{time solute spends in mobile phase}}
+	\end{align*}
+}
+
+\only<+>{%
+At any given time, there are a certain number of
+		moles in each phase. If a solute spends more time in a specific
+		phase, there should be more moles of solute in that phase.
+		Thus,
+	\begin{align*}
+		\frac{\text{time in stationary phase}}{\text{time
+		in mobile phase}} &= \frac{\text{moles 
+		in stationary phase}}{\text{moles in mobile phase}} \\
+		k &= \frac{c_\text{s}V_\text{s}}{c_\text{m}V_\text{m}}
+	\end{align*}
+Recall that the partition coefficient is the ratio of
+		concentrations in each phase, so
+	\begin{align*}
+		k &= K\frac{V_\text{s}}{V_\text{m}} = \frac{t_r - t_m}{t_m} =
+		\frac{t'_r}{t_m}
+	\end{align*}
+}
+
+\only<+>{%
+	Because $t'_r \propto k \propto K$, relative retention can be expressed
+	as
+	\begin{align*}
+		\alpha = \frac{t'_{r_2}}{t'_{r_1}} = \frac{k_2}{k_1} =
+		\frac{K_2}{K_1}
+	\end{align*}
+
+	\begin{block}{Physical basis of chromatography}
+		The greater the ratio of partition coefficients between mobile
+		and stationary phases, the greater the separation between two
+		components of a mixture.
+	\end{block}
+}
+\end{frame}
+
+%\begin{frame}[t]{Retention Time Example}
+%	Unretained methane gave a sharp spike in \SI{42}{\second}, whereas
+%	benzene required \SI{251}{\second}. The open tubular chromatography
+%	column has an inner diameter of \SI{250}{\micro\meter} and is coated on
+%	the inside with a layer of stationary phase \SI{1.0}{\um} thick.
+%	Estimate the partition coefficient, $K$, for benzene between stationary
+%	and mobile phases and state what fraction of the time benzene spends in
+%	the mobile phase.
+%\end{frame}
+
+\frame{\section{Achieving High Quality Separations}
+	\begin{learningobjectives}
+	\item Calculate the efficiency of chromatographic separations in terms
+		of resolution.
+	\item Explain how resolution can decrease.
+	\item Calculate the height equivalent and number of theoretical plates
+		for a chromatogram.
+	\end{learningobjectives}
+}
+
+\begin{frame}{Efficiency of Separations}
+	\only<1>{
+	There are two factors that contribute to separation efficiency:
+	\begin{enumerate}
+		\item Difference in retention time between compounds.
+		\item Broadness of the peaks
+	\end{enumerate}
+	}
+
+	\begin{center}
+		\includegraphics[width=0.9\linewidth]{gaussianpeak.png}
+	\end{center}
+
+	\only<1>{Ideal peaks demonstrate a Gaussian shape.}
+
+	\only<2->{
+		Broadness is measured in terms of width, either
+		\begin{enumerate}
+			\item at the \alert{baseline} between tangents drawn to
+				the steepest parts of the peak, $w = 4\sigma$.
+			\item at \alert{half height}, $w_{1/2} = 2.35\sigma$.
+				\visible<3>{\textbf{Why?}}
+		\end{enumerate}
+		}
+\end{frame}
+
+\begin{frame}{Resolution}
+	\begin{align*}
+		\parbox{0.25\linewidth}{\centering \footnotesize Resolution
+		between 2 peaks} = \frac{\text{separation}}{\text{broadness}} =
+		\frac{\Delta t_r}{w_\text{av}} = \frac{\Delta V_r}{w_\text{av}}
+		= \frac{0.589\Delta t_r}{w_{1/2\text{av}}}
+	\end{align*}
+%	where
+%	\begin{itemize}[]
+%		\item $\Delta t_r$ or $\Delta V_r$ is the separation between
+%			peaks (in time or volume)
+%		\item $w_\text{av}$ is the average peak width of the two peaks.
+%	\end{itemize}
+
+	\begin{center}
+		\includegraphics[width=0.9\linewidth]{resolution.png}
+	\end{center}
+\end{frame}
+
+\vspace{\stretch{-1}}
+
+\begin{frame}{Diffusion}
+	If compounds elute according to their affinity to the
+	stationary phase, why do they broaden?
+	\begin{itemize}
+		\item \alert{Diffusion} is the net transport of a solute from a
+			region of high concentration to a region of low
+			concentration.
+	\end{itemize}
+
+	\begin{center}
+		\includegraphics[scale=0.6]{diffusion.png}
+	\end{center}
+\end{frame}
+
+\vspace{\stretch{-1}}
+
+\begin{frame}{Fick's First Law of Diffusion}
+		The rate at which moles travel through a defined region of
+			solution, the \alert{flux}, is proportional to the
+			concentration gradient:
+			\begin{equation*}
+				J = -D \frac{dc}{dx}
+			\end{equation*}
+		The proportionality constant, D, is the \alert{diffusion
+			coefficient}, defined through the Stokes-Einstein
+			equation as:
+			\begin{equation*}
+				D = \frac{kT}{f} = \frac{kT}{6\pi\eta r} =
+				\frac{\text{thermal energy}}{\text{friction
+				coefficient}}
+			\end{equation*}
+		In short, the standard deviation of the peak width can be
+			related as
+			\begin{equation*}
+				\sigma = \sqrt{2Dt}
+			\end{equation*}
+			This suggests that longer elution times lead to broader
+			peaks!
+\end{frame}
+
+\vspace{\stretch{-1}}
+
+\begin{frame}{Height Equivalent to a Theoretical Plate (HETP)}
+	\only<+>{%
+	\begin{columns}
+		\column{0.6\textwidth}
+		\begin{itemize}
+			\item The efficiency of the column used is often
+				compared in terms of \alert{HETP} or \alert{number of
+				plates}.
+			\item This is from historical usage in distillation.
+			\item At each plate, we should have smaller amounts of
+				impurity, so the number of plates is effectively
+				the number of solvent extractions.
+			\item For very tall plates, more time is allowed for
+				vapor to diffuse, causing broader peaks.
+		\end{itemize}
+		\column{0.4\textwidth}
+		\begin{center}
+		\includegraphics[scale=0.45]{industrial-fractional-distillation.png}
+
+		{\tiny https://en.wikipedia.org/wiki/Distillation}
+		\end{center}
+	\end{columns}
+}
+
+\only<+>{%
+	\begin{itemize}
+		\item In terms of chromatography, if we assume that solute
+			travels a distance $x$ at linear velocity $u_x$, then
+			the time it has been on the column is $t = x/u_x$ and
+			therefore
+			\begin{align*}
+				\sigma &= \sqrt{2Dt} \\
+				\sigma^2 &= 2Dt = 2D\frac{x}{u_x} =
+				\underbrace{\bigg( \frac{2D}{u_x}
+				\bigg)}_{\mathclap{\text{Plate height} \equiv
+				H}} x = Hx \\
+				H &= \frac{\sigma^2}{x} = \frac{\text{variance
+				of the band}}{\text{distance traveled}}
+			\end{align*}
+		\item The \alert{smaller} the plate height, the \alert{narrower}
+			the peak.
+		\item Common values are \SIrange{\sim0.1}{1}{\mm} in GC,
+			\SI{\sim10}{\um} in HPLC, and \SI{<1}{\um} in CE.
+	\end{itemize}
+}
+
+\only<+>{%
+	\begin{itemize}
+		\item Provided that plate height is in terms of distance
+			traveled, we can calculate the number of plates, $N$, in
+			a column of length $L$:
+			\begin{equation*}
+				N = \frac{\text{length of column}}{\text{plate
+				height}} = \frac{L}{H} = \frac{Lx}{\sigma^2} =
+				\frac{L^2}{\sigma^2} = \frac{16L^2}{w^2}
+			\end{equation*}
+			because $x = L$ for the entire column and $\sigma =
+			w/4$.
+		\item Because retention time is dependent on column length (how
+			long it takes for a solute to elute from the column), we
+			can write
+			\begin{equation*}
+				N = \frac{16t_r^2}{w^2} = \frac{t_r^2}{\sigma^2}
+				= \frac{5.55t_r^2}{w^2_{1/2}}
+			\end{equation*}
+			We can calculate the number of plates based on the
+			analytes we are trying to separate.
+	\end{itemize}
+}
+
+\only<+>{%
+	\begin{itemize}
+		\item Because plate height is a result of peak broadness and
+			separation time, it can be related directly to
+			resolution with the Purnell equation:
+			\begin{equation*}
+				\text{Resolution} = \frac{\sqrt{N}}{4}
+				\frac{\alpha - 1}{\alpha} \bigg( \frac{k_2}{1 +
+				k_2} \bigg)
+			\end{equation*}
+			where
+			\begin{itemize}
+				\item $\alpha$ is the relative retention of the
+					peaks ($\alpha =
+					\frac{t'_{r_2}}{t'_{r_1}} =
+					\frac{k_2}{k_1}$)
+				\item $k_2$ is the retention factor of the
+					\alert{more retained} component ($k =
+					\frac{t'_r}{t_m}$)
+			\end{itemize}
+	\end{itemize}
+}
+
+\only<+>{%
+	\begin{equation*}
+		\text{Resolution} = \frac{\sqrt{N}}{4}
+		\frac{\alpha - 1}{\alpha} \bigg( \frac{k_2}{1 +
+		k_2} \bigg)
+	\end{equation*}
+
+	The Purnell equation tells us a few important things:
+	\begin{itemize}
+		\item Increasing the column length increases resolution because
+			$\text{Resolution} \propto \sqrt{N}$
+		\item If $k_2$ is made larger (most likely through column
+			material choice), resolution improves.
+		\item If $\alpha$ is increased (possibly through changing
+			temperature or mobile phase), the peaks move apart and
+			resolution improves.
+	\end{itemize}
+}
+\end{frame}
+
+\begin{frame}{Diffusion is Not the Only Reason for Broadening}
+	\begin{itemize}
+		\item The error present in every step of the analysis is
+			additive.
+			\begin{equation*}
+				\sigma^2_\text{obs} = \sigma^2_1 + \sigma^2_2 +
+				\sigma^2_3 + \cdots = \sum\sigma_i^2
+			\end{equation*}
+		\item The injection volume introduces some error as we cannot
+			instantly inject all of the material at once. Similarly,
+			we cannot detect the entire volume of solute at once.
+			\begin{equation*}
+				\sigma^2_\text{injection} =
+				\sigma^2_\text{detector} = \frac{(\Delta
+				V)^2}{12}
+			\end{equation*}
+		\item The tubing connecting the injection port, column, and
+			detector all demonstrate \alert{laminar flow}.
+			\begin{equation*}
+				\sigma^2_\text{tubing} = \frac{\pi
+				d_t^4l_tu_v}{384D}
+			\end{equation*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The van Deemter Equation}
+	\begin{columns}[onlytextwidth]
+		\column{0.55\textwidth}
+		The contributions to band broadening are summarized in the
+		\alert{van Deemter Equation}:
+		\begin{align*}
+			H &\approx A + B\tfrac{1}{u_x} + Cu_x
+			\shortintertext{where}
+			A &= \text{Multiple paths} \\
+			B\tfrac{1}{u_x} &= \text{Longitudinal diffusion} \\
+			Cu_x &= \text{Equilibration time}
+		\end{align*}
+
+		At \alert{optimum linear velocity}, plate hight is lowest and
+		the number of plates is highest.
+		\column{0.45\textwidth}
+		\begin{center}
+		\includegraphics[scale=0.7]{vandeemter.png}
+		\end{center}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Multiple Flow Paths ($A$)}
+	\begin{center}
+		\includegraphics[width=0.9\linewidth]{multipleflow.png}
+	\end{center}
+
+	\begin{itemize}
+		\item When a column is packed with many stationary phase
+			particles, some solute can randomly flow through a
+			shorter path length than others.
+		\item This term is \alert{independent} of flow rate.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Longitudinal Diffusion ($\frac{B}{u_x}$)}
+	\begin{columns}[onlytextwidth]
+		\column{0.6\textwidth}
+		\begin{itemize}
+			\item Fick's First Law: areas of high
+				concentration over time diffused to areas of low
+				concentration.
+			\item Band broadening was related to
+				\begin{align*}
+					\sigma^2 &= 2D_mt = \frac{2D_mL}{u_x}
+					\shortintertext{thus,}
+					H_\text{long. diff.} &=
+					\frac{\sigma^2}{L} = \frac{2D_m}{u_x}
+					\equiv \frac{B}{u_x}
+				\end{align*}
+		\end{itemize}
+		\column{0.4\textwidth}
+		\begin{center}
+			\includegraphics[scale=0.7]{longitudinal.png}
+		\end{center}
+	\end{columns}
+	\begin{itemize}
+		\item This term is \alert{inversely proportional} to
+			flow rate --- the faster the flow, the less time
+			is available for solute to diffuse.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Equilibration Time ($Cu_x$)}
+	\begin{columns}[onlytextwidth]
+		\column{0.6\textwidth}
+		\begin{itemize}
+			\item Time is required for equilibrium at each
+				infinitesimally small point along the column.
+			\item Time must be spent for the solute to diffuse to
+				the surface of the stationary phase.
+				\begin{align*}
+					H_\text{mass transfer} = Cu_x = (C_m +
+					C_s)u_x
+				\end{align*}
+		\end{itemize}
+		\column{0.4\textwidth}
+		\begin{center}
+			\includegraphics[scale=0.6]{masstransfer.png}
+		\end{center}
+	\end{columns}
+	\begin{itemize}
+		\item If the flow rate is too high, there is insufficient time
+			for this mass transfer to occur, thus this term is
+			\alert{directly proportional} to flow rate.
+	\end{itemize}
+\end{frame}
+
+%\begin{frame}{Let's take a look at the AOAC lab\ldots}
+\begin{frame}{Separation of Ethanol and Isopropanol}
+	\only<1|article:0>{\input{beer-gc}}
+	\only<2>{\input{beer-gc-expand}}
+
+	What is the number of theoretical plates?
+\end{frame}
+
+\note{
+	\begin{columns}
+		\column{0.35\linewidth}
+		\begin{align*}
+			N &= \frac{16t_r^2}{w^2} \\
+			N &= \frac{5.55t_r^2}{w^2_{1/2}} \\
+			N &= \frac{L}{H} \qquad
+			H = \frac{L}{N}
+		\end{align*}
+		\column{0.55\linewidth}
+
+		\textbf{Column Specs:}
+
+		Equity-1701
+
+		Fused Silica Capillary Column
+
+		$\SI{30}{\meter} \times \SI{0.53}{\milli\meter} \times
+		\SI{1.0}{\um~film~thickness}$
+	\end{columns}
+	\bigskip
+		\textbf{My values:}
+
+		\begin{tabularx}{\linewidth} {X S[table-format=1.4]
+			S[table-format=1.6] S[table-format=4] S[table-format=2]}
+			\toprule
+			& {$t_r$ (min)} & {$w_{1/2}$ (min)} & {$N$} & {$H$ (mm)}
+			\\ \midrule
+			Ethanol & 4.225 & 0.046875 & 2113 & 14 \\
+			Propanol & 4.8375 & 0.05 & 2598 & 12 \\
+			\bottomrule
+		\end{tabularx}
+
+		\bigskip
+
+	How did we do?
+	}
+
+%	\begin{frame}{Chromatography is Only for Separations}
+%	\begin{itemize}
+%		\item How do we \alert{detect} what has come out of the column?
+%		\item What makes a chemical signal turn into a \alert{digital}
+%			signal?
+%		\item We must \alert{interface} a chromatographic technique (GC,
+%			HPLC, CE) with some type of detector.
+%
+%			\bigskip
+%
+%			\pause
+%
+%		\item Let's revisit the construction of a spectrophotometer.
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Anatomy of a UV/Vis Spectrometer}
+%	\begin{center}
+%		\includegraphics[width=0.8\linewidth]{Harr9e_fig_18_05.jpg}
+%	\end{center}
+%
+%	\begin{itemize}
+%		\only<1>{
+%		\item A \alert{single-beam} spectrometer is the simplest design,
+%			in which light from the \alert{source} is split into
+%			component wavelengths through a \alert{monochromator}
+%			before passing through the \alert{sample} and striking
+%			the \alert{detector}.
+%		\item We can easily replace a sample cuvette with a \alert{flow
+%			cell} for continuous flow applications.}
+%		\only<2>{
+%		\item Disadvantages:
+%			\begin{itemize}
+%				\item A reference sample must continuously be
+%					checked to account for deviations in
+%					source intensity or instrument
+%					\alert{drift}.
+%				\item If multiple wavelengths are to be
+%					monitored, the reference will have to be
+%					checked at each wavelength.
+%			\end{itemize}}
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}[allowframebreaks]{Anatomy of a Double-Beam Spectrometer}
+%	\begin{center}
+%		\includegraphics[width=\linewidth]{Harr9e_fig_20_01.jpg}
+%	\end{center}
+%
+%	\begin{itemize}
+%		\item Using \alert{choppers}, we can alternate the path that the
+%			light follows.
+%		\item A reference cuvet placed in the second path permits
+%			continuous monitoring of changes in the light source or
+%			detector response.
+%	\end{itemize}
+%
+%	\framebreak
+%
+%	\begin{center}
+%		\includegraphics[width=0.8\linewidth]{Harr9e_fig_20_02.jpg}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}[allowframebreaks]{Components of Optical Instruments}{Skoog,
+%	Holler, Crouch. Principles of Instrumental Analysis,
+%	7\textsuperscript{th} Ed.}
+%	\includegraphics[width=\linewidth]{02_ch07_Fig02a.jpg}
+%
+%	\includegraphics[width=\linewidth]{02_ch07_Fig02b.jpg}
+%
+%	\includegraphics[width=\linewidth]{03_ch07_Fig03a.jpg}
+%
+%	\includegraphics[width=\linewidth]{03_ch07_Fig03b.jpg}
+%\end{frame}
+%
+%\begin{frame}{Common Light Sources}
+%	\begin{columns}
+%		\column{0.45\linewidth}
+%		\only<1-3|handout:1>{
+%			\textbf{UV-Visible-Near IR Region}
+%		\begin{itemize}
+%			\item<1-> \ch{H2}/\ch{D2}
+%				\begin{itemize}
+%					\item 160--375 nm
+%					\item must use Quartz windows and
+%						cuvettes
+%				\end{itemize}
+%			\item<2-> Xe arc lamps
+%		        	\begin{itemize}
+%					\item 250--600 nm, max I at 500 nm
+%				\end{itemize}
+%			\item<3-> W filament
+%				\begin{itemize}
+%					\item 320--2500 nm, needs close V
+%						control
+%				\end{itemize}
+%		\end{itemize}}
+%
+%		\only<4|handout:0>{
+%			\begin{center}
+%				\includegraphics[width=\linewidth]{nernst-glower.png}
+%			\end{center}}
+%
+%		\only<5|handout:0>{
+%			\begin{center}
+%				\includegraphics[width=\linewidth]{globar.png}
+%			\end{center}}
+%
+%		\only<6|handout:0>{
+%			\begin{center}
+%				\includegraphics[width=\linewidth]{incandescent-wire.png}
+%			\end{center}}
+%
+%
+%
+%		\column{0.45\linewidth}
+%		
+%		\only<4-6|handout:1>{
+%			\textbf{IR Region}
+%		\begin{itemize}
+%			\item<4-> Nernst glower
+%				\begin{itemize}
+%					\item rare earth oxides
+%				\end{itemize}
+%			\item<5-> globar
+%				\begin{itemize}
+%					\item silicon carbide rod
+%				\end{itemize}
+%			\item<6-> incandescent wire
+%				\begin{itemize}
+%					\item nichrome wire
+%				\end{itemize}
+%		\end{itemize}}
+%		
+%		\only<1|handout:0>{
+%			\begin{center}
+%				\includegraphics[width=0.7\linewidth]{deuterium.png}
+%			\end{center}}
+%
+%		\only<2|handout:0>{
+%			\begin{center}
+%				\includegraphics[width=\linewidth]{xe-arc.png}
+%			\end{center}}
+%
+%		\only<3|handout:0>{
+%			\begin{center}
+%				\includegraphics[width=\linewidth]{w-filament.png}
+%			\end{center}}
+%
+%	\end{columns}
+%\end{frame}
+%
+%\begin{frame}{Deuterium and Tungsten-Filament Emission Spectra}
+%	\begin{center}
+%		\includegraphics[width=0.8\linewidth]{Harr9e_fig_20_04.jpg}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}{Arc Lamp Emission Spectra}
+%	\begin{center}
+%		\includegraphics[width=0.8\linewidth]{arc-emission.png}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}{Lasers!}
+%	\begin{center}
+%	\bfseries
+%	\alert{L}ight \alert{A}mplification by \alert{S}timulated
+%	\alert{E}mission of \alert{R}adiation
+%
+%		\bigskip
+%
+%		\includegraphics[width=0.8\linewidth]{04_ch07_Fig04.jpg}\footnotetext{Skoog
+%		et al. Principles of Instrumental Analysis,
+%		7\textsuperscript{th} Ed.}
+%	\end{center}
+%
+%	\begin{multicols}{2}
+%		\begin{itemize}
+%			\item Monochromatic
+%			\item High power at one wavelength
+%			\item Collimated - all waves parallel
+%			\item Polarized - electric field oscillates in one plane
+%			\item Coherent - all waves in phase
+%		\end{itemize}
+%	\end{multicols}
+%\end{frame}
+%
+%\begin{frame}
+%	\includegraphics[width=\linewidth]{ruby-laser.jpg}
+%\end{frame}
+%
+%\begin{frame}{Wavelength Selection}
+%	\begin{columns}
+%		\column{0.4\linewidth}
+%		A \alert{monochromator} disperses light into the
+%		component wavelengths and selects a narrow band
+%		of wavelengths (ideally one -- mono, but this is
+%		not physically possible) to pass through an exit
+%		slit.
+%		\column{0.5\linewidth}
+%		\includegraphics[width=\linewidth]{20_ch07_Fig18.jpg}
+%	\end{columns}
+%\end{frame}
+%
+%\begin{frame}[allowframebreaks]{Czerny-Turner Grating Monochromator}
+%	\begin{center}
+%		\includegraphics[width=0.8\linewidth]{Harr9e_fig_20_06.jpg}
+%	\end{center}
+%
+%	\framebreak
+%
+%	\begin{center}
+%		\includegraphics[width=0.8\linewidth]{Harr9e_fig_20_07.jpg}
+%	\end{center}
+%
+%	\begin{equation*}
+%		\text{Grating equation:} \qquad n\lambda = d(\sin\theta +
+%		\sin\phi)
+%	\end{equation*}
+%
+%	where $n$ is the order of diffraction and $d$ is the distance between
+%	grooves. For each incident angle, $\theta$, there is a series of
+%	reflection angles, $\phi$, at which a given $\lambda$ will produce
+%	maximum constructive interference.
+%
+%	\framebreak
+%
+%	\begin{center}
+%		\includegraphics[width=0.7\linewidth,trim={0 1.5in 0 0},clip]{order-of-light.png}
+%	\end{center}
+%
+%	\begin{equation*}
+%		n\lambda = a - b
+%	\end{equation*}
+%
+%	where $n$ is the order of diffraction and $a - b$ is the difference in
+%	pathlength between grooves.
+%\end{frame}
+%
+%\begin{frame}{Angular Dispersion of Gratings}
+%	Dispersion is a ``measure'' of the angle the grating must be rotated to
+%	change wavelength of the exiting light by a unit wavelength.
+%
+%	i.e. angular separation $\Delta \phi$ obtained for two wavelengths
+%	separated by $\Delta \lambda$.
+%
+%	\begin{equation*}
+%		\frac{\Delta\phi}{\Delta\lambda} = \frac{n}{d\cos\phi}
+%	\end{equation*}
+%
+%	Smaller $d$ values (\#\si{\nano\meter}/blaze) of the grating generate
+%	larger dispersions leading to higher \alert{resolutions}.
+%\end{frame}
+%
+%\begin{frame}{Resolution of a Grating}
+%	The ability of a grating to disperse wavelengths -- ideally the number
+%	of grating groves illuminated (lines/\si{\milli\meter}).
+%
+%	\begin{equation*}
+%		\frac{\lambda}{\Delta \lambda} = n N
+%	\end{equation*}
+%
+%	where $N$ is the number of grooves of the grating that are illuminated.
+%	The more grooves in a grating, the better the resolution between closely
+%	spaced wavelengths.
+%	
+%	\alert{Resolution is directly related to the size of
+%	the illuminated region.}
+%\end{frame}
+%
+%\begin{frame}{Resolution is Related to Bandpass}
+%%	\begin{itemize}
+%%		\item Spectral slit width
+%%			\begin{equation*}
+%%				d\lambda_\text{eff} = WD^{-1}
+%%			\end{equation*}
+%%			where $W$ is physical slit width and $D^{-1}$ is the
+%%			reciprocal linear dispersion of the grating.
+%%		\item If $D^{-1}$ is \SI{1.2}{\nano\meter\per\milli\meter}, what
+%%			slit width is needed to resolve
+%%			\SIlist{589.0;589.6}{\nano\meter}?
+%%	\end{itemize}
+%	\begin{columns}
+%		\column{0.4\linewidth}
+%		\begin{itemize}
+%			\item We want to keep the slit width large to allow
+%				increased light to reach the detector and
+%				improve \alert{signal to noise}.
+%			\item The slit width needs to be minimized to improve
+%				resolution.
+%			\item Choosing a monochromator bandwidth that is
+%				$\frac{1}{5}$ as wide as the absorption peak is
+%				generally OK.
+%		\end{itemize}
+%		\column{0.5\linewidth}
+%	\begin{center}
+%		\includegraphics[width=\linewidth]{Harr9e_fig_20_10.jpg}
+%	\end{center}
+%	\end{columns}
+%\end{frame}
+%
+%\begin{frame}{Filters}
+%	\begin{itemize}
+%		\item Different orders of diffraction ($\frac{\lambda}{2}$,
+%			$\frac{\lambda}{3}$, \ldots) can still pass through
+%			monochromator.
+%		\item A \alert{filter} can be added to remove this interference.
+%		\item The simplest filter is colored glass that can absorb at
+%			the undesired $\lambda$.
+%	\end{itemize}
+%
+%	\begin{center}
+%		\includegraphics[width=\linewidth,trim={0 0.25in 0 0},clip]{bandpass-filter.jpg}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}[allowframebreaks]{So how do we detect the light?}
+%	\begin{columns}
+%		\column{0.45\linewidth}
+%	\begin{itemize}
+%		\item A \alert{phototube} is a vacuum tube with a
+%			\alert{photoemissive cathode}. When the cathode is
+%			struck by light, electrons are ejected and flow to the
+%			positively charged electrode (the anode).
+%		\item The response is sensitive to the wavelength of the
+%			incident photon.
+%	\end{itemize}
+%		\column{0.45\linewidth}
+%		\includegraphics[width=\linewidth]{phototube.png}
+%	\end{columns}
+%
+%	\framebreak
+%
+%	\includegraphics[width=\linewidth]{Harr9e_fig_20_13.jpg}
+%
+%	A single beam spectrometer needs to be recalibrated for each $\lambda$
+%	whereas a double beam spectrometer can automatically readjust for
+%	100\%T.
+%\end{frame}
+%
+%\begin{frame}{Photomultiplier Tubes}
+%	For \emph{very} low intensity applications, a \alert{photomultiplier
+%	tube} has the ability to produce $>10^6$ electrons from a single photon.
+%
+%	\begin{center}
+%	\includegraphics[scale=0.75]{Harr9e_fig_20_14a.jpg} \quad
+%	\includegraphics[scale=0.75]{Harr9e_fig_20_14b.jpg}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}[allowframebreaks]{Photodiode Arrays}
+%	\begin{itemize}
+%		\item Phototubes are slow (and large).
+%		\item A photodiode array (PDA) can record an entire spectrum in
+%			under a second.
+%		\item This is \emph{very} useful for chromatography when we need
+%			to scan samples eluting from a column.
+%	\end{itemize}
+%
+%	\begin{center}
+%		\includegraphics[width=\linewidth]{Harr9e_fig_20_15ab.jpg} \quad 
+%	\end{center}
+%
+%	\framebreak
+%
+%	\begin{center}
+%	\includegraphics[width=0.8\linewidth]{Harr9e_fig_20_16.jpg}
+%	\end{center}
+%
+%	A \alert{polychromator} can be used to direct component wavelengths to
+%	\alert{different regions} of the PDA.
+%\end{frame}
+%
+%\begin{frame}[allowframebreaks]{Charge Coupled Devices}
+%	\begin{itemize}
+%		\item Even more sensitivity can be gained by using a
+%			\alert{charge coupled device} (CCD).
+%		\item CCDs \alert{store} electrons in each \alert{pixel} of what
+%			is most often a \alert{two-dimensional} array.
+%		\item CCDs can use the columns to average multiple scans at once
+%			if operated in a one-dimensional mode or they can be
+%			used for two-dimensional imaging.
+%	\end{itemize}
+%
+%	\begin{center}
+%		\includegraphics[width=0.9\linewidth]{Harr9e_fig_20_17.jpg}
+%	\end{center}
+%
+%	\framebreak
+%
+%	\begin{center}
+%		\includegraphics[width=0.6\linewidth]{Harr9e_fig_20_22.jpg}
+%	\end{center}
+%
+%	The Ocean Optics USB 4000 spectrometer used in lab uses a polychromator
+%	and CCD detector (along with a few filters and lenses here and there).
+%\end{frame}
+%
+%\begin{frame}{Recall the Z-Cell}
+%	\begin{columns}
+%		\column{0.45\linewidth}
+%		\begin{itemize}
+%			\item UV/Vis spectrophotometers are easily interfaced to
+%				a HPLC or LC via fiber optics.
+%			\item The eulate needs to travel through a known path
+%				length and the absorbance can be read through
+%				a PDA.
+%			\item Most often, ultraviolet light is used as this can
+%				detect most compounds of interest.
+%		\end{itemize}
+%		\column{0.45\linewidth}
+%		\includegraphics[width=\linewidth]{Harr9e_fig_25_21.jpg}
+%	\end{columns}
+%\end{frame}
+%
+%\begin{frame}{But wait! How did we detect ethanol/propanol in GC?}
+%	\textbf{Some Common GC Detectors:}
+%	\begin{itemize}
+%		\item Thermal Conductivity Detector
+%			\begin{itemize}
+%				\item Measures changes in thermal conductivity
+%					of gas
+%				\item Universal -- detects all analytes
+%				\item Nondestructive -- can be used \alert{in
+%					tandem} with other techniques
+%				\item Low sensitivity
+%			\end{itemize}
+%		\item \alert{Flame Ionization Detector} (what we used in lab)
+%			\begin{itemize}
+%				\item Eluate is burned in \ch{H2} and air,
+%					producing \ch{CHO+} (for organic
+%					compounds)
+%				\item Insensitive to nonhydrocarbons
+%				\item More sensitive than thermal conductivity
+%			\end{itemize}
+%		\item Electron Capture Detector
+%			\begin{itemize}
+%				\item Conductivity of a gas plasma is measured
+%				\item Useful for halogen-containing molecules
+%					and organometallics
+%				\item Insensitive to hydrocarbons
+%				\item Extremely sensitive
+%			\end{itemize}
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Thermal Conductivity Detector}
+%	\begin{center}
+%		\includegraphics[width=0.8\linewidth]{Harr9e_fig_24_19.jpg}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}{Flame Ionization Detector}
+%	\begin{center}
+%		\includegraphics[width=0.5\linewidth]{Harr9e_fig_24_20.jpg}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}{Electron Capture Detector}
+%	\begin{center}
+%		\includegraphics[width=0.5\linewidth]{Harr9e_fig_24_22.jpg}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}{Mass Spectrometry}{A Standalone Technique or \alert{Tandem}
+%	Detector}
+%	\begin{itemize}
+%		\item You may have seen in the past HPLC- or GC-MS
+%		\item or perhaps a GC-MS-MS
+%		\item or perhaps a GC-MS-MS-MS\ldots
+%		\item \alert{Mass spectrometry} is a very sensitive detector
+%			that provides both \alert{qualitative} and
+%			\alert{quantitative} analysis.
+%		\item MS analyzes the mass to charge ratio ($m/z$) of analyte.
+%			If $z =$
+%			\begin{itemize}
+%				\item[1] then $m/z$ is equal to the mass of the
+%					ion.
+%				\item[2] then $m/z$ is half of the mass.
+%			\end{itemize}
+%		\item Peak area is proportional to the abundance of the specific
+%			\alert{mass fragment}.
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Mass Spectrometry}{A Detector for GC}
+%	\begin{center}
+%		\includegraphics[width=0.8\linewidth]{Harr9e_fig_24_24.jpg}
+%	\end{center}
+%
+%	Selected ion monitoring permits viewing a \alert{single} $m/z$ value,
+%	greatly simplifying the chromatogram.
+%\end{frame}
+%
+%\begin{frame}[allowframebreaks]{How does MS work?}
+%	\begin{enumerate}
+%		\item Ions are created by an \alert{ion source}:
+%			\begin{itemize}
+%				\item \textbf{Electron ionization} produces a
+%					molecular ion, \ch{M^{+.}} and many
+%					\alert{fragments}. (Hard ionization)
+%				\item \textbf{Chemical ionization} produces
+%					\ch{MH+} and few \alert{fragments}.
+%					(Soft ionization)
+%			\end{itemize}
+%		\item Ions are accelerated by an electric field and separated
+%			based on their mass-to-charge ratio in the \alert{mass
+%			selector}.
+%		\item At the \alert{electron multiplier detector}, each arriving
+%			ion starts a cascade of electrons that reach the anode,
+%			where current is measured.
+%		\item The \alert{mass spectrum} shows detector response as a
+%			function of $m/z$.
+%	\end{enumerate}
+%
+%	\framebreak
+%
+%	\begin{center}
+%		\includegraphics[width=0.8\linewidth]{Harr9e_fig_22_02.jpg}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}{Electron Ionization}
+%	\begin{itemize}
+%		\item Electrons emitted from a hot filament are accelerated
+%			through \SI{70}{\volt} before interacting with incoming
+%			molecules, \ch{M}.
+%			\begin{reaction*}
+%				M + !(\SI{70}{eV})(\el{})
+%				-> !(\text{molecular~ion})( M^{+.} )
+%				+ !(\SI{\sim55}{eV})(\el{})
+%				+ !(\SI{0.1}{eV})(\el{})
+%			\end{reaction*}
+%		\item The resulting molecular ion, \ch{M^{+.}}, can have so much
+%			extra energy that it breaks into fragments.
+%			\begin{reaction*}
+%				M^{+.} -> A+ + B+ + C+
+%			\end{reaction*}
+%		\item \ch{M^{+.}} and its fragment ions are then accelerated to
+%			the mass analyzer.
+%		\item There might be so little \ch{M^{+.}} that its peak is
+%			small or absent in the mass spectrum.
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Chemical Ionization}
+%	\begin{itemize}
+%		\item Produces less fragmentation than electron ionization.
+%		\item The ionization source is filled with a reagent gas such as
+%			methane, isobutane, or ammonia, at a pressure of about
+%			\SI{1}{\milli\bar}.
+%		\item Energetic electrons (100--200~eV) convert \ch{CH4} into
+%			a variety of reactive products:
+%			\begin{reactions*}
+%				CH4 + \el{} &-> CH4^{+.} + 2 \el{} \\
+%				CH4^{+.} + CH4 &-> \alert{CH5^+} + ^.CH3 \\
+%				CH4^{+.} &-> CH3^+ + H^. \\
+%				CH3^+ + CH4 &-> \alert{C2H5^+} + H2
+%			\end{reactions*}
+%		\item \alert{\ch{CH5^+}} reacts with analyte \ch{M} to give
+%			\ch{MH+}, the most abundant ion in the chemical
+%			ionization mass spectrum.
+%			\begin{reactions*}
+%				M + \alert{CH5^+} &-> MH^+ + CH4
+%			\end{reactions*}
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}[allowframebreaks]{The Mass Spectrum}
+%	\begin{center}
+%		\includegraphics[width=\linewidth]{Harr9e_fig_22_04.jpg}
+%	\end{center}
+%
+%	\begin{itemize}
+%		\item The molecular ion, \ch{M^{+.}}, tells us the molecular
+%			mass of the unknown.
+%		\item When electron ionization causes some compounds to not
+%			exhibit a molecular ion, \ch{M^{+.}}, fragments can
+%			provide clues to the structure of an unknown.
+%		\item The \alert{nitrogen rule}, the \alert{ratio of two
+%			isotopes}, and the \alert{isotopic patterns} are useful
+%			clues for deciphering the mass spectrum.
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{The Nitrogen Rule}
+%	\begin{itemize}
+%		\item If a compound has an \alert{odd} number of nitrogen (in
+%			addition to C, H, halogens, O, S, Si, and P) atoms, then
+%			\ch{M^{+.}} has an odd nominal mass.
+%		\item If a compound has an \alert{even} number of nitrogen
+%			atoms, \ch{M^{+.}} has an even nominal mass.
+%		\item A molecular ion at $m/z$ 128 can have 0 or 2 \ch{N} atoms,
+%			but it cannot have 1 \ch{N} atom.
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Ratio of Two Isotopes}
+%	\begin{columns}
+%		\column{0.45\linewidth}
+%		\begin{itemize}
+%			\item Aromatic compounds usually have significant
+%				intensity for \ch{M^{+.}}.
+%			\item \ch{M^{+.}} is the \alert{base peak} (most
+%				intense) in the spectra of benzene.
+%		\end{itemize}
+%		\column{0.45\linewidth}
+%		\includegraphics[width=\linewidth]{Harr9e_fig_22_06.jpg}
+%	\end{columns}
+%	\begin{itemize}
+%		\item We can predict the intensity of the \alert{M+1} peak from
+%			isotopic ratios.
+%			\begin{equation*}
+%				\text{Intensity} = \underbrace{n \times
+%				\SI{1.08}{\percent}}_{\mathclap{\text{From
+%				\ch{^{13}C}}}}
+%				+ \underbrace{m \times
+%				\SI{0.012}{\percent}}_{\mathclap{\text{From
+%				\ch{^{2}H}}}}
+%			\end{equation*}
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Rings + Double Bonds}
+%	If we know the composition of a molecular ion, and we want
+%	to propose its structure, we can use the following
+%	equation:
+%	\begin{equation*}
+%		\text{R} + \text{DB} = c - h/2 + n/2 + 1
+%	\end{equation*}
+%	where $c$ is the number of Group 14 atoms (that make 4
+%	bonds), $h$ is the
+%	number of H and halogen atoms (that make 1 bond), and
+%	$n$ is the number of Group 15 atoms (that make 3 bonds).
+%
+%	\bigskip
+%
+%	\includegraphics[width=0.45\linewidth]{Harr9e_22UNEQ01.jpg}
+%\end{frame}
+%
+%\note{
+%	\begin{align*}
+%		\text{R + DB} &= c - h/2 + n/2 + 1 \\
+%		&= (14 + 1) - \frac{22 + 1 + 1}{2} + \frac{1 + 1}{2} + 1 = 5
+%	\end{align*}
+%
+%	\(\underbrace{\ch{C_{14}Si}}_c
+%	\underbrace{\ch{H_{22}ClBr}}_h
+%	\underbrace{\ch{NAs}}_n\ch{O3S} \)}
+%
+%\begin{frame}[allowframebreaks]{Some Notes on Interpreting Mass Spectra}
+%	\begin{itemize}
+%		\item The molecular ion is found from the highest $m/z$ value of
+%			any ``significant'' peak that cannot be attributed to
+%			isotopes or background signals.
+%		\item Intensities of the isotopic peaks must be consistent with
+%			the proposed formula.
+%		\item The peak for the heaviest \alert{fragment ion} should not
+%			correspond to an improbable mass loss from \ch{M^{+.}}.
+%			Common mass losses:
+%		
+%			\begin{center}
+%			\begin{tabular} {c c}
+%				\ch{CH3} & 15 \\
+%				\ch{OH} or \ch{NH3} & 17 \\
+%				\ch{H2O} & 18 \\
+%				\ch{C2H5} & 29 \\
+%				\ch{OCH3} & 31
+%			\end{tabular}
+%			\end{center}
+%
+%		\item If a fragment ion contains $x$ atoms of element \ch{X},
+%			then there \emph{must} be at least $x$ atoms of \ch{X}
+%			in the molecular ion.
+%	\end{itemize}
+%
+%	\framebreak
+%
+%	\begin{center}
+%		\includegraphics[width=\linewidth]{Harr9e_fig_22_12.jpg}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}[allowframebreaks]{Let's try a few!}{Identify Major Peaks}
+%	{\centering
+%		\includegraphics[width=0.9\linewidth]{ethylbenzene.pdf}
+%		\includegraphics[width=0.9\linewidth]{1-pentanol.pdf}
+%		\includegraphics[width=0.9\linewidth]{methylene-chloride.pdf}
+%		\includegraphics[width=0.9\linewidth]{1-decanol.pdf}
+%		\par}
+%\end{frame}
+%
+%\note{
+%	\begin{tabularx}{\linewidth} {l c X}
+%		\bfseries Compound & \bfseries MW & \bfseries Peaks \\ \midrule
+%		\chemfig{[,0.4]*6(=-=(-CH_2CH_3)-=-)} & 106 & Base at 91 (lost methyl),
+%		molecular ion at 106 \\
+%		\ch{CH3(CH2)8CH2OH} & 158 & Base at 41 (\ch{C3H5+}), \ch{C8H16+}
+%		at 112, \ch{M+} at 158, difference of 14 between many \\
+%		\ch{CH2Cl2} & 84 & Base peak at 49 (\ch{CH2Cl+}), \ch{M+} at 84
+%		\\
+%		\ch{CH3(CH2)4OH} & 88 & Base at 42 (M - \ch{H2O} and
+%		\ch{CH2=CH2}, 31 (\ch{CH2=OH+}), 55 (M - \ch{H2O} and
+%		\ch{CH3}), 70 (M - \ch{H2O})
+%	\end{tabularx}
+%	}
+%
+%\begin{frame}{Types of Mass Spectrometers}
+%	\begin{itemize}
+%		\item Magnetic sector (what we saw when MS was first introduced)
+%		\item Transmission quadrupole
+%		\item Time-of-flight (TOF)
+%		\item Quadrupole ion trap (QIT)
+%		\item Linear ion trap
+%		\item Orbitrap
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Double-Focusing Mass Spectrometer}{Magnetic Sector}
+%	Higher resolution can be be attained by using an electric field with the
+%	magnetic sector so that ions with a narrow range of kinetic energy are
+%	selected.
+%
+%	\begin{center}
+%		\includegraphics[width=0.5\linewidth]{Harr9e_fig_22_13.jpg}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}{Transmission Quadrupole}{Cheap and good for GC!}
+%	\begin{center}
+%		\includegraphics[width=\linewidth]{Harr9e_fig_22_14.jpg}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}{Time-of-Flight}{Almost like a prism\ldots}
+%	\begin{center}
+%		\includegraphics[width=\linewidth]{Harr9e_fig_22_16.jpg}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}{Quadrupole Ion Trap}{Holds ions until ready to analyze}
+%	\begin{center}
+%		\includegraphics[width=0.5\linewidth]{Harr9e_fig_22_18.jpg}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}{Linear Quadrupole Ion Trap}{Holds more than the QIT}
+%	\begin{center}
+%		\includegraphics[width=0.45\linewidth]{Harr9e_fig_22_19a.jpg}
+%		\quad
+%		\includegraphics[width=0.45\linewidth]{Harr9e_fig_22_19b.jpg}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}{Orbitrap}{No magnetic field or oscillating electric field
+%	necessary!}
+%	\begin{center}
+%		\includegraphics[width=0.9\linewidth]{Harr9e_fig_22_20.jpg}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}{A final note on sample introduction\ldots}
+%	\begin{itemize}
+%		\item One interesting application for mass spectrometry is the
+%			sample-prep free introduction.
+%		\item \alert{Desorption electrospray ionization (DESI)} bombards
+%			a sample with charged droplets to force ions from a
+%			surface into the spectrometer.
+%	\end{itemize}
+%
+%	\begin{center}
+%		\includegraphics[width=0.8\linewidth]{Harr9e_fig_22_39.jpg}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}{Interested in Mass Spec?}
+%	\begin{itemize}
+%		\item Planning on going to graduate school?
+%		\item Take a look at \alert{Graham Cooks} at \alert{Purdue}.
+%	\end{itemize}
+%
+%	\begin{center}
+%		\includegraphics[width=0.9\linewidth]{miniature1.jpg}
+%	\end{center}
+%
+%	\footnotetext{https://aston.chem.purdue.edu}
+%\end{frame}
+%
+%	
+%\
+\end{document}

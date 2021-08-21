@@ -1,0 +1,518 @@
+% !TEX program = xelatex
+\documentclass{article}
+
+\title{Chapter 1 Practice Problem Solutions}
+\date{}
+\author{D.A. McCurry}
+
+\usepackage{analchem}
+\usepackage{enumitem}
+\usepackage[letterpaper,margin=1in]{geometry}
+\sisetup{math-micro=\text{µ},text-micro=µ}
+\DeclareSIUnit{\ounce}{oz}
+\DeclareSIUnit{\calorie}{cal}
+\DeclareSIUnit{\inch}{in.}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[start=5,leftmargin=0pt]
+	\item 
+		\begin{enumerate}[label={(\alph*)}]
+			\item This is an awful way to word a question. It
+				provides the value of
+				\SI{8}{\peta\gram}~\ch{C}, so it's just
+				dimensional analysis:
+				\begin{align*}
+					\dfrac{\SI{8}{\peta\gram}~\ch{C}}{\SI{1}{\year}}
+					\times
+					\dfrac{\SI{1e15}{\gram}}{\SI{1}{\peta\gram}}
+					\times
+					\dfrac{\SI{1}{\kilo\gram}}{\SI{1e3}{\gram}}
+					&= \boxed{\SI{8e12}{\kilo\gram}~\ch{C}}
+				\end{align*}
+
+			\item Now, calculate that in terms of \ch{CO2}.
+				\begin{align*}
+					\dfrac{\SI{8}{\peta\gram}~\ch{C}}{\SI{1}{\year}}
+					\times
+					\dfrac{\SI{1e15}{\gram}}{\SI{1}{\peta\gram}}
+					\times
+					\dfrac{\SI{1}{\mole}~\ch{C}}{\SI{12.0106}{\gram}~\ch{C}}
+					\times
+					\dfrac{\SI{1}{\mole}~\ch{CO2}}{\SI{1}{\mole}~\ch{C}}
+					\times
+					\dfrac{\SI{43.9986}{\gram}~\ch{CO2}}{\SI{1}{\mole}~\ch{CO2}}
+					\times
+					\dfrac{\SI{1}{\kilo\gram}}{\SI{1e3}{\gram}}
+					&= \SI{2.93065e13}{\kilo\gram}~\ch{CO2} \\
+					&\approx
+					\boxed{\SI{3e13}{\kilo\gram}~\ch{CO2}}
+				\end{align*}
+
+			\item Converting to metric tons:
+				\begin{align*}
+					\SI{2.93065e13}{\kilo\gram}~\ch{CO2}
+					\times
+					\frac{\SI{1}{ton}}{\SI{1000}{\kilo\gram}}
+					&= \SI{2.93065e10}{ton} \\
+					&\approx \boxed{\SI{3e10}{ton}}
+					\intertext{And then per person per
+					year:}
+					\SI{2.93065e10}{ton}
+					\times
+					\frac{1}{\SI{7e9}{people}}
+					&= \SI{4.186644654}{ton\per
+					person} \\
+					&\approx \boxed{\SI{4}{ton\per
+					person}}
+				\end{align*}
+		\end{enumerate}
+	\item First, let's determine how much \ch{Hg} Daniel Harris can eat per
+		day:
+		\begin{align*}
+			\frac{\SI{0.1}{\micro\gram\per\day}}{\SI{1}{\kilo\gram}~\text{body
+			weight}} \times \SI{68}{\kilo\gram} &=
+			\SI{6.8}{\micro\gram\per\day}
+		\end{align*}
+		Now, we need to determine how many \si{\micro\gram}~\ch{Hg} are
+		in each can of tuna.
+		\begin{align*}
+			\textbf{Chunk white:} &\qquad&
+			\frac{\SI{0.6}{\micro\gram}~\ch{Hg}}{\SI{1}{\gram}~\text{tuna}}
+			\times
+			\frac{\SI{28.34952}{\gram}~\text{tuna}}{\SI{1}{\ounce}~\text{tuna}}
+			\times
+			\frac{\SI{6}{\ounce}~\text{tuna}}{\SI{1}{can}} &=
+			\SI{102.058272}{\micro\gram\per can}~\ch{Hg} \\
+			\textbf{Chunk light:} &\qquad&
+			\underbrace{\frac{\SI{0.14}{\micro\gram}~\ch{Hg}}{\SI{1}{\gram}~\text{tuna}}}_{\mathclap{\SI{1}{ppm}
+			= \SI{1}{\micro\gram\per\gram}}}
+			\times
+			\frac{\SI{28.34952}{\gram}~\text{tuna}}{\SI{1}{\ounce}~\text{tuna}}
+			\times
+			\frac{\SI{6}{\ounce}~\text{tuna}}{\SI{1}{can}} &=
+			\SI{23.8135968}{\micro\gram\per can}~\ch{Hg}
+			\intertext{And now, using Daniel Harris's body weight as
+			the limit per day:}
+			\textbf{Chunk white:} &\qquad&
+			\frac{\SI{102.058272}{\micro\gram}~\ch{Hg}}{\SI{1}{can}}
+			\times
+			\frac{\SI{1}{\day}}{\SI{6.8}{\micro\gram}} &\approx
+			\boxed{\SI{15}{\day\per can}}
+			\\
+			\textbf{Chunk light:} &\qquad&
+			\frac{\SI{23.8135968}{\micro\gram}~\ch{Hg}}{\SI{1}{can}}
+			\times
+			\frac{\SI{1}{\day}}{\SI{6.8}{\micro\gram}} &\approx
+			\boxed{\SI{3.5}{\day\per can}}
+		\end{align*}
+	\item Another simple dimensional analysis:
+		\begin{align*}
+			\SI{100.0}{HP} \times 
+			\underbrace{\frac{\SI{745.700}{\joule\per\second}}{\SI{1}{HP}}}_{\mathclap{\SI{1}{\watt}
+			= \SI{1}{\joule\per\second}}} &=
+			\boxed{\SI{7.457e4}{\joule\per\second}} \\
+			\frac{\SI{74570}{\joule}}{\SI{1}{\second}} \times
+			\frac{\SI{1}{\calorie}}{\SI{4.184}{\joule}} \times
+			\frac{\SI{3600}{\second}}{\SI{1}{\hour}} &=
+			\SI{6.416157e7}{\calorie\per\hour} \approx
+			\boxed{\SI{6.416e7}{\calorie\per\hour}}
+		\end{align*}
+	\item \begin{enumerate}[label=(\alph*)]
+		\item First, we need to convert pounds to kilograms:
+			\begin{align*}
+				\SI{120}{lbs} \times
+				\frac{\SI{1}{\kilo\gram}}{\SI{2.204623}{lb}} &=
+				\SI{54.43107506}{\kilo\gram}
+			\end{align*}
+			Then, we can convert the units in terms of body mass in
+			\si{\kilo\gram}:
+			\begin{align*}
+				\textbf{Office:} &\qquad&
+				\frac{\SI{2.2e3}{\kilo\calorie}}{\SI{1}{\day}}
+				\times
+				\frac{\SI{4184}{\joule}}{\SI{1}{\kilo\calorie}}
+				\times \frac{\SI{1}{\day}}{\SI{24}{\hour}}
+				\times \frac{\SI{1}{\hour}}{\SI{3600}{\second}}
+				\times \frac{1}{\SI{54.43107506}{\kilo\gram}}
+				&=
+				\SI{1.957283352}{\joule\per\second\per\kilo\gram}
+				\\
+				&&&\approx
+				\boxed{\SI{2.0}{\joule\per\second\per\kilo\gram}}
+				\\
+				\textbf{Mountain:} &\qquad&
+				\frac{\SI{3.4e3}{\kilo\calorie}}{\SI{1}{\day}}
+				\times
+				\frac{\SI{4184}{\joule}}{\SI{1}{\kilo\calorie}}
+				\times \frac{\SI{1}{\day}}{\SI{24}{\hour}}
+				\times \frac{\SI{1}{\hour}}{\SI{3600}{\second}}
+				\times \frac{1}{\SI{54.43107506}{\kilo\gram}}
+				&=
+				\SI{3.024892453}{\joule\per\second\per\kilo\gram}
+				\\
+				&&&\approx
+				\boxed{\SI{3.0}{\joule\per\second\per\kilo\gram}}
+			\end{align*}
+		\item Multiplying the office power per kilogram by the mass of
+			the worker:
+			\begin{align*}
+				\SI{1.957283352}{\watt\per\kilo\gram} \times
+				\SI{54.43107506}{\kilo\gram} &=
+				\SI{106.537037}{\watt}
+			\end{align*}
+			So the \fbox{office worker} consumes more power. Of
+			course, an office would most likely have fluorescent
+			tubes instead of a \SI{100}{\watt} incandescent bulb.
+	\end{enumerate}
+\end{enumerate}
+
+\begin{enumerate}[start=10,leftmargin=0pt]
+	\item \begin{enumerate}[label=(\alph*)]
+		\item Dimensional analysis:
+			\begin{align*}
+				\SI{1}{mi} \times
+				\frac{\SI{5280}{ft}}{\SI{1}{mi}} \times
+				\frac{\SI{12}{\inch}}{\SI{1}{ft}} \times
+				\frac{\SI{0.0254}{\meter}}{\SI{1}{\inch}} \times
+				\frac{\SI{1}{\kilo\meter}}{\SI{e3}{\meter}} &=
+				\SI{1.609344}{\kilo\meter}
+				\intertext{Oops, this was supposed to be miles. Rather than doing the calculation again, let's just inverse it:}
+				\bigg(\frac{\SI{1.6093444}{\kilo\meter}}{\SI{1}{mi}}\bigg)^{-1} &= \boxed{\SI{0.621371192}{mi\per\kilo\meter}}
+			\end{align*}
+		\item Dimensional analysis:
+			\begin{align*}
+				\frac{\SI{100}{\kilo\meter}}{\SI{4.6}{\liter}}
+				\times
+				\frac{\SI{3.7854}{\liter}}{\SI{1}{gal}}
+				\times
+				\underbrace{\frac{\SI{0.0621371192}{mi}}{\SI{1}{\kilo\meter}}}_{\mathclap{\text{From (a)}}}
+				&= \SI{51.13344589}{mi\per gal} \\
+				&\approx \boxed{\SI{51}{mi\per gal}}
+			\end{align*}
+		\item Dimensional analysis (again):
+			\begin{align*}
+				\textbf{Gasoline:} &\qquad& \SI{15000}{mi}
+				\times
+				\frac{\SI{1}{\kilo\meter}}{\SI{0.621371192}{mi}}
+				\times
+				\frac{\SI{266}{\gram}~\ch{CO2}}{\SI{1}{\kilo\meter}}
+				\times
+				\frac{\SI{1}{ton}}{\SI{1e6}{\gram}}
+				&= \SI{6.42128256}{ton} \\
+				&&&\approx \boxed{\SI{6.4}{ton}~\ch{CO2}} \\
+				\textbf{Diesel:} &\qquad& \SI{15000}{mi}
+				\times
+				\frac{\SI{1}{\kilo\meter}}{\SI{0.621371192}{mi}}
+				\times
+				\frac{\SI{223}{\gram}~\ch{CO2}}{\SI{1}{\kilo\meter}}
+				\times
+				\frac{\SI{1}{ton}}{\SI{1e6}{\gram}}
+				&= \SI{5.38325568}{ton} \\
+				&&&\approx \boxed{\SI{5.4}{ton}~\ch{CO2}} \\
+			\end{align*}
+	\end{enumerate}
+\end{enumerate}
+
+\begin{enumerate}[start=12,leftmargin=0pt]
+	\item Sigh, more dimensional analysis:
+		\begin{align*}
+			\SI{535}{\kilo\meter\squared} \times \SI{1}{\year}
+			\times
+			\underbrace{\frac{\SI{365}{\day}}{\SI{1}{\year}}}_{\mathclap{\text{Let's assume \emph{not} a leap year!}}}
+			\times
+			\bigg(\frac{\SI{e3}{\meter}}{\SI{1}{\kilo\meter}}\bigg)^{2}
+			\times 
+			\frac{\SI{0.03}{\milli\gram}}{\SI{1}{\meter\squared\day}}
+			\times
+			\frac{\SI{e-3}{\gram}}{\SI{1}{\milli\gram}}
+			\times
+			\frac{\SI{1}{ton}}{\SI{e6}{\gram}}
+			&= \SI{5.85825}{ton} \\
+			&\approx \boxed{\SI{6}{ton}~\ch{Pb}}
+		\end{align*}
+	\end{enumerate}
+
+\begin{enumerate}[start=15,leftmargin=0pt]
+	\item Basic solution prep calculation. \ch{NaCl} will dissociate
+		completely, thus its \emph{molar} concentration will be $\approx
+		0$, but its \emph{formal} concentration is calculated as
+		\begin{align*}
+			\SI{32.0}{\gram}~\ch{NaCl} \times
+			\frac{\SI{1}{\mole}}{\SI{58.44176928}{\gram}} \times
+			\frac{1}{\SI{0.500}{\liter}} &=
+			\SI{1.09510716031491}{\Molar} \\
+			&\approx \boxed{\SI{1.10}{\Molar}}
+		\end{align*}
+
+	\item Dimensional analysis!
+		\begin{align*}
+			\frac{\SI{1.71}{\mole}~\ch{CH3OH}}{\SI{1}{\liter}}
+			\times
+			\SI{0.100}{\liter} \times
+			\frac{\SI{32.04}{\gram}}{\SI{1}{\mole}~\ch{CH3OH}} &=
+			\SI{5.47884}{\gram} \\
+			&\approx \boxed{\SI{5.48}{\gram}~\ch{CH3OH}}
+		\end{align*}
+\end{enumerate}
+
+\begin{enumerate}[start=20,leftmargin=0pt]
+	\item Recall $\SI{1}{ppm} = \frac{1}{\num{1e6}}$.
+		\begin{align*}
+			\SI{1}{ppm} =
+			\frac{\SI{1}{\gram}~\text{solute}}{\SI{1e6}{\gram}~\text{solution}} \times \frac{\SI{1}{\gram}~\text{solution}}{\SI{0.001}{\liter}~\text{solution}} &= \boxed{\SI{0.001}{\gram\per\liter}} \\
+			\frac{\SI{0.001}{\gram}}{\SI{1}{\liter}} \times 
+			\frac{\SI{1}{\micro\gram}}{\SI{1e-6}{\gram}} &= \boxed{\SI{1000}{\micro\gram\per\liter}} \\
+			\frac{\SI{1000}{\micro\gram}}{\SI{1}{\liter}} \times
+			\frac{\SI{1e-3}{\liter}}{\SI{1}{\milli\liter}} &= \boxed{\SI{1}{\micro\gram\per\milli\liter}} \\
+			\frac{\SI{0.001}{\gram}}{\SI{1}{\liter}} \times
+			\frac{\SI{1}{\milli\gram}}{\SI{1e-3}{\gram}} &= \boxed{\SI{1}{\milli\gram\per\liter}}
+		\end{align*}
+
+	\item $\SI{0.2}{ppb} = \frac{\SI{0.2}{\gram}~\ch{C20H42}}{\SI{1e9}{\gram}}$
+
+		\begin{align*}
+			\frac{\SI{0.2}{\gram}~\ch{C20H42}}{\SI{1e9}{\gram}}
+			\times
+			\frac{\SI{1}{\mole}}{\SI{282.56}{\gram}~\ch{C20H42}}
+			\times
+			\frac{\SI{1.00}{\gram}}{\SI{1}{\milli\liter}}
+			\times
+			\frac{\SI{1}{\milli\liter}}{\SI{1e-3}{\liter}} &=
+			\SI{7.07814e-10}{\Molar} \\
+			&\approx \boxed{\SI{7e-10}{\Molar}}
+		\end{align*}
+
+	\item This is a simple multiplication:
+		\begin{align*}
+			\textbf{\ch{HClO4}:} &\qquad&
+			\SI{70.5}{\percent} \times \SI{37.6}{\gram} &= \SI{26.508}{\gram}~\ch{HClO4} \\
+			&&&\approx \boxed{\SI{26.5}{\gram}~\ch{HClO4}} \\
+			\textbf{Water:} &\qquad&
+			\underbrace{\SI{29.5}{\percent}}_{\mathclap{100 - 70.5}} \times \SI{37.6}{\gram} &= \SI{11.092}{\gram}~\text{water} \\
+			&&&\approx \boxed{\SI{11.1}{\gram}~\text{water}}
+		\end{align*}
+\end{enumerate}
+
+\begin{enumerate}[start=26,leftmargin=0pt]
+	\item We need to first determine the formula mass of glucose:
+		\begin{center}
+			\begin{tabular} {r @{ $\times$ }  c @{ \@ } S[table-format=2.5,table-space-text-post={\,\si{\gram\per\mole}}]<{\,\si{\gram\per\mole}} @{ $=$ } S[table-format=3.5]<{\,\si{\gram\per\mole}}}
+				6 & C & 12.0106 & 72.0636 \\
+				12 & H & 1.00798 & 12.09576 \\
+				6 & O & 15.9994 & 95.9964 \\
+				\midrule
+				\multicolumn{3}{l}{} & 180.15576
+			\end{tabular}
+		\end{center}
+		Then, we can use dimensional analysis to calculate the molarity
+		of glucose before and after eating:
+		\begin{align*}
+			\textbf{Before:} &\qquad&
+			\frac{\SI{80}{\milli\gram}}{\SI{0.1}{\liter}} \times
+			\frac{\SI{1e-3}{\gram}}{\SI{1}{\milli\gram}} \times
+			\frac{\SI{1}{\mole}}{\SI{180.15576}{\gram}} &= \SI{4.440602e-3}{\Molar} \\
+			&&&\approx \boxed{\SI{4e-3}{\Molar}} \\
+			\textbf{After:} &\qquad&
+			\frac{\SI{120}{\milli\gram}}{\SI{0.1}{\liter}} \times
+			\frac{\SI{1e-3}{\gram}}{\SI{1}{\milli\gram}} \times
+			\frac{\SI{1}{\mole}}{\SI{180.15576}{\gram}} &= \SI{6.660903e-3}{\Molar} \\
+			&&&\approx \boxed{\SI{7e-3}{\Molar}}
+		\end{align*}
+\end{enumerate}
+
+\begin{enumerate}[start=29,leftmargin=0pt]
+	\item I guess we should assume that this reservoir is completely filled
+		with water, so let's calculate the volume of water we're
+		starting with:
+		\begin{align*}
+			V &= \pi r^2 h \\
+			  &= \pi \bigg(\frac{\SI{4.50e2}{\meter}}{2}\bigg)^2 (\SI{10.0}{\meter}) \\
+			  &= \SI{1590432.281}{\meter\cubed}
+			  \intertext{Knowing that the density of a dilute
+			  aqueous solution is $\approx \SI{1}{\gram\per\centi\meter\cubed}$,}
+			  m_\text{solution} &= \SI{1590432.281}{\meter\cubed} \times
+			  \bigg(\frac{\SI{100}{\centi\meter}}{\SI{1}{\meter}}\bigg)^3
+			  \times \frac{\SI{1}{\gram}}{\SI{1}{\centi\meter\cubed}} \\
+			  &= \SI{1.59043e12}{\gram}
+			  \intertext{Now, we just need to use this mass to
+			  determine the mass of \ch{F-} we need:}
+			  m_{\ch{F-}} &= \frac{\SI{1.6}{\gram}~\ch{F-}}{\SI{1e6}{\gram}~\text{solution}}
+			  \times
+			  \SI{1.59043e12}{\gram}~\text{solution} \\
+			  &= \SI{2.544690049e6}{\gram}~\ch{F-} \\
+			  &\approx \boxed{\SI{2.5e6}{\gram}~\ch{F-}}
+		  \end{align*}
+		  To find the mass of \ch{H2SiF6} required, we need to
+		  determine the formula mass:
+		  \begin{center}
+			\begin{tabular} {r @{ $\times$ }  c @{ \@ } S[table-format=2.7,table-space-text-post={\,\si{\gram\per\mole}}]<{\,\si{\gram\per\mole}} @{ $=$ } S[table-format=3.7]<{\,\si{\gram\per\mole}}}
+				2 & H & 1.00798 & 2.01596 \\
+				1 & Si & 28.085 & 28.085 \\
+				6 & F & 18.9984032 & 113.9904192 \\
+				\midrule
+				\multicolumn{3}{l}{} & 144.0913792
+			\end{tabular}
+		\end{center}
+		Then, we can use the molar ratio of \ch{F} in \ch{H2SiF6} to
+		determine the grams required:
+		\begin{align*}
+			\SI{2.544690049e6}{\gram}~\ch{F-} \times
+			\frac{\SI{1}{\mole}~\ch{F-}}{\SI{18.9984032}{\gram}~\ch{F-}}
+			\times
+			\frac{\SI{1}{\mole}~\ch{H2SiF6}}{\SI{6}{\mole}~\ch{F-}}
+			\times
+			\frac{\SI{144.0913792}{\gram}~\ch{H2SiF6}}{\SI{1}{\mole}~\ch{H2SiF6}}
+			&= \SI{3.2167e6}{\gram}~\ch{H2SiF6} \\
+			&\approx \boxed{\SI{3.2e6}{\gram}~\ch{H2SiF6}}
+		\end{align*}
+\end{enumerate}
+
+\begin{enumerate}[start=33,leftmargin=0pt]
+	\item We need to determine the mass of \ch{NaOH} in the diluted solution:
+		\begin{align*}
+			\frac{\SI{0.10}{\mole}~\ch{NaOH}}{\SI{1}{\liter}} \times
+			\SI{1.00}{\liter} \times
+			\frac{\SI{40.00}{\gram}~\ch{NaOH}}{\SI{1}{\mole}~\ch{NaOH}}
+			&= \SI{4.00}{\gram}~\ch{NaOH}
+			\intertext{Then, we need to determine the mass of the
+			\SI{50}{wt\%} solution required:}
+			\SI{4.00}{\gram}~\ch{NaOH} \times
+			\frac{\SI{100}{\gram}~\text{solution}}{\SI{50}{\gram}~\ch{NaOH}} &=
+			\boxed{\SI{8.0}{gram}~\text{solution}}
+		\end{align*}
+
+	\item \begin{enumerate}[label=(\alph*)]
+		\item We were given the molarity, so this is a simple dilution
+			problem:
+			\begin{align*}
+				C_1 V_1 &= C_2 V_2 \\
+				(\SI{18.0}{\Molar})V_1 &= (\SI{1.00}{\Molar})(\SI{1.000}{\liter}) \\
+				V_1 &= \SI{0.05555556}{\liter} \\
+				&\approx \boxed{\SI{55.6}{\milli\liter}}
+			\end{align*}
+		\item We need to determine the formula mass of \ch{H2SO4}:
+		  \begin{center}
+			\begin{tabular} {r @{ $\times$ }  c @{ \@ } S[table-format=2.5,table-space-text-post={\,\si{\gram\per\mole}}]<{\,\si{\gram\per\mole}} @{ $=$ } S[table-format=2.5]<{\,\si{\gram\per\mole}}}
+				2 & H & 1.00798 & 2.01596 \\
+				1 & S & 32.068 & 32.068 \\
+				4 & O & 15.9994 & 63.9976 \\
+				\midrule
+				\multicolumn{3}{l}{} & 98.08156
+			\end{tabular}
+		\end{center}
+			Knowing the original molarity, we can calculate the mass
+			of \ch{H2SO4} per liter of solution:
+			\begin{align*}
+				\frac{\SI{18.0}{\mole}}{\SI{1}{\liter}} \times
+				\frac{\SI{98.08156}{\gram}}{\SI{1}{\mole}}
+				&= \SI{1765.46808}{\gram\per\liter}
+				\intertext{Of course, we want the mass of
+				solution, \emph{not} the mass of \ch{H2SO4}.
+				Using the wt\% of \ch{H2SO4}:}
+				\frac{\SI{1765.46808}{\gram}~\ch{H2SO4}}{\SI{1}{\liter}~\text{solution}}
+				\times
+				\frac{\SI{100}{\gram}~\text{solution}}{\SI{98.0}{\gram}~\ch{H2SO4}}
+				&= \SI{1801.498041}{\gram\per\liter} \\
+				&\approx \boxed{\SI{1.80}{\gram\per\milli\liter}}
+			\end{align*}
+
+		\end{enumerate}
+	\item Similar to the previous problem, but we need to first determine
+		the original molarity of the \ch{NaOH} solution:
+		\begin{align*}
+			C_1 V_1 &= C_2 V_2 \\
+			C_1 (\SI{0.0167}{\liter}) &= (\SI{0.169}{\Molar})(\SI{2.00}{\liter}) \\
+			C_1 &= \SI{20.23952096}{\Molar}
+		\end{align*}
+		Then, we can determine the mass of \ch{NaOH} in this solution:
+		\begin{align*}
+			\frac{\SI{20.23952096}{\mole}}{\SI{1}{\liter}} \times
+			\frac{\SI{40.00}{\gram}}{\SI{1}{\mole}}
+			&= \SI{809.5808383}{\gram\per\liter}
+			\intertext{Finally, we need to convert the grams of
+			\ch{NaOH} to grams of solution using the wt\%:}
+			\frac{\SI{809.5808383}{\gram}~\ch{NaOH}}{\SI{1}{\liter}~\text{solution}}
+			\times
+			\frac{\SI{100}{\gram}~\text{solution}}{\SI{53.4}{\gram}~\ch{NaOH}}
+			\times
+			\frac{\SI{e-3}{\liter}}{\SI{1}{\milli\liter}} &=
+			\SI{1.516068986}{\gram\per\milli\liter} \\
+			&\approx \boxed{\SI{1.52}{\gram\per\milli\liter}}
+		\end{align*}
+		
+	\item We need to first determine the mass of \ch{Ba(NO3)2} present in
+		the sample:
+		\begin{align*}
+			\SI{4.35}{\gram}~\text{sample} \times
+			\frac{\SI{23.2}{\gram}~\ch{Ba(NO3)2}}{\SI{100}{\gram}~\text{sample}}
+			&= \SI{1.0092}{\gram}~\ch{Ba(NO3)2}
+		\end{align*}
+		Using the formula mass of \ch{Ba(NO3)2}, we can determine the
+		moles of \ch{Ba(NO3)2}:
+		  \begin{center}
+			\begin{tabular} {r @{ $\times$ }  c @{ \@ } S[table-format=3.4,table-space-text-post={\,\si{\gram\per\mole}}]<{\,\si{\gram\per\mole}} @{ $=$ } S[table-format=3.4]<{\,\si{\gram\per\mole}}}
+				1 & Ba & 137.327 & 137.327 \\
+				2 & N & 14.0068 & 14.0068 \\
+				6 & O & 15.9994 & 95.9964 \\
+				\midrule
+				\multicolumn{3}{l}{} & 261.337
+			\end{tabular}
+		\end{center}
+		\begin{align*}
+			\SI{1.0092}{\gram} \times
+			\frac{\SI{1}{\mole}}{\SI{261.337}{\gram}}
+			&= \SI{3.861681e-3}{\mole}~\ch{Ba(NO3)2}
+			\intertext{As this is a 1:1 reaction, we simply need
+				\SI{3.861681e-3}{\mole}~\ch{H2SO4}. Dividing
+				this number by the molarity of \ch{H2SO4} should
+			give us our answer:}
+			\SI{3.861681e-3}{\mole}~\ch{H2SO4} \times
+			\frac{\SI{1}{\liter}}{\SI{3.00}{\mole}} &=
+			\SI{1.287227e-3}{\liter}~\ch{H2SO4} \\
+			&\approx \boxed{\SI{1.29}{\milli\liter}~\ch{H2SO4}}
+		\end{align*}
+
+	\item We need to determine the moles of \ch{Th^{4+}} present in the
+		reaction:
+		\begin{align*}
+			\frac{\SI{0.0236}{\mole}~\ch{Th^{4+}}}{\SI{1}{\liter}}
+			\times \SI{0.025}{\liter} &=
+			\SI{5.9e-4}{\mole}~\ch{Th^{4+}}
+			\intertext{This is a 4:1 \ch{F-}:\ch{Th^{4+}} reaction,
+			thus}
+			\SI{5.9e-4}{\mole}~\ch{Th^{4+}} \times
+			\frac{\SI{4}{\mole}~\ch{F-}}{\SI{1}{\mole}~\ch{Th^{4+}}}
+			&= \SI{2.36e-3}{\mole}~\ch{F-}
+			\intertext{We want a \SI{50}{\percent} excess, which
+				means we need \SI{150}{\percent} of our required
+			reagent:}
+			\SI{2.36e-3}{\mole}~\ch{F-} \times 1.5 &=
+			\SI{3.54e-3}{\mole}~\ch{F-}
+			\intertext{Using the formula mass of \ch{HF}, we can
+			determine the mass of \ch{HF} required:
+			  \begin{center}
+			\begin{tabular} {r @{ $\times$ }  c @{ \@ } S[table-format=2.7,table-space-text-post={\,\si{\gram\per\mole}}]<{\,\si{\gram\per\mole}} @{ $=$ } S[table-format=2.7]<{\,\si{\gram\per\mole}}}
+				1 & H & 1.00798 & 1.00798 \\
+				1 & F & 18.9984032 & 18.9984032 \\
+				\midrule
+				\multicolumn{3}{l}{} & 20.0063832
+			\end{tabular}
+			\end{center}}
+			\underbrace{\SI{3.54e-3}{\mole}~\ch{HF}}_{\mathclap{\SI{1}{\mole}~\ch{HF}
+			= \SI{1}{\mole}~\ch{F-}}} \times
+			\frac{\SI{20.0063832}{\gram}}{\SI{1}{\mole}} &=
+			\SI{7.0822597}{\gram}~\ch{HF}
+			\intertext{But we are only using a \SI{0.491}{wt\%}
+			solution, so}
+			\SI{7.0822597}{\gram}~\ch{HF} \times
+			\frac{\SI{100}{\gram}~\text{solution}}{\SI{0.491}{\gram}~\ch{HF}}
+			&= \SI{14.42415408}{\gram}~\text{solution} \\
+			&\approx \boxed{\SI{14.4}{\gram}~\text{solution}}
+		\end{align*}
+\end{enumerate}
+
+\end{document}
+

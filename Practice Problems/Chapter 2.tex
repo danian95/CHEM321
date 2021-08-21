@@ -1,0 +1,113 @@
+% !TEX program = xelatex
+\documentclass{article}
+
+\title{Chapter 2 Practice Problem Solutions}
+\date{}
+\author{D.A. McCurry}
+
+\usepackage{analchem}
+\usepackage{enumitem}
+\usepackage[letterpaper,margin=1in]{geometry}
+\sisetup{math-micro=\text{µ},text-micro=µ}
+\usepackage{graphicx}
+%\DeclareSIUnit{\ounce}{oz}
+%\DeclareSIUnit{\calorie}{cal}
+%\DeclareSIUnit{\inch}{in.}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[start=1,leftmargin=0pt]
+	\item \begin{enumerate}[label=(\alph*)]
+		\item See answer in back of book.
+		\item See Lab Manual pg. iv.
+	\end{enumerate}
+	\item We primarily use nitrile gloves in laboratory. See compatibility
+		at
+		\url{https://eta-safety.lbl.gov/sites/all/files/VWR%20Chemical%20Resistance%20Gloves%20Chart.pdf}.
+	\item See answer in back of book.
+\end{enumerate}
+
+\begin{enumerate}[start=6,leftmargin=0pt]
+	\item See pg. 27 in text.
+	\item According to the buoyancy equation (pg. 29),
+		\begin{align*}
+			m &= \frac{m^{\prime} \bigg(1 -
+					\frac{d_a}{d_w}\bigg)}{\bigg(1 -
+			\frac{d_a}{d}\bigg)} \\
+			&= \frac{m^{\prime} \bigg(1 -
+					\frac{d_a}{\SI{8.0}{\gram\per\milli\liter}}\bigg)}{\bigg(1
+			- \frac{d_a}{\SI{8.0}{\gram\per\milli\liter}}\bigg)} \\
+			m &= m^\prime
+		\end{align*}
+		So the ratio of the corrected mass to the measured mass is 1.
+	\item We can use the buoyancy equation (pg. 29) to figure this one out:
+		\begin{align*}
+			m &= \frac{m^{\prime} \bigg(1 -
+					\frac{d_a}{d_w}\bigg)}{\bigg(1 -
+			\frac{d_a}{d}\bigg)} \\
+			&= \frac{(\SI{14.82}{\gram})\bigg(1 -
+					\frac{\SI{0.0012}{\gram\per\milli\liter}}{\SI{8.0}{\gram\per\milli\liter}}\bigg)}{\bigg(1
+					-
+			\frac{\SI{0.0012}{\gram\per\milli\liter}}{\SI{0.626}{\gram\per\milli\liter}}\bigg)}
+			\\
+			&= \SI{14.84623624}{\gram} \approx \boxed{\SI{14.85}{\gram}}
+		\end{align*}
+	\item This is actually referring to Figure 2-7 (a typo). From the
+		Figure 2-7, we see that substances with lower densities require
+		a much larger buoyancy correction than those with higher
+		densities. As such, \ch{Li} ($d =
+		\SI{0.53}{\gram\per\milli\liter}$) should require the \emph{greatest}
+		buoyancy correction. Values closest to the density of the
+		reference material (here \SI{8.0}{\gram\per\milli\liter}) will
+		have the smallest buoyancy correction. As such, \ch{PbO2} ($d =
+		\SI{9.4}{\gram\per\milli\liter}$) will require the \emph{smallest}
+		buoyancy correction.
+	\item Buoyancy equation (pg. 29):
+		\begin{align*}
+			m &= \frac{m^{\prime} \bigg(1 -
+				\frac{d_a}{d_w}\bigg)}{\bigg(1 -
+				\frac{d_a}{d}\bigg)} \\
+			&= \frac{(\SI{4.2366}{\gram})\bigg(1 -
+				\frac{\SI{0.0012}{\gram\per\milli\liter}}{\SI{8.0}{\gram\per\milli\liter}}\bigg)}{\bigg(1
+				-
+				\frac{\SI{0.0012}{\gram\per\milli\liter}}{\SI{1.636}{\gram\per\milli\liter}}\bigg)}
+			\\
+			&= \SI{4.239073855}{\gram} \approx \boxed{\SI{4.239}{\gram}}
+		\end{align*}
+		If we did not correct for buoyancy, the calculated molarity would be too low by \SI{0.06}{\percent}
+		\begin{align*}
+		\frac{|4.239073855-4.2366|}{4.239073855} \times 100 &= \SI{0.058358387}{\percent} \\
+		&\approx \boxed{\SI{0.06}{\percent}}
+		\end{align*}
+	\item See Table 2-6 in text (pg. 37).
+\end{enumerate}
+
+\begin{enumerate}[start=24,leftmargin=0pt]
+	\item We need to first determine the mass of \emph{just} water in the flask and then correct for the volume of water (Table 2-7, pg. 38).
+	\begin{align*}
+	\underbrace{(\SI{20.2144}{\gram} - \SI{10.2634}{\gram})}_{\mathclap{\text{mass of water \emph{only}}}} \times \frac{\SI{1.0029}{\milli\liter}}{\SI{1}{\gram}} &= \SI{9.9798579}{\milli\liter} \\
+	&\approx \boxed{\SI{9.9799}{\milli\liter}}
+	\end{align*}
+	\item For the first part, we're essentially looking at a \% error calculation:
+	\begin{align*}
+	\frac{|1.0020 - 1.0040|}{1.0020} \times 100 &= \SI{0.1996007}{\percent} \\
+	&\approx \boxed{\SI{0.2}{\percent}}
+	\intertext{Rather than using the percentage, I just multiplied by the ratios of corrections:}
+	\frac{\SI{0.5000}{\mole}}{\SI{1000}{\milli\liter}} \times
+	\frac{\SI{1.0020}{\milli\liter}}{\SI{1}{\gram}} \times
+	\frac{\SI{1}{\gram}}{\SI{1.0040}{\milli\liter}}
+	\times \frac{\SI{1000}{\milli\liter}}{\SI{1}{\liter}} &= \boxed{\SI{0.4990}{\Molar}}
+	\end{align*}
+	I find this conceptually easier for me, but you could also take the \SI{0.2}{\percent} times the original concentration and then subtract that answer from \SI{0.5000}{\Molar}.
+\end{enumerate}
+
+\begin{enumerate}[start=31,leftmargin=0pt]
+	\item Here's a screenshot of what my spreadsheet looks like:
+	
+		\includegraphics[width=\linewidth]{2-31.png}
+		
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,567 @@
+% !TEX program = xelatex
+%\documentclass[notes=show]{beamer}
+%\documentclass[notes=onlyslideswithnotes,notes=hide]{beamer}
+\documentclass[11pt,letterpaper]{article}
+\usepackage{beamerarticle}
+
+\usepackage{analchem}
+\usepackage{lecture}
+\usepackage{tabu}
+\usepackage{multicol}
+
+\title{Monoprotic Acid-Base Equilibria}
+\subtitle{Chapter 9}
+\institute{CHEM321 - Analytical Chemistry I \\ Bloomsburg University}
+\author{D.A. McCurry}
+\date{Fall 2019}
+
+\begin{document}
+
+\maketitle
+\mode<article>{\thispagestyle{fancy}}
+
+\begin{frame}{\ch{HNO3} -- One of our Strong Acids}
+	\begin{columns}
+		\column{0.5\linewidth}
+		\begin{center}
+			\includegraphics[scale=0.3]{HNO3Raman.jpeg}
+			*undissociated \ch{HNO3}
+		\end{center}
+		\column{0.5\linewidth}
+		\begin{center}
+			\includegraphics[scale=0.5]{HNO3Dissociation.jpeg}
+			\includegraphics[scale=0.5]{HNO3TempKa.jpeg}
+		\end{center}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{The Hazard of $\text{pH} = -\log[\ch{H3O+}]$}
+	As we've seen, calculating pH of strong acids and bases is very easy
+	because they dissociate 100\%:
+
+	\begin{align*}
+		\ch{!( "\SI{0.0100}{\Molar}" )( HNO3 ) &-> !( "\SI{0.0100}{\Molar}" )( H3O+ ) + !( "\SI{0.0100}{\Molar}" )( NO3- )} \\
+		\shortintertext{So,}
+		\text{pH} &= -\log(0.0100) = 2.000\\
+		\intertext{}
+		\visible<2->{
+		\ch{!( "\SI{1.00e-8}{\Molar}" )( HNO3 ) &-> !( "\SI{1.00e-8}{\Molar}" )( H3O+ ) + !( "\SI{1.00e-8}{\Molar}" )( NO3- )} \\
+		\shortintertext{So,}
+		\text{pH} &= -\log(\num{1.00e-8}) = 8.000}
+	\end{align*}
+
+	\pause
+
+	What happened? Why did this stop working?
+\end{frame}
+
+\begin{frame}{A Systematic Approach to pH}
+	\mode<article>{\vfill}
+	\note{
+	\begin{enumerate}
+		\item Pertinent Reactions
+			\begin{align*}
+				\ch{!( "\SI{1.00e-8}{\Molar}" )( HNO3 ) &-> !( "\SI{1.00e-8}{\Molar}" )( H3O+ ) + !( "\SI{1.00e-8}{\Molar}" )( NO3- )} \\
+				\ch{2 H2O &<=> H3O+ + OH-}
+			\end{align*}
+	\end{enumerate}
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\setcounter{enumi}{1}
+			\item Charge Balance
+				\begin{align*}
+					[\ch{H3O+}] = [\ch{OH-}] + [\ch{NO3-}]
+				\end{align*}
+			\item Mass Balance
+				\begin{align*}
+					[\ch{NO3-}] = \SI{1.00e-8}{\Molar}
+				\end{align*}
+			\item Write K's
+				\begin{align*}
+					K_w = [\ch{H3O+}][\ch{OH-}]
+				\end{align*}
+			\item Count: 3 unknowns and 3 equations!
+			\item Solve
+		\end{enumerate}
+	\end{multicols}
+	}
+
+\end{frame}
+
+\note{
+	\begin{align*}
+		\shortintertext{Substitute the MB into the CB:}
+		[\ch{H3O+}] &= [\ch{OH-}] + \SI{1.00e-8}{\Molar} \\[1em]
+		\shortintertext{Rearrange for easier solving:}
+		[\ch{OH-}] &= [\ch{H3O+}] - \SI{1.00e-8}{\Molar} \\[1em]
+		\shortintertext{Plug into $K_w$ expression:}
+		\num{1.0e-14} &= [\ch{H3O+}]([\ch{H3O+}] - \num{1.00e-8}) \\
+		0 &= [\ch{H3O+}]^2 - \num{1.00e-8}[\ch{H3O+}] - \num{1.0e-14} \\
+		[\ch{H3O+}] &= \SI{1.05e-7}{\Molar} \text{ and }
+		\fbox{\text{pH}=6.98}
+	\end{align*}
+
+	There are 2 sources of \ch{H3O+} in any aqueous acid solution -- the acid
+	and the water.
+}
+
+\begin{frame}{Spreadsheet software aids in pH determination}
+	\begin{center}
+		\mode<article>{\small}
+		\begin{tabular} {S[table-format=1.1e-2] *{2}{S[table-format=2.2]}}
+			{[Strong Acid]} & {$\approx$ pH} & {$=$ pH} \\ \midrule
+			1.0e-1 & 1.00 & 1.00 \\
+			1.0e-2 & 2.00 & 2.00 \\
+			1.0e-3 & 3.00 & 3.00 \\
+			1.0e-4 & 4.00 & 4.00 \\
+			1.0e-5 & 5.00 & 5.00 \\
+			1.0e-6 & 6.00 & 6.00 \\
+			1.0e-7 & 7.00 & 6.79 \\
+			1.0e-8 & 8.00 & 6.98 \\
+			1.0e-9 & 9.00 & 7.00 \\
+			1.0e-10 & 10.00 & 7.00 \\
+			1.0e-11 & 11.00 & 7.00 \\
+			1.0e-12 & 12.00 & 7.00
+		\end{tabular}
+		\qquad
+		\begin{tabular} {S[table-format=1.1e-2] *{2}{S[table-format=2.2]}}
+			{[Strong Base]} & {$\approx$ pH} & {$=$ pH} \\ \midrule
+			1.0e-1 & 13.00 & 13.00 \\
+			1.0e-2 & 12.00 & 12.00 \\
+			1.0e-3 & 11.00 & 11.00 \\
+			1.0e-4 & 10.00 & 10.00 \\
+			1.0e-5 & 9.00 & 9.00 \\
+			1.0e-6 & 8.00 & 8.00 \\
+			1.0e-7 & 7.00 & 7.21 \\
+			1.0e-8 & 6.00 & 7.02 \\
+			1.0e-9 & 5.00 & 7.00 \\
+			1.0e-10 & 4.00 & 7.00 \\
+			1.0e-11 & 3.00 & 7.00 \\
+			1.0e-12 & 2.00 & 7.00
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\mode<article>{\clearpage}
+
+\begin{frame}{Even better\ldots we can plot it!}
+	\centering
+	\includegraphics[width=\textwidth]{strongacid-base.eps}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{How much \ch{H3O+} comes from water?}
+	\begin{center}
+		\small
+		\begin{tabular} {S[table-format=1.1e-2]
+			S[table-format=1.1e-2] S[table-format=3.3]
+			S[table-format=1.1e-2] S[table-format=3.10]}
+			{[Strong Acid]} & \multicolumn{2}{c}{From acid} & \multicolumn{2}{c}{From
+			water} \\
+			& [\ch{H3O+}] & \% & [\ch{H3O+}] & \% \\ \midrule
+			1.0e-1 & 1.0e-1 & 100 & 1.0e-13 & 0.0000000001 \\
+			1.0e-2 & 1.0e-2 & 100 & 1.0e-12 & 0.00000001 \\
+			1.0e-3 & 1.0e-3 & 100 & 1.0e-11 & 0.000001 \\
+			1.0e-4 & 1.0e-4 & 100 & 1.0e-10 & 0.0001 \\
+			1.0e-5 & 1.0e-5 & 100 & 1.0e-9 & 0.01 \\
+			1.0e-6 & 1.0e-6 & 99 & 9.9e-9 & 1 \\
+			1.0e-7 & 1.0e-7 & 62 & 6.2e-8 & 38 \\
+			1.0e-8 & 1.0e-8 & 10 & 9.5e-8 & 90 \\
+			1.0e-9 & 1.0e-9 & 1 & 1.0e-7 & 99 \\
+			1.0e-10 & 1.0e-10 & 0.1 & 1.0e-7 & 100 \\
+			1.0e-11 & 1.0e-11 & 0.01 & 1.0e-7 & 100 \\
+			1.0e-12 & 1.0e-12 & 0.001 & 1.0e-7 & 100
+		\end{tabular}
+	\end{center}
+
+	\framebreak
+
+	\noindent
+	If we have \SI{1.0e-2}{\Molar} \ch{HNO3}, the \ch{OH-} concentration
+	follows,
+
+	\begin{align*}
+		[\ch{OH-}] &= \dfrac{\num{1.0e-14}}{[\ch{H3O+}]} \\
+		&= \dfrac{\num{1.0e-14}}{\num{1.0e-2}} = \SI{1.0e-12}{\Molar}
+	\end{align*}
+
+	The \emph{only} source of \ch{OH-} is the dissociation of water, so
+	water must \emph{also contribute} \SI{1.0e-12}{\Molar} \ch{H3O+}!
+\end{frame}
+
+\begin{frame}{Weak Acids and Bases}
+	\begin{block}{Weak Acid Equilibrum}
+		\begin{align*}
+			\ch{HA + H2O <=>[ $K_a$ ] H3O+ + A-} \qquad K_a =
+			\dfrac{[\ch{H+}][\ch{A-}]}{[\ch{HA}]}
+		\end{align*}
+	\end{block}
+
+	\begin{block}{Weak Base Equilibrum}
+		\begin{align*}
+			\ch{B + H2O <=>[ $K_b$ ] BH+ + OH-} \qquad K_b =
+			\dfrac{[\ch{BH+}][\ch{OH-}]}{[\ch{B}]}
+		\end{align*}
+	\end{block}
+
+	Conjugate Acid-Base Pairs: $K_a \times K_b = K_w$
+\end{frame}
+
+\begin{frame}[t]{A Typical Weak Acid Problem}
+	Find the pH of a solution of the weak acid, HA, given the formal
+	concentration of HA and the value of \Ka.
+
+	\mode<article>{\vfill}
+
+	\note{
+		\begin{multicols}{2}
+		\begin{enumerate}
+			\item Pertinent equations:
+				{\footnotesize
+				\begin{align*}
+					\ch{HA + H2O &<=>[ $K_a$ ] H3O+ + A-} \\
+					\ch{2 H2O &<=>[ $K_w$ ] H3O+ + OH-}
+				\end{align*}}
+			\item Charge Balance:
+				{\footnotesize
+				\begin{align*}
+					[\ch{H3O+}] = [\ch{OH-}] + [\ch{A-}]
+				\end{align*}}
+			\item Mass Balance:
+				{\footnotesize
+				\begin{align*}
+					\si{\formal} = [\ch{A-}] + [\ch{HA}]
+				\end{align*}}
+			\item Equilibria:
+				{\footnotesize
+				\begin{align*}
+					\Ka &= \frac{[\Oxo][\ch{A-}]}{[\ch{HA}]} \\
+					\Kw &= [\Oxo][\Hyd]
+				\end{align*}}
+			\item Count: 4 unknowns and 4 equations, then
+			\item Solve!
+		\end{enumerate}
+		\end{multicols}
+		\begin{align*}
+			0 = [\Oxo]^3 + [\Oxo]^2\Ka -
+			[\Oxo](\si{\formal}\Ka + \Kw) - \Kw\Ka
+		\end{align*}
+	}
+\end{frame}
+
+\begin{frame}[t]{``Wait!''}
+	The Good Chemist comes galloping down from the mountain on her white
+	stallion to rescue us. ``There is no reason to solve a cubic equation.
+	We can make an excellent, simplifying approximation.''
+
+	\begin{itemize}
+		\item The amount of \ch{H3O+} from the acid is much larger than
+			that from water \emph{at normal lab concentrations}.
+			\begin{align*}
+				[\ch{A-}] >> [\ch{OH-}] \qquad\therefore [\ch{H3O+}]
+				\approx [\ch{A-}]
+			\end{align*}
+		\item Let $x = [\Oxo] = [\ch{A-}]$
+%			If $x = [\ch{H3O+}]$, then
+%			\begin{align*}
+%				[\ch{H3O+}] &= [\ch{A-}] = x \\
+%				\textsc{F} &= [\ch{A-}] + [\ch{HA}] \qquad\therefore
+%				[\ch{HA}] = \textsc{F} - x \\
+%				K_a &= \dfrac{[\ch{H+}][\ch{A-}]}{[\ch{HA}]} =
+%				\dfrac{x^2}{\textsc{F}-x}
+%			\end{align*}
+	\end{itemize}
+
+	\mode<article>{\vspace{15em}}
+
+	\note{\begin{multicols}{2}
+		\begin{enumerate}
+			\item Pertinent equations:
+				{\footnotesize
+				\begin{align*}
+					\ch{HA + H2O &<=>[ $K_a$ ] H3O+ + A-} \\
+					\ch{2 H2O &<=>[ $K_w$ ] H3O+ + OH-}
+				\end{align*}}
+			\item Charge Balance:
+				{\footnotesize
+				\begin{align*}
+					x &= [\Hyd] + x \\
+					\therefore [\Hyd] &= 0
+				\end{align*}}
+			\item Mass Balance:
+				{\footnotesize
+				\begin{align*}
+					\si{\formal} &= x + [\ch{HA}] \\
+					\therefore [\ch{HA}] &= \si{\formal} - x
+				\end{align*}}
+			\item Equilibria:
+				{\footnotesize
+				\begin{align*}
+					\Ka &= \frac{x^2}{[\ch{HA}]} = \boxed{\frac{x^2}{\si{\formal} - x}} \\
+					\Kw &= x [\ch{OH-}] \approx 0
+				\end{align*}}
+			\item Count: 4 unknowns and 4 equations, then
+			\item Solve!
+		\end{enumerate}
+		\end{multicols}
+	}
+\end{frame}
+
+\mode<article>{\clearpage}
+
+\begin{frame}[t]{Weak Acid Example}
+	What is the \pH{} of a \SI{0.0500}{\Molar} \para-hydroxybenzoic acid ($\pKa =
+	4.54$) solution?
+
+	\mode<article>{\vspace{20em}}
+
+	\note{\begin{align*}
+		\Ka &= \num{2.9e-5} = \dfrac{x^2}{\si{\formal} - x} =
+		\dfrac{x^2}{\num{0.0500} - x} \\
+		0 &= x^2 + \num{2.9e-5}x - \num{1.45e-6} \\
+		\intertext{After some quadratic magic:}
+		x &= [\ch{H3O+}] = [\ch{A-}] = \SI{1.2e-3}{\Molar} \\
+		\pH &= \boxed{2.92} \\
+		\therefore \pOH &= 11.08 \\
+		[\ch{OH-}] &= \SI{8.4e-12}{\Molar}
+	\end{align*}
+	\SI{8.4e-12}{\Molar} \ch{H3O+} comes from \ch{H2O}, so it is a valid
+assumption that 100\% of \ch{H3O+} comes from HA and none from \ch{H2O}!}
+\end{frame}
+
+\begin{frame}{Fraction of Dissociation}
+	\begin{columns}
+		\column{0.55\linewidth}
+		Amount dissociated relative to the mass balance or total amount.
+		\begin{align*}
+			\alpha = \frac{[\ch{A-}]}{[\ch{HA}] + [\ch{A-}]} =
+			\frac{x}{\si{\formal}}
+		\end{align*}
+		For the last example,
+		\begin{align*}
+			\alpha =
+			\frac{\SI{1.2e-3}{\Molar}}{\SI{0.0500}{\Molar}} =
+			\fbox{0.024 = 2.4\%}
+		\end{align*}
+		\begin{center}
+			\includegraphics[scale=0.5]{hydroxybenzoic-acid.jpeg}
+		\end{center}
+		\column{0.38\linewidth}
+		\begin{center}
+			\includegraphics[scale=0.33]{frac-dissociation.jpeg}
+		\end{center}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Weak Base Equilibria}
+	We can make the same assumption as with the weak acids, i.e., that
+	nearly all the \ch{OH-} comes from the weak base and very little from
+	the water.
+
+	\begin{align*}
+		\ch{B + H2O &<=> HB+ + OH-} &\qquad \Kb &=
+		\frac{[\ch{HB+}][\ch{OH-}]}{[\ch{B}]} \\
+		[\ch{B}] &= \si{\formal} - [\ch{HB+}] = \si{\formal} - x &\qquad
+		\therefore \Kb &= \frac{x^2}{\si{\formal}-x}
+	\end{align*}
+\end{frame}
+
+\begin{frame}[t]{Weak Base Example}
+	What is the pH of a \SI{0.00372}{\Molar} cocaine solution?
+
+	\begin{center}
+		\includegraphics[scale=0.25]{base-association.jpeg}
+	\end{center}
+
+	\mode<article>{\vfill}
+
+	\note{
+		\begin{reaction*}
+%			B + \water <=> HB+ + \Hyd
+			!($0.00372-x$)( B ) + \water <=> !($x$)( HB+ ) + !($x$)(\Hyd)
+		\end{reaction*}
+		
+		\begin{align*}
+			\Kb &= \frac{x^2}{\si{\formal} - x} \\
+			\num{2.6e-6} &= \frac{x^2}{0.00372-x} \\
+			\intertext{via quadratic,}
+			x &= \SI{9.71e-5}{\Molar}~\Hyd \\
+			\therefore [\Oxo] &= \SI{1.03e-10}{\Molar} \text{~and~} \pH{} = 9.99
+		\end{align*}
+	}
+\end{frame}
+
+\begin{frame}{Fraction of Association}
+	\begin{align*}
+		\alpha = \frac{[\ch{HB+}]}{[\ch{B}] + [\ch{HB+}]} =
+		\dfrac{x}{\si{\formal}}
+	\end{align*}
+
+	For the last example,
+
+	\begin{align*}
+		\alpha =
+		\frac{\SI{9.71e-5}{\Molar}}{\SI{3.73e-3}{\Molar}} =
+		\fbox{0.0260 = 2.60\%}
+	\end{align*}
+
+	\mode<article>{\clearpage}
+
+	\begin{block}{Fraction of Association/Dissociation}
+		\begin{align*}
+			\frac{x}{\si{\formal}} = \frac{\text{amount
+			associated/dissociated}}{\text{total amount of species}}
+		\end{align*}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Buffers}
+	\begin{itemize}
+		\item What is a buffer?
+		\item What is it used for?
+	\end{itemize}
+
+	\begin{align*}
+		\Ka &= \frac{[\Oxo][\ch{A-}]}{[\ch{HA}]} \\
+		\log\Ka &= \log[\Oxo] + \log\frac{[\ch{A-}]}{[\ch{HA}]} \\
+		-\log[\Oxo] &= -\log\Ka + \log\frac{[\ch{A-}]}{[\ch{HA}]} \\
+		\pH &= \pKa + \log\frac{[\ch{A-}]}{[\ch{HA}]} \\
+		\text{or, for a base:} \qquad
+		\pH &= \pKa + \log\frac{[\ch{B}]}{[\ch{HB+}]} \\
+	\end{align*}
+\end{frame}
+
+\begin{frame}{The Henderson-Hasselbalch Equation}
+	{\Large
+	\begin{align*}
+		\pH &= \pKa + \log\frac{[\ch{A-}]}{[\ch{HA}]}
+	\end{align*}}
+
+	\begin{tikzpicture}
+		\node[align=left,text width=0.5\linewidth](text) {
+			\begin{enumerate}
+				\item It is the easiest route to pH when your solution contains
+					a weak conjugate pair.
+				\item It tells us a lot about buffer capacity in the solution.
+				\item We will use it extensively to look at the \emph{principle
+					species} in a solution.
+				\item Read Box 9-3 (9\textsuperscript{th} Ed.)
+			\end{enumerate}};
+		\node[right = of text] {
+			\begin{tabular} {r@{/}l l}
+				\multicolumn{2}{c}{[\ch{A-}]/[\ch{HA}]} &
+				\multicolumn{1}{c}{\pH} \\ \midrule
+				100 & 1   & $\pKa + 2$ \\
+				10  & 1   & $\pKa + 1$ \\
+				1   & 1   & $\pKa$ \\
+				1   & 10  & $\pKa - 1$ \\
+				1   & 100 & $\pKa - 2$
+			\end{tabular}};
+	\end{tikzpicture}
+\end{frame}
+
+\mode<presentation>{
+\begin{frame}{Alkaline Water}
+	\centering
+	\includegraphics[width=0.7\textwidth]{alkaline-water.pdf}
+	\footnote{https://www.mayoclinic.org}
+\end{frame}}
+
+\begin{frame}[t]{Henderson-Hasselbalch Example}
+	We have \SI{200.}{\milli\liter} of a solution containing
+	\SI{0.250}{\Molar} citric acid and \SI{0.200}{\Molar} sodium citrate. To
+	this, \SI{10.0}{\milli\liter} of \SI{0.750}{\Molar}~\ch{NaOH} is added.
+	What is the change in \pH?
+
+	\mode<article>{\vfill}
+
+	\note{
+		\begin{enumerate}
+			\item Initial \pH:
+				\begin{align*}
+					\pH &= \pKa + \log\frac{[\ch{A-}]}{[\ch{HA}]} \\
+					&= 3.13 + \log\frac{0.200}{0.250} = 3.03
+				\end{align*}
+			\item Adding base, so reacting? \textbf{Citric Acid}
+			\item ICE:
+		\begin{tabular} {*{7}{r} l}
+			\ch{HA} & + & \ch{OH-} & \ch{<=>} & \ch{A-} & + &
+			\ch{H2O} \\
+			50.0 & & 7.50 & & 40.0 & & & \si{\milli\mole} each \\
+			-7.50 & & -7.50 & & +7.50 & & & \si{\milli\mole} each 
+		\end{tabular}
+	\end{enumerate}
+
+		\begin{align*}
+			\text{pH} = 3.13 + \log\dfrac{47.5}{42.5} = 3.18 \qquad
+			\fbox{\textrm{d}\text{pH} = +0.15}
+		\end{align*}
+		}
+\end{frame}
+
+\begin{frame}{Preparing a buffer}
+	\begin{itemize}[<+->]
+		\item You can calculate the appropriate mass of each component
+			and dissolve in appropriate volume to make the
+			appropriate buffer.
+			\begin{itemize}
+				\item Activity coefficients
+				\item \pKa is often listed at
+					\SI{25}{\celsius} which \emph{may not
+					be true} in lab
+				\item Approximations (``Good chemist'') might
+					not be accurate enough
+				\item Other ion contributions
+			\end{itemize}
+		\item Instead, weigh a quantity of acid (or base) for desired
+			concentration and add water to \emph{near desired}
+			volume. Add a \emph{strong} base (or acid) until the
+			desired \pH is reached, then dilute to desired volume.
+			\begin{itemize}
+				\item Strong species will alter
+					[\ch{A-}]/[\ch{HA}] ratio by
+					\emph{consuming} (neutralizing)
+					species.
+				\item Why do we have to add water first?
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\mode<article>{\clearpage}
+
+\begin{frame}{The Real Henderson-Hasselbalch Equation}
+	{\Large
+	\begin{align*}
+		\pH &= \pKa +
+		\log\frac{[\ch{A-}]\gamma_{\ch{A-}}}{[\ch{HA}]}
+	\end{align*}}
+
+	\begin{itemize}
+		\item Recall activity coefficients!
+		\item Ionic strength affects \pH, therefore diluting buffers may
+			significantly change \pH.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Buffer Capacity}
+	\begin{columns}
+		\column{0.5\linewidth}
+		A measure of how well a solution resists changes in \pH{} when a
+		strong acid or base is added.
+		\begin{align*}
+			\beta = \frac{\textrm{d}C_b}{\textrm{d}\pH} =
+			-\frac{\textrm{d}C_a}{\textrm{d}\pH} 
+		\end{align*}
+		where $C_b$ and $C_a$ are the moles of the strong acid and base
+		needed to change 1 liter of buffer by 1 pH unit.
+		\column{0.4\linewidth}
+		\begin{center}
+			\includegraphics[scale=0.33]{buffercap.jpeg}
+			
+			\footnotesize
+			\SI{0.100}{\formal} \ch{HA} with $\pKa = 5$
+		\end{center}
+	\end{columns}
+\end{frame}
+
+
+\end{document}

@@ -1,0 +1,111 @@
+\documentclass{beamer}
+
+\usepackage{lecture}
+\usepackage{bigdelim}
+\usepackage{tikz}
+\usepackage{pdfpages}
+
+\title{Statistics}
+\subtitle{Chapter 3}
+\institute{CHEM321 - Analytical Chemistry I}
+
+\begin{document}
+
+\begin{frame}[allowframebreaks]{Case 3: Example 2}
+	Five ore samples were analyzed by atomic absorption and UV spectroscopy
+	Are these two methods equivalent?
+
+	\begin{center}
+		\sisetup{table-format=2.2}
+		\begin{tabu} to \textwidth {c S S}
+			{sample} & {titration (\%)} & {Na ISE (\%)} \\
+			\tabucline[1.5pt]{-}
+			1 & 36.25 & 36.15 \\
+			2 & 38.92 & 38.86 \\
+			3 & 27.63 & 27.58 \\
+			4 & 31.45 & 31.41 \\
+			5 & 40.69 & 40.58 \\
+		\end{tabu}
+	\end{center}
+
+	\framebreak
+
+	\begin{center}
+		\sisetup{table-format=2.2}
+		\begin{tabu} to \textwidth {c S S S[table-format=+1.2]}
+			{sample} & {titration (\%)} & {Na ISE (\%)} &
+			{difference} \\ \tabucline[1.5pt]{-}
+			1 & 36.25 & 36.15 & +0.10 \\
+			2 & 38.92 & 38.86 & +0.06 \\
+			3 & 27.63 & 27.58 & +0.05 \\
+			4 & 31.45 & 31.41 & +0.04 \\
+			5 & 40.69 & 40.58 & +0.11 \\
+		\end{tabu}
+	\end{center}
+
+	\begin{align*}
+		\text{mean difference} &= 0.72 \\
+		\text{std dev difference} &= 0.031 \\
+		t_{\text{calc}} &= \dfrac{|\bar{d}|}{s_d} \sqrt{n} = 5.19
+	\end{align*}
+
+	\fbox{\parbox{\textwidth}{\centering Since $t$ (4 DF) is 4.604 (99\%)
+	and 5.598 (99.5\%), $t_\text{calc} < t_\text{table}$ up to 99\% and
+	these means and therefore methods are statistically different from
+	50--99\% confidence. \emph{BUT} they would be found statistically
+	the same at 99.5 and 99.9\% confidence.}}
+\end{frame}
+
+\begin{frame}{Recommendations for the Treatment of Outliers}
+	\begin{itemize}
+		\item Re-examine all data to see if a gross error occurred
+			(proper lab notebook a must!)
+		\item Estimate the precision that is usually expected from the
+			technique to be sure outlier is actually questionable.
+		\item Repeat the analysis if time and sample are available.
+		\item If more data can not be secured, use a Grubbs test.
+		\item If statistics indicate retention, consider reporting the
+			median value instead of the mean.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Grubbs Test}
+	Recommended by the International Standards Organization and the American
+	Society for Testing and Materials for the testing of potential
+	outliers.\footnote{Historically, a $Q$ test has been used, but this has
+	fallen out of favor.}
+
+	\begin{align*}
+		G_{\text{calc}} = \dfrac{|\text{questionable value} -
+		\bar{x}|}{s}
+	\end{align*}
+
+	\begin{center}
+	\begin{tabu} to \textwidth {c S[table-format=1.3]}
+		\# Observations & {$G$ (95\% confidence)} \\
+		\tabucline[1.5pt]{-}
+		4 & 1.463 \\
+		5 & 1.672 \\
+		6 & 1.822 \\
+		7 & 1.938 \\
+		8 & 2.032 \\
+		9 & 2.110 \\
+		10 & 2.176
+	\end{tabu}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Least Squares Analysis}
+	At one point, I needed to know this\ldots
+
+	\vspace{1em}
+
+	You do not have to -- use Excel (or alternative)!
+
+	\vspace{1em}
+
+	You \alert{do} have to know how to add error bars to graphs. Reproduce
+	Figure 4-16 on Harris p. 88.
+\end{frame}
+ 
+\end{document}
