@@ -2,8 +2,10 @@
 %\documentclass[10pt,letterpaper]{article}
 %\usepackage{beamerarticle}
 %\documentclass[notes=hide]{beamer}
-\documentclass[notes=only]{beamer}
+\documentclass[notes=show]{beamer}
 
+\usepackage{newtxtext}
+\usepackage{bucolors}
 \usepackage{analchem}
 \usepackage{lecture}
 \usepackage{pdfpages}
@@ -16,8 +18,7 @@
 \institute[Bloomsburg University] % (optional)
 {Department of Chemistry and Biochemistry\\
   Bloomsburg University}
-\subtitle{Chapters 0 \& 1}
-\date{Fall 2020}
+\date{Fall 2021}
 
 \begin{document}
 
@@ -35,26 +36,18 @@
 
 \begin{frame}
 	\section{What is Analytical Chemistry?}
-	\begin{learningobjectives}
-		\item Understand the difference between qualitative and quantitative analysis.
-		\item Identify necessary procedures for adequate chemical analysis.
-	\end{learningobjectives}
 \end{frame}
 
-\begin{frame}{Chemical Analysis}
+\mode<article>{%
 	Analytical chemistry deals with the
 	identification and separation of materials \alert{and} the
 	determination of its relative amount.
 
-	\vspace{1em}
-
-	\begin{figure}[h]
-		\centering
+	\begin{center}
 		\sffamily
 		\begin{tikzpicture}
 			\node[draw,thick](title) at (0,0) {\bfseries CHEMICAL
 				ANALYSIS};
-			\visible<2->{
 				\node[draw,thick,red](qual) at (-3,-1)
 				{\bfseries What is it?};
 				\draw[->,thick,red] (title.west) to
@@ -63,18 +56,15 @@
 				{\bfseries How much is there?};
 				\draw[->,thick,blue] (title.east) to
 				[in=90,out=0] (quant.north);
-				}
-			\visible<3->{
 				\draw[->,thick,red] (qual.south) to ++(0,-1)
 				node[below,draw,thick,red]{\bfseries
 				QUALITATIVE};
 				\draw[->,thick,blue] (quant.south) to ++(0,-1)
 				node[below,draw,thick,blue]{\bfseries
 				QUANTITATIVE}; 
-				}
 		\end{tikzpicture}
-	\end{figure}
-\end{frame}
+	\end{center}
+}
 
 \begin{frame}{Why is analytical chemistry important?}
 	\mode<presentation>{%
@@ -84,113 +74,26 @@
 	\mode<article>{\textit{Anal. Chem.} \textbf{2020}, 92, 7226-7231}
 \end{frame}
 
-
 \begin{frame}{Steps in Chemical Analysis}
-	\begin{overlayarea}{\linewidth}{0.85\textheight}
-	\begin{enumerate}[<+->]
-		\item \textbf{Formulate a Question}
-
-			\only<1>{General questions into specific
-			questions amenable to being answered through chemical
-			measurements.
-			
-			\begin{itemize}
-				\item<1> What amount of Pb is in our
-					drinking water?
-				\item<1> Will this plastic release harmful
-					chemicals over time?
-			\end{itemize}
-			}
-
-			\mode<article>{\clearpage}
-		
-		\item \textbf{Select Analytical Procedure(s)}
-
-			\only<2>{Search the chemical (scientific) literature to
-			find appropriate procedures or, if necessary,
-			\alert{develop} original procedures to make the required
-			measurements.
-			
-			\begin{itemize}
-				\item<2> What \alert{sensitivity} do we need?
-				\item<2> How much \alert{analyte} will we have?
-				\item<2> Will there be any \alert{interfering
-					species}?
-				\item<2> Which method is most
-					\alert{cost-effective}?
-			\end{itemize}
-			}
-
-		\item \textbf{Sampling}
-
-			\only<3>{Obtain a representative bulk sample from the
-			lot.
-	
-			\begin{itemize}
-				\item<3> In most cases, it is \emph{impossible}
-					to analyze \emph{every} sample.
-			\end{itemize}
-			}
-
-		\item \textbf{Sample Preparation}
-
-			\only<4>{Samples generally need to be purified, diluted,
-			or even concentrated.
-			
-			\begin{itemize}
-				\item<4> If we expect a \emph{really small}
-					concentration, how do we detect it?
-				\item<4> From the textbook, how do we analyze
-					\emph{solid} chocolate bars via HPLC
-					(High Performance \emph{Liquid}
-					Chromatography)
-			\end{itemize}
-			}
-
-		\item \textbf{Analysis}
-
-			\only<5>{Measure the concentration in \alert{several
-			aliquots} of sample against a \alert{calibration} or
-			\alert{standard curve}.
-
-			\begin{itemize}
-				\item<5> What happens if we make a mistake?
-				\item<5> Can instruments make mistakes?
-			\end{itemize}
-			}
-
-		\item \textbf{Reporting and Interpretation}
-
-			\only<6>{Deliver a clearly written, complete report of
-				your results highlighting any
-				\alert{limitations} that you attach to them.
-			
-%			\begin{itemize}
-%				\item<6> I'm grading your work.
-%				\item<6> More importantly, your post-graduation
-%					work will be read by others (bosses,
-%					legislators, \ldots)
-%			\end{itemize}
-
-			\begin{alertblock}<6>{Note:}
-			The report \alert{must} be appropriate for its
-			intended audience.
-			\end{alertblock}
-			}
-
-		\item \textbf{Drawing Conclusions}
-			
-			\only<7>{The more clearly a report is written, the
-			less likely it is to be misinterpreted by those who use
-			it.
-			
-			\begin{alertblock}<7>{Note:}
-			Conclusions \alert{must} be consistent with the
-			data.
-			\end{alertblock}}
-	\end{enumerate}
-	\end{overlayarea}
+	\begin{center}
+		\includegraphics[scale=0.7]{AnalyticalProcess.png}
+	\end{center}
 \end{frame}
+
+\begin{frame}[t]
+	\frametitle{The Vocabulary of Analytical Chemistry}
+	\begin{itemize}
+		\item Analyte
+		\item Technique vs Method vs Procedure vs Protocol
+		\item Accuracy vs Precision
+		\item Sensitivity vs Selectivity
+		\item Robust vs Rugged
+		\item Reagent vs Method vs Field Blank
+		\item Calibration
+		\item Validation
+	\end{itemize}
+\end{frame}
+
 
 \begin{frame}{Constructing a Representative Sample}
 	\begin{itemize}
