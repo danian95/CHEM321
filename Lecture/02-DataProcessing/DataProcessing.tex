@@ -1,10 +1,12 @@
 % !TEX program = xelatex
-\documentclass[notes=hide]{beamer}
-%\documentclass[notes=show]{beamer}
+\PassOptionsToPackage{table}{xcolor}
+%\documentclass[notes=hide]{beamer}
+\documentclass[notes=show]{beamer}
 %\documentclass[notes=only]{beamer}
 %\documentclass[letterpaper,11pt]{article}
 %\usepackage{beamerarticle}
 
+\usepackage{newtxtext}
 \usepackage{analchem}
 \usepackage{lecture}
 \sisetup{
@@ -14,19 +16,18 @@
 	round-mode=off}
 \usepackage{bigdelim}
 \usepgfplotslibrary{fillbetween}
+\usepackage{bucolors}
 
 \title{Data Processing}
-\subtitle{Chapters 3, 4, \& 5}
-\author{D.A. McCurry}
+\author{D.A.\ McCurry}
 \institute{Department of Chemistry and Biochemistry \\ Bloomsburg University}
-\date{Fall 2020}
+\date{Fall 2021}
 
 \begin{document}
 
 \maketitle
-\mode<article>{\thispagestyle{fancy}}
 
-\frame{\section{Significant Figures}
+\frame{\section{Significant Figure Review}
 	\begin{learningobjectives}
 		\item Perform calculations to the correct number of significant figures.
 		\item Understand why certain digits are significant.
@@ -62,7 +63,7 @@
 			\addplot [name path=meniscus,samples=200]
 			{-0.05*sin((x+2)*180)+5.75};
 			\path[name path=bottom] (axis cs:0,0) -- (axis cs:1,0);
-			\addplot[fill=blue,opacity=0.2]
+			\addplot[fill=bugold,opacity=0.2]
 			fill between[
 				of=meniscus and bottom,
 				];
@@ -94,8 +95,6 @@
 
 \end{frame}
 
-\vspace{\stretch{-1}}
-
 \begin{frame}{Rounding}
 	\begin{itemize}
 		\item Round only the final answer (carry \alert{at least} one
@@ -106,18 +105,20 @@
 			significant figures,
 			\begin{center}
 				\begin{tabular} {S[table-format=1.9] @{~$=$~} l}
-					0.794999999 & \visible<2->{0.79} \\
-					0.795000001 & \visible<3->{0.80} \\
-					0.795000000 & \visible<4->{0.80}
+					0.794999999 & \visible<2-|handout:0>{0.79} \\
+					0.795000001 & \visible<3-|handout:0>{0.80} \\
+					0.795000000 & \visible<4-|handout:0>{0.80}
 				\end{tabular}
 			\end{center}
 	\end{itemize}
 \end{frame}
 
-\begin{inclass}
-	Add \numlist[list-final-separator={, and }]{1.234e-4;5.67e-6;8.90e-1}:
+\begin{frame}{Calculations with SF}
+	\begin{example}
+		Add \numlist[list-final-separator={, and }]{1.234e-4;5.67e-6;8.90e-1}:
+	\end{example}
 
-	\note{\begin{center}
+	\mode<article>{\begin{center}
 		\begin{tabular} {c S[table-format=1.8]}
 		    	  & 0.0001234 \\
 			  & 0.00000567 \\
@@ -128,22 +129,69 @@
 	\end{center}
 	}
 
-\end{inclass}
+	\bigskip
 
-\begin{inclass}
-	Perform the following calculation:
-	\begin{align*}
-		\dfrac{\num{1.234e-4} \times \num{8.90e-1}}{\num{5.67e-6}}
-	\end{align*}
+	\pause
 
-	\note{\begin{center}
+	\begin{Example}
+		Perform the following calculation:
+		\begin{align*}
+			\dfrac{\num{1.234e-4} \times \num{8.90e-1}}{\num{5.67e-6}}
+		\end{align*}
+	\end{Example}
+	
+	\mode<article>{\begin{center}
 		\begin{tabular} {@{= }S[table-format=2.11]}
 			19.369949 \\
 			19.4
 		\end{tabular}
 	\end{center}
 	}
-\end{inclass}
+\end{frame}
+
+%\frame{\section{Characterizing Measurements}
+%	\begin{learningobjectives}
+%	\item Use appropriate terminology when describing measurements.
+%	\item Calculate the mean, median, standard deviation, and variance of a
+%		data set.
+%	\end{learningobjectives}
+%}
+%
+%\begin{frame}[c]{Key Terms}
+%	\begin{itemize}
+%		\item Average
+%			\begin{itemize}
+%				\item Mean
+%					\mode<article>{%
+%						\begin{equation*}
+%							\bar{X}=\frac{\sum^n_{i=1}
+%							X_i}{n}
+%						\end{equation*}
+%					}
+%				\item Median
+%					\mode<article>{%
+%						\begin{equation*}
+%							\tilde{X}=\frac{X_{n/2}
+%							+ X_{n/2+1}}{2}
+%						\end{equation*}
+%					}
+%			\end{itemize}
+%
+%			\bigskip
+%
+%		\item Standard Deviation
+%			\mode<article>{%
+%				\begin{equation*}
+%					s=
+%				\end{equation*}
+%			}
+%
+%
+%			\bigskip
+%
+%		\item Variance
+%	\end{itemize}
+%\end{frame}
 
 \frame{\section{Error}
 	\begin{learningobjectives}
@@ -153,47 +201,43 @@
 	\end{learningobjectives}
 }
 
-\vspace{\stretch{-1}}
+\begin{frame}[c,allowframebreaks]{Types of Error}
+	\mode<article>{\alert{Every} measurement has some uncertainty related to
+	it.}
 
-\begin{frame}[t]{Types of Error}
-	\alert{Every} measurement has some uncertainty related to it.
+	\begin{block}{Systematic \emph{or} determinate error}
+		%\item Systematic \emph{or} determinate error
+			\begin{itemize}
+				\item Flaws in the system --- equipment or
+					experiment design;
+					\alert{reproducible}; a bias; can be
+					\alert{determined} and eliminated
+					\begin{itemize}
+						\item pH meter measures low by
+							0.1~pH units
+						\item buret that is
+							\SI{0.05}{\mL} high at
+							\SI{30.00}{\mL}
+					\end{itemize}
+				\item Detecting systematic error:
+					\begin{itemize}
+						\item Analyze samples of known
+							concentration
+							%(standard
+							%or certified reference
+							%materials)
+						\item Analyze blanks to make
+							sure reagents are not
+							``adding'' or hiding
+							analyte
+						\item Use different methods to measure the analyte
+						\item Round robin:  have several individuals or labs perform the analysis on the same sample
+					\end{itemize}
+			\end{itemize}
+		\end{block}
 
-	\only<+>{%
-		\begin{block}{Systematic \emph{or} determinate error}
-			%\item Systematic \emph{or} determinate error
-				\begin{itemize}
-					\item Flaws in the system --- equipment or
-						experiment design;
-						\alert{reproducible}; a bias; can be
-						\alert{determined} and eliminated
-						\begin{itemize}
-							\item pH meter measures low by
-								0.1~pH units
-							\item buret that is
-								\SI{0.05}{\mL} high at
-								\SI{30.00}{\mL}
-						\end{itemize}
-					\item Detecting systematic error:
-						\begin{itemize}
-							\item Analyze samples of known
-								concentration
-								%(standard
-								%or certified reference
-								%materials)
-							\item Analyze blanks to make
-								sure reagents are not
-								``adding'' or hiding
-								analyte
-							\item Use different methods to measure the analyte
-							\item Round robin:  have several individuals or labs perform the analysis on the same sample
-						\end{itemize}
-				\end{itemize}
-			\end{block}
-		}
+		\framebreak
 
-		\mode<article>{\clearpage}
-
-		\only<+>{%
 			\begin{block}{Random \emph{or} indeterminate error}
 				\begin{itemize}
 					\item uncontrolled variables; not reproducible; equal chance of being positive or negative; can be minimized but not eliminated
@@ -210,73 +254,64 @@
 					\item \alert{Avoid these!}
 				\end{itemize}
 			\end{block}
-		}
 \end{frame}
 
 \begin{frame}{Accuracy and Precision}
-	\only<+>{%
-		\begin{columns}[t]
-			\column{0.5\textwidth}
-			\begin{block}{Accuracy}
-				\begin{itemize}
-					\item How close the mean is to the
-						``true'' value
-					\item Measured by error (absolute error,
-						percent error, relative error
-				\end{itemize}
-			\end{block}
-			\column{0.5\textwidth}
-			\begin{block}{Precision}
-				\begin{itemize}
-					\item How well the data from several
-						trials holds together
-					\item Measured by deviations (standard
-						deviation, relative deviation,
-						relative standard deviation
-				\end{itemize}
-			\end{block}
-		\end{columns}
-	}
+	\begin{block}{Accuracy}
+		\begin{itemize}
+			\item How close the mean is to the
+				``true'' value
+			\item Measured by error (absolute error,
+				percent error, relative error
+		\end{itemize}
+	\end{block}
 
-	\only<+>{%
-		\begin{center}
-			\includegraphics[width=\linewidth]{accuracyvprecision.jpg}
-		\end{center}
-	}
+	\begin{block}{Precision}
+		\begin{itemize}
+			\item How well the data from several
+				trials holds together
+			\item Measured by deviations (standard
+				deviation, relative deviation,
+				relative standard deviation
+		\end{itemize}
+	\end{block}
 \end{frame}
 
 \begin{frame}[t]{Uncertainty}
 	\begin{description}[<+->]
 		\item[Absolute uncertainty:] margin of certainty in a
 			measurement
-			\begin{example}<only@.>
+			\begin{example}<1->
 				A class A buret has an uncertainty of
-				\SI{+-0.02}{\mL}
-					\begin{itemize}[<1->]
+				\SI{+-0.02}{\mL}. What volume was actually
+				dispensed when the buret reads \SI{30.23}{\mL}?
+				\SI{0.12}{\mL}?
+
+				\mode<article>{%
+					\begin{itemize}
 						\item \SI{30.23}{\mL} means
 							volume between
 							\SIrange{30.21}{30.25}{\mL}
-						\item \SI{10.12}{\mL} means
+						\item \SI{0.12}{\mL} means
 							volume between
-							\SIrange{10.10}{10.14}{\mL}
+							\SIrange{0.10}{0.14}{\mL}
 					\end{itemize}
+				}
 			\end{example}
 		\item[Relative uncertainty:] the absolute uncertainty
 			corrected for size of measurement
-			\begin{example}<only@.>
-				\begin{align*}
-					\frac{0.02}{0.06} &= 0.0006 \text{ or }
-						\SI{30.23}{\percent} \\ \\
-					\frac{0.02}{10.12} &= 0.002 \text{ or }
-						\SI{0.2}{\percent}
-				\end{align*}
-
-				\bigskip
-
-				\begin{center}
-					\bfseries\usebeamercolor[fg]{alerted text}
-					This is a killer for smaller values!
-				\end{center}
+			\begin{example}<1->
+				For the buret above, calculate the relative
+				uncertainty of each measurement.
+				\mode<article>{%
+					\begin{itemize}
+						\item $\frac{0.02}{30.23} =
+							0.000662 \approx
+							0.07\,\%$
+						\item $\frac{0.02}{0.12} = 0.167
+							\approx 17\,\%$
+					\end{itemize}
+				}
 			\end{example}
 	\end{description}
 \end{frame}
@@ -299,121 +334,30 @@
 
 	With every transfer, an \alert{uncalibrated} buret \emph{might} be delivering the maximum value within tolerance
 	or it might be delivering the minimum.
+
+	\bigskip
+
+\begin{block}{Tolerances of Class A burets}
+	\centering
+	\begin{tabular} {@{}S[table-format=3]
+		S[table-format=1.2] S[table-format=-1.2]}
+		{Buret volume (\si{mL})} & {Smallest graduation
+		(\si{\mL})} & {Tolerance (\si{\mL})} \\ \midrule
+		5 & 0.01 & +-0.01 \\
+		10 & {0.05 \alert{or} 0.02} & +-0.02 \\
+		25 & 0.1 & +-0.03 \\
+		50 & 0.1 & +-0.05 \\
+		100 & 0.2 & +-0.10
+	\end{tabular}
+\end{block}
 \end{frame}
 
-\begin{frame}{Tolerances of Class A burets}
-	\begin{center}
-		\begin{tabular} {@{}S[table-format=3]
-			S[table-format=1.2] S[table-format=-1.2]}
-			{Buret volume (\si{mL})} & {Smallest graduation
-			(\si{\mL})} & {Tolerance (\si{\mL})} \\ \midrule
-			5 & 0.01 & +-0.01 \\
-			10 & {0.05 \alert{or} 0.02} & +-0.02 \\
-			25 & 0.1 & +-0.03 \\
-			50 & 0.1 & +-0.05 \\
-			100 & 0.2 & +-0.10
-		\end{tabular}
-	\end{center}
-\end{frame}
-
-\begin{frame}{Tolerances of Class A volumetric flasks\footnotemark[2]}
-	\begin{center}
-%		\scriptsize
-		\begin{tabular} {@{}S[table-format=4]
-			S[table-format=-1.2]}
-			{Flask capacity (\si{\mL})} & {Tolerance (\si{\mL})} \\
-			\midrule
-			1 & +-0.02 \\
-			2 & +-0.02 \\
-			5 & +-0.02 \\
-			10 & +-0.02 \\
-			25 & +-0.03 \\
-			50 & +-0.05 \\
-			100 & +-0.08 \\
-			200 & +-0.10 \\
-			250 & +-0.12 \\
-			500 & +-0.20 \\
-			1000 & +-0.30 \\
-			2000 & +-0.50 \\
-		\end{tabular}
-	\end{center}
-	\footnotetext[2]{Class B glassware tolerances are twice
-	as large as for Class A}
-\end{frame}
-
-\begin{frame}{Tolerances of Class A transfer pipets}
-	\begin{center}
-%		\scriptsize
-		\begin{tabular} {@{}S[table-format=3.1]
-			S[table-format=-1.3]}
-			{Volume (\si{\mL})} & {Tolerance
-			(\si{\mL})} \\ \midrule
-			0.5 & +-0.006 \\
-			1 & +-0.006 \\
-			2 & +-0.006 \\
-			3 & +-0.01 \\
-			4 & +-0.01 \\
-			5 & +-0.01 \\
-			10 & +-0.02 \\
-			15 & +-0.03 \\
-			20 & +-0.03 \\
-			25 & +-0.03 \\
-			50 & +-0.05 \\
-			100 & +-0.08
-		\end{tabular}
-	\end{center}
-\end{frame}
-		
-\begin{frame}{Manufacturer's tolerances for micropipets}
-	\begin{center}
-		\scriptsize
-		\begin{tabular} {@{}l 
-			S[table-format=-1.1] 
-			S[table-format=-1.1] 
-			S[table-format=-1.1] 
-			S[table-format=-1.2] }
-			& \multicolumn{2}{c}{\bfseries At
-			\SI{10}{\percent} of pipet volume} &
-			\multicolumn{2}{c}{\bfseries At
-			\SI{100}{\percent}
-			of pipet volume} \\
-			Pipet volume (\si{\micro\liter}) &
-			{Accuracy (\%)} & {Precision
-			(\%)} & {Accuracy (\%)} & {Precision
-			(\%)} \\ \midrule
-			\alert{Adjustable Pipets} \\
-			0.2--2 & +-8 & +-4 & +-1.2 & +-0.6 \\
-			1--10 & +-2.5 & +-1.2 & +-0.8 & +-0.4 \\
-			2.5 -- 25 & +-4.5 & +-1.5 & +-0.08 &
-			+-0.2 \\
-			10--100 & +-1.8 & +-0.7 & +-0.6 & +-0.15
-			\\
-			30 -- 300 & +-1.2 & +-0.4 & +-0.4 &
-			+-.15 \\
-			100 -- 1000 & +-1.6 & +-0.5 & +-0.3 &
-			+-0.12 \\ \\
-			\alert{Fixed Pipets} \\
-			10 & & & +-0.8 & +-0.4 \\
-			25 & & & +-0.8 & +-0.3 \\
-			100 & & & +-0.5 & +-0.2 \\
-			500 & & & +-0.4 & +-0.18 \\
-			1000 & & & +-0.3 & +-0.12
-		\end{tabular}
-	\end{center}
-\end{frame}
-
-\vspace{\stretch{-1}}
-
-\begin{frame}{Propagation of Random Error}
-	\only<+>{%
+\begin{frame}[allowframebreaks]{Propagation of Random Error}
 		Systematic error can be removed by \emph{calibrating} glassware, but one can \emph{never} remove
 		\alert{random error}.
 
-		We can assume that the contribution of random error will be much smaller than that of systematic error.
-		We do \alert{not} add random error!
-	}
-
-	\only<+>{%
+%		We can assume that the contribution of random error will be much smaller than that of systematic error.
+%		We do \alert{not} add random error!
 		\begin{center}
 			\begin{tabular} {>{$}p{0.4\linewidth}<{$} >{$}p{0.5\linewidth}<{$} }
 				\toprule
@@ -430,42 +374,49 @@
 				y = \dfrac{x_1}{x_2} & \%e_y = \sqrt{\%e^2_{x_1} +
 				\%e^2_{x_2}} \\
 				\bottomrule
-				\multicolumn{2}{>{\hangindent=0.1\linewidth}p{0.9\linewidth}}
+				\multicolumn{2}{p{0.9\linewidth}}
 					{\footnotesize
 					$x$ represents a variable and
 					$a$ represents a constant that
-					has \alert{no}
-					uncertainty} \\
-				\multicolumn{2}{>{\hangindent=0.1\linewidth}p{0.9\linewidth}}
-					{\footnotesize
+					has \emph{no}
+					uncertainty \newline
 					$e_x/x$ is the relative error in $x$ and $\%e_x$ is
 					$100 \times e_x/x$.}
 			\end{tabular}
 	\end{center}
-}
 
-\only<+>{%
-		\begin{center}
-			\begin{tabular} {>{$}p{0.4\linewidth}<{$} >{$}p{0.5\linewidth}<{$} }
-				\toprule
-				\text{\bfseries Function} &
-				\text{\bfseries Uncertainty} \\
-				\midrule
-				y = x^a & \%e_y = a\%e_x \\ \\
-				
-				y = \log x & e_y = \dfrac{1}{\ln 10} \dfrac{e_x}{x}
-				\approx \num{0.43429} \dfrac{e_x}{x} \\ \\
-	
-				y = \ln x & e_y = \dfrac{e_x}{x} \\ \\
-				
-				y = 10^x & \dfrac{e_y}{y} = (\ln 10) e_x \approx
-				\num{2.3026} e_x \\ \\
-	
-				y = e^x & \dfrac{e_y}{y} = e_x \\
-				\bottomrule
-			\end{tabular}
-	\end{center}
-}
+	\framebreak
+
+	\begin{center}
+		\renewcommand\arraystretch{0.9}
+		\begin{tabular} {>{$}p{0.4\linewidth}<{$} >{$}p{0.5\linewidth}<{$} }
+			\toprule
+			\text{\bfseries Function} &
+			\text{\bfseries Uncertainty} \\
+			\midrule
+			y = x^a & \%e_y = a\%e_x \\ \\
+			
+			y = \log x & e_y = \dfrac{1}{\ln 10} \dfrac{e_x}{x}
+			\approx 0.43429 \dfrac{e_x}{x} \\ \\
+
+			y = \ln x & e_y = \dfrac{e_x}{x} \\ \\
+			
+			y = 10^x & \dfrac{e_y}{y} = (\ln 10) e_x \approx
+			2.3026 e_x \\ \\
+
+			y = e^x & \dfrac{e_y}{y} = e_x \\
+			\bottomrule
+			\multicolumn{2}{p{0.9\linewidth}}
+					{\footnotesize
+					$x$ represents a variable and
+					$a$ represents a constant that
+					has \emph{no}
+					uncertainty \newline
+					$e_x/x$ is the relative error in $x$ and $\%e_x$ is
+					$100 \times e_x/x$.}
+
+		\end{tabular}
+\end{center}
 
 %%	\begin{itemize}
 %%		\item To see how all uncertainties affect a calculated value, we
@@ -483,66 +434,71 @@
 \begin{frame}[t]{Consider the Synthesis of Au NP Lab}
 	For the \SI{1.0}{\milli\Molar} Au sol'n,
 		\begin{itemize}
-			\item An analytical balance was used with
-				tolerance of \SI{+-0.0005}{\gram}
+			\item An analytical balance was used to weigh
+				\SI{0.0396(5)}{\gram} \ch{HAuCl4 * 3 H2O} (FW =
+				\SI{393.83(3)}{\gram\per\mole})
+
 			\item A \SI{100}{\mL} volumetric flask was
 				used with a tolerance of \SI{+-0.08}{\mL}
 		\end{itemize}
 
-		\begin{enumerate}[<only@+(1)>]
-			\item What is the FW of the stock \ch{HAuCl4}?
-				\vspace{\stretch{1}}
-				\note<2>{%
-					\begin{center}
-				\begin{tabular} {r l@{ @ }
-					S[table-format=3.6(6)]@{ $=$ }S[table-format=3.6(6)]}
-					& 7 H & 1.00798(14) & 7.05586(98) \\
-					& 1 Au & 196.966569(4) & 196.966569(4) \\
-					& 4 Cl & 35.452(7) & 141.808(28) \\
-						+ & 3 O & 15.9994(4) & 47.9982(12) \\ \midrule
-						\multicolumn{3}{l}{} & 393.828629(28043) \\
-						\multicolumn{3}{r}{\bfseries Answer:} & 393.83(3)
-				\end{tabular}
-					\end{center}
-			
-				\begin{align*}
-					e &= \sqrt{0.00098^2+0.000004^2+0.028^2+0.0012^2} \\
-					  &= \num{0.0280042832} = 0.03
-				\end{align*}
-			}
-			
-			\item What error is present in the measurement of mass
-				and volume?
-				\vspace{\stretch{1}}
+		\mode<article>{%
+			\begin{align*}
+				[\ch{Au}] &= \frac{\text{g~Au}
+				}{(\text{volume \ch{H2O}})(\text{g/mol~\ch{HAuCl4}})} \\
+					  &=
+					  \frac{\SI{0.0396}{\gram}}{(\SI{0.10000}{\liter})(\SI{393.83}{\gram\per\mole})}
+					  = \SI{1.00551}{\milli\Molar}
+			\end{align*}
+		}
 
-					\note<3>{
-						\SI{0.0396(5)}{\gram} dissolved in \SI{100.00(8)}{\mL} of water.
-				\begin{align*}
-					[\ch{Au}] &= \frac{\text{g~Au}
-					}{(\text{volume \ch{H2O}})(\text{g/mol~\ch{HAuCl4}})} \\
-						  &=
-						  \frac{\SI{0.0396}{\gram}}{(\SI{0.10000}{\liter})(\SI{393.83}{\gram\per\mole})}
-						  = \SI{1.00551}{\milli\Molar}
-						  \\
-					\%e_{[\ch{Au}]} &= \sqrt{\%e^2_{\text{g~Au}} +
-					\%e^2_{\text{volume~\ch{H2O}}}+\%e^2_{\text{g/mol~Au}}} \\
+		\begin{enumerate}[<+->]
+			\item Assuming an \emph{uncalibrated} balance and flask, what
+				error is present in the recorded concentration?
+				\mode<article>{%
+					\begin{align*}
+						e_{[\ch{Au}]} &= 
+						\frac{\SI{0.0005}{\gram}}{(\SI{0.08}{\liter})(\SI{0.03}{\gram\per\mole})}
+						= \boxed{\SI{0.2083}{\milli\Molar}}
+					\end{align*}
+				}
+
+			\item Assuming a \emph{calibrated} balance and flask, what
+				error is present in the recorded concentration?
+				\mode<article>{%
+					\begin{align*}
+						\%e_{\text{g}/\text{L}} &= \sqrt{\%e^2_{\text{g~Au}} +
+					\%e^2_{\text{volume~\ch{H2O}}}} \\
 								   &= \sqrt{\left(\frac{0.0005}{0.0396}\times 100\right)^2 +
 									   \left(\frac{0.00008}{0.10000}\times
-										   100\right)^2 +
-										   \left(\frac{0.03}{393.83}\times
-									   100\right)^2} \\
-								   &= \SI{1.265181056}{\percent} \\
-						\therefore \ch{[Au]} &= \boxed{\SI{1.01(1)}{\milli\Molar}}
+								   100\right)^2}
+										   \\
+								   &=
+								   \SI{1.265158124}{\percent}
+								   \qquad \therefore
+								   e_{\text{g}/\text{L}}
+								   =
+								   \frac{1.265158124}{100}
+								   \times
+								   \frac{\SI{0.0396}{\gram}}{\SI{0.10000}{\liter}}
+								   =
+								   \SI{0.005010026}{\gram\per\liter} \\
+							e_{\ch{[Au]}} &=
+							\frac{\SI{0.005010026}{\gram\per\liter}}{\SI{0.03}{\gram\per\mole}}
+							= \boxed{\SI{0.1670}{\milli\Molar}}
 				\end{align*}
 }
+\item How would you \emph{report} this concentration?
+
+	\mode<article>{\boxed{\SI{1.0(2)}{\milli\Molar}}}
 \end{enumerate}
 
 
 
-	\begin{block}<only@+(1)>{The \alert{REAL} Rule for Significant Figures:}
-		The first digit of the absolute uncertainty is the last
-		significant digit in the answer.
-	\end{block}
+%	\begin{block}<only@+(1)>{The \alert{REAL} Rule for Significant Figures:}
+%		The first digit of the absolute uncertainty is the last
+%		significant digit in the answer.
+%	\end{block}
 \end{frame}
 
 %\note{Determining Mass Error
@@ -597,10 +553,9 @@
 
 \begin{frame}[t]{Every transfer compounds error}
 	Assume we prepared \SI{100}{\milli\liter} of solution by pipetting four
-	\SI{25.00 +- 0.03}{\milli\liter} aliquots to a vial containing the
-	\ch{HAuCl4 * 3 H2O} instead of using a volumetric flask.
-	Assume that dissolution of the \ch{HAuCl4 * 3 H2O} did not
-	change the volume.
+	\SI{25.00 +- 0.03}{\milli\liter} aliquots of water to a vial containing
+	the \ch{HAuCl4 * 3 H2O} instead of using a volumetric flask. Assume
+	that dissolution of the \ch{HAuCl4 * 3 H2O} did not change the volume.
 
 	\begin{alertblock}<+(1)->{Additional error was introduced!}
 		A total of 4 transfers requires further propagation of error.
@@ -609,22 +564,30 @@
 		\end{equation*}
 	\end{alertblock}
 
-	\note<2>{%
-		Instead,
-		\begin{enumerate}
-			\item $e = 4 \times 0.03 = 0.12 \approx \boxed{0.1}$ for an \emph{uncalibrated} pipet.
-			\item Assume that the pipet was calibrated and delivered \SI{24.99(2)}{\mL}:
-		\begin{align*}
-			V_\text{total} &= V_1 + V_2 + V_3 + V_4 \\
-			\therefore e_{V_\text{total}} &= \sqrt{e^2_1 + e^2_2 + e^2_3 +
-			e^2_4 } \\
-					&= \sqrt{4 \times 0.02^2} = \boxed{\num{0.04}}
-		\end{align*}
+	\begin{enumerate}[<+(1)->]
+		\item What volume was transferred for an \emph{uncalibrated}
+			pipet?
+			\mode<article>{%
+				\begin{equation*}
+					e = 4 \times 0.03 = 0.12 \qquad\therefore
+					\boxed{\SI{100.0(1)}{\milli\liter}}
+				\end{equation*}
+			}
+		\item What volume was transferred if the pipet was calibrated
+			and delivered \SI{24.99(2)}{\mL}?
+			\mode<article>{%
+				\begin{align*}
+					V &= 4 \times 24.99 = \SI{99.96}{\mL} \\
+					e_{V_\text{total}} &= \sqrt{e^2_1 +
+					e^2_2 + e^2_3 + e^2_4 } \\
+					&= \sqrt{4 \times 0.02^2} =
+					\SI{0.04}{\mL} \\
+						\therefore V &=
+						\boxed{\SI{99.96(4)}{\mL}}
+					\end{align*}
+				}
 	\end{enumerate}
-	}
 \end{frame}
-
-\clearpage
 
 \begin{frame}{Error is relative}
 	What happens to our error if we were measuring volumes closer to
@@ -649,49 +612,47 @@
 
 % Ended here on 8-20-2020
 
-\vspace{\stretch{-1}}
-
-\begin{frame}[t]{For Titration Labs}
-	Propagate the error in the measurements
-		\begin{itemize}
-			\item analytical balances are \SI{+-
-				0.0005}{\gram}
-			\item class A burets are \SI{+-
-				0.05}{\milli\liter}
-%			\item other burets are \SI{+- 0.1}{\milli\liter}
-		\end{itemize}
-
-	How does this value compare with the experimental standard
-			deviation?
-\end{frame}
-
-\mode<presentation>{%
-	\begin{frame}{Consider the Soda Ash lab}
-	\begin{enumerate}
-		\item mass \ch{Na2CO3} (\SI{+-0.0005}{\gram})
-			\begin{align*}
-				\underbrace{21.5862}_\text{initial} -
-				\underbrace{21.1623}_\text{final} = \SI{0.4239}{\gram}
-			\end{align*}
-		\item dissolve in water (N/A)
-		\item titrate (\SI{+-0.05}{\mL} each unless calibrated)
-			\begin{align*}
-				\underbrace{38.62}_\text{final} -
-				\underbrace{1.15}_\text{initial} =
-				\SI{37.47}{\gram}
-			\end{align*}
-		\item boil (N/A)
-		\item continue titration (\SI{+-0.05}{\mL})
-			\begin{align*}
-				\underbrace{7.66}_\text{final} -
-				\underbrace{5.44}_\text{initial} =
-				\SI{2.22}{\mL}
-			\end{align*}
-	\end{enumerate}
-	
-%	\footnotetext[5]{Some principles will be the same as the Iodometry lab, but
-%	this experiment provides a better example for error propagation!}
-\end{frame}
+%\begin{frame}[t]{For Titration Labs}
+%	Propagate the error in the measurements
+%		\begin{itemize}
+%			\item analytical balances are \SI{+-
+%				0.0005}{\gram}
+%			\item class A burets are \SI{+-
+%				0.05}{\milli\liter}
+%%			\item other burets are \SI{+- 0.1}{\milli\liter}
+%		\end{itemize}
+%
+%	How does this value compare with the experimental standard
+%			deviation?
+%\end{frame}
+%
+%\mode<presentation>{%
+%	\begin{frame}{Consider the Soda Ash lab}
+%	\begin{enumerate}
+%		\item mass \ch{Na2CO3} (\SI{+-0.0005}{\gram})
+%			\begin{align*}
+%				\underbrace{21.5862}_\text{initial} -
+%				\underbrace{21.1623}_\text{final} = \SI{0.4239}{\gram}
+%			\end{align*}
+%		\item dissolve in water (N/A)
+%		\item titrate (\SI{+-0.05}{\mL} each unless calibrated)
+%			\begin{align*}
+%				\underbrace{38.62}_\text{final} -
+%				\underbrace{1.15}_\text{initial} =
+%				\SI{37.47}{\gram}
+%			\end{align*}
+%		\item boil (N/A)
+%		\item continue titration (\SI{+-0.05}{\mL})
+%			\begin{align*}
+%				\underbrace{7.66}_\text{final} -
+%				\underbrace{5.44}_\text{initial} =
+%				\SI{2.22}{\mL}
+%			\end{align*}
+%	\end{enumerate}
+%	
+%%	\footnotetext[5]{Some principles will be the same as the Iodometry lab, but
+%%	this experiment provides a better example for error propagation!}
+%\end{frame}
 
 \begin{frame}[allowframebreaks]{Order of Operations}
 %	Calculate using molar mass from periodic table ($\pm$?~g) to find
@@ -819,13 +780,13 @@
 %			\end{align*}
 %	\end{itemize}
 \end{frame}
-}
+%}
 
 \begin{frame}[t]{Propagating Error in pH}
 	Let's consider a \SI{0.2015(6)}{\Molar}~\ch{HCl} solution.
 	What is the \pH?
 
-	\note{%
+	\mode<article>{%
 		Recall:
 		\begin{align*}
 			\text{pH} &= -\log [\ch{H3O+}] \\
@@ -840,8 +801,6 @@
 		\end{align*}
 	}
 \end{frame}
-
-\clearpage
 
 \frame{\section{Statistics}
 	\begin{learningobjectives}
@@ -868,7 +827,7 @@
 
 \begin{frame}{All measurements contain experimental error}
 		\begin{center}
-			\begin{tabular} {S l l}
+			\begin{tabular} {S p{1.5in} l}
 				\multicolumn{2}{l}{\bfseries Count on ``normal'' days} & {\bfseries Today's count} \\ \midrule
 				5.1 & \rdelim\}{5}{1ex}[$\times$ \SI{e6}{cells\per\micro\liter}] & \\
 				5.3 & & \\
@@ -876,7 +835,7 @@
 				text}\bfseries\SI{5.6e6}{cells\per\micro\liter}} \\
 				5.4 \\
 				5.2 \\
-				\multicolumn{2}{l}{Average =
+				\multicolumn{3}{l}{Average =
 				\SI{5.16e6}{cells\per\micro\liter}}
 			\end{tabular}
 		\end{center}
@@ -891,8 +850,8 @@
 	\centering
 	\begin{tikzpicture}
 		\node(datas) {
-		\scriptsize
-		\begin{tabularx}{0.6\linewidth} {c c c c X r }
+		\resizebox{!}{10em}{%
+		\begin{tabular} {c c c c p{24ex} r }
 			I & I & I & I & \centering 1 case all positive & +4u \\
 			\\
 			D & I & I & I &
@@ -916,9 +875,9 @@
 			D & I & D & D \\
 			I & D & D & D \\ \\
 			D & D & D & D & \centering 1 case all negative & -4u
-		\end{tabularx}};
-	\node[anchor=west] at (datas.east) {
-		\includegraphics[width=0.4\linewidth]{small-distro.png}};
+\end{tabular}}};
+	\node[right=of datas] {
+		\includegraphics[width=0.35\linewidth]{small-distro.png}};
 	\end{tikzpicture}
 \end{frame}
 
@@ -1012,9 +971,10 @@
 			\begin{itemize}
 				\item Credits precision with magnitude of stuff:
 					\begin{align*}
-						\dfrac{0.012}{12.00} = \SI{1}{ppth}
+						\dfrac{0.12}{12.00} = \SI{1}{ppth}
 						\qquad
-						\dfrac{0.12}{24.00} = \SI{0.5}{ppth} \leftarrow{} \text{oops!}
+						\dfrac{0.12}{24.00} =
+						\SI{0.5}{ppth}% \leftarrow{} \text{oops!}
 					\end{align*}
 			\end{itemize}
 		\item What about SFs?
@@ -1056,42 +1016,82 @@
 \vspace{\stretch{-1}}
 
 \begin{frame}{Comparing Standard Deviations}
-\only<+>{%
-	\begin{itemize}
-		\item The \alert{$F$ test} is used to decide whether two
-			standard deviations are \alert{significantly different}
-			from each other.
-			\begin{align*}
-				F_\text{calculated} = \dfrac{
-					\tikz[baseline,remember picture]{ \node
-					[anchor=base, inner sep=0pt]
-					(num) {$s_1^2$}; }}{s_2^2}
-			\end{align*}
-			\begin{tikzpicture}[overlay,remember picture]
-				\draw[thick,black,<-,shorten <= 1ex] (num.east) -- ++(0.5,0) node[right, text = black] {\scriptsize larger $s$ in numerator!};
-			\end{tikzpicture}
-		\item If $F_\text{calculated} > F_\text{table}$, then the two
-			data sets have less than a 5\% chance of coming from
-			distributions with the same population standard
-			deviation.
-	\end{itemize}
-}
+	The \alert{$F$ test} is used to decide whether two standard deviations
+	are \alert{significantly different} from each other.
+	\begin{align*}
+		F_\text{calculated} = \dfrac{
+			\tikz[baseline,remember picture]{ \node
+			[anchor=base, inner sep=0pt]
+			(num) {$s_1^2$}; }}{s_2^2}
+	\end{align*}
+		\begin{tikzpicture}[overlay,remember picture]
+			\draw[thick,black,<-,shorten <= 1ex] (num.east) -- ++(0.5,0) node[right, text = black] {\scriptsize larger $s$ in numerator!};
+		\end{tikzpicture}
+	If $F_\text{calculated} > F_\text{table}$, then the two
+	data sets have less than a 5\% chance of coming from
+	distributions with the same population standard
+	deviation.
+\end{frame}
 
-\only<+>{%
-	\includegraphics[width=\linewidth]{Ftable.png}
-}
+\begin{frame}[shrink=45]
+	\frametitle{Critical Values of $F$ at 95\,\% Confidence Interval}
+	\begin{center}
+%		\tiny
+		\rowcolors{2}{bugold!30}{white}
+%		\setlength{\tabcolsep}{3pt}
+	\begin{tabular}{c*{14}{S[table-format=2.2]}}
+		\toprule & \multicolumn{14}{c}{\bfseries Degrees of Freedom in $\bm{s_1}$} \\
+		\cmidrule(lr){2-15}
+		\rowcolor{white} \textbf{DF $\bm{s_2}$}          & \textbf{2} &     \textbf{3} &     \textbf{4} &     \textbf{5} &     \textbf{6} &     \textbf{7} &     \textbf{8} &     \textbf{9} &    {\bfseries 10} &    {\bfseries 12} &    {\bfseries 15} &    {\bfseries 20} &    {\bfseries 30} & $\bm{\infty{}}$
+		\\ \midrule
+		\textbf{2}     & 19.0  & 19.2  & 19.2  & 19.3  & 19.3  & 19.4  & 19.4  & 19.4  & 19.4  & 19.4  & 19.4  & 19.4  & 19.5  & 19.5  \\
+	         \textbf{3}     &  9.55 &  9.28 &  9.12 &  9.01 &  8.94 &  8.89 &  8.84 &  8.81 &  8.79 &  8.74 &  8.70 &  8.66 &  8.62 &  8.53 \\
+	         \textbf{4}     &  6.94 &  6.59 &  6.39 &  6.26 &  6.16 &  6.09 &  6.04 &  6.00 &  5.96 &  5.91 &  5.86 &  5.80 &  5.75 &  5.63 \\
+	         \textbf{5}     &  5.79 &  5.41 &  5.19 &  5.05 &  4.95 &  4.88 &  4.82 &  4.77 &  4.74 &  4.68 &  4.62 &  4.56 &  4.50 &  4.36 \\
+	         \textbf{6}     &  5.14 &  4.76 &  4.53 &  4.39 &  4.28 &  4.21 &  4.15 &  4.10 &  4.06 &  4.00 &  3.94 &  3.87 &  3.81 &  3.67 \\
+	         \textbf{7}     &  4.74 &  4.35 &  4.12 &  3.97 &  3.87 &  3.79 &  3.73 &  3.68 &  3.64 &  3.58 &  3.51 &  3.44 &  3.38 &  3.23 \\
+	         \textbf{8}     &  4.46 &  4.07 &  3.84 &  3.69 &  3.58 &  3.50 &  3.44 &  3.39 &  3.35 &  3.28 &  3.22 &  3.15 &  3.08 &  2.93 \\
+	         \textbf{9}     &  4.26 &  3.86 &  3.63 &  3.48 &  3.37 &  3.29 &  3.23 &  3.18 &  3.14 &  3.07 &  3.01 &  2.94 &  2.86 &  2.71 \\
+	        \textbf{10}     &  4.10 &  3.71 &  3.48 &  3.33 &  3.22 &  3.14 &  3.07 &  3.02 &  2.98 &  2.91 &  2.84 &  2.77 &  2.70 &  2.54 \\
+	        \textbf{11}     &  3.98 &  3.59 &  3.36 &  3.20 &  3.10 &  3.01 &  2.95 &  2.90 &  2.85 &  2.79 &  2.72 &  2.65 &  2.57 &  2.40 \\
+	        \textbf{12}     &  3.88 &  3.49 &  3.26 &  3.11 &  3.00 &  2.91 &  2.85 &  2.80 &  2.75 &  2.69 &  2.62 &  2.54 &  2.47 &  2.30 \\
+	        \textbf{13}     &  3.81 &  3.41 &  3.18 &  3.02 &  2.92 &  2.83 &  2.77 &  2.71 &  2.67 &  2.60 &  2.53 &  2.46 &  2.38 &  2.21 \\
+	        \textbf{14}     &  3.74 &  3.34 &  3.11 &  2.96 &  2.85 &  2.76 &  2.70 &  2.65 &  2.60 &  2.53 &  2.46 &  2.39 &  2.31 &  2.13 \\
+	        \textbf{15}     &  3.68 &  3.29 &  3.06 &  2.90 &  2.79 &  2.71 &  2.64 &  2.59 &  2.54 &  2.48 &  2.40 &  2.33 &  2.25 &  2.07 \\
+	        \textbf{16}     &  3.63 &  3.24 &  3.01 &  2.85 &  2.74 &  2.66 &  2.59 &  2.54 &  2.49 &  2.42 &  2.35 &  2.28 &  2.19 &  2.01 \\
+	        \textbf{17}     &  3.59 &  3.20 &  2.96 &  2.81 &  2.70 &  2.61 &  2.55 &  2.49 &  2.45 &  2.38 &  2.31 &  2.23 &  2.15 &  1.96 \\
+	        \textbf{18}     &  3.56 &  3.16 &  2.93 &  2.77 &  2.66 &  2.58 &  2.51 &  2.46 &  2.41 &  2.34 &  2.27 &  2.19 &  2.11 &  1.92 \\
+	        \textbf{19}     &  3.52 &  3.13 &  2.90 &  2.74 &  2.63 &  2.54 &  2.48 &  2.42 &  2.38 &  2.31 &  2.23 &  2.16 &  2.07 &  1.88 \\
+	        \textbf{20}     &  3.49 &  3.10 &  2.87 &  2.71 &  2.60 &  2.51 &  2.45 &  2.39 &  2.35 &  2.28 &  2.20 &  2.12 &  2.04 &  1.84 \\
+	        \textbf{30}     &  3.32 &  2.92 &  2.69 &  2.53 &  2.42 &  2.33 &  2.27 &  2.21 &  2.16 &  2.09 &  2.01 &  1.93 &  1.84 &  1.62 \\
+		$\bm{\infty{}}$ &  3.00 &  2.60 &  2.37 &  2.21 &  2.10 &  2.01 &  1.94 &  1.88 &  1.83 &  1.75 &  1.67 &  1.57 &  1.46 &  1.00 \\
+		\bottomrule
+	\end{tabular}
+	\end{center}
+\end{frame}
 
-	\mode<article>{\clearpage}
-
-\only<+>{%
-	\includegraphics[width=\linewidth]{table4-2.png}
-
-	\vspace{2em}
+\begin{frame}[t]{Measurement of \ch{HCO3-} in Horse Blood}
+	\begin{center}
+		\footnotesize
+		\begin{tabular} {l@{}*{2}{S[table-format=2.2]}}
+			\toprule
+			& \bfseries Original Instrument & \bfseries Substitute Instrument \\
+			\cmidrule{2-3}
+			Mean ($\bar{X}$, \si{\milli\Molar}) & 36.14 & 36.20 \\
+			Standard deviation ($s$, \si{\milli\Molar}) & 0.28 & 0.47 \\
+			Number of measurements ($n$) & 10 & 4 \\
+			\bottomrule
+			\multicolumn{3}{l}{\tiny Data from M.\ Jarrett,
+			D.B.\ Hibbert, R.\ Osborne, and E.B.\ Young.
+		\textit{Anal.\ Bioanal.\ Chem.} \textbf{2010}, 397, 717.}
+		\end{tabular}
+	\end{center}
 
 	Is the standard deviation from the substitute instrument significantly
 	greater than that of the original instrument?
+\end{frame}
 
-\note{
+\mode<article>{%
 	\begin{align*}
 		F_{\text{calculated}} &= \dfrac{s_1^2}{s_2^2} \\
 		&= \dfrac{(0.47)^2}{(0.28)^2} \\
@@ -1105,8 +1105,6 @@
 
 	\textbf{Note what happens if number of measurements increases!}
 	}
-}
-\end{frame}
 
 \begin{frame}{Confidence Intervals}
 	\only<+>{%
@@ -1139,18 +1137,48 @@
 	\end{columns}
 	\end{block}
 	}
+\end{frame}
 
-	\only<+>{%
-		\includegraphics[width=\linewidth]{ttable.png}
-	}
+\begin{frame}[shrink=40]{Values of Student's $t$}
+	\rowcolors{2}{bugold!30}{white}
+	\begin{center}
+%		\tiny
+		\begin{tabular} {c*{7}{S[table-format=3.3]}}
+		\toprule
+	& \multicolumn{7}{c}{\textbf{Confidence level (5\,\%)}} \\ \cmidrule(lr){2-8}
+			\rowcolor{white} \textbf{DF} & \textbf{50} & \textbf{90} & \textbf{95} & \textbf{98} & \textbf{99} & \textbf{99.5} & \textbf{99.9} \\
+	\midrule
+		       1   & 1.000 & 6.314 & 12.706 & 31.821 & 63.656 & 127.321 & 636.578 \\
+		       2   & 0.816 & 2.920 &  4.303 &  6.965 &  9.925 &  14.089 &  31.598 \\
+		       3   & 0.765 & 2.353 &  3.182 &  4.541 &  5.841 &   7.453 &  12.924 \\
+		       4   & 0.741 & 2.132 &  2.776 &  3.747 &  4.604 &   5.598 &   8.610 \\
+		       5   & 0.727 & 2.015 &  2.571 &  3.365 &  4.032 &   4.773 &   6.869 \\
+		       6   & 0.718 & 1.943 &  2.447 &  3.143 &  3.707 &   4.317 &   5.959 \\
+		       7   & 0.711 & 1.895 &  2.365 &  2.998 &  3.500 &   4.029 &   5.408 \\
+		       8   & 0.706 & 1.860 &  2.306 &  2.896 &  3.355 &   3.832 &   5.041 \\
+		       9   & 0.703 & 1.833 &  2.262 &  2.821 &  3.250 &   3.690 &   4.781 \\
+		       10  & 0.700 & 1.812 &  2.228 &  2.764 &  3.169 &   3.581 &   4.587 \\
+		       15  & 0.691 & 1.753 &  2.131 &  2.602 &  2.947 &   3.252 &   4.073 \\
+		       20  & 0.687 & 1.725 &  2.086 &  2.528 &  2.845 &   3.153 &   3.850 \\
+		       25  & 0.684 & 1.708 &  2.060 &  2.485 &  2.787 &   3.078 &   3.725 \\
+		       30  & 0.683 & 1.697 &  2.042 &  2.457 &  2.750 &   3.030 &   3.646 \\
+		       40  & 0.681 & 1.684 &  2.021 &  2.423 &  2.704 &   2.971 &   3.551 \\
+		       60  & 0.679 & 1.671 &  2.000 &  2.390 &  2.660 &   2.915 &   3.460 \\
+		       120 & 0.677 & 1.658 &  1.980 &  2.358 &  2.617 &   2.860 &   3.373 \\
+		$\infty{}$ & 0.674 & 1.645 &  1.960 &  2.326 &  2.576 &   2.807 &   3.291 \\
+		\bottomrule
+	\end{tabular}
+\end{center}
 \end{frame}
 
 \mode<presentation>{
 	\begin{frame}{William Sealy Gosset}{Head Brewer of Guinness}
 		\begin{columns}
 			\column{0.4\linewidth}
-			\includegraphics[width=\linewidth]{William_Sealy_Gosset.jpg}
-			\column{0.6\linewidth}
+			\begin{center}
+				\includegraphics[width=\linewidth]{William_Sealy_Gosset.jpg}
+			\end{center}
+			\column{0.55\linewidth}
 			\begin{quote}
 				\raggedright
 				At Guinness the scientific brewers, including
@@ -1166,14 +1194,14 @@
 	\end{frame}
 }
 
-\begin{frame}{Confidence Interval Example}
-	\only<+>{%
+\begin{frame}[t]{Confidence Interval Example}
 	Let's find \SIlist{50;95;99}{\percent} CIs:
 	
 	\begin{center}
 		\begin{tabular} {@{}S l l}
+			\toprule
 			\multicolumn{2}{l}{\bfseries Count on ``normal'' days} &
-			{\bfseries Today's count} \\ \toprule
+			{\bfseries Today's count} \\ \midrule
 			5.1 & \rdelim\}{5}{1ex}[$\times$
 			\SI{e6}{cells\per\micro\liter}] & \\
 			5.3 & & \\
@@ -1182,8 +1210,8 @@
 			5.2 \\ \bottomrule
 		\end{tabular}
 	\end{center}
-	\begin{columns}
-		\column{0.5\linewidth}
+
+	\mode<article>{%
 		\begin{align*}
 			\mu &= \bar{x} \pm \dfrac{ts}{\sqrt{n}}
 			= \bar{x} \pm tu_x \\
@@ -1192,37 +1220,34 @@
 			\underbrace{\tfrac{s}{\sqrt{n}}}_{\mathclap{\text{standard
 			uncertainty}}}
 		\end{align*}
-		\column{0.5\linewidth}
-	\begin{align*}
-		\bar{x} &= \num{5.16e6} \\
-		s &= \num{0.23e6} \\
-		t &= \underbrace{\underbrace{0.741}_{50\%}, \underbrace{2.776}_{95\%},
-		\underbrace{4.606}_{99\%}}_{\text{4 degrees of freedom}}
-	\end{align*}
-	\end{columns}
-}
-
-\only<+>{%
-	\begin{center}
-		\sisetup{table-format=1.2e1}
-		\begin{tabular} {r@{\% CI:\qquad}S@{ $\leq \mu \leq$ } S}
-		50 & 5.07e6 & 5.25e6 \\
-		95 & 4.84e6 & 5.48e6 \\
-		99 & 4.63e6 & 5.69e6
-	\end{tabular}
-	\end{center}
-
-	\begin{itemize}
-		\item The more confidence we want, the larger the range of data
-			must be!
-		\item 50\% indicates the chance is 1 in 2 that the true mean is
-			inside the stated range (and 1 in 2 that it is not!)
-		\item 95\% indicates the chance is 19 in 20 that the true mean is
-			inside the range
-		\item \SI{5.6e6}{cells\per\micro\liter} \alert{looks} high since
-			it fits only at 99\% and up!
-	\end{itemize}
-}
+	
+		\begin{align*}
+			\bar{x} &= \num{5.16e6} \\
+			s &= \num{0.23e6} \\
+			t &= \underbrace{\underbrace{0.741}_{50\%}, \underbrace{2.776}_{95\%},
+			\underbrace{4.606}_{99\%}}_{\text{4 degrees of freedom}}
+		\end{align*}
+	
+		\begin{center}
+			\sisetup{table-format=1.2e1}
+			\begin{tabular} {r@{\% CI:\qquad}S@{ $\leq \mu \leq$ } S}
+			50 & 5.07e6 & 5.25e6 \\
+			95 & 4.84e6 & 5.48e6 \\
+			99 & 4.63e6 & 5.69e6
+		\end{tabular}
+		\end{center}
+	
+		\begin{itemize}
+			\item The more confidence we want, the larger the range of data
+				must be!
+			\item 50\% indicates the chance is 1 in 2 that the true mean is
+				inside the stated range (and 1 in 2 that it is not!)
+			\item 95\% indicates the chance is 19 in 20 that the true mean is
+				inside the range
+			\item \SI{5.6e6}{cells\per\micro\liter} \alert{looks} high since
+				it fits only at 99\% and up!
+		\end{itemize}
+	}
 \end{frame}
 
 \begin{frame}{Utility of confidence intervals}
@@ -2010,53 +2035,6 @@ false results.
 \end{learningobjectives}}
 
 \vspace{\stretch{-1}}
-
-\begin{frame}{Method Validation}
-	The process of proving that an analytical method is acceptable for its
-	intended purpose.
-
-	\begin{center}
-		\textbf{The Theranos Minilab}
-
-		\vspace{1em}
-
-		\includegraphics[width=0.6\linewidth]{theranos-minilab.jpg}
-	\end{center}
-
-	\footnotetext{\href{https://web.archive.org/web/20170627134226/https://www.theranos.com/
-	}{\tiny https://web.archive.org/web/20170627134226/https://www.theranos.com/ (accessed Sep 10,
-	2018)}}
-\end{frame}
-
-\begin{frame}{Specificity/Selectivity}
-	\begin{columns}
-		\column{0.5\linewidth}
-	The ability of an analytical method to distinguish analyte from the
-	sample matrix.
-
-		\column{0.5\linewidth}
-	\begin{center}
-		\includegraphics[scale=0.2]{specificity.jpg}
-	\end{center}
-	\end{columns}
-
-	\begin{exampleblock}{Cross-reactivity}
-		\begin{columns}
-			\column{0.5\linewidth}
-			Often, analytical biochemical analyses 
-			require a demonstration of \alert{specific
-			binding} with the analyte.
-
-			\column{0.4\linewidth}
-			\centering
-			\includegraphics[width=0.9\linewidth]{cross-reactivity.jpg}
-		\end{columns}
-
-			\tiny Sloan, C. D. K.; Marty, M. T.; Sligar, S. G.;
-			Bailey, R. C. \textit{Anal. Chem.} \textbf{2013}, 85
-			(5), 2970–2976.
-	\end{exampleblock}
-\end{frame}
 
 \begin{frame}{Linearity}
 	How well a calibration curve follows a straight line -- the response is
