@@ -1,11 +1,11 @@
 % !TEX program = xelatex
 \PassOptionsToPackage{table}{xcolor}
 %\documentclass[notes=hide]{beamer}
-\documentclass[notes=show]{beamer}
+%\documentclass[notes=show]{beamer}
 %\documentclass[handout]{beamer}
 %\documentclass[notes=only]{beamer}
-%\documentclass[letterpaper,11pt]{article}
-%\usepackage{beamerarticle}
+\documentclass[letterpaper,11pt]{article}
+\usepackage{beamerarticle}
 
 \usepackage{newtxtext}
 \usepackage{analchem}
@@ -1723,689 +1723,689 @@
 %	You \alert{do} have to know how to add error bars to graphs. Reproduce
 %	Figure 4-16 on Harris p. 88.
 %\end{frame}
- \frame{\section{Method Validation}
-\begin{learningobjectives}
-\item Understand where limitations exist in certain measurements.
-\item Quantify the limitations of an analysis.
-\end{learningobjectives}}
-
-\vspace{\stretch{-1}}
-
-\begin{frame}{Linearity}
-	How well a calibration curve follows a straight line -- the response is
-	\alert{proportional} to the quantity of analyte.
-
-	\begin{align*}
-		\shortintertext{e.g. our friend, $R^2$}
-		\text{Square of correlation coefficient:\qquad} R^2 =
-		\dfrac{\big[\sum(x_i - \bar{x})(y_i - \bar{y})\big]^2}{\sum (x_i
-		- \bar{x})^2 \sum (y_i - \bar{y})^2}
-	\end{align*}
-
-	\begin{itemize}
-		\item $R^2$ should approach a value of 1 when the data is
-			``good'' -- it fits our model (a straight line)
-		\item Use \texttt{=LINEST()} in Excel to retrieve value
-		\item $y$-intercept should also be close to 0 \alert{after
-			background subtraction}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Accuracy}
-	``Nearness to the truth.''
-
-	\begin{enumerate}
-		\item Compare a \alert{certified reference material} in a
-			similar matrix to your unknown.
-		\item Compare results from multiple different methods.
-		\item Spike a sample with a known addition of analyte.
-		\item Use the \alert{standard addition} method.
-	\end{enumerate}
-
-	The goal is to keep the sample matrix as close as possible to that of
-	the unknown. Spiking is the most common method.
-\end{frame}
-
-\begin{frame}{Precision}
-	How well replicate measurements agree with one another (think standard
-	deviation or confidence interval).
-
-	\begin{itemize}
-		\item \textbf{Repeatability:} the spread in results when
-			\alert{one} person uses \alert{one} procedure to analyze
-			the \alert{same} sample by the \alert{same} method
-			multiple times.
-		\item \textbf{Reproducibility:} the spread in results when
-			\alert{different} people in \alert{different} labs use
-			\alert{different} instruments each to try to follow the
-			\alert{same} procedure.
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{The Horwitz Trumpet}
-	\begin{columns}
-		\column{0.5\linewidth}
-		\begin{align*}
-			\text{RSD \%} \approx 2^{(1-0.5 \log C)}
-		\end{align*}
-		where $C$ is the mass ratio of analyte to sample. As $C$
-		decreases, the RSD increases between laboratories.
-		\column{0.5\linewidth}
-		\begin{center}
-			\includegraphics[scale=0.25]{horwitz.jpg}
-		\end{center}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Range}
-	The concentration interval over which linearity, accuracy, and precision
-	are all acceptable.
-
-	\begin{columns}
-	\column{0.5\linewidth}
-	\begin{itemize}
-		\item \textbf{Linear Range:} interval where calibration curve is
-			linear
-		\item \textbf{Dynamic Range:} interval where there is a
-			measurable response
-		\item \textbf{Range:} interval where linearity, accuracy, and
-			precision meet \alert{specifications} for the method
-	\end{itemize}
-	\column{0.5\linewidth}
-	\only<+>{%
-	\begin{center}
-		\includegraphics[scale=0.9]{range-definitions.png}
-	\end{center}
-}
-\only<+>{%
-		\begin{alertblock}{Note:}
-		Just because we can draw a straight line from $0 \rightarrow
-		\infty$ does not mean we can extrapolate analyte concentration
-		from $0 \rightarrow \infty$!
-	\end{alertblock}
-}
-\end{columns}
-
-\end{frame}
-
-\begin{frame}{Where can we determine [analyte]?}
-	\begin{center}
-	\only<1>{\includegraphics[width=\linewidth]{range-trendline.png}}
-
-	\only<2|article:0>{\includegraphics[width=\linewidth]{range-trendline-full.png}}
-	\end{center}
-\end{frame}
-
-\vspace{\stretch{-1}}
-
-\begin{frame}[allowframebreaks]{Limit of Detection (LOD)}
-	The smallest quantity of analyte that is ``significantly different''
-	from the blank.
-
-	\begin{columns}
-		\column{0.5\linewidth}
-		\begin{itemize}
-			\item Half of the samples whose analyte concentration is
-				at the detection limit give \alert{false
-				negatives}.
-			\item The detection limit is often defined as the
-				concentration of analyte that gives a signal
-				equal to three times the standard deviation of
-				signal from a blank.
-		\end{itemize}
-		\column{0.5\linewidth}
-		\begin{center}
-			\includegraphics[scale=0.5]{lod.png}
-		\end{center}
-	\end{columns}
-
-	\framebreak
-
-	\begin{align*}
-		\intertext{\textit{Signal detection limit:}}
-		y_\text{dl} &= y_\text{blank} + 3s \\
-		\intertext{\textit{Calibration line:}}
-		y_\text{sample} - y_\text{blank} &= m \times \text{sample
-		concentration} \\
-		\intertext{\textit{Detection limit:}}
-		\text{Minimum detectable concentration} &\equiv \dfrac{3s}{m}
-	\end{align*}
-\end{frame}
-
-\note{
-	Calibration line equation comes from offset of blank:
-
-	\begin{align*}
-		y &= mx + b \\
-		y_\text{sample} &= m \times \text{sample concentration} +
-		y_\text{blank} \\
-		y_\text{sample} - y_\text{blank} &= m \times \text{sample
-		concentration}
-	\end{align*}
-
-	Detectable concentration assumes $y_\text{dl}$ is as close to the blank
-	as possible:
-
-	\begin{align*}
-		y_\text{blank} + 3s - y_\text{blank} &= m \times \text{minimum
-		detectable concentration} \\
-		\dfrac{3s}{m} &= \text{minimum detectable concentration}
-	\end{align*}
-	}
-
-\begin{frame}{Limit of Quantitation}
-		When the signal is 3 times greater than the noise (blank),
-			it is detectable, but we cannot accurately measure
-			(quantify) the analyte.
-	\begin{itemize}
-		\item We define a signal that is 10 times greater than the noise
-			as the \alert{lower limit of quantitation} because we
-			can be \alert{reasonably} confident in its accuracy.
-	\end{itemize}
-
-	\begin{align*}
-		\text{Lower limit of quantitation} \equiv \dfrac{10s}{m}
-	\end{align*}
-
-	\begin{itemize}
-		\item Where is the upper limit of quantitation?
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Robustness}
-	The ability of an analytical method to be unaffected by small,
-	deliberate changes in operating parameters.
-
-	\begin{itemize}
-		\item What is the pH range at which we can run this analysis?
-		\item Is there an optimal ionic strength of the buffer?
-		\item How does temperature affect the results?
-	\end{itemize}
-\end{frame}
-
-\vspace{\stretch{-1}}
-
-
-\frame{\section{Quality Assurance}
-\begin{learningobjectives}
-\item Note the need for certain standards.
-\item Understand the need for specific sampling requirements, the
-difference between selectivity and sensitivity, and the possiblity of
-false results.
-\end{learningobjectives}}
-
-\mode<presentation>{%
-\begin{frame}{Quality Assurance Job Market}{As of September 9, 2019}
-	\centering
-		\begin{tabular} {c c}
-		\includegraphics[width=0.3\textwidth]{linkedin.png} &
-	\includegraphics[width=0.6\textwidth]{indeed.png}\\
-		\\
-		LinkedIn: 142,187 & Indeed: 20,743 over \$95,000
-	\end{tabular}
-\end{frame}
-
-\begin{frame}
-	\begin{center}
-	\includegraphics[width=0.9\linewidth]{takata.png}
-	\end{center}
-	\footnotetext{\href{https://www.bloomberg.com/news/articles/2016-02-02/takata-faulted-on-quality-control-culture-by-panel-it-appointed}{\tiny Bloomberg.com. February 2, 2016.}}
-\end{frame}
-
-\begin{frame}
-	\begin{center}
-		\includegraphics[width=\linewidth,trim={0.5in 4.25in 1in 1.75in },clip]{substandard-med.pdf}
-	\end{center}
-	\footnotetext{\href{https://doi.org/10.1111/j.1365-3156.2008.02106.x}
-	{\tiny Caudron, J.-M. et al. \textit{Tropical Medicine \&
-	International Health} \textbf{2008}, 13 (8), 1062–1072.}}
-\end{frame}
-
-\begin{frame}{Local industry sometimes needs a hand!}
-	\centering
-	\includegraphics[width=0.95\linewidth]{autoneum.pdf}
-\end{frame}
-}
-
-\begin{frame}{Quality Assurance}
-	\begin{center}
-	``... is what we do to get the right answer for our purpose.''
-	\end{center}
-
-	\begin{columns}
-		\column{0.5\linewidth}
-		\begin{exampleblock}{The Need for Quality Assurance}
-			181 labs are assessed in Belgium with a certified lead
-			sample (\SI{62.3 +- 1.3}{\nano\Molar}~\ch{Pb}). Many of the
-			results are not within certification even though these
-			are `certified' labs. What went wrong?
-		\end{exampleblock}
-		\column{0.5\linewidth}
-		\begin{center}
-			\includegraphics[scale=0.25]{qa-belgium.jpg}
-		\end{center}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Basics of Quality Assurance}
-	\begin{itemize}
-		\item \textbf{Raw data:} measurements
-		\item \textbf{Treated data:} concentrations derived from raw
-			data \alert{by use of calibration methods}.
-		\item \textbf{Results:} quantities reported \alert{after
-			statistical analysis} of treated data.
-	\end{itemize}
-
-	\begin{block}{Use Objective}
-		The purpose for which results will be used.
-
-		\begin{itemize}
-			\item Why are we doing this?
-			\item What is our stated range?
-			\item How will we use this information in the future?
-		\end{itemize}
-	\end{block}
-\end{frame}
-
-\begin{frame}{Specifications}
-	\begin{columns}
-		\column{0.5\linewidth}
-		To meet the use objective, what must we do?
-		\begin{itemize}
-			\item<1-> sampling requirements
-			\item<1-> accuracy and precision
-			\item<2-> rate of false results
-			\item<3-> selectivity
-			\item<3-> sensitivity
-			\item<4-> acceptable blank values
-			\item<5-> recovery of fortification
-			\item<6-> calibration checks
-			\item<7-> quality control samples
-		\end{itemize}
-		\column{0.5\linewidth}
-			\only<1|handout:0>{Recall the importance of sampling
-			from Lecture 1! An accurate analysis is meaningless if
-			care is not taken.
-				
-				\begin{center}
-					What is possible provided the
-					instrumentation we have?
-				\end{center}
-				}
-			\only<2|handout:0>{
-				\begin{block}{False positive}
-					The concentration appears to exceed the
-					legal limit, but is actually below.
-				\end{block}
-
-				\begin{block}{False negative}
-					The concentration appears to be below
-					the legal limit, but is actually above.
-				\end{block}
-
-				\begin{center}
-				What is acceptable?
-				\end{center}
-				}
-			\only<3|handout:0>{
-				\begin{block}{Selectivity/Specificity}
-					The ability to distinguish an analyte
-					from another species.
-				\end{block}
-
-				\begin{block}{Sensitivity}
-					The response of a method to a change in
-					analyte concentration.
-
-					\begin{align*}
-						\text{sensitivity} =
-						\dfrac{\Delta
-						\text{signal}}{\Delta
-						[\text{analyte}]}
-					\end{align*}
-				\end{block}
-				
-				\begin{center}
-					What \alert{interferents} are present?
-				\end{center}
-				}
-				\only<4|handout:0>{
-					\begin{block}{Method Blank}
-						A sample that contains all
-						components except the analyte.
-						Taken through
-						\alert{all} steps
-						of procedure.
-					\end{block}
-
-					\begin{block}{Reagent Blank}
-						Not taken through the same
-						sample preparation.
-					\end{block}
-
-					\begin{block}{Field Blank}
-						Also taken to the sampling site.
-						Exposed to all possible
-						contaminants from sampling to
-						transport to laboratory.
-					\end{block}
-					}
-				\only<5|handout:0>{
-					\begin{block}{Matrix}
-						Everything in the sample
-						besides the analyte.
-					\end{block}
-
-					\begin{block}{Spike/Fortification}
-						Addition of extra analyte to the
-						sample to gauge response.
-					\end{block}
-
-					\begin{center}
-						How do we know something in the
-						sample isn't affecting the
-						analyte response?
-					\end{center}
-					}
-				\only<6|handout:0>{
-					\begin{block}{Calibration Check}
-						Analyze solutions with a
-						\alert{known} concentration of
-						analyte periodically to ensure
-						no instrument drift or initial
-						standards were made properly.
-					\end{block}
-
-					\begin{center}
-						Why do some instruments require
-						a ``warm up'' period?
-					\end{center}
-					}
-				\only<7|handout:0>{
-					\begin{block}{Quality Control Samples}
-						Eliminates bias introduced by
-						the analyst (\alert{you}).
-						Samples of known concentration
-						prepared by another individual
-						are provided to the analyst.
-					\end{block}
-
-					\begin{center}
-						Do you think you see a trend
-						because you expect to see a
-						trend?
-					\end{center}
-					}
-	\end{columns}
-\end{frame}
-
-\begin{frame}[allowframebreaks]{Standard Operating Procedures (SOPs)}
-	\begin{columns}
-		\column{0.5\linewidth}
-	\begin{itemize}
-		\item Steps to be taken and the method through which they will
-			be carried out.
-		\item Often indicate proper reagent storage or what to look out
-			for should one ``go bad''
-		\item Contain information regarding proper instrument
-			maintenance and usage
-		\item \textbf{Include important safety procedures to protect you
-			and your coworkers -- emergency response procedures}
-	\end{itemize}
-
-	\column{0.5\linewidth}
-
-	\includegraphics[width=\linewidth,trim={0.5in 0.5in 0.5in 0.5in},clip]{SampleLaserSOP.pdf}
-\end{columns}
-
-	\footnotetext{\tiny\href{https://www.drs.illinois.edu/Programs/StandardOperatingProcedures}{https://www.drs.illinois.edu/Programs/StandardOperatingProcedures
-	(accessed Sep 10, 2018).}}
-\end{frame}
-
-\begin{frame}{Chain of Custody}
-	\begin{columns}
-		\column{0.5\linewidth}
-		\begin{itemize}
-			\item A ``paper trail''
-			\item Every time a sample is exchanged between
-				individuals, a record must exist
-			\item The next receiving individual must inspect the
-				condition of the sample
-		\end{itemize}
-		\column{0.5\linewidth}
-		\includegraphics[width=\linewidth]{chainofcustody.png}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Assessment}
-	\begin{itemize}
-		\item Collecting data to show that analytical procedures are
-			operating \alert{within specified limits}
-		\item Verifying that final results meet use objectives
-	\end{itemize}
-
-	\begin{columns}
-		\column{0.5\linewidth}
-		\begin{block}{Control Chart}
-			A visual representation of confidence intervals.
-			
-			\vspace{1em}
-
-			Random samples must be within acceptable limits.
-			Statistically unlikely results require shutdown of the
-			analysis process.
-		\end{block}
-		\column{0.5\linewidth}
-		\tiny
-		\begin{center}
-			\includegraphics[scale=0.6]{controlchart.png}
-		\end{center}
-
-		Control chart for \ch{ClO4-} in urine. [Data from L.
-		Valentin-Blasini, J. P. Mauldin, D. Maple, B. C. Blount.
-		\textit{Anal. Chem.} \textbf{2005}, 77, 2475.]
-	\end{columns}
-\end{frame}
-
-\vspace{\stretch{-1}}
-
-\frame{\section{Calibration Curves}
-\begin{learningobjectives}
-\item Be familiar with the different types of calibration methods.
-\item Know when a certain curve may be perferable over other
-	calibration methods.
-\end{learningobjectives}
-}
-
-\vspace{\stretch{-1}}
-
-\begin{frame}{Standard Calibration Curve}
-	For a \alert{linear} relationship,
-	\begin{align*}
-		y &= mx + b \\
-		\text{signal} &= m \times \text{sample concentration} +
-		\text{blank}
-	\end{align*}
-
-	\begin{tabularx}{\linewidth} {>{\bfseries}r X}
-		Pros: &
-		Very simple --- prepare some standards for the curve
-		and see where the unknown lies \\ \\
-		Cons: &
-		There must be minimal \alert{matrix effects} over the
-		range being considered \\
-		      & You must have standards above and below
-		      [unknown] --- you
-			have to know approximately [unknown] \\
-	\end{tabularx}
-\end{frame}
-
-\vspace{\stretch{-1}}
-\clearpage
-
-\begin{frame}[t]{Standard Additions Curve}
-	\only<+>{%
-	A series of solutions with equal [unknown] are spiked at
-	interval concentrations of a standard solution
-
-	\begin{center}
-	\begin{tabular} {l c c}
-		\toprule
-		\bfseries Sample & \bfseries Conc. & \bfseries Signal \\ \midrule
-		Unknown & $[X]_i$ & $I_X$ \\
-		Unknown + Standard & $[S]_f + [X]_f$ & $I_{S+X}$ \\ \bottomrule
-	\end{tabular}
-	\end{center}
-
-	\begin{align*}
-		\begin{rcases}
-		I_X &= k[X]_i \\
-		I_{S+X} &= k([X]_f + [S]_f)
-		\end{rcases} \dfrac{I_X}{I_{S+X}} = \dfrac{k[X]_i}{k([X]_f +
-		[S]_f)} = \dfrac{[X]_i}{[X]_f + [S]_f}
-	\end{align*}
-
-	\begin{center}
-	\begin{tabular} {c l}
-		$[X]_i$ & initial unknown conc. \\
-		$[X]_f$ & final unknown after adding a known, $[S]_f$ \\
-		$k$ & proportionality constant
-	\end{tabular}
-	\end{center}
-
-}
-
-\only<+->{%
-	\begin{center}
-		\includegraphics[width=0.9\linewidth]{standardaddition.png}
-	\end{center}
-
-	\only<.>{%
-	\begin{columns}[t]
-		\column{0.5\linewidth}
-		\textbf{Pros:}
-
-		\begin{itemize}
-			\item Sample matrix consistent with standards
-		\end{itemize}
-		\column{0.5\linewidth}
-		\textbf{Cons:}
-
-		\begin{itemize}
-			\item Experimentally more difficult
-			\item Relationship \alert{must} be linear
-		\end{itemize}
-	\end{columns}
-	}
-
-	\only<+>{%
-		What does it mean if the slope of the standard calibration curve
-		and standard additions plot are different?
-	}
-}
-\end{frame}
-
-\begin{frame}[allowframebreaks]{Internal Standards Curve}
-	A known amount of compound \alert{different} than the analyte is added
-	to the unknown.
-
-	\begin{block}{Response Factor}
-		\begin{align*}
-			\dfrac{\text{Analyte Signal}}{\text{Analyte
-			Concentration}} &= F\bigg(\dfrac{\text{Standard
-			Signal}}{\text{Standard Concentration}}\bigg) \\
-			\dfrac{A_X}{[X]} &= F\bigg(\dfrac{A_S}{[S]}\bigg)
-		\end{align*}
-
-		where $F$ = Response factor.
-	\end{block}
-
-	\framebreak
-
-	\begin{columns}
-		\column{0.5\linewidth}
-		The ratio of $X$ to $S$ will change based on $[X]$.
-		\column{0.5\linewidth}
-		\begin{center}
-			\includegraphics[scale=1]{internalstandard.png}
-		\end{center}
-	\end{columns}
-
-	\framebreak
-
-	\begin{columns}
-		\column{0.5\linewidth}
-		\textbf{Pros:}
-
-		\begin{itemize}
-			\item Experimentally easier than standard addition
-			\item Also good for complex sample matrices
-		\end{itemize}
-
-		\textbf{Cons:}
-		
-		\begin{itemize}
-			\item Must choose a concentration of signal that will
-				provide signal slightly above and below
-				[unknown]
-		\end{itemize}
-		
-		\column{0.5\linewidth}
-		\begin{center}
-			\includegraphics[scale=0.7]{internalstandard2.png}
-		\end{center}
-	\end{columns}
-\end{frame}
-
-\begin{frame}[t]
-	\frametitle{Some Standard Additions Practice}
-	{\footnotesize
-	\SI{5.00}{\mL} aliquots of a solution containing phenobarbital were
-carefully measured into five separate \SI{50.00}{\mL} volumetric flasks and made
-basic with \ch{KOH}. The following volumes of a standard solution of
-phenobarbital (\SI{2.000}{\micro\gram\per\milli\liter}) were added into each
-flask: \SIlist{0.000;0.500;1.00;1.50;2.00}{\mL}. The fluorimeter readings from
-each solution are listed below.
-
-\begin{tabular} {S[table-format=1.3] S[table-format=1.2]}
-	\toprule
-	\textbf{Spike Vol. (mL)} & \textbf{Readout} \\ \midrule
-	0.000 & 3.26 \\
-	0.500 & 4.80 \\
-	1.000 & 6.41 \\
-	1.500 & 8.02 \\
-	2.000 & 9.56 \\
-	\bottomrule
-\end{tabular}
-
-What is the concentration of the unknown?
-}
-	
-\end{frame}
-
-\begin{frame}[t]
-	\frametitle{Build Your Own}
-	{\footnotesize
-	A mass spec is taken of an ``unknown'' sample of benzene in water. The
-	parent ion peak (m/z = \num{78.114}) is used to monitor the benzene
-	concentration. Given the following parameters, predict the data for the
-	4 standard addition samples, graph the data, and verify the ``unknown''
-	benzene concentration.
-	\begin{enumerate}[a.]
-		\item Unknown benzene concentration = \SI{5.6}{ppb} yields
-			\num{41239} detector ``counts'' at the parent ion mass
-			when a \SI{5.00}{\micro\liter} sample is analyzed.
-		\item Benzene standard solution with a concentration of
-			\SI{100.0}{ppb} is available
-		\item 4 standard addition samples are to be prepared, analyzed
-			and the data graphed to ``find'' the ``unknown''
-			concentration
-		\item Any volumes may be used to make the standard addition
-			samples, however, remember the more benzene used, the
-			more waste there is to dispose of properly!
-	\end{enumerate}
-}
-	
-\end{frame}
-
+%\frame{\section{Method Validation}
+%\begin{learningobjectives}
+%\item Understand where limitations exist in certain measurements.
+%\item Quantify the limitations of an analysis.
+%\end{learningobjectives}}
+%
+%\vspace{\stretch{-1}}
+%
+%\begin{frame}{Linearity}
+%	How well a calibration curve follows a straight line -- the response is
+%	\alert{proportional} to the quantity of analyte.
+%
+%	\begin{align*}
+%		\shortintertext{e.g. our friend, $R^2$}
+%		\text{Square of correlation coefficient:\qquad} R^2 =
+%		\dfrac{\big[\sum(x_i - \bar{x})(y_i - \bar{y})\big]^2}{\sum (x_i
+%		- \bar{x})^2 \sum (y_i - \bar{y})^2}
+%	\end{align*}
+%
+%	\begin{itemize}
+%		\item $R^2$ should approach a value of 1 when the data is
+%			``good'' -- it fits our model (a straight line)
+%		\item Use \texttt{=LINEST()} in Excel to retrieve value
+%		\item $y$-intercept should also be close to 0 \alert{after
+%			background subtraction}
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Accuracy}
+%	``Nearness to the truth.''
+%
+%	\begin{enumerate}
+%		\item Compare a \alert{certified reference material} in a
+%			similar matrix to your unknown.
+%		\item Compare results from multiple different methods.
+%		\item Spike a sample with a known addition of analyte.
+%		\item Use the \alert{standard addition} method.
+%	\end{enumerate}
+%
+%	The goal is to keep the sample matrix as close as possible to that of
+%	the unknown. Spiking is the most common method.
+%\end{frame}
+%
+%\begin{frame}{Precision}
+%	How well replicate measurements agree with one another (think standard
+%	deviation or confidence interval).
+%
+%	\begin{itemize}
+%		\item \textbf{Repeatability:} the spread in results when
+%			\alert{one} person uses \alert{one} procedure to analyze
+%			the \alert{same} sample by the \alert{same} method
+%			multiple times.
+%		\item \textbf{Reproducibility:} the spread in results when
+%			\alert{different} people in \alert{different} labs use
+%			\alert{different} instruments each to try to follow the
+%			\alert{same} procedure.
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{The Horwitz Trumpet}
+%	\begin{columns}
+%		\column{0.5\linewidth}
+%		\begin{align*}
+%			\text{RSD \%} \approx 2^{(1-0.5 \log C)}
+%		\end{align*}
+%		where $C$ is the mass ratio of analyte to sample. As $C$
+%		decreases, the RSD increases between laboratories.
+%		\column{0.5\linewidth}
+%		\begin{center}
+%			\includegraphics[scale=0.25]{horwitz.jpg}
+%		\end{center}
+%	\end{columns}
+%\end{frame}
+%
+%\begin{frame}{Range}
+%	The concentration interval over which linearity, accuracy, and precision
+%	are all acceptable.
+%
+%	\begin{columns}
+%	\column{0.5\linewidth}
+%	\begin{itemize}
+%		\item \textbf{Linear Range:} interval where calibration curve is
+%			linear
+%		\item \textbf{Dynamic Range:} interval where there is a
+%			measurable response
+%		\item \textbf{Range:} interval where linearity, accuracy, and
+%			precision meet \alert{specifications} for the method
+%	\end{itemize}
+%	\column{0.5\linewidth}
+%	\only<+>{%
+%	\begin{center}
+%		\includegraphics[scale=0.9]{range-definitions.png}
+%	\end{center}
+%}
+%\only<+>{%
+%		\begin{alertblock}{Note:}
+%		Just because we can draw a straight line from $0 \rightarrow
+%		\infty$ does not mean we can extrapolate analyte concentration
+%		from $0 \rightarrow \infty$!
+%	\end{alertblock}
+%}
+%\end{columns}
+%
+%\end{frame}
+%
+%\begin{frame}{Where can we determine [analyte]?}
+%	\begin{center}
+%	\only<1>{\includegraphics[width=\linewidth]{range-trendline.png}}
+%
+%	\only<2|article:0>{\includegraphics[width=\linewidth]{range-trendline-full.png}}
+%	\end{center}
+%\end{frame}
+%
+%\vspace{\stretch{-1}}
+%
+%\begin{frame}[allowframebreaks]{Limit of Detection (LOD)}
+%	The smallest quantity of analyte that is ``significantly different''
+%	from the blank.
+%
+%	\begin{columns}
+%		\column{0.5\linewidth}
+%		\begin{itemize}
+%			\item Half of the samples whose analyte concentration is
+%				at the detection limit give \alert{false
+%				negatives}.
+%			\item The detection limit is often defined as the
+%				concentration of analyte that gives a signal
+%				equal to three times the standard deviation of
+%				signal from a blank.
+%		\end{itemize}
+%		\column{0.5\linewidth}
+%		\begin{center}
+%			\includegraphics[scale=0.5]{lod.png}
+%		\end{center}
+%	\end{columns}
+%
+%	\framebreak
+%
+%	\begin{align*}
+%		\intertext{\textit{Signal detection limit:}}
+%		y_\text{dl} &= y_\text{blank} + 3s \\
+%		\intertext{\textit{Calibration line:}}
+%		y_\text{sample} - y_\text{blank} &= m \times \text{sample
+%		concentration} \\
+%		\intertext{\textit{Detection limit:}}
+%		\text{Minimum detectable concentration} &\equiv \dfrac{3s}{m}
+%	\end{align*}
+%\end{frame}
+%
+%\note{
+%	Calibration line equation comes from offset of blank:
+%
+%	\begin{align*}
+%		y &= mx + b \\
+%		y_\text{sample} &= m \times \text{sample concentration} +
+%		y_\text{blank} \\
+%		y_\text{sample} - y_\text{blank} &= m \times \text{sample
+%		concentration}
+%	\end{align*}
+%
+%	Detectable concentration assumes $y_\text{dl}$ is as close to the blank
+%	as possible:
+%
+%	\begin{align*}
+%		y_\text{blank} + 3s - y_\text{blank} &= m \times \text{minimum
+%		detectable concentration} \\
+%		\dfrac{3s}{m} &= \text{minimum detectable concentration}
+%	\end{align*}
+%	}
+%
+%\begin{frame}{Limit of Quantitation}
+%		When the signal is 3 times greater than the noise (blank),
+%			it is detectable, but we cannot accurately measure
+%			(quantify) the analyte.
+%	\begin{itemize}
+%		\item We define a signal that is 10 times greater than the noise
+%			as the \alert{lower limit of quantitation} because we
+%			can be \alert{reasonably} confident in its accuracy.
+%	\end{itemize}
+%
+%	\begin{align*}
+%		\text{Lower limit of quantitation} \equiv \dfrac{10s}{m}
+%	\end{align*}
+%
+%	\begin{itemize}
+%		\item Where is the upper limit of quantitation?
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Robustness}
+%	The ability of an analytical method to be unaffected by small,
+%	deliberate changes in operating parameters.
+%
+%	\begin{itemize}
+%		\item What is the pH range at which we can run this analysis?
+%		\item Is there an optimal ionic strength of the buffer?
+%		\item How does temperature affect the results?
+%	\end{itemize}
+%\end{frame}
+%
+%\vspace{\stretch{-1}}
+%
+%
+%\frame{\section{Quality Assurance}
+%\begin{learningobjectives}
+%\item Note the need for certain standards.
+%\item Understand the need for specific sampling requirements, the
+%difference between selectivity and sensitivity, and the possiblity of
+%false results.
+%\end{learningobjectives}}
+%
+%\mode<presentation>{%
+%\begin{frame}{Quality Assurance Job Market}{As of September 9, 2019}
+%	\centering
+%		\begin{tabular} {c c}
+%		\includegraphics[width=0.3\textwidth]{linkedin.png} &
+%	\includegraphics[width=0.6\textwidth]{indeed.png}\\
+%		\\
+%		LinkedIn: 142,187 & Indeed: 20,743 over \$95,000
+%	\end{tabular}
+%\end{frame}
+%
+%\begin{frame}
+%	\begin{center}
+%	\includegraphics[width=0.9\linewidth]{takata.png}
+%	\end{center}
+%	\footnotetext{\href{https://www.bloomberg.com/news/articles/2016-02-02/takata-faulted-on-quality-control-culture-by-panel-it-appointed}{\tiny Bloomberg.com. February 2, 2016.}}
+%\end{frame}
+%
+%\begin{frame}
+%	\begin{center}
+%		\includegraphics[width=\linewidth,trim={0.5in 4.25in 1in 1.75in },clip]{substandard-med.pdf}
+%	\end{center}
+%	\footnotetext{\href{https://doi.org/10.1111/j.1365-3156.2008.02106.x}
+%	{\tiny Caudron, J.-M. et al. \textit{Tropical Medicine \&
+%	International Health} \textbf{2008}, 13 (8), 1062–1072.}}
+%\end{frame}
+%
+%\begin{frame}{Local industry sometimes needs a hand!}
+%	\centering
+%	\includegraphics[width=0.95\linewidth]{autoneum.pdf}
+%\end{frame}
+%}
+%
+%\begin{frame}{Quality Assurance}
+%	\begin{center}
+%	``... is what we do to get the right answer for our purpose.''
+%	\end{center}
+%
+%	\begin{columns}
+%		\column{0.5\linewidth}
+%		\begin{exampleblock}{The Need for Quality Assurance}
+%			181 labs are assessed in Belgium with a certified lead
+%			sample (\SI{62.3 +- 1.3}{\nano\Molar}~\ch{Pb}). Many of the
+%			results are not within certification even though these
+%			are `certified' labs. What went wrong?
+%		\end{exampleblock}
+%		\column{0.5\linewidth}
+%		\begin{center}
+%			\includegraphics[scale=0.25]{qa-belgium.jpg}
+%		\end{center}
+%	\end{columns}
+%\end{frame}
+%
+%\begin{frame}{Basics of Quality Assurance}
+%	\begin{itemize}
+%		\item \textbf{Raw data:} measurements
+%		\item \textbf{Treated data:} concentrations derived from raw
+%			data \alert{by use of calibration methods}.
+%		\item \textbf{Results:} quantities reported \alert{after
+%			statistical analysis} of treated data.
+%	\end{itemize}
+%
+%	\begin{block}{Use Objective}
+%		The purpose for which results will be used.
+%
+%		\begin{itemize}
+%			\item Why are we doing this?
+%			\item What is our stated range?
+%			\item How will we use this information in the future?
+%		\end{itemize}
+%	\end{block}
+%\end{frame}
+%
+%\begin{frame}{Specifications}
+%	\begin{columns}
+%		\column{0.5\linewidth}
+%		To meet the use objective, what must we do?
+%		\begin{itemize}
+%			\item<1-> sampling requirements
+%			\item<1-> accuracy and precision
+%			\item<2-> rate of false results
+%			\item<3-> selectivity
+%			\item<3-> sensitivity
+%			\item<4-> acceptable blank values
+%			\item<5-> recovery of fortification
+%			\item<6-> calibration checks
+%			\item<7-> quality control samples
+%		\end{itemize}
+%		\column{0.5\linewidth}
+%			\only<1|handout:0>{Recall the importance of sampling
+%			from Lecture 1! An accurate analysis is meaningless if
+%			care is not taken.
+%				
+%				\begin{center}
+%					What is possible provided the
+%					instrumentation we have?
+%				\end{center}
+%				}
+%			\only<2|handout:0>{
+%				\begin{block}{False positive}
+%					The concentration appears to exceed the
+%					legal limit, but is actually below.
+%				\end{block}
+%
+%				\begin{block}{False negative}
+%					The concentration appears to be below
+%					the legal limit, but is actually above.
+%				\end{block}
+%
+%				\begin{center}
+%				What is acceptable?
+%				\end{center}
+%				}
+%			\only<3|handout:0>{
+%				\begin{block}{Selectivity/Specificity}
+%					The ability to distinguish an analyte
+%					from another species.
+%				\end{block}
+%
+%				\begin{block}{Sensitivity}
+%					The response of a method to a change in
+%					analyte concentration.
+%
+%					\begin{align*}
+%						\text{sensitivity} =
+%						\dfrac{\Delta
+%						\text{signal}}{\Delta
+%						[\text{analyte}]}
+%					\end{align*}
+%				\end{block}
+%				
+%				\begin{center}
+%					What \alert{interferents} are present?
+%				\end{center}
+%				}
+%				\only<4|handout:0>{
+%					\begin{block}{Method Blank}
+%						A sample that contains all
+%						components except the analyte.
+%						Taken through
+%						\alert{all} steps
+%						of procedure.
+%					\end{block}
+%
+%					\begin{block}{Reagent Blank}
+%						Not taken through the same
+%						sample preparation.
+%					\end{block}
+%
+%					\begin{block}{Field Blank}
+%						Also taken to the sampling site.
+%						Exposed to all possible
+%						contaminants from sampling to
+%						transport to laboratory.
+%					\end{block}
+%					}
+%				\only<5|handout:0>{
+%					\begin{block}{Matrix}
+%						Everything in the sample
+%						besides the analyte.
+%					\end{block}
+%
+%					\begin{block}{Spike/Fortification}
+%						Addition of extra analyte to the
+%						sample to gauge response.
+%					\end{block}
+%
+%					\begin{center}
+%						How do we know something in the
+%						sample isn't affecting the
+%						analyte response?
+%					\end{center}
+%					}
+%				\only<6|handout:0>{
+%					\begin{block}{Calibration Check}
+%						Analyze solutions with a
+%						\alert{known} concentration of
+%						analyte periodically to ensure
+%						no instrument drift or initial
+%						standards were made properly.
+%					\end{block}
+%
+%					\begin{center}
+%						Why do some instruments require
+%						a ``warm up'' period?
+%					\end{center}
+%					}
+%				\only<7|handout:0>{
+%					\begin{block}{Quality Control Samples}
+%						Eliminates bias introduced by
+%						the analyst (\alert{you}).
+%						Samples of known concentration
+%						prepared by another individual
+%						are provided to the analyst.
+%					\end{block}
+%
+%					\begin{center}
+%						Do you think you see a trend
+%						because you expect to see a
+%						trend?
+%					\end{center}
+%					}
+%	\end{columns}
+%\end{frame}
+%
+%\begin{frame}[allowframebreaks]{Standard Operating Procedures (SOPs)}
+%	\begin{columns}
+%		\column{0.5\linewidth}
+%	\begin{itemize}
+%		\item Steps to be taken and the method through which they will
+%			be carried out.
+%		\item Often indicate proper reagent storage or what to look out
+%			for should one ``go bad''
+%		\item Contain information regarding proper instrument
+%			maintenance and usage
+%		\item \textbf{Include important safety procedures to protect you
+%			and your coworkers -- emergency response procedures}
+%	\end{itemize}
+%
+%	\column{0.5\linewidth}
+%
+%	\includegraphics[width=\linewidth,trim={0.5in 0.5in 0.5in 0.5in},clip]{SampleLaserSOP.pdf}
+%\end{columns}
+%
+%	\footnotetext{\tiny\href{https://www.drs.illinois.edu/Programs/StandardOperatingProcedures}{https://www.drs.illinois.edu/Programs/StandardOperatingProcedures
+%	(accessed Sep 10, 2018).}}
+%\end{frame}
+%
+%\begin{frame}{Chain of Custody}
+%	\begin{columns}
+%		\column{0.5\linewidth}
+%		\begin{itemize}
+%			\item A ``paper trail''
+%			\item Every time a sample is exchanged between
+%				individuals, a record must exist
+%			\item The next receiving individual must inspect the
+%				condition of the sample
+%		\end{itemize}
+%		\column{0.5\linewidth}
+%		\includegraphics[width=\linewidth]{chainofcustody.png}
+%	\end{columns}
+%\end{frame}
+%
+%\begin{frame}{Assessment}
+%	\begin{itemize}
+%		\item Collecting data to show that analytical procedures are
+%			operating \alert{within specified limits}
+%		\item Verifying that final results meet use objectives
+%	\end{itemize}
+%
+%	\begin{columns}
+%		\column{0.5\linewidth}
+%		\begin{block}{Control Chart}
+%			A visual representation of confidence intervals.
+%			
+%			\vspace{1em}
+%
+%			Random samples must be within acceptable limits.
+%			Statistically unlikely results require shutdown of the
+%			analysis process.
+%		\end{block}
+%		\column{0.5\linewidth}
+%		\tiny
+%		\begin{center}
+%			\includegraphics[scale=0.6]{controlchart.png}
+%		\end{center}
+%
+%		Control chart for \ch{ClO4-} in urine. [Data from L.
+%		Valentin-Blasini, J. P. Mauldin, D. Maple, B. C. Blount.
+%		\textit{Anal. Chem.} \textbf{2005}, 77, 2475.]
+%	\end{columns}
+%\end{frame}
+%
+%\vspace{\stretch{-1}}
+%
+%\frame{\section{Calibration Curves}
+%\begin{learningobjectives}
+%\item Be familiar with the different types of calibration methods.
+%\item Know when a certain curve may be perferable over other
+%	calibration methods.
+%\end{learningobjectives}
+%}
+%
+%\vspace{\stretch{-1}}
+%
+%\begin{frame}{Standard Calibration Curve}
+%	For a \alert{linear} relationship,
+%	\begin{align*}
+%		y &= mx + b \\
+%		\text{signal} &= m \times \text{sample concentration} +
+%		\text{blank}
+%	\end{align*}
+%
+%	\begin{tabularx}{\linewidth} {>{\bfseries}r X}
+%		Pros: &
+%		Very simple --- prepare some standards for the curve
+%		and see where the unknown lies \\ \\
+%		Cons: &
+%		There must be minimal \alert{matrix effects} over the
+%		range being considered \\
+%		      & You must have standards above and below
+%		      [unknown] --- you
+%			have to know approximately [unknown] \\
+%	\end{tabularx}
+%\end{frame}
+%
+%\vspace{\stretch{-1}}
+%\clearpage
+%
+%\begin{frame}[t]{Standard Additions Curve}
+%	\only<+>{%
+%	A series of solutions with equal [unknown] are spiked at
+%	interval concentrations of a standard solution
+%
+%	\begin{center}
+%	\begin{tabular} {l c c}
+%		\toprule
+%		\bfseries Sample & \bfseries Conc. & \bfseries Signal \\ \midrule
+%		Unknown & $[X]_i$ & $I_X$ \\
+%		Unknown + Standard & $[S]_f + [X]_f$ & $I_{S+X}$ \\ \bottomrule
+%	\end{tabular}
+%	\end{center}
+%
+%	\begin{align*}
+%		\begin{rcases}
+%		I_X &= k[X]_i \\
+%		I_{S+X} &= k([X]_f + [S]_f)
+%		\end{rcases} \dfrac{I_X}{I_{S+X}} = \dfrac{k[X]_i}{k([X]_f +
+%		[S]_f)} = \dfrac{[X]_i}{[X]_f + [S]_f}
+%	\end{align*}
+%
+%	\begin{center}
+%	\begin{tabular} {c l}
+%		$[X]_i$ & initial unknown conc. \\
+%		$[X]_f$ & final unknown after adding a known, $[S]_f$ \\
+%		$k$ & proportionality constant
+%	\end{tabular}
+%	\end{center}
+%
+%}
+%
+%\only<+->{%
+%	\begin{center}
+%		\includegraphics[width=0.9\linewidth]{standardaddition.png}
+%	\end{center}
+%
+%	\only<.>{%
+%	\begin{columns}[t]
+%		\column{0.5\linewidth}
+%		\textbf{Pros:}
+%
+%		\begin{itemize}
+%			\item Sample matrix consistent with standards
+%		\end{itemize}
+%		\column{0.5\linewidth}
+%		\textbf{Cons:}
+%
+%		\begin{itemize}
+%			\item Experimentally more difficult
+%			\item Relationship \alert{must} be linear
+%		\end{itemize}
+%	\end{columns}
+%	}
+%
+%	\only<+>{%
+%		What does it mean if the slope of the standard calibration curve
+%		and standard additions plot are different?
+%	}
+%}
+%\end{frame}
+%
+%\begin{frame}[allowframebreaks]{Internal Standards Curve}
+%	A known amount of compound \alert{different} than the analyte is added
+%	to the unknown.
+%
+%	\begin{block}{Response Factor}
+%		\begin{align*}
+%			\dfrac{\text{Analyte Signal}}{\text{Analyte
+%			Concentration}} &= F\bigg(\dfrac{\text{Standard
+%			Signal}}{\text{Standard Concentration}}\bigg) \\
+%			\dfrac{A_X}{[X]} &= F\bigg(\dfrac{A_S}{[S]}\bigg)
+%		\end{align*}
+%
+%		where $F$ = Response factor.
+%	\end{block}
+%
+%	\framebreak
+%
+%	\begin{columns}
+%		\column{0.5\linewidth}
+%		The ratio of $X$ to $S$ will change based on $[X]$.
+%		\column{0.5\linewidth}
+%		\begin{center}
+%			\includegraphics[scale=1]{internalstandard.png}
+%		\end{center}
+%	\end{columns}
+%
+%	\framebreak
+%
+%	\begin{columns}
+%		\column{0.5\linewidth}
+%		\textbf{Pros:}
+%
+%		\begin{itemize}
+%			\item Experimentally easier than standard addition
+%			\item Also good for complex sample matrices
+%		\end{itemize}
+%
+%		\textbf{Cons:}
+%		
+%		\begin{itemize}
+%			\item Must choose a concentration of signal that will
+%				provide signal slightly above and below
+%				[unknown]
+%		\end{itemize}
+%		
+%		\column{0.5\linewidth}
+%		\begin{center}
+%			\includegraphics[scale=0.7]{internalstandard2.png}
+%		\end{center}
+%	\end{columns}
+%\end{frame}
+%
+%\begin{frame}[t]
+%	\frametitle{Some Standard Additions Practice}
+%	{\footnotesize
+%	\SI{5.00}{\mL} aliquots of a solution containing phenobarbital were
+%carefully measured into five separate \SI{50.00}{\mL} volumetric flasks and made
+%basic with \ch{KOH}. The following volumes of a standard solution of
+%phenobarbital (\SI{2.000}{\micro\gram\per\milli\liter}) were added into each
+%flask: \SIlist{0.000;0.500;1.00;1.50;2.00}{\mL}. The fluorimeter readings from
+%each solution are listed below.
+%
+%\begin{tabular} {S[table-format=1.3] S[table-format=1.2]}
+%	\toprule
+%	\textbf{Spike Vol. (mL)} & \textbf{Readout} \\ \midrule
+%	0.000 & 3.26 \\
+%	0.500 & 4.80 \\
+%	1.000 & 6.41 \\
+%	1.500 & 8.02 \\
+%	2.000 & 9.56 \\
+%	\bottomrule
+%\end{tabular}
+%
+%What is the concentration of the unknown?
+%}
+%	
+%\end{frame}
+%
+%\begin{frame}[t]
+%	\frametitle{Build Your Own}
+%	{\footnotesize
+%	A mass spec is taken of an ``unknown'' sample of benzene in water. The
+%	parent ion peak (m/z = \num{78.114}) is used to monitor the benzene
+%	concentration. Given the following parameters, predict the data for the
+%	4 standard addition samples, graph the data, and verify the ``unknown''
+%	benzene concentration.
+%	\begin{enumerate}[a.]
+%		\item Unknown benzene concentration = \SI{5.6}{ppb} yields
+%			\num{41239} detector ``counts'' at the parent ion mass
+%			when a \SI{5.00}{\micro\liter} sample is analyzed.
+%		\item Benzene standard solution with a concentration of
+%			\SI{100.0}{ppb} is available
+%		\item 4 standard addition samples are to be prepared, analyzed
+%			and the data graphed to ``find'' the ``unknown''
+%			concentration
+%		\item Any volumes may be used to make the standard addition
+%			samples, however, remember the more benzene used, the
+%			more waste there is to dispose of properly!
+%	\end{enumerate}
+%}
+%	
+%\end{frame}
+%
 \end{document}
