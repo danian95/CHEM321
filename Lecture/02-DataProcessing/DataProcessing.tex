@@ -2,6 +2,7 @@
 \PassOptionsToPackage{table}{xcolor}
 %\documentclass[notes=hide]{beamer}
 \documentclass[notes=show]{beamer}
+%\documentclass[handout]{beamer}
 %\documentclass[notes=only]{beamer}
 %\documentclass[letterpaper,11pt]{article}
 %\usepackage{beamerarticle}
@@ -1106,8 +1107,8 @@
 	\textbf{Note what happens if number of measurements increases!}
 	}
 
-\begin{frame}{Confidence Intervals}
-	\only<+>{%
+\begin{frame}{Confidence Intervals and Student's $t$}
+	\mode<article>{%
 	\begin{itemize}
 		\item One statistical tool we have is the confidence interval or
 			the range of data that we think the true mean would be
@@ -1119,8 +1120,8 @@
 					of ``Student''
 			\end{itemize}
 	\end{itemize}
+}
 
-	\begin{block}{Student's t}
 	\begin{columns}
 	\column{0.5\linewidth}
 	\begin{align*}
@@ -1135,8 +1136,27 @@
 
 		$n$ is the number of trials
 	\end{columns}
+
+	\bigskip
+
+	\begin{block}{William Sealy Gosset --- Head Brewer of Guinness}
+		\begin{tikzpicture}
+			\node(pic)
+				{\includegraphics[width=0.2\linewidth]{William_Sealy_Gosset.jpg}};
+			\node[right=5pt of pic,text
+				width=0.7\linewidth,font=\raggedright]{
+				``At Guinness the scientific brewers, including
+				Gosset, were allowed by the company to publish
+				research so long as they did not mention (1)
+				beer, (2) Guinness, or (3) their own
+				surname.''
+		};
+		\end{tikzpicture}
+			\begin{footnotesize}
+			Ziliak, S.T. \textit{The American
+			Statistician}, \textbf{2019}, 73:sup1, 281-290.
+		\end{footnotesize}
 	\end{block}
-	}
 \end{frame}
 
 \begin{frame}[shrink=40]{Values of Student's $t$}
@@ -1170,29 +1190,6 @@
 	\end{tabular}
 \end{center}
 \end{frame}
-
-\mode<presentation>{
-	\begin{frame}{William Sealy Gosset}{Head Brewer of Guinness}
-		\begin{columns}
-			\column{0.4\linewidth}
-			\begin{center}
-				\includegraphics[width=\linewidth]{William_Sealy_Gosset.jpg}
-			\end{center}
-			\column{0.55\linewidth}
-			\begin{quote}
-				\raggedright
-				At Guinness the scientific brewers, including
-				Gosset, were allowed by the company to publish
-				research so long as they did not mention (1)
-				beer, (2) Guinness, or (3) their own
-				surname.\footnotemark
-			\end{quote}
-		\end{columns}
-
-		\footnotetext{Ziliak, S.T. \textit{The American
-		Statistician}, \textbf{2019}, 73:sup1, 281-290.}
-	\end{frame}
-}
 
 \begin{frame}[t]{Confidence Interval Example}
 	Let's find \SIlist{50;95;99}{\percent} CIs:
@@ -1250,6 +1247,8 @@
 	}
 \end{frame}
 
+%% END PART 1
+
 \begin{frame}{Utility of confidence intervals}
 	\begin{columns}
 		\column{0.5\linewidth}
@@ -1259,7 +1258,7 @@
 			mean is expected to lie given experimental values and
 			statistical constraints!
 		\item It is used to design quality assurance charts (control
-			charts) for manufacturing plants (chapter 5).
+			charts) for manufacturing plants.
 	\end{itemize}
 		\column{0.5\linewidth}
 		\includegraphics[scale=0.4]{CIchart.png}
@@ -1275,13 +1274,13 @@
 		        	\item Measure the sample multiple times and
 		        		compare to the accepted value using $t$.
 		        \end{itemize}
-		\item[Case 2:] Comparing replicate measurements
+		\item[Case 2:] Comparing replicate measurements (unpaired data)
 		        \begin{itemize}[<1->]
 		        	\item Measure 2 samples by 1 technique or 1
 		        		sample by 2 techniques and compare
 		        		values.
 		        \end{itemize}
-		\item[Case 3:] Comparing individual differences
+		\item[Case 3:] Comparing individual differences (paired data)
 			\begin{itemize}[<1->]
 				\item Measure multiple samples by 2 techniques
 					or 2 samples by multiple techniques.
@@ -1325,15 +1324,12 @@
 
 % Ended here on 2020-08-25, did not solve the problem
 
-			\note<+>{%
-				\begin{columns}
-					\column{0.3\linewidth}
+			\mode<article>{%
 					\begin{tabular} {r@{ = }l}
 						mean & $97.0_0$ \\
 						std dev & $1.6_6$ \\
 						t (95\%, 4 DF) & $2.776$
 					\end{tabular}
-					\column{0.4\linewidth}
 					\begin{align*}
 						t_{\text{calculated}} &=
 						\dfrac{|x - \bar{x}|}{s} \times
@@ -1342,7 +1338,6 @@
 						\times \sqrt{5} \\
 						&= 3.24
 					\end{align*}
-				\end{columns}
 				
 				\bigskip
 
@@ -1353,7 +1348,7 @@
 	\begin{itemize}[<+->]
 		\item What would your conclusion be if one more trial of 94.5
 			is done?
-			\note<.>{%
+			\mode<article>{%
 				\begin{columns}
 					\column{0.3\linewidth}
 					\begin{tabular} {r@{ = }l}
@@ -1381,9 +1376,8 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Case 2: Comparing replicate measurements}
-	\only<+>{%
-		\begin{itemize}
+\begin{frame}[allowframebreaks]{Case 2: Comparing replicate measurements}
+	\begin{itemize}
 		\item Comparing two \alert{sets} of data to determine if they
 			agree \alert{within experimental error}
 		\item Procedure:
@@ -1409,9 +1403,8 @@
 			standard deviations.};
 		\end{tikzpicture} 
 	\end{block}
-}
 
-\only<+>{%
+	\framebreak
 	
 	\begin{block}{If significantly different,}
 		\begin{align*}
@@ -1431,9 +1424,9 @@
 			\end{itemize}
 		\item What is $\dfrac{s^2}{n}$?
 	\end{itemize}
-}
+\end{frame}
 
-\only<+>{%
+\mode<article>{%
 	\begin{itemize}
 		\item What does this test literally mean?
 	\end{itemize}
@@ -1441,10 +1434,6 @@
 	\begin{center}
 		\includegraphics[width=\linewidth]{literalt.jpg}
 	\end{center}
-
-}
-
-\only<+>{%
 
 	\begin{center}
 		\begin{tikzpicture}[scale=0.7]
@@ -1463,18 +1452,15 @@
 		\end{tikzpicture}
 	\end{center}
 }
-\end{frame}
 
-\begin{frame}[t]{Case 2: Example (Problem 4-23)}
-	\only<+>{%
+\begin{frame}[t,allowframebreaks]{Case 2: Example}
 	Nitrite (\ch{NO2-}) was measured by two methods in rainwater and
 	unchlorinated drinking water.  The results ($x \pm s$ ($n$)) are:
 	\begin{center}
 		\sisetup{table-format=1.3(3),separate-uncertainty}
 		\small
 		\begin{tabular} {l S l@{\quad}S l}
-			{Sample source} & \multicolumn{2}{l}{GC (ppm)} &
-			\multicolumn{2}{l}{UV-Vis (ppm)} \\
+			{Sample source} & \multicolumn{2}{l}{GC (ppm)} & \multicolumn{2}{l}{UV-Vis (ppm)} \\
 			\midrule
 			rainwater & 0.069(5) & $(n=7)$ & 0.063(8) & $(n=5)$ \\
 			drinking water & 0.078(7) & $(n=5)$ & 0.087(8) & $(n=5)$
@@ -1486,9 +1472,9 @@
 		\item For each method, does drinking water contain more nitrite
 			(again at 95\%)?
 	\end{enumerate}
-}
 
-\only<+>{%
+	\framebreak
+
 	\begin{center}
 		\sisetup{table-format=1.3(3),separate-uncertainty}
 		\small
@@ -1502,7 +1488,7 @@
 		\end{tabular}
 	\end{center}
 
-	\note{
+	\mode<article>{
 		\begin{align*}
 		F &= 2._{56} < F_{\text{table}} (4.53) \\
 		t_{\text{calc}} &= \dfrac{|\bar{x}_1 -
@@ -1517,12 +1503,10 @@
 	\fbox{Since $t_{\text{calc}} < t_{\text{table}}$, the means are
 	statistically identical at 95\%.}
 	\end{center}
-}}
+	}
 
-\mode<article>{\vspace{\stretch{4}}
-\clearpage}
+	\framebreak
 
-\only<+>{%
 	\begin{center}
 		\sisetup{table-format=1.3(3),separate-uncertainty}
 		\small
@@ -1536,7 +1520,7 @@
 		\end{tabular}
 	\end{center}
 
-	\note{%
+	\mode<article>{%
 	\begin{align*}
 		F &= 1._{31} < F_{\text{table}} (4.53) \\
 		t_{\text{calc}} &= \dfrac{|\bar{x}_1 -
@@ -1551,11 +1535,10 @@
 	\fbox{Since $t_{\text{calc}} < t_{\text{table}}$, the means are
 	statistically identical at 95\%.}
 	\end{center}
-}}
+}
 
-\mode<article>{\vspace{\stretch{1}}}
+	\framebreak
 
-\only<+>{%
 	\begin{center}
 		\sisetup{table-format=1.3(3),separate-uncertainty}
 		\small
@@ -1570,7 +1553,7 @@
 		\end{tabular}
 	\end{center}
 
-	\note{%
+	\mode<article>{%
 	\begin{align*}
 		F &= 1._{96} < F_{\text{table}} (4.53) \\
 		t_{\text{calc}} &= \dfrac{|\bar{x}_1 -
@@ -1585,11 +1568,10 @@
 	\fbox{Since $t_{\text{calc}} > t_{\text{table}}$, the means are
 		statistically \alert{different} at 95\%.}
 	\end{center}
-}}
+}
 
-\mode<article>{\vspace{\stretch{1}}}
+	\framebreak
 
-\only<+>{%
 	\begin{center}
 		\sisetup{table-format=1.3(3),separate-uncertainty}
 		\small
@@ -1604,7 +1586,7 @@
 		\end{tabular}
 	\end{center}
 
-	\note{%
+	\mode<article>{%
 	\begin{align*}
 		F &= 0._{00} < F_{\text{table}} (4.53) \\
 		t_{\text{calc}} &= \dfrac{|\bar{x}_1 -
@@ -1618,7 +1600,7 @@
 	\fbox{Since $t_{\text{calc}} > t_{\text{table}}$, the means are
 		statistically \alert{different} at 95\%.}
 	\end{center}
-}}
+}
 \end{frame}
 
 \clearpage
@@ -1626,7 +1608,7 @@
 \begin{frame}{Case 3: Comparing Individual Differences}
 	\begin{itemize}
 		\item Comparing two measurements performed with two different
-			methods -- no measurement performed twice!
+			methods --- no measurement performed twice!
 		\item Find the mean and standard deviation of the
 			\alert{differences} ($d$) between each measurement.
 
@@ -1658,7 +1640,7 @@
 		\end{tabular}
 	\end{center}
 
-	\note{%
+	\mode<article>{%
 	\begin{center}
 		\sisetup{table-format=2.2}
 		\begin{tabular} {c S S S[table-format=+1.2]}
@@ -1684,9 +1666,6 @@
 }
 \end{frame}
 
-\vspace{\stretch{4}}
-\clearpage
-
 \begin{frame}{Recommendations for the Treatment of Outliers}
 	\begin{itemize}
 		\item Re-examine all data to see if a gross error occurred
@@ -1694,7 +1673,7 @@
 		\item Estimate the precision that is usually expected from the
 			technique to be sure outlier is actually questionable.
 		\item Repeat the analysis if time and sample are available.
-		\item If more data can not be secured, use a Grubbs test.
+		\item If more data can not be secured, use a \alert{Grubbs test}.
 		\item If statistics indicate retention, consider reporting the
 			median value instead of the mean.
 	\end{itemize}
@@ -1744,7 +1723,209 @@
 %	You \alert{do} have to know how to add error bars to graphs. Reproduce
 %	Figure 4-16 on Harris p. 88.
 %\end{frame}
- 
+ \frame{\section{Method Validation}
+\begin{learningobjectives}
+\item Understand where limitations exist in certain measurements.
+\item Quantify the limitations of an analysis.
+\end{learningobjectives}}
+
+\vspace{\stretch{-1}}
+
+\begin{frame}{Linearity}
+	How well a calibration curve follows a straight line -- the response is
+	\alert{proportional} to the quantity of analyte.
+
+	\begin{align*}
+		\shortintertext{e.g. our friend, $R^2$}
+		\text{Square of correlation coefficient:\qquad} R^2 =
+		\dfrac{\big[\sum(x_i - \bar{x})(y_i - \bar{y})\big]^2}{\sum (x_i
+		- \bar{x})^2 \sum (y_i - \bar{y})^2}
+	\end{align*}
+
+	\begin{itemize}
+		\item $R^2$ should approach a value of 1 when the data is
+			``good'' -- it fits our model (a straight line)
+		\item Use \texttt{=LINEST()} in Excel to retrieve value
+		\item $y$-intercept should also be close to 0 \alert{after
+			background subtraction}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Accuracy}
+	``Nearness to the truth.''
+
+	\begin{enumerate}
+		\item Compare a \alert{certified reference material} in a
+			similar matrix to your unknown.
+		\item Compare results from multiple different methods.
+		\item Spike a sample with a known addition of analyte.
+		\item Use the \alert{standard addition} method.
+	\end{enumerate}
+
+	The goal is to keep the sample matrix as close as possible to that of
+	the unknown. Spiking is the most common method.
+\end{frame}
+
+\begin{frame}{Precision}
+	How well replicate measurements agree with one another (think standard
+	deviation or confidence interval).
+
+	\begin{itemize}
+		\item \textbf{Repeatability:} the spread in results when
+			\alert{one} person uses \alert{one} procedure to analyze
+			the \alert{same} sample by the \alert{same} method
+			multiple times.
+		\item \textbf{Reproducibility:} the spread in results when
+			\alert{different} people in \alert{different} labs use
+			\alert{different} instruments each to try to follow the
+			\alert{same} procedure.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Horwitz Trumpet}
+	\begin{columns}
+		\column{0.5\linewidth}
+		\begin{align*}
+			\text{RSD \%} \approx 2^{(1-0.5 \log C)}
+		\end{align*}
+		where $C$ is the mass ratio of analyte to sample. As $C$
+		decreases, the RSD increases between laboratories.
+		\column{0.5\linewidth}
+		\begin{center}
+			\includegraphics[scale=0.25]{horwitz.jpg}
+		\end{center}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Range}
+	The concentration interval over which linearity, accuracy, and precision
+	are all acceptable.
+
+	\begin{columns}
+	\column{0.5\linewidth}
+	\begin{itemize}
+		\item \textbf{Linear Range:} interval where calibration curve is
+			linear
+		\item \textbf{Dynamic Range:} interval where there is a
+			measurable response
+		\item \textbf{Range:} interval where linearity, accuracy, and
+			precision meet \alert{specifications} for the method
+	\end{itemize}
+	\column{0.5\linewidth}
+	\only<+>{%
+	\begin{center}
+		\includegraphics[scale=0.9]{range-definitions.png}
+	\end{center}
+}
+\only<+>{%
+		\begin{alertblock}{Note:}
+		Just because we can draw a straight line from $0 \rightarrow
+		\infty$ does not mean we can extrapolate analyte concentration
+		from $0 \rightarrow \infty$!
+	\end{alertblock}
+}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Where can we determine [analyte]?}
+	\begin{center}
+	\only<1>{\includegraphics[width=\linewidth]{range-trendline.png}}
+
+	\only<2|article:0>{\includegraphics[width=\linewidth]{range-trendline-full.png}}
+	\end{center}
+\end{frame}
+
+\vspace{\stretch{-1}}
+
+\begin{frame}[allowframebreaks]{Limit of Detection (LOD)}
+	The smallest quantity of analyte that is ``significantly different''
+	from the blank.
+
+	\begin{columns}
+		\column{0.5\linewidth}
+		\begin{itemize}
+			\item Half of the samples whose analyte concentration is
+				at the detection limit give \alert{false
+				negatives}.
+			\item The detection limit is often defined as the
+				concentration of analyte that gives a signal
+				equal to three times the standard deviation of
+				signal from a blank.
+		\end{itemize}
+		\column{0.5\linewidth}
+		\begin{center}
+			\includegraphics[scale=0.5]{lod.png}
+		\end{center}
+	\end{columns}
+
+	\framebreak
+
+	\begin{align*}
+		\intertext{\textit{Signal detection limit:}}
+		y_\text{dl} &= y_\text{blank} + 3s \\
+		\intertext{\textit{Calibration line:}}
+		y_\text{sample} - y_\text{blank} &= m \times \text{sample
+		concentration} \\
+		\intertext{\textit{Detection limit:}}
+		\text{Minimum detectable concentration} &\equiv \dfrac{3s}{m}
+	\end{align*}
+\end{frame}
+
+\note{
+	Calibration line equation comes from offset of blank:
+
+	\begin{align*}
+		y &= mx + b \\
+		y_\text{sample} &= m \times \text{sample concentration} +
+		y_\text{blank} \\
+		y_\text{sample} - y_\text{blank} &= m \times \text{sample
+		concentration}
+	\end{align*}
+
+	Detectable concentration assumes $y_\text{dl}$ is as close to the blank
+	as possible:
+
+	\begin{align*}
+		y_\text{blank} + 3s - y_\text{blank} &= m \times \text{minimum
+		detectable concentration} \\
+		\dfrac{3s}{m} &= \text{minimum detectable concentration}
+	\end{align*}
+	}
+
+\begin{frame}{Limit of Quantitation}
+		When the signal is 3 times greater than the noise (blank),
+			it is detectable, but we cannot accurately measure
+			(quantify) the analyte.
+	\begin{itemize}
+		\item We define a signal that is 10 times greater than the noise
+			as the \alert{lower limit of quantitation} because we
+			can be \alert{reasonably} confident in its accuracy.
+	\end{itemize}
+
+	\begin{align*}
+		\text{Lower limit of quantitation} \equiv \dfrac{10s}{m}
+	\end{align*}
+
+	\begin{itemize}
+		\item Where is the upper limit of quantitation?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Robustness}
+	The ability of an analytical method to be unaffected by small,
+	deliberate changes in operating parameters.
+
+	\begin{itemize}
+		\item What is the pH range at which we can run this analysis?
+		\item Is there an optimal ionic strength of the buffer?
+		\item How does temperature affect the results?
+	\end{itemize}
+\end{frame}
+
+\vspace{\stretch{-1}}
+
+
 \frame{\section{Quality Assurance}
 \begin{learningobjectives}
 \item Note the need for certain standards.
@@ -2024,208 +2205,6 @@ false results.
 		Valentin-Blasini, J. P. Mauldin, D. Maple, B. C. Blount.
 		\textit{Anal. Chem.} \textbf{2005}, 77, 2475.]
 	\end{columns}
-\end{frame}
-
-\vspace{\stretch{-1}}
-
-\frame{\section{Method Validation}
-\begin{learningobjectives}
-\item Understand where limitations exist in certain measurements.
-\item Quantify the limitations of an analysis.
-\end{learningobjectives}}
-
-\vspace{\stretch{-1}}
-
-\begin{frame}{Linearity}
-	How well a calibration curve follows a straight line -- the response is
-	\alert{proportional} to the quantity of analyte.
-
-	\begin{align*}
-		\shortintertext{e.g. our friend, $R^2$}
-		\text{Square of correlation coefficient:\qquad} R^2 =
-		\dfrac{\big[\sum(x_i - \bar{x})(y_i - \bar{y})\big]^2}{\sum (x_i
-		- \bar{x})^2 \sum (y_i - \bar{y})^2}
-	\end{align*}
-
-	\begin{itemize}
-		\item $R^2$ should approach a value of 1 when the data is
-			``good'' -- it fits our model (a straight line)
-		\item Use \texttt{=LINEST()} in Excel to retrieve value
-		\item $y$-intercept should also be close to 0 \alert{after
-			background subtraction}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Accuracy}
-	``Nearness to the truth.''
-
-	\begin{enumerate}
-		\item Compare a \alert{certified reference material} in a
-			similar matrix to your unknown.
-		\item Compare results from multiple different methods.
-		\item Spike a sample with a known addition of analyte.
-		\item Use the \alert{standard addition} method.
-	\end{enumerate}
-
-	The goal is to keep the sample matrix as close as possible to that of
-	the unknown. Spiking is the most common method.
-\end{frame}
-
-\begin{frame}{Precision}
-	How well replicate measurements agree with one another (think standard
-	deviation or confidence interval).
-
-	\begin{itemize}
-		\item \textbf{Repeatability:} the spread in results when
-			\alert{one} person uses \alert{one} procedure to analyze
-			the \alert{same} sample by the \alert{same} method
-			multiple times.
-		\item \textbf{Reproducibility:} the spread in results when
-			\alert{different} people in \alert{different} labs use
-			\alert{different} instruments each to try to follow the
-			\alert{same} procedure.
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{The Horwitz Trumpet}
-	\begin{columns}
-		\column{0.5\linewidth}
-		\begin{align*}
-			\text{RSD \%} \approx 2^{(1-0.5 \log C)}
-		\end{align*}
-		where $C$ is the mass ratio of analyte to sample. As $C$
-		decreases, the RSD increases between laboratories.
-		\column{0.5\linewidth}
-		\begin{center}
-			\includegraphics[scale=0.25]{horwitz.jpg}
-		\end{center}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Range}
-	The concentration interval over which linearity, accuracy, and precision
-	are all acceptable.
-
-	\begin{columns}
-	\column{0.5\linewidth}
-	\begin{itemize}
-		\item \textbf{Linear Range:} interval where calibration curve is
-			linear
-		\item \textbf{Dynamic Range:} interval where there is a
-			measurable response
-		\item \textbf{Range:} interval where linearity, accuracy, and
-			precision meet \alert{specifications} for the method
-	\end{itemize}
-	\column{0.5\linewidth}
-	\only<+>{%
-	\begin{center}
-		\includegraphics[scale=0.9]{range-definitions.png}
-	\end{center}
-}
-\only<+>{%
-		\begin{alertblock}{Note:}
-		Just because we can draw a straight line from $0 \rightarrow
-		\infty$ does not mean we can extrapolate analyte concentration
-		from $0 \rightarrow \infty$!
-	\end{alertblock}
-}
-\end{columns}
-
-\end{frame}
-
-\begin{frame}{Where can we determine [analyte]?}
-	\begin{center}
-	\only<1>{\includegraphics[width=\linewidth]{range-trendline.png}}
-
-	\only<2|article:0>{\includegraphics[width=\linewidth]{range-trendline-full.png}}
-	\end{center}
-\end{frame}
-
-\vspace{\stretch{-1}}
-
-\begin{frame}[allowframebreaks]{Limit of Detection (LOD)}
-	The smallest quantity of analyte that is ``significantly different''
-	from the blank.
-
-	\begin{columns}
-		\column{0.5\linewidth}
-		\begin{itemize}
-			\item Half of the samples whose analyte concentration is
-				at the detection limit give \alert{false
-				negatives}.
-			\item The detection limit is often defined as the
-				concentration of analyte that gives a signal
-				equal to three times the standard deviation of
-				signal from a blank.
-		\end{itemize}
-		\column{0.5\linewidth}
-		\begin{center}
-			\includegraphics[scale=0.5]{lod.png}
-		\end{center}
-	\end{columns}
-
-	\framebreak
-
-	\begin{align*}
-		\intertext{\textit{Signal detection limit:}}
-		y_\text{dl} &= y_\text{blank} + 3s \\
-		\intertext{\textit{Calibration line:}}
-		y_\text{sample} - y_\text{blank} &= m \times \text{sample
-		concentration} \\
-		\intertext{\textit{Detection limit:}}
-		\text{Minimum detectable concentration} &\equiv \dfrac{3s}{m}
-	\end{align*}
-\end{frame}
-
-\note{
-	Calibration line equation comes from offset of blank:
-
-	\begin{align*}
-		y &= mx + b \\
-		y_\text{sample} &= m \times \text{sample concentration} +
-		y_\text{blank} \\
-		y_\text{sample} - y_\text{blank} &= m \times \text{sample
-		concentration}
-	\end{align*}
-
-	Detectable concentration assumes $y_\text{dl}$ is as close to the blank
-	as possible:
-
-	\begin{align*}
-		y_\text{blank} + 3s - y_\text{blank} &= m \times \text{minimum
-		detectable concentration} \\
-		\dfrac{3s}{m} &= \text{minimum detectable concentration}
-	\end{align*}
-	}
-
-\begin{frame}{Limit of Quantitation}
-		When the signal is 3 times greater than the noise (blank),
-			it is detectable, but we cannot accurately measure
-			(quantify) the analyte.
-	\begin{itemize}
-		\item We define a signal that is 10 times greater than the noise
-			as the \alert{lower limit of quantitation} because we
-			can be \alert{reasonably} confident in its accuracy.
-	\end{itemize}
-
-	\begin{align*}
-		\text{Lower limit of quantitation} \equiv \dfrac{10s}{m}
-	\end{align*}
-
-	\begin{itemize}
-		\item Where is the upper limit of quantitation?
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Robustness}
-	The ability of an analytical method to be unaffected by small,
-	deliberate changes in operating parameters.
-
-	\begin{itemize}
-		\item What is the pH range at which we can run this analysis?
-		\item Is there an optimal ionic strength of the buffer?
-		\item How does temperature affect the results?
-	\end{itemize}
 \end{frame}
 
 \vspace{\stretch{-1}}
