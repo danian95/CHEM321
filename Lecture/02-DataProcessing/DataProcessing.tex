@@ -1,11 +1,11 @@
 % !TEX program = xelatex
 \PassOptionsToPackage{table}{xcolor}
-%\documentclass[notes=hide]{beamer}
+\documentclass[notes=hide]{beamer}
 %\documentclass[notes=show]{beamer}
 %\documentclass[handout]{beamer}
 %\documentclass[notes=only]{beamer}
-\documentclass[letterpaper,11pt]{article}
-\usepackage{beamerarticle}
+%\documentclass[letterpaper,11pt]{article}
+%\usepackage{beamerarticle}
 
 \usepackage{newtxtext}
 \usepackage{analchem}
@@ -119,7 +119,7 @@
 		Add \numlist[list-final-separator={, and }]{1.234e-4;5.67e-6;8.90e-1}:
 	\end{example}
 
-	\mode<article>{\begin{center}
+	\note{\begin{center}
 		\begin{tabular} {c S[table-format=1.8]}
 		    	  & 0.0001234 \\
 			  & 0.00000567 \\
@@ -141,7 +141,7 @@
 		\end{align*}
 	\end{Example}
 	
-	\mode<article>{\begin{center}
+	\note{\begin{center}
 		\begin{tabular} {@{= }S[table-format=2.11]}
 			19.369949 \\
 			19.4
@@ -203,7 +203,7 @@
 }
 
 \begin{frame}[c,allowframebreaks]{Types of Error}
-	\mode<article>{\alert{Every} measurement has some uncertainty related to
+	\note{\alert{Every} measurement has some uncertainty related to
 	it.}
 
 	\begin{block}{Systematic \emph{or} determinate error}
@@ -288,7 +288,7 @@
 				dispensed when the buret reads \SI{30.23}{\mL}?
 				\SI{0.12}{\mL}?
 
-				\mode<article>{%
+				\note{%
 					\begin{itemize}
 						\item \SI{30.23}{\mL} means
 							volume between
@@ -304,7 +304,7 @@
 			\begin{example}<1->
 				For the buret above, calculate the relative
 				uncertainty of each measurement.
-				\mode<article>{%
+				\note{%
 					\begin{itemize}
 						\item $\frac{0.02}{30.23} =
 							0.000662 \approx
@@ -443,7 +443,9 @@
 				used with a tolerance of \SI{+-0.08}{\mL}
 		\end{itemize}
 
-		\mode<article>{%
+		\note<1>{%
+			There was a \emph{big} problem with these calculations
+			REVIEW
 			\begin{align*}
 				[\ch{Au}] &= \frac{\text{g~Au}
 				}{(\text{volume \ch{H2O}})(\text{g/mol~\ch{HAuCl4}})} \\
@@ -456,7 +458,7 @@
 		\begin{enumerate}[<+->]
 			\item Assuming an \emph{uncalibrated} balance and flask, what
 				error is present in the recorded concentration?
-				\mode<article>{%
+				\note<2>{%
 					\begin{align*}
 						e_{[\ch{Au}]} &= 
 						\frac{\SI{0.0005}{\gram}}{(\SI{0.08}{\liter})(\SI{0.03}{\gram\per\mole})}
@@ -466,7 +468,7 @@
 
 			\item Assuming a \emph{calibrated} balance and flask, what
 				error is present in the recorded concentration?
-				\mode<article>{%
+				\note<3>{%
 					\begin{align*}
 						\%e_{\text{g}/\text{L}} &= \sqrt{\%e^2_{\text{g~Au}} +
 					\%e^2_{\text{volume~\ch{H2O}}}} \\
@@ -491,7 +493,7 @@
 }
 \item How would you \emph{report} this concentration?
 
-	\mode<article>{\boxed{\SI{1.0(2)}{\milli\Molar}}}
+	\note<4>{\boxed{\SI{1.0(2)}{\milli\Molar}}}
 \end{enumerate}
 
 
@@ -568,7 +570,7 @@
 	\begin{enumerate}[<+(1)->]
 		\item What volume was transferred for an \emph{uncalibrated}
 			pipet?
-			\mode<article>{%
+			\note{%
 				\begin{equation*}
 					e = 4 \times 0.03 = 0.12 \qquad\therefore
 					\boxed{\SI{100.0(1)}{\milli\liter}}
@@ -576,7 +578,7 @@
 			}
 		\item What volume was transferred if the pipet was calibrated
 			and delivered \SI{24.99(2)}{\mL}?
-			\mode<article>{%
+			\note{%
 				\begin{align*}
 					V &= 4 \times 24.99 = \SI{99.96}{\mL} \\
 					e_{V_\text{total}} &= \sqrt{e^2_1 +
@@ -787,7 +789,7 @@
 	Let's consider a \SI{0.2015(6)}{\Molar}~\ch{HCl} solution.
 	What is the \pH?
 
-	\mode<article>{%
+	\note{%
 		Recall:
 		\begin{align*}
 			\text{pH} &= -\log [\ch{H3O+}] \\
@@ -1092,7 +1094,7 @@
 	greater than that of the original instrument?
 \end{frame}
 
-\mode<article>{%
+\note{%
 	\begin{align*}
 		F_{\text{calculated}} &= \dfrac{s_1^2}{s_2^2} \\
 		&= \dfrac{(0.47)^2}{(0.28)^2} \\
@@ -1108,7 +1110,7 @@
 	}
 
 \begin{frame}{Confidence Intervals and Student's $t$}
-	\mode<article>{%
+	\note{%
 	\begin{itemize}
 		\item One statistical tool we have is the confidence interval or
 			the range of data that we think the true mean would be
@@ -1208,7 +1210,9 @@
 		\end{tabular}
 	\end{center}
 
-	\mode<article>{%
+	\note{%
+		\begin{columns}
+			\column{0.5\linewidth}
 		\begin{align*}
 			\mu &= \bar{x} \pm \dfrac{ts}{\sqrt{n}}
 			= \bar{x} \pm tu_x \\
@@ -1217,14 +1221,17 @@
 			\underbrace{\tfrac{s}{\sqrt{n}}}_{\mathclap{\text{standard
 			uncertainty}}}
 		\end{align*}
-	
+
+		\column{0.5\linewidth}
 		\begin{align*}
 			\bar{x} &= \num{5.16e6} \\
 			s &= \num{0.23e6} \\
 			t &= \underbrace{\underbrace{0.741}_{50\%}, \underbrace{2.776}_{95\%},
 			\underbrace{4.606}_{99\%}}_{\text{4 degrees of freedom}}
 		\end{align*}
+	\end{columns}
 	
+	{\scriptsize
 		\begin{center}
 			\sisetup{table-format=1.2e1}
 			\begin{tabular} {r@{\% CI:\qquad}S@{ $\leq \mu \leq$ } S}
@@ -1234,7 +1241,7 @@
 		\end{tabular}
 		\end{center}
 	
-		\begin{itemize}
+			\begin{itemize}
 			\item The more confidence we want, the larger the range of data
 				must be!
 			\item 50\% indicates the chance is 1 in 2 that the true mean is
@@ -1244,6 +1251,7 @@
 			\item \SI{5.6e6}{cells\per\micro\liter} \alert{looks} high since
 				it fits only at 99\% and up!
 		\end{itemize}
+	}
 	}
 \end{frame}
 
@@ -1315,7 +1323,7 @@
 	\end{block}
 \end{frame}
 
-\begin{frame}[t]{Case 1: Example (Problem 4-22)}
+\begin{frame}[t]{Case 1: Example}% (Harris Problem 4-22)}
 		A SRM is certified to contain 94.6 ppm of an organic
 		contaminant.  Your analysis yields: 98.6, 98.4, 97.2,
 		94.6, and 96.2 ppm.  Do your results differ at the
@@ -1324,12 +1332,15 @@
 
 % Ended here on 2020-08-25, did not solve the problem
 
-			\mode<article>{%
+			\note{%
+				\begin{columns}
+					\column{0.5\linewidth}
 					\begin{tabular} {r@{ = }l}
 						mean & $97.0_0$ \\
 						std dev & $1.6_6$ \\
 						t (95\%, 4 DF) & $2.776$
 					\end{tabular}
+					\column{0.5\linewidth}
 					\begin{align*}
 						t_{\text{calculated}} &=
 						\dfrac{|x - \bar{x}|}{s} \times
@@ -1338,17 +1349,18 @@
 						\times \sqrt{5} \\
 						&= 3.24
 					\end{align*}
+				\end{columns}
 				
 				\bigskip
 
 				Since $3.24 > 2.776$, the results \alert{do
-				differ} at the 95\% CI.
+				differ} at the 95\,\% CI.
 			
 				}
 	\begin{itemize}[<+->]
 		\item What would your conclusion be if one more trial of 94.5
 			is done?
-			\mode<article>{%
+			\note{%
 				\begin{columns}
 					\column{0.3\linewidth}
 					\begin{tabular} {r@{ = }l}
@@ -1370,13 +1382,14 @@
 				\bigskip
 
 				Since $2.70 > 2.571$, the results \alert{still
-				differ} at the 95\% CI.
+				differ} at the 95\,\% CI.
 			
 				}
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Case 2: Comparing replicate measurements}
+\begin{frame}[allowframebreaks]{Case 2: Comparing replicate measurements
+	(Unpaired)}
 	\begin{itemize}
 		\item Comparing two \alert{sets} of data to determine if they
 			agree \alert{within experimental error}
@@ -1394,8 +1407,8 @@
 		\shortintertext{where}
 		\tikz[baseline,remember picture]{\node(spool)
 		{$s_{\text{pooled}}$};} &= \sqrt{\dfrac{\sum_{\text{set 1}}
-		(x_i - \bar{x}_1)^2 + \sum_{\text{set 2}}
-		(x_i - \bar{x}_2)^2}{n_1+n_2 - 2}}
+			{(x_i - \bar{x}_1)}^2 + \sum_{\text{set 2}}
+{(x_i - \bar{x}_2)}^2}{n_1+n_2 - 2}}
 	\end{align*}
 		\begin{tikzpicture}[overlay,remember picture]
 			\draw[<-,thick] (spool.south) to [in=180,out=270]
@@ -1404,15 +1417,15 @@
 		\end{tikzpicture} 
 	\end{block}
 
-	\framebreak
+	\framebreak%
 	
 	\begin{block}{If significantly different,}
 		\begin{align*}
 			t_{\text{calculated}} &= \dfrac{|\bar{x}_1 -
 			\bar{x}_2|}{\sqrt{(s^2_1/n_1) + (s^2_2/n_2)}} \\
-			\text{Degrees of freedom} &= \dfrac{(s^2_1/n_1 +
-			s^2_2/n_2)^2}{\dfrac{(s^2_1/n_1)^2}{n_1 - 1} +
-			\dfrac{(s^2_2/n_2)^2}{n_2 - 1}}
+			\text{Degrees of freedom} &= \dfrac{{(s^2_1/n_1 +
+			s^2_2/n_2)}^2}{\dfrac{{(s^2_1/n_1)}^2}{n_1 - 1} +
+			\dfrac{{(s^2_2/n_2)}^2}{n_2 - 1}}
 		\end{align*}
 	\end{block}
 
@@ -1426,17 +1439,20 @@
 	\end{itemize}
 \end{frame}
 
-\mode<article>{%
+\note{%
 	\begin{itemize}
 		\item What does this test literally mean?
 	\end{itemize}
 
 	\begin{center}
-		\includegraphics[width=\linewidth]{literalt.jpg}
+		\includegraphics[width=0.7\linewidth]{literalt.jpg}
 	\end{center}
+}
 
+\note{%
 	\begin{center}
-		\begin{tikzpicture}[scale=0.7]
+		\resizebox{!}{18em}{
+		\begin{tikzpicture}[scale=0.6]
 			\tikzset{caption/.style={below,font=\small}};
 			\tikzset{between/.style={midway,text width=0.2\linewidth, align=center}};
 			\node(calcgtab) {\includegraphics[scale=0.2]{bigtcalc.jpg}};
@@ -1450,10 +1466,11 @@
 			\path (calcgtab) to node[between] {$\Delta$ average makes a difference}	(calcatab);
 			\path (calcltab1) to node[between] {So does $\Delta$ width!}(calcltab2);
 		\end{tikzpicture}
+	}
 	\end{center}
 }
 
-\begin{frame}[t,allowframebreaks]{Case 2: Example}
+\begin{frame}[t]{Case 2: Example}
 	Nitrite (\ch{NO2-}) was measured by two methods in rainwater and
 	unchlorinated drinking water.  The results ($x \pm s$ ($n$)) are:
 	\begin{center}
@@ -1472,9 +1489,9 @@
 		\item For each method, does drinking water contain more nitrite
 			(again at 95\%)?
 	\end{enumerate}
+\end{frame}
 
-	\framebreak
-
+\begin{frame}[t]{Case 2: Example --- Rainwater}
 	\begin{center}
 		\sisetup{table-format=1.3(3),separate-uncertainty}
 		\small
@@ -1488,7 +1505,7 @@
 		\end{tabular}
 	\end{center}
 
-	\mode<article>{
+	\note{%
 		\begin{align*}
 		F &= 2._{56} < F_{\text{table}} (4.53) \\
 		t_{\text{calc}} &= \dfrac{|\bar{x}_1 -
@@ -1504,9 +1521,9 @@
 	statistically identical at 95\%.}
 	\end{center}
 	}
+\end{frame}
 
-	\framebreak
-
+\begin{frame}[t]{Case 2: Example ---  Drinking Water}
 	\begin{center}
 		\sisetup{table-format=1.3(3),separate-uncertainty}
 		\small
@@ -1520,7 +1537,7 @@
 		\end{tabular}
 	\end{center}
 
-	\mode<article>{%
+	\note{%
 	\begin{align*}
 		F &= 1._{31} < F_{\text{table}} (4.53) \\
 		t_{\text{calc}} &= \dfrac{|\bar{x}_1 -
@@ -1537,8 +1554,9 @@
 	\end{center}
 }
 
-	\framebreak
+\end{frame}
 
+\begin{frame}[t]{Case 2: Example --- GC}
 	\begin{center}
 		\sisetup{table-format=1.3(3),separate-uncertainty}
 		\small
@@ -1553,7 +1571,7 @@
 		\end{tabular}
 	\end{center}
 
-	\mode<article>{%
+	\note{%
 	\begin{align*}
 		F &= 1._{96} < F_{\text{table}} (4.53) \\
 		t_{\text{calc}} &= \dfrac{|\bar{x}_1 -
@@ -1570,8 +1588,9 @@
 	\end{center}
 }
 
-	\framebreak
+\end{frame}
 
+\begin{frame}[t]{Case 2: Example --- UV-Vis}
 	\begin{center}
 		\sisetup{table-format=1.3(3),separate-uncertainty}
 		\small
@@ -1586,7 +1605,7 @@
 		\end{tabular}
 	\end{center}
 
-	\mode<article>{%
+	\note{%
 	\begin{align*}
 		F &= 0._{00} < F_{\text{table}} (4.53) \\
 		t_{\text{calc}} &= \dfrac{|\bar{x}_1 -
@@ -1603,9 +1622,7 @@
 }
 \end{frame}
 
-\clearpage
-
-\begin{frame}{Case 3: Comparing Individual Differences}
+\begin{frame}{Case 3: Comparing Individual Differences (Paired)}
 	\begin{itemize}
 		\item Comparing two measurements performed with two different
 			methods --- no measurement performed twice!
@@ -1613,8 +1630,8 @@
 			\alert{differences} ($d$) between each measurement.
 
 			\begin{align*}
-				s_d & = \sqrt{\dfrac{\sum(d_i -
-				\bar{d})^2}{n-1}} \\
+				s_d & = \sqrt{\dfrac{\sum{(d_i -
+				\bar{d})}^2}{n-1}} \\
 				t_{\text{calc}} &= \dfrac{|\bar{d}|}{s_d}
 				\sqrt{n}
 			\end{align*}
@@ -1640,7 +1657,7 @@
 		\end{tabular}
 	\end{center}
 
-	\mode<article>{%
+	\note{%
 	\begin{center}
 		\sisetup{table-format=2.2}
 		\begin{tabular} {c S S S[table-format=+1.2]}
@@ -1654,15 +1671,19 @@
 		\end{tabular}
 	\end{center}
 
+	\begin{columns}
+		\column{0.5\textwidth}
 	\begin{align*}
 		\text{mean difference} &= -0.02_2 \\
 		\text{std dev difference} &= 0.07_6 \\
 		t_{\text{calc}} &= \dfrac{|\bar{d}|}{s_d} \sqrt{n} = 0.65
 	\end{align*}
 
+	\column{0.5\textwidth}
 	\fbox{\parbox{\linewidth}{\centering Since $t$ (4 DF) is a minimum of
 	0.741 at 50\%, these means and therefore methods are statistically
 	\alert{the same}.}}
+\end{columns}
 }
 \end{frame}
 
@@ -1711,6 +1732,266 @@
 	\end{columns}
 \end{frame}
 
+%% END PART 2
+
+\frame{\section{Methods of Calibration}
+\begin{learningobjectives}
+\item Be familiar with the different types of calibration methods.
+\item Know when a certain curve may be perferable over other
+	calibration methods.
+	\item Identify and explain the limits of calibration curves.
+\end{learningobjectives}
+}
+
+\begin{frame}[t]
+	\frametitle{Single Point Calibration}
+	The signal we measure should be proportional to the concentration of the
+	analyte:
+	\begin{align*}
+		S_\text{total} &= k_{\ch{A}}C_{\ch{A}}+S_\text{reag}
+		\intertext{After subtracting the \alert{blank}:}
+		S_\text{total} &= k_{\ch{A}}C_{\ch{A}}
+		\intertext{After measuring a \alert{known} reference material:}
+		k_{\ch{A}} &= \frac{S_\text{total}}{C_{\ch{A}}}
+	\end{align*}
+	
+\end{frame}
+
+\begin{frame}{Linearity}
+	How well a calibration curve follows a straight line --- the response is
+	\alert{proportional} to the quantity of analyte.
+
+	\begin{block}{Square of Correlation Coefficient}
+		e.g.\ our friend, $R^2$:
+	\begin{align*}
+		R^2 =
+		\dfrac{\big[\sum(x_i - \bar{x})(y_i - \bar{y})\big]^2}{\sum (x_i
+		- \bar{x})^2 \sum (y_i - \bar{y})^2}
+	\end{align*}
+	\end{block}
+
+	\begin{itemize}
+		\item $R^2$ \textrightarrow\ 1 when the data is
+			``good'' --- it fits our model (a straight line)
+		\item Use \texttt{=LINEST()} in Excel to retrieve value
+		\item $y$-intercept $\approx$ 0 \emph{after
+			background subtraction}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Range}
+	\begin{columns}
+	\column{0.4\textwidth}
+	The concentration interval over which linearity, accuracy, and precision
+	are all acceptable.
+	\begin{itemize}
+		\item Linear Range 
+		\item Dynamic Range
+		\item Range
+	\end{itemize}
+
+	\column{0.55\textwidth}
+	\begin{center}
+		\includegraphics[scale=1.05]{Range-Harvey.png}
+	\end{center}
+\end{columns}
+	\begin{alertblock}{Note:}
+		Just because we can draw a straight line from $0 \rightarrow
+		\infty$ does not mean we can extrapolate analyte concentration
+		from $0 \rightarrow \infty$!
+	\end{alertblock}
+
+\end{frame}
+
+
+\begin{frame}{Standard Calibration Curve}
+	For a \alert{linear} relationship,
+	\begin{align*}
+		y &= mx + b \\
+		\text{signal} &= m \times \text{sample concentration} +
+		\text{blank}
+	\end{align*}
+
+	\begin{tabularx}{\linewidth} {>{\bfseries}r X}
+		Pros: &
+		Very simple --- prepare some standards for the curve
+		and see where the unknown lies \\ \\
+		Cons: &
+		There must be minimal \alert{matrix effects} over the
+		range being considered \\
+		      & You must have standards above and below
+		      [unknown] --- you
+			have to know approximately [unknown] \\
+	\end{tabularx}
+\end{frame}
+
+\begin{frame}[t]{Standard Additions Curve}
+	A series of solutions with equal [unknown] are spiked at
+	interval concentrations of a standard solution
+
+	\begin{center}
+	\begin{tabular} {l c c}
+		\toprule
+		\bfseries Sample & \bfseries Conc. & \bfseries Signal \\ \midrule
+		Unknown & $[X]_i$ & $I_X$ \\
+		Unknown + Standard & $[S]_f + [X]_f$ & $I_{S+X}$ \\ \bottomrule
+	\end{tabular}
+	\end{center}
+
+	\begin{align*}
+		\begin{rcases}
+		I_X &= k[X]_i \\
+		I_{S+X} &= k([X]_f + [S]_f)
+		\end{rcases} \dfrac{I_X}{I_{S+X}} = \dfrac{k[X]_i}{k([X]_f +
+		[S]_f)} = \dfrac{[X]_i}{[X]_f + [S]_f}
+	\end{align*}
+
+	\begin{center}
+	\begin{tabular} {c l}
+		$[X]_i$ & initial unknown conc. \\
+		$[X]_f$ & final unknown after adding a known, $[S]_f$ \\
+		$k$ & proportionality constant
+	\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Preparing a Standard Additions Curve}
+	\begin{center}
+		\includegraphics[width=0.9\linewidth]{standardaddition.png}
+	\end{center}
+
+	\begin{columns}[t]
+		\column{0.5\linewidth}
+		\textbf{Pros:}
+
+		\begin{itemize}
+			\item Sample matrix consistent with standards
+		\end{itemize}
+		\column{0.5\linewidth}
+		\textbf{Cons:}
+
+		\begin{itemize}
+			\item Experimentally more difficult
+			\item Relationship \alert{must} be linear
+		\end{itemize}
+	\end{columns}
+
+	\note{%
+		What does it mean if the slope of the standard calibration curve
+		and standard additions plot are different?
+	}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Some Standard Additions Practice}
+	\SI{5.00}{\mL} aliquots of a solution containing phenobarbital were
+carefully measured into five separate \SI{50.00}{\mL} volumetric flasks and made
+basic with \ch{KOH}. The following volumes of a standard solution of
+phenobarbital (\SI{2.000}{\micro\gram\per\milli\liter}) were added into each
+flask: \SIlist{0.000;0.500;1.00;1.50;2.00}{\mL}. The fluorimeter readings from
+each solution are listed below.
+\begin{columns}
+	\column{0.5\textwidth}
+	\begin{center}
+\begin{tabular} {S[table-format=1.3] S[table-format=1.2]}
+	\toprule
+	\textbf{Spike Vol. (mL)} & \textbf{Readout} \\ \midrule
+	0.000 & 3.26 \\
+	0.500 & 4.80 \\
+	1.000 & 6.41 \\
+	1.500 & 8.02 \\
+	2.000 & 9.56 \\
+	\bottomrule
+\end{tabular}
+\end{center}
+\column{0.4\textwidth}
+\begin{center}
+What is the concentration of the unknown?
+\end{center}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}[allowframebreaks=1]{Internal Standards Curve}
+	A known amount of compound \alert{different} than the analyte is added
+	to the unknown.
+
+	\bigskip
+
+	\begin{block}{Response Factor}
+		\begin{align*}
+			\dfrac{\text{Analyte Signal}}{\text{Analyte
+			Concentration}} &= F\bigg(\dfrac{\text{Standard
+			Signal}}{\text{Standard Concentration}}\bigg) \\
+			\dfrac{A_X}{[X]} &= F\bigg(\dfrac{A_S}{[S]}\bigg)
+		\end{align*}
+
+		where $F$ = Response factor.
+	\end{block}
+
+	\framebreak
+
+	\begin{columns}
+		\column{0.5\linewidth}
+		The ratio of $X$ to $S$ will change based on $[X]$.
+		\column{0.5\linewidth}
+		\begin{center}
+			\includegraphics[scale=1]{internalstandard.png}
+		\end{center}
+	\end{columns}
+
+	\framebreak
+
+	\begin{columns}
+		\column{0.5\linewidth}
+		\textbf{Pros:}
+
+		\begin{itemize}
+			\item Experimentally easier than standard addition
+			\item Also good for complex sample matrices
+		\end{itemize}
+
+		\textbf{Cons:}
+		
+		\begin{itemize}
+			\item Must choose a concentration of signal that will
+				provide signal slightly above and below
+				[unknown]
+		\end{itemize}
+		
+		\column{0.5\linewidth}
+		\begin{center}
+			\includegraphics[scale=0.7]{internalstandard2.png}
+		\end{center}
+	\end{columns}
+\end{frame}
+
+%\begin{frame}[t]
+%	\frametitle{Build Your Own}
+%	{\footnotesize
+%	A mass spec is taken of an ``unknown'' sample of benzene in water. The
+%	parent ion peak (m/z = \num{78.114}) is used to monitor the benzene
+%	concentration. Given the following parameters, predict the data for the
+%	4 standard addition samples, graph the data, and verify the ``unknown''
+%	benzene concentration.
+%	\begin{enumerate}[a.]
+%		\item Unknown benzene concentration = \SI{5.6}{ppb} yields
+%			\num{41239} detector ``counts'' at the parent ion mass
+%			when a \SI{5.00}{\micro\liter} sample is analyzed.
+%		\item Benzene standard solution with a concentration of
+%			\SI{100.0}{ppb} is available
+%		\item 4 standard addition samples are to be prepared, analyzed
+%			and the data graphed to ``find'' the ``unknown''
+%			concentration
+%		\item Any volumes may be used to make the standard addition
+%			samples, however, remember the more benzene used, the
+%			more waste there is to dispose of properly!
+%	\end{enumerate}
+%}
+%	
+%\end{frame}
+
+
 %\begin{frame}{Least Squares Analysis}
 %	At one point, I needed to know this\ldots
 %
@@ -1723,125 +2004,23 @@
 %	You \alert{do} have to know how to add error bars to graphs. Reproduce
 %	Figure 4-16 on Harris p. 88.
 %\end{frame}
-%\frame{\section{Method Validation}
-%\begin{learningobjectives}
-%\item Understand where limitations exist in certain measurements.
-%\item Quantify the limitations of an analysis.
-%\end{learningobjectives}}
-%
-%\vspace{\stretch{-1}}
-%
-%\begin{frame}{Linearity}
-%	How well a calibration curve follows a straight line -- the response is
-%	\alert{proportional} to the quantity of analyte.
-%
-%	\begin{align*}
-%		\shortintertext{e.g. our friend, $R^2$}
-%		\text{Square of correlation coefficient:\qquad} R^2 =
-%		\dfrac{\big[\sum(x_i - \bar{x})(y_i - \bar{y})\big]^2}{\sum (x_i
-%		- \bar{x})^2 \sum (y_i - \bar{y})^2}
-%	\end{align*}
-%
-%	\begin{itemize}
-%		\item $R^2$ should approach a value of 1 when the data is
-%			``good'' -- it fits our model (a straight line)
-%		\item Use \texttt{=LINEST()} in Excel to retrieve value
-%		\item $y$-intercept should also be close to 0 \alert{after
-%			background subtraction}
-%	\end{itemize}
-%\end{frame}
-%
-%\begin{frame}{Accuracy}
-%	``Nearness to the truth.''
-%
-%	\begin{enumerate}
-%		\item Compare a \alert{certified reference material} in a
-%			similar matrix to your unknown.
-%		\item Compare results from multiple different methods.
-%		\item Spike a sample with a known addition of analyte.
-%		\item Use the \alert{standard addition} method.
-%	\end{enumerate}
-%
-%	The goal is to keep the sample matrix as close as possible to that of
-%	the unknown. Spiking is the most common method.
-%\end{frame}
-%
-%\begin{frame}{Precision}
-%	How well replicate measurements agree with one another (think standard
-%	deviation or confidence interval).
-%
-%	\begin{itemize}
-%		\item \textbf{Repeatability:} the spread in results when
-%			\alert{one} person uses \alert{one} procedure to analyze
-%			the \alert{same} sample by the \alert{same} method
-%			multiple times.
-%		\item \textbf{Reproducibility:} the spread in results when
-%			\alert{different} people in \alert{different} labs use
-%			\alert{different} instruments each to try to follow the
-%			\alert{same} procedure.
-%	\end{itemize}
-%\end{frame}
-%
-%\begin{frame}{The Horwitz Trumpet}
-%	\begin{columns}
-%		\column{0.5\linewidth}
-%		\begin{align*}
-%			\text{RSD \%} \approx 2^{(1-0.5 \log C)}
-%		\end{align*}
-%		where $C$ is the mass ratio of analyte to sample. As $C$
-%		decreases, the RSD increases between laboratories.
-%		\column{0.5\linewidth}
-%		\begin{center}
-%			\includegraphics[scale=0.25]{horwitz.jpg}
-%		\end{center}
-%	\end{columns}
-%\end{frame}
-%
-%\begin{frame}{Range}
-%	The concentration interval over which linearity, accuracy, and precision
-%	are all acceptable.
-%
-%	\begin{columns}
-%	\column{0.5\linewidth}
-%	\begin{itemize}
-%		\item \textbf{Linear Range:} interval where calibration curve is
-%			linear
-%		\item \textbf{Dynamic Range:} interval where there is a
-%			measurable response
-%		\item \textbf{Range:} interval where linearity, accuracy, and
-%			precision meet \alert{specifications} for the method
-%	\end{itemize}
-%	\column{0.5\linewidth}
-%	\only<+>{%
-%	\begin{center}
-%		\includegraphics[scale=0.9]{range-definitions.png}
-%	\end{center}
-%}
-%\only<+>{%
-%		\begin{alertblock}{Note:}
-%		Just because we can draw a straight line from $0 \rightarrow
-%		\infty$ does not mean we can extrapolate analyte concentration
-%		from $0 \rightarrow \infty$!
-%	\end{alertblock}
-%}
-%\end{columns}
-%
-%\end{frame}
-%
-%\begin{frame}{Where can we determine [analyte]?}
-%	\begin{center}
-%	\only<1>{\includegraphics[width=\linewidth]{range-trendline.png}}
-%
-%	\only<2|article:0>{\includegraphics[width=\linewidth]{range-trendline-full.png}}
-%	\end{center}
-%\end{frame}
-%
-%\vspace{\stretch{-1}}
-%
-%\begin{frame}[allowframebreaks]{Limit of Detection (LOD)}
-%	The smallest quantity of analyte that is ``significantly different''
-%	from the blank.
-%
+
+\begin{frame}
+	\frametitle{Where can we determine [analyte]?}
+	\begin{center}
+		\alt<2>{%
+			\includegraphics[width=\linewidth]{range-trendline.png}
+		}{%
+			\includegraphics[width=\linewidth]{range-trendline-full.png}
+		}
+	\end{center}
+
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Limit of Detection (LOD)}
+	The smallest quantity of analyte that is ``significantly different''
+	from the blank.
+
 %	\begin{columns}
 %		\column{0.5\linewidth}
 %		\begin{itemize}
@@ -1854,78 +2033,85 @@
 %				signal from a blank.
 %		\end{itemize}
 %		\column{0.5\linewidth}
-%		\begin{center}
-%			\includegraphics[scale=0.5]{lod.png}
-%		\end{center}
+		\begin{center}
+			\includegraphics[scale=0.5]{LOD-Harvey.png}
+		\end{center}
 %	\end{columns}
-%
-%	\framebreak
-%
-%	\begin{align*}
-%		\intertext{\textit{Signal detection limit:}}
-%		y_\text{dl} &= y_\text{blank} + 3s \\
-%		\intertext{\textit{Calibration line:}}
-%		y_\text{sample} - y_\text{blank} &= m \times \text{sample
-%		concentration} \\
-%		\intertext{\textit{Detection limit:}}
-%		\text{Minimum detectable concentration} &\equiv \dfrac{3s}{m}
-%	\end{align*}
-%\end{frame}
-%
-%\note{
-%	Calibration line equation comes from offset of blank:
-%
-%	\begin{align*}
-%		y &= mx + b \\
-%		y_\text{sample} &= m \times \text{sample concentration} +
-%		y_\text{blank} \\
-%		y_\text{sample} - y_\text{blank} &= m \times \text{sample
-%		concentration}
-%	\end{align*}
-%
-%	Detectable concentration assumes $y_\text{dl}$ is as close to the blank
-%	as possible:
-%
-%	\begin{align*}
-%		y_\text{blank} + 3s - y_\text{blank} &= m \times \text{minimum
-%		detectable concentration} \\
-%		\dfrac{3s}{m} &= \text{minimum detectable concentration}
-%	\end{align*}
-%	}
-%
-%\begin{frame}{Limit of Quantitation}
-%		When the signal is 3 times greater than the noise (blank),
-%			it is detectable, but we cannot accurately measure
-%			(quantify) the analyte.
-%	\begin{itemize}
-%		\item We define a signal that is 10 times greater than the noise
-%			as the \alert{lower limit of quantitation} because we
-%			can be \alert{reasonably} confident in its accuracy.
-%	\end{itemize}
-%
-%	\begin{align*}
-%		\text{Lower limit of quantitation} \equiv \dfrac{10s}{m}
-%	\end{align*}
-%
-%	\begin{itemize}
-%		\item Where is the upper limit of quantitation?
-%	\end{itemize}
-%\end{frame}
-%
-%\begin{frame}{Robustness}
-%	The ability of an analytical method to be unaffected by small,
-%	deliberate changes in operating parameters.
-%
-%	\begin{itemize}
-%		\item What is the pH range at which we can run this analysis?
-%		\item Is there an optimal ionic strength of the buffer?
-%		\item How does temperature affect the results?
-%	\end{itemize}
-%\end{frame}
-%
-%\vspace{\stretch{-1}}
-%
-%
+
+	\framebreak
+
+	\begin{align*}
+		\intertext{\textit{Signal detection limit:}}
+		y_\text{dl} &= y_\text{blank} + 3s \\
+		\intertext{\textit{Calibration line:}}
+		y_\text{sample} - y_\text{blank} &= m \times \text{sample
+		concentration} \\
+		\intertext{\textit{Detection limit:}}
+		\text{Minimum detectable concentration} &\equiv \dfrac{3s}{m}
+	\end{align*}
+\end{frame}
+
+\note{%
+	Calibration line equation comes from offset of blank:
+
+	\begin{align*}
+		y &= mx + b \\
+		y_\text{sample} &= m \times \text{sample concentration} +
+		y_\text{blank} \\
+		y_\text{sample} - y_\text{blank} &= m \times \text{sample
+		concentration}
+	\end{align*}
+
+	Detectable concentration assumes $y_\text{dl}$ is as close to the blank
+	as possible:
+
+	\begin{align*}
+		y_\text{blank} + 3s - y_\text{blank} &= m \times \text{minimum
+		detectable concentration} \\
+		\dfrac{3s}{m} &= \text{minimum detectable concentration}
+	\end{align*}
+	}
+
+\begin{frame}{Limit of Quantitation}
+		When the signal is 3 times greater than the noise (blank),
+			it is detectable, but we cannot accurately measure
+			(quantify) the analyte.
+	\begin{itemize}
+		\item We define a signal that is 10 times greater than the noise
+			as the \alert{lower limit of quantitation} because we
+			can be \alert{reasonably} confident in its accuracy.
+	\end{itemize}
+
+	\begin{align*}
+		\text{Lower limit of quantitation} \equiv \dfrac{10s}{m}
+	\end{align*}
+
+	\begin{itemize}
+		\item Where is the upper limit of quantitation?
+	\end{itemize}
+\end{frame}
+
+%\frame{\section{Method Validation}
+%\begin{learningobjectives}
+%\item Understand where limitations exist in certain measurements.
+%\item Quantify the limitations of an analysis.
+%\end{learningobjectives}}
+
+\begin{frame}{The Horwitz Trumpet}
+	\begin{columns}
+		\column{0.5\linewidth}
+		\begin{align*}
+			\text{RSD \%} \approx 2^{(1-0.5 \log C)}
+		\end{align*}
+		where $C$ is the mass ratio of analyte to sample. As $C$
+		decreases, the RSD increases between laboratories.
+		\column{0.5\linewidth}
+		\begin{center}
+			\includegraphics[scale=0.25]{horwitz.jpg}
+		\end{center}
+	\end{columns}
+\end{frame}
+
 %\frame{\section{Quality Assurance}
 %\begin{learningobjectives}
 %\item Note the need for certain standards.
@@ -2205,207 +2391,6 @@
 %		Valentin-Blasini, J. P. Mauldin, D. Maple, B. C. Blount.
 %		\textit{Anal. Chem.} \textbf{2005}, 77, 2475.]
 %	\end{columns}
-%\end{frame}
-%
-%\vspace{\stretch{-1}}
-%
-%\frame{\section{Calibration Curves}
-%\begin{learningobjectives}
-%\item Be familiar with the different types of calibration methods.
-%\item Know when a certain curve may be perferable over other
-%	calibration methods.
-%\end{learningobjectives}
-%}
-%
-%\vspace{\stretch{-1}}
-%
-%\begin{frame}{Standard Calibration Curve}
-%	For a \alert{linear} relationship,
-%	\begin{align*}
-%		y &= mx + b \\
-%		\text{signal} &= m \times \text{sample concentration} +
-%		\text{blank}
-%	\end{align*}
-%
-%	\begin{tabularx}{\linewidth} {>{\bfseries}r X}
-%		Pros: &
-%		Very simple --- prepare some standards for the curve
-%		and see where the unknown lies \\ \\
-%		Cons: &
-%		There must be minimal \alert{matrix effects} over the
-%		range being considered \\
-%		      & You must have standards above and below
-%		      [unknown] --- you
-%			have to know approximately [unknown] \\
-%	\end{tabularx}
-%\end{frame}
-%
-%\vspace{\stretch{-1}}
-%\clearpage
-%
-%\begin{frame}[t]{Standard Additions Curve}
-%	\only<+>{%
-%	A series of solutions with equal [unknown] are spiked at
-%	interval concentrations of a standard solution
-%
-%	\begin{center}
-%	\begin{tabular} {l c c}
-%		\toprule
-%		\bfseries Sample & \bfseries Conc. & \bfseries Signal \\ \midrule
-%		Unknown & $[X]_i$ & $I_X$ \\
-%		Unknown + Standard & $[S]_f + [X]_f$ & $I_{S+X}$ \\ \bottomrule
-%	\end{tabular}
-%	\end{center}
-%
-%	\begin{align*}
-%		\begin{rcases}
-%		I_X &= k[X]_i \\
-%		I_{S+X} &= k([X]_f + [S]_f)
-%		\end{rcases} \dfrac{I_X}{I_{S+X}} = \dfrac{k[X]_i}{k([X]_f +
-%		[S]_f)} = \dfrac{[X]_i}{[X]_f + [S]_f}
-%	\end{align*}
-%
-%	\begin{center}
-%	\begin{tabular} {c l}
-%		$[X]_i$ & initial unknown conc. \\
-%		$[X]_f$ & final unknown after adding a known, $[S]_f$ \\
-%		$k$ & proportionality constant
-%	\end{tabular}
-%	\end{center}
-%
-%}
-%
-%\only<+->{%
-%	\begin{center}
-%		\includegraphics[width=0.9\linewidth]{standardaddition.png}
-%	\end{center}
-%
-%	\only<.>{%
-%	\begin{columns}[t]
-%		\column{0.5\linewidth}
-%		\textbf{Pros:}
-%
-%		\begin{itemize}
-%			\item Sample matrix consistent with standards
-%		\end{itemize}
-%		\column{0.5\linewidth}
-%		\textbf{Cons:}
-%
-%		\begin{itemize}
-%			\item Experimentally more difficult
-%			\item Relationship \alert{must} be linear
-%		\end{itemize}
-%	\end{columns}
-%	}
-%
-%	\only<+>{%
-%		What does it mean if the slope of the standard calibration curve
-%		and standard additions plot are different?
-%	}
-%}
-%\end{frame}
-%
-%\begin{frame}[allowframebreaks]{Internal Standards Curve}
-%	A known amount of compound \alert{different} than the analyte is added
-%	to the unknown.
-%
-%	\begin{block}{Response Factor}
-%		\begin{align*}
-%			\dfrac{\text{Analyte Signal}}{\text{Analyte
-%			Concentration}} &= F\bigg(\dfrac{\text{Standard
-%			Signal}}{\text{Standard Concentration}}\bigg) \\
-%			\dfrac{A_X}{[X]} &= F\bigg(\dfrac{A_S}{[S]}\bigg)
-%		\end{align*}
-%
-%		where $F$ = Response factor.
-%	\end{block}
-%
-%	\framebreak
-%
-%	\begin{columns}
-%		\column{0.5\linewidth}
-%		The ratio of $X$ to $S$ will change based on $[X]$.
-%		\column{0.5\linewidth}
-%		\begin{center}
-%			\includegraphics[scale=1]{internalstandard.png}
-%		\end{center}
-%	\end{columns}
-%
-%	\framebreak
-%
-%	\begin{columns}
-%		\column{0.5\linewidth}
-%		\textbf{Pros:}
-%
-%		\begin{itemize}
-%			\item Experimentally easier than standard addition
-%			\item Also good for complex sample matrices
-%		\end{itemize}
-%
-%		\textbf{Cons:}
-%		
-%		\begin{itemize}
-%			\item Must choose a concentration of signal that will
-%				provide signal slightly above and below
-%				[unknown]
-%		\end{itemize}
-%		
-%		\column{0.5\linewidth}
-%		\begin{center}
-%			\includegraphics[scale=0.7]{internalstandard2.png}
-%		\end{center}
-%	\end{columns}
-%\end{frame}
-%
-%\begin{frame}[t]
-%	\frametitle{Some Standard Additions Practice}
-%	{\footnotesize
-%	\SI{5.00}{\mL} aliquots of a solution containing phenobarbital were
-%carefully measured into five separate \SI{50.00}{\mL} volumetric flasks and made
-%basic with \ch{KOH}. The following volumes of a standard solution of
-%phenobarbital (\SI{2.000}{\micro\gram\per\milli\liter}) were added into each
-%flask: \SIlist{0.000;0.500;1.00;1.50;2.00}{\mL}. The fluorimeter readings from
-%each solution are listed below.
-%
-%\begin{tabular} {S[table-format=1.3] S[table-format=1.2]}
-%	\toprule
-%	\textbf{Spike Vol. (mL)} & \textbf{Readout} \\ \midrule
-%	0.000 & 3.26 \\
-%	0.500 & 4.80 \\
-%	1.000 & 6.41 \\
-%	1.500 & 8.02 \\
-%	2.000 & 9.56 \\
-%	\bottomrule
-%\end{tabular}
-%
-%What is the concentration of the unknown?
-%}
-%	
-%\end{frame}
-%
-%\begin{frame}[t]
-%	\frametitle{Build Your Own}
-%	{\footnotesize
-%	A mass spec is taken of an ``unknown'' sample of benzene in water. The
-%	parent ion peak (m/z = \num{78.114}) is used to monitor the benzene
-%	concentration. Given the following parameters, predict the data for the
-%	4 standard addition samples, graph the data, and verify the ``unknown''
-%	benzene concentration.
-%	\begin{enumerate}[a.]
-%		\item Unknown benzene concentration = \SI{5.6}{ppb} yields
-%			\num{41239} detector ``counts'' at the parent ion mass
-%			when a \SI{5.00}{\micro\liter} sample is analyzed.
-%		\item Benzene standard solution with a concentration of
-%			\SI{100.0}{ppb} is available
-%		\item 4 standard addition samples are to be prepared, analyzed
-%			and the data graphed to ``find'' the ``unknown''
-%			concentration
-%		\item Any volumes may be used to make the standard addition
-%			samples, however, remember the more benzene used, the
-%			more waste there is to dispose of properly!
-%	\end{enumerate}
-%}
-%	
 %\end{frame}
 %
 \end{document}
