@@ -1,0 +1,71 @@
+\documentclass{standalone}
+
+\usepackage{newtxtext}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{bm}
+\usepackage[table]{xcolor}
+\usepackage{bucolors}
+
+% Critical values of F = s3/s2 at 95% confidence level
+% Harris
+
+\begin{document}
+
+%\begin{table}
+%	\centering
+%	\setlength\tabcolsep{3pt}
+%%	\fontsize{4}{4}\selectfont
+%	\tiny
+\begin{tabular}{c*{14}{S[table-format=2.2]}}
+	\toprule & \multicolumn{14}{c}{\bfseries Degrees of Freedom in $\bm{s_1}$} \\
+	\cmidrule(lr){2-15}
+	\textbf{DF $\bm{s_2}$}          & \textbf{2} &     \textbf{3} &     \textbf{4} &     \textbf{5} &     \textbf{6} &     \textbf{7} &     \textbf{8} &     \textbf{9} &    {\bfseries 10} &    {\bfseries 12} &    {\bfseries 15} &    {\bfseries 20} &    {\bfseries 30} & $\bm{\infty{}}$ \\
+	\midrule
+	\textbf{2}     & 19.0  & 19.2  & 19.2  & 19.3  & 19.3  & 19.4  & 19.4  & 19.4  & 19.4  & 19.4  & 19.4  & 19.4  & 19.5  & 19.5  \\
+         \textbf{3}     &  9.55 &  9.28 &  9.12 &  9.01 &  8.94 &  8.89 &  8.84 &  8.81 &  8.79 &  8.74 &  8.70 &  8.66 &  8.62 &  8.53 \\
+         \textbf{4}     &  6.94 &  6.59 &  6.39 &  6.26 &  6.16 &  6.09 &  6.04 &  6.00 &  5.96 &  5.91 &  5.86 &  5.80 &  5.75 &  5.63 \\
+         \textbf{5}     &  5.79 &  5.41 &  5.19 &  5.05 &  4.95 &  4.88 &  4.82 &  4.77 &  4.74 &  4.68 &  4.62 &  4.56 &  4.50 &  4.36 \\
+         \textbf{6}     &  5.14 &  4.76 &  4.53 &  4.39 &  4.28 &  4.21 &  4.15 &  4.10 &  4.06 &  4.00 &  3.94 &  3.87 &  3.81 &  3.67 \\
+         \textbf{7}     &  4.74 &  4.35 &  4.12 &  3.97 &  3.87 &  3.79 &  3.73 &  3.68 &  3.64 &  3.58 &  3.51 &  3.44 &  3.38 &  3.23 \\
+         \textbf{8}     &  4.46 &  4.07 &  3.84 &  3.69 &  3.58 &  3.50 &  3.44 &  3.39 &  3.35 &  3.28 &  3.22 &  3.15 &  3.08 &  2.93 \\
+         \textbf{9}     &  4.26 &  3.86 &  3.63 &  3.48 &  3.37 &  3.29 &  3.23 &  3.18 &  3.14 &  3.07 &  3.01 &  2.94 &  2.86 &  2.71 \\
+        \textbf{10}     &  4.10 &  3.71 &  3.48 &  3.33 &  3.22 &  3.14 &  3.07 &  3.02 &  2.98 &  2.91 &  2.84 &  2.77 &  2.70 &  2.54 \\
+        \textbf{11}     &  3.98 &  3.59 &  3.36 &  3.20 &  3.10 &  3.01 &  2.95 &  2.90 &  2.85 &  2.79 &  2.72 &  2.65 &  2.57 &  2.40 \\
+        \textbf{12}     &  3.88 &  3.49 &  3.26 &  3.11 &  3.00 &  2.91 &  2.85 &  2.80 &  2.75 &  2.69 &  2.62 &  2.54 &  2.47 &  2.30 \\
+        \textbf{13}     &  3.81 &  3.41 &  3.18 &  3.02 &  2.92 &  2.83 &  2.77 &  2.71 &  2.67 &  2.60 &  2.53 &  2.46 &  2.38 &  2.21 \\
+        \textbf{14}     &  3.74 &  3.34 &  3.11 &  2.96 &  2.85 &  2.76 &  2.70 &  2.65 &  2.60 &  2.53 &  2.46 &  2.39 &  2.31 &  2.13 \\
+        \textbf{15}     &  3.68 &  3.29 &  3.06 &  2.90 &  2.79 &  2.71 &  2.64 &  2.59 &  2.54 &  2.48 &  2.40 &  2.33 &  2.25 &  2.07 \\
+        \textbf{16}     &  3.63 &  3.24 &  3.01 &  2.85 &  2.74 &  2.66 &  2.59 &  2.54 &  2.49 &  2.42 &  2.35 &  2.28 &  2.19 &  2.01 \\
+        \textbf{17}     &  3.59 &  3.20 &  2.96 &  2.81 &  2.70 &  2.61 &  2.55 &  2.49 &  2.45 &  2.38 &  2.31 &  2.23 &  2.15 &  1.96 \\
+        \textbf{18}     &  3.56 &  3.16 &  2.93 &  2.77 &  2.66 &  2.58 &  2.51 &  2.46 &  2.41 &  2.34 &  2.27 &  2.19 &  2.11 &  1.92 \\
+        \textbf{19}     &  3.52 &  3.13 &  2.90 &  2.74 &  2.63 &  2.54 &  2.48 &  2.42 &  2.38 &  2.31 &  2.23 &  2.16 &  2.07 &  1.88 \\
+        \textbf{20}     &  3.49 &  3.10 &  2.87 &  2.71 &  2.60 &  2.51 &  2.45 &  2.39 &  2.35 &  2.28 &  2.20 &  2.12 &  2.04 &  1.84 \\
+        \textbf{30}     &  3.32 &  2.92 &  2.69 &  2.53 &  2.42 &  2.33 &  2.27 &  2.21 &  2.16 &  2.09 &  2.01 &  1.93 &  1.84 &  1.62 \\
+	$\bm{\infty{}}$ &  3.00 &  2.60 &  2.37 &  2.21 &  2.10 &  2.01 &  1.94 &  1.88 &  1.83 &  1.75 &  1.67 &  1.57 &  1.46 &  1.00 \\
+	\bottomrule
+\end{tabular}
+%\end{table}
+
+ 
+
+%Critical values of F for a one-tailed test of the hypothesis that s;
+%the same population standard deviation.
+%
+%> s There is a 5% probability of observing F above the tabulated value if the two sets of data come from populations with
+%
+%You can compute F for a chosen level of confidence with the Excel function FINV(Probability, deg_freedom], deg_freedom?). The statement *= FINV(0.05,7,6)" reproduces the value
+%
+% 
+%
+%4.21 in this table. The statement “= FINV(0.1.7.6)
+%
+% 
+%
+%pive
+%
+% 
+%
+%3.01 for 90% confidence.
+
+\end{document}
