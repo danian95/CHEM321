@@ -1,14 +1,17 @@
 % !TEX program = xelatex
-\documentclass[notes=onlyslideswithnotes,notes=hide]{beamer}
-%\documentclass[notes=hide]{beamer}
+%\documentclass[notes=onlyslideswithnotes,notes=hide]{beamer}
+\documentclass[notes=hide]{beamer}
 %\documentclass[notes=show]{beamer}
 %\documentclass[notes=only]{beamer}
+%\documentclass[handout]{beamer}
 %\documentclass[letterpaper,11pt]{article}
 %\usepackage{beamerarticle}
 
 %\usepackage{cancel}
 \newcommand<>{\latecancel}[1]{\alt#2{\cancel{#1}}{\vphantom{\cancel{#1}}{#1}}}
 
+\usepackage{newtxtext}
+\usepackage{bucolors}
 \usepackage{multicol}
 \usepackage{analchem}
 \usepackage{lecture}
@@ -20,14 +23,14 @@
 \usepackage{bigdelim}
 \usepgfplotslibrary{fillbetween}
 \NewChemEqConstant{\Kh}{K-gas}{\ensuremath{\mathrm{h}}}
-\NewChemEqConstant{\Keq}{K-eq}{\ensuremath{\mathrm{eq}}}
+%\NewChemEqConstant{\Keq}{K-eq}{\ensuremath{\mathrm{eq}}}
 
+\graphicspath{{./Figures/}}
 
 \title{Equilibrium}
-\subtitle{Chapters 6 \& 8}
 \author{D.A. McCurry}
 \institute{Department of Chemistry and Biochemistry \\ Bloomsburg University}
-\date{Fall 2020}
+\date{Fall 2021}
 
 \begin{document}
 
@@ -66,6 +69,8 @@
 	\item Manipulate equilibrium constants to describe a specific reaction.
 	\item Explain the relationship between the equilibrium constant and thermodynamics.
 	\item Determine reaction direction due to changes in temperature or species concentration.
+	\item Use a ladder diagram to determine the predominant species in a
+		solution.
 	\end{learningobjectives}
 }
 
@@ -88,25 +93,22 @@
 			}
 	\end{block}
 
-	\begin{itemize}
-		\item Since the ratio is product species over reactant species,
-			if
+	\bigskip
+
+	\begin{columns}
+		\column{0.45\textwidth}
+			What does it mean if\ldots
 			\begin{itemize}
-				\item $K < 1$, the reaction is not favored
-					(non-spontaneous)
-				\item $K > 1$, the reaction is favored
-					(spontaneous)
+				\item[\dots] $K < 1$?
+				\item[\dots] $K > 1$?
 			\end{itemize}
-		\item Due to their original thermodynamic derivation and the
-			correct units, equilibrium constants are
-			\alert{dimensionless}.
-			\begin{itemize}
-				\item{} [A](aq) really
-					means [A]/(\SI{1}{\Molar})
-				\item{} [A](g) really
-					means [A]/(\SI{1}{bar})
-			\end{itemize}
-	\end{itemize}
+		\column{0.45\textwidth}
+		$K$ is \alert{dimensionless}:
+			\begin{equation*}
+				\ch{[A]} \equiv
+				\frac{\ch{[A]}}{\ch{[A]^{\standardstate}}}
+			\end{equation*}
+	\end{columns}
 
 	\framebreak
 
@@ -122,13 +124,23 @@
 	\end{enumerate}
 \end{frame}
 
-\begin{frame}{Manipulating Equilibrium Constants}
-	For the following reaction,
+\begin{frame}[t]{Manipulating Equilibrium Constants}
+	Consider the following reaction:
 	\begin{align*}
 		\ch{HA} &\ch{<=>} \ch{H+ + A-} &&& K_1 &=
 		\dfrac{[\ch{H+}][\ch{A-}]}{[\ch{HA}]} \\
-		\intertext{Reversing the reaction \alert{inverses} the value of
-		$K$:}
+		\visible<+(1)->{%
+		\intertext{What happens if we reverse it?}
+	\ch{H+ + A-} &\ch{<=>} \ch{HA} \\}
+		\visible<+(1)->{%
+		\intertext{What happens if we add a new reaction to it?}
+	\ch{{} + H+ + C} &\ch{<=>} \ch{CH+} &&& K_2
+	}
+	\end{align*}
+	\note<+(1)>{%
+		Reversing the reaction \alert{inverses} the value of
+		$K$:
+		\begin{align*}
 		\ch{H+ + A-} &\ch{<=>} \ch{HA} &&& K_1' &=
 		\dfrac{[\ch{HA}]}{[\ch{H+}][\ch{A-}]} = \frac{1}{K_1} \\
 		\intertext{Adding reaction, $K_2$, to $K_1$, the new $K$ is the
@@ -142,9 +154,8 @@
 		\ch{HA + C} &\ch{<=>} \ch{A- + CH+} &&& K_3 &= 
 		\dfrac{[\ch{A-}][\ch{CH+}]}{[\ch{HA}][\ch{C}]} = K_1K_2
 	\end{align*}
+}
 \end{frame}
-
-\vspace{\stretch{-1}}
 
 \begin{frame}[t]{Manipulation Example}
 	Find \Keq{} for the reaction,
@@ -172,47 +183,15 @@
 		3 &	\ch{CO2(aq)} + \latecancel<7->{\ch{H2O(l)}} & \latecancel<7->{\ch{H2CO3(aq)}} & $K_h$ & 	1.7e-3 \\
 		4 &	\ch{H2CO3(aq)} + \ch{H2O(l)} & \ch{HCO3^{-}(aq)} + \ch{H3O^{+}(aq)} & $\Ka{}$ & 4.46e-7 \\
 		5 &	\ch{H3O^{+}(aq)} + \ch{OH^{-}(aq)} & \ch{2 H2O(l)} & $1/\Kw{}$ & 1.0e14  \\ \midrule
-%	\end{tabu}
-%
-%	\begin{tabu} to \textwidth {r l X[r]@{ = }S[table-format=1.2e-2]}
-%		\tabucline{-}
-%		\phantom{\widthof{\ch{H3O^{+}(aq) + OH-(aq) <=>}}} &
-%		\phantom{\widthof{\ch{HCO3^{-}(aq) + H3O^{+}(aq)}}} \\
 		6 &	\ch{CaCO3(s) + CO2(aq) + H2O(l)} & \ch{Ca^{2+}(aq) +
 		2 HCO3^{-}(aq)} & \Keq & 7.2e-8 \\
 	\end{tabularx}
 	\end{center}
-%
-%%	\begin{align*}
-%%		\MoveEqLeft \ch{CaCO3(s) + CO2(aq) + H2O(l)} \\
-%%		&
-%%	\end{align*}
-%	\begin{enumerate}
-%			\small
-%		\item Dissolve \ch{CaCO3} -- Solubility $\Ksp{}$
-%		\item Weak base (\ch{CO3^{2-}}) reacts with \ch{H2O} -- Base
-%		     dissociation
-%		\item Add \ch{CO2}
-%		\item Weak acid (\ch{H2CO3}) reacts with \ch{H2O} -- Acid
-%		     dissociation
-%		\item Remove excess \ch{H3O+} and \ch{OH-} -- Hydrolysis
-%		\item Sum
-%	\end{enumerate}
 }
 \end{frame}
 
-\clearpage
-
-\begin{frame}{Equilibrium and Thermodynamics}
-%	\begin{block}{Harris, 9\textsuperscript{th} Ed., pg. 121}
-%		``Equilibrium is controlled by the thermodynamics of a chemical
-%		reaction.  The heat absorbed or released (\alert{enthalpy}) and
-%		the dispersal of energy into molecular motion (\alert{entropy})
-%		independently contribute to the degree to which the reaction
-%		is favored or disfavored.''
-%	\end{block}
-%
-	\begin{itemize}[<only@1>]
+\begin{frame}[allowframebreaks]{Equilibrium and Thermodynamics}
+	\begin{itemize}
 		\item \textbf{Enthalpy} ($\bm{\Delta H}$) is the heat absorbed
 		or released when a reaction takes place under \alert{constant} applied \alert{pressure}.
 			\begin{center}
@@ -232,8 +211,10 @@
 				\Delta S = \dfrac{q_{\text{rev}}}{T}
 			\end{align*}
 	\end{itemize}
+
+	\framebreak
 	
-	\begin{itemize}[<only@2>]
+	\begin{itemize}
 		\item The \textbf{Gibbs free energy} ($\Delta G$) declares
 			whether a reaction is favorable:
 			\begin{align*}
@@ -276,8 +257,6 @@
 \end{block}
 \end{frame}}}
 
-\mode<article>{\clearpage}
-
 \begin{frame}{Le Ch\^atelier's Principle}
 	\begin{itemize}
 		\item If stress is applied to a system at equilibrium, the equilibrium will shift in order to reduce the
@@ -289,27 +268,14 @@
 				\dfrac{[\ch{C}]^c[\ch{D}]^d}
 				{[\ch{A}]^a[\ch{B}]^b}
 			\end{align*}
-			when A, B, C, and/or D are \alert{not} at equilibrium
-			concentrations.
-			\begin{center}
-				\parbox{0.8\linewidth}{
-					\begin{itemize}
-						\item [$Q > K$] Reaction
-							proceeds to the left
-							(produces more
-							reactants)
-						\item [$Q < K$] Reaction
-							proceeds to the right
-							(produces more products)
-						\item [$Q = K$] Reaction is at
-							equilibrium
-					\end{itemize}
-					}
-			\end{center}
+			What happens when\ldots
+			\begin{itemize}
+				\item[\ldots] $Q > K$
+				\item[\ldots] $Q < K$
+				\item[\ldots] $Q = K$
+			\end{itemize}
 	\end{itemize}
 \end{frame}
-
-\vspace{\stretch{-1}}
 
 \begin{frame}[t]{Reaction Quotient Example}
 	\begin{align*}
@@ -409,64 +375,32 @@
 	\end{learningobjectives}
 }
 
-\vspace{\stretch{-1}}
-
 \begin{frame}[t]{Applications of Equilibrium Constants}
-	\begin{itemize}
-		\item<1-> Solubility, $\Ksp{}$
-			\only<1|handout:0>{
-				\begin{itemize}
-					\item Appendix F
-					\item \ch{Ag2CrO4(s) <=> 2 Ag^{+}(aq) +
-						CrO4^{2-}(aq)} \quad $\Ksp{} =
-						\num{1.2e-12}$
-				\end{itemize}}
-				\mode<article>{\clearpage}
-		\item<2-> Formation, \Kf{}
-			\only<2|handout:0>{
-				\begin{itemize}
-					\item \ch{Ca^{2+}(aq) + EDTA^{4-}(aq)
-						<=> CaEDTA^{2-}(aq)} \quad $\Kf{} =
-						\num{4.9e10}$
-				\end{itemize}}
-		\item<3-> Acid, $\Ka{}$
-			\only<3|handout:0>{
-				\begin{itemize}
-					\item Appendix G
-					\item \ch{CH3COOH(aq) + H2O(l) <=>
-						CH3COO^{-}(aq) + H3O^{+}(aq)} \quad $\Ka{} =
-						\num{1.8e-5}$
-				\end{itemize}}
-		\item<4-> Base, $\Kb{}$
-			\only<4|handout:0>{
-				\begin{itemize}
-					\item \ch{NH3(aq) + H2O(l) <=> NH4^{+}(aq)
-						+ OH^{-}(aq)} \quad $\Kb{} = \num{1.8e-5}$
-					\item $\Ka{}\Kb{} = \Kw{}$
-				\end{itemize}}
-		\item<5-> Hydrolysis, $\Kw{}$
-			\only<5|handout:0>{
-				\begin{itemize}
-					\item \ch{2 H2O(l) <=> H3O^{+}(aq) +
-						OH^{-}(aq)} \quad $\Kw{} = \num{1.00e-14}$
-				\end{itemize}}
-		\item<6-> Others
-			\only<6|hanout:0>{
-				\begin{itemize}
-					\item All equilibrium constants are of
-						the same format:
-						\begin{align*}
-							K_{\mathrm{x}} =
-							\dfrac{\prod[\text{products}]}
-							{\prod[\text{reactants}]}
-						\end{align*}
-					\item It doesn't really matter what it's
-						called!
-				\end{itemize}}
-	\end{itemize}
+	\begin{description}
+		\item<1->[Solubility:]
+		\ch{Ag2CrO4(s) <=> 2 Ag^{+}(aq) +
+			CrO4^{2-}(aq)} \quad $\Ksp{} =
+			\num{1.2e-12}$
+		\item<2->[Formation:]
+		\ch{Ca^{2+}(aq) + EDTA^{4-}(aq)
+			<=> CaEDTA^{2-}(aq)} \quad $\Kf{} =
+			\num{4.9e10}$
+		\item<3->[Acid:]
+		\ch{CH3COOH(aq) + H2O(l) <=>
+			CH3COO^{-}(aq) + H3O^{+}(aq)} \quad $\Ka{} =
+			\num{1.8e-5}$
+		\item<4->[Base:]
+			\ch{NH3(aq) + H2O(l) <=> NH4^{+}(aq)
+			+ OH^{-}(aq)} \quad $\Kb{} = \num{1.8e-5}$
+		\item<5->[Hydrolysis:]
+		\ch{2 H2O(l) <=> H3O^{+}(aq) +
+			OH^{-}(aq)} \quad $\Kw{} = \num{1.00e-14}$
+		\item<6->[Others:]
+			$	K_{\mathrm{x}} =
+				\frac{\prod[\text{products}]}
+				{\prod[\text{reactants}]}$
+	\end{description}
 \end{frame}
-
-\vspace{\stretch{-1}}
 
 \begin{frame}[t]{Solubility Product Example}
 	What is the solubility of silver chromate in pure water and in a
@@ -499,7 +433,7 @@
 
 	\visible<2-|article:0>{
 	\begin{center}
-		\textbf{\alert{The common ion effect!}}
+		\textbf{\usebeamercolor[fg]{alerted text}The common ion effect!}
 	\end{center}}
 
 	\mode<article>{\clearpage}
@@ -545,59 +479,60 @@
 \end{frame}
 
 \begin{frame}{Formation: Lewis Acid/Base Reactions}
-	\only<1-2>{%
 	If anion \ch{X-} precipitates metal \ch{M+}, often a high concentration
 	of \ch{X-} causes solid \ch{MX} to redissolve.
 	\begin{itemize}
 		\item Increased solubility is due to formation of \alert{complex
 			ions}.
-		\item Lewis acids and Lewis bases react to form
+		\item Lewis acids and bases react to form
 			\alert{coordinate covalent bonds}.
 	\end{itemize}
 
 	For example,
 	\begin{align*}
-		\ch{Pb^{2+} + OH^{-} &<=> PbOH^{+}} \\
-		\shortintertext{but also,}
-		\ch{Pb^{2+} + 2 OH- &<=> Pb(OH)2}
+		\ch{Pb^{2+}\aq{} + I^{-}\aq{} &<=> PbI^{+}\aq{}} \\
+		\ch{Pb^{2+}\aq{} + 2 I^-\aq{} &<=> PbI2\aq{} <=> PbI2\sld{}} \\
+		\ch{Pb^{2+}\aq{} + 3 I^-\aq{} &<=> PbI3^-\aq{}}
 	\end{align*}
 
-	\visible<2->{\textbf{What product is present?}}
-}
+	\visible<+(1)->{\textbf{What product is present?}}
+\end{frame}
 
-	\only<3-5>{%
+\begin{frame}{Formation: Stepwise vs Cumulative}
 	There can only be one concentration of \ch{Pb^{2+}} in solution, so
 	solving one equilibrium must satisfy all equilibria.
-	\begin{itemize}
-		\item<4-> $K_{\mathrm{i}}$ will be used for \alert{stepwise} formation
+	\begin{itemize}[<+(1)->]
+		\item $K_{\mathrm{i}}$ will be used for \alert{stepwise} formation
 			constants:
 			\begin{center}
-			\begin{tabular} {l@{ + \ch{OH- <=>} }l c}
-				\ch{Pb^{2+}} & \ch{PbOH+} & $K_1$ \\
-				\ch{PbOH+} & \ch{Pb(OH)2} & $K_2$ \\
-				\ch{Pb(OH)2} & \ch{Pb(OH)3-} & $K_3$ \\
-				\ch{Pb(OH)3-} & \ch{Pb(OH)4^{2-}} & $K_4$
+			\begin{tabular} {l@{ + \ch{I^-\aq{} <=>} }l c}
+				\ch{Pb^{2+}\aq{}} & \ch{PbI^+\aq{}} & $K_1$ \\
+				\ch{PbI^+\aq{}} & \ch{PbI2\aq{}} & $K_2$ \\
+				\ch{PbI2\aq{}} & \ch{PbI3^-\aq{}} & $K_3$ \\
+				\ch{PbI3^-\aq{}} & \ch{PbI4^{2-}\aq{}} & $K_4$
 			\end{tabular}
 			\end{center}
-		\item<5-> $\beta_{\mathrm{i}}$ will be used for \alert{cumulative} formation
+		\item $\beta_{\mathrm{i}}$ will be used for \alert{cumulative} formation
 			constants:
 			\begin{center}
 				\begin{tabular} {l@{ + }r@{ \ch{<=>}
 					}l l}
-					\ch{Pb^{2+}} & \ch{OH-} & \ch{PbOH+} &
+					\ch{Pb^{2+}\aq{}} & \ch{I^-\aq{}} &
+					\ch{PbI^+\aq{}} &
 					$K_1$ \\
-					\ch{Pb^{2+}} & \ch{2 OH-} & \ch{Pb(OH)2} & $\beta_2 =
+					\ch{Pb^{2+}\aq{}} & \ch{2 I^-\aq{}} & \ch{PbI2\aq{}} & $\beta_2 =
 				K_1K_2$ \\
-					\ch{Pb^{2+}} & \ch{3 OH-} & \ch{Pb(OH)3-} & $\beta_3 =
+					\ch{Pb^{2+}\aq{}} & \ch{3 I^-\aq{}} &
+					\ch{PbI3^-\aq{}} & $\beta_3 =
 				K_1K_2K_3$ \\
-					\ch{Pb^{2+}} & \ch{4 OH-} & \ch{Pb(OH)4^{2-}} &
+					\ch{Pb^{2+}\aq{}} & \ch{4 I^-\aq{}} & \ch{PbI4^{2-}\aq{}} &
 				$\beta_4 = K_1K_2K_3K_4$
 			\end{tabular}
 			\end{center}
 	\end{itemize}
-}
+\end{frame}
 
-	\only<6->{%
+\begin{frame}{Formation: Competing Equilibria}
 	\begin{columns}
 		\column{0.5\textwidth}
 		\begin{itemize}
@@ -609,10 +544,7 @@
 		\column{0.5\textwidth}
 		\includegraphics[scale=0.4]{PbI2-complex.jpg}
 	\end{columns}
-}
 \end{frame}
-
-\vspace{\stretch{-1}}
 
 \begin{frame}[t]{Formation Example}
 	Find the concentrations of \ch{PbI+}, \ch{PbI2\aq{}}, \ch{PbI3-}, and
@@ -740,7 +672,8 @@
 	\end{itemize}
 
 	{\small
-	\begin{tabularx}{\textwidth} {*{2}{lX}}
+		\begin{tabularx}{\textwidth} {*{2}{l>{\raggedright\arraybackslash}X}}
+		\toprule
 		\multicolumn{2}{l}{\textit{Acids}} &
 		\multicolumn{2}{l}{\textit{Bases}} \\
 		\bfseries Name & \bfseries Formula & \bfseries Name & \bfseries Formula \\
@@ -751,7 +684,8 @@
 		\ch{H2SO4} & Sulfuric acid & \ch{RbOH} & Rubidium hydroxide \\
 		\ch{HNO3} & Nitric acid & \ch{CsOH} & Cesium hydroxide \\
 		\ch{HClO4} & Perchloric acid & \ch{R4NOH} & Quaternary ammonium
-		hydroxide
+		hydroxide \\
+		\bottomrule
 	\end{tabularx}
 }
 \end{frame}
@@ -797,27 +731,55 @@
 	\vspace{2em}
 
 	For EDTA (\ch{H6Y^{2+}}) --- a hexavalent acid,
-	{\fontsize{7pt}{0pt}\selectfont
-	\begin{reaction*}
-		H6Y^{2+} <=>[ $K$_{a1} ][ $K$_{b6} ]
+
+	\medskip
+
+	\resizebox{\linewidth}{!}{%
+			\ch{%
+			H6Y^{2+} <=>[ $K$_{a1} ][ $K$_{b6} ]
 		H5Y+     <=>[ $K$_{a2} ][ $K$_{b5} ]
 		H4Y      <=>[ $K$_{a3} ][ $K$_{b4} ]
 		H3Y-     <=>[ $K$_{a4} ][ $K$_{b3} ]
 		H2Y^{2-} <=>[ $K$_{a5} ][ $K$_{b2} ]
 		HY^{3-}  <=>[ $K$_{a6} ][ $K$_{b1} ] Y^{4-}
-	\end{reaction*}
-}
-	\begin{equation*}
-		K_\text{a1}K_\text{b6} = 
+}}
+
+	\medskip
+
+	\resizebox{\linewidth}{!}{%
+		$K_\text{a1}K_\text{b6} = 
 		K_\text{a2}K_\text{b5} = 
 		K_\text{a3}K_\text{b4} = 
 		K_\text{a4}K_\text{b3} =
 		K_\text{a5}K_\text{b2} = 
 		K_\text{a6}K_\text{b1} =
-		K_\text{w}
-	\end{equation*}
+		K_\text{w}$
+}
 \end{frame}
 
+\begin{frame}[t]{Ladder Diagrams}
+	An easy way of finding the \alert{predominant} specie in a mixture.
+
+	\begin{example}
+		\begin{columns}
+			\column{0.4\linewidth}
+			\begin{center}
+		\resizebox{!}{20pt}{%
+		\chemfig{^+H_3N-CH(-[::-90]CH_2-[:-90]CH_2-[:-90]CH_2-[:-90]NH
+		-[:-90]C(=[:-90]NH_2^+)-NH_3^+)-C(=[:90]O)-OH}
+	}
+\end{center}
+\column{0.5\linewidth}
+\begin{align*}
+	K_\text{a1} &= \num{1.50e-2} \\
+	K_\text{a2} &= \num{1.02e-9} \\
+	K_\text{a3} &= \num{3.3e-13}
+\end{align*}
+\end{columns}
+	\end{example}
+\end{frame}
+
+%%% END PART 1
 
 \frame{\section{Activity}
 	\begin{learningobjectives}
