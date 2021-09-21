@@ -1,9 +1,9 @@
 % !TEX program = xelatex
 %\documentclass[notes=onlyslideswithnotes,notes=hide]{beamer}
-\documentclass[notes=hide]{beamer}
+%\documentclass[notes=hide]{beamer}
 %\documentclass[notes=show]{beamer}
 %\documentclass[notes=only]{beamer}
-%\documentclass[handout]{beamer}
+\documentclass[handout]{beamer}
 %\documentclass[letterpaper,11pt]{article}
 %\usepackage{beamerarticle}
 
@@ -33,1164 +33,753 @@
 \date{Fall 2021}
 
 \begin{document}
-
-\maketitle
-\mode<article>{\thispagestyle{fancy}}
-
-\mode<presentation>{{
-		\usebackgroundtemplate{\includegraphics[height=\paperheight,trim={2in 0 0 0},clip]{hotwaterheater.jpg}}
-	\begin{frame}[b,plain]
-		\footnotesize{\color{white}Source: A random YouTube image from a search.}
-		\bigskip
-		\null
-	\end{frame}
-}}
-
-%\begin{frame}
+%
+%\maketitle
+%\mode<article>{\thispagestyle{fancy}}
+%
+%\mode<presentation>{{
+%		\usebackgroundtemplate{\includegraphics[height=\paperheight,trim={2in 0 0 0},clip]{hotwaterheater.jpg}}
+%	\begin{frame}[b,plain]
+%		\footnotesize{\color{white}Source: A random YouTube image from a search.}
+%		\bigskip
+%		\null
+%	\end{frame}
+%}}
+%
+%%\begin{frame}
+%%	\begin{columns}
+%%		\column{0.5\textwidth}
+%%		\includegraphics[width=\textwidth]{equilibrium-poster.jpg}
+%%		\column{0.5\textwidth}
+%%		{\Large
+%%		``The only thing more powerful than the system, is the man that
+%%		will overthrow it.''}
+%%		
+%%		\pause
+%%
+%%		\vspace{3em}
+%%
+%%		{\small
+%%		(But given enough time, the system will return to equilibrium)}
+%%	\end{columns}
+%%\end{frame}
+%
+%\frame{\section{Equilibrium Constant Review}
+%	\begin{learningobjectives}
+%	\item Manipulate equilibrium constants to describe a specific reaction.
+%	\item Explain the relationship between the equilibrium constant and thermodynamics.
+%	\item Determine reaction direction due to changes in temperature or species concentration.
+%	\item Use a ladder diagram to determine the predominant species in a
+%		solution.
+%	\end{learningobjectives}
+%}
+%
+%\vspace{\stretch{-1}}
+%
+%\begin{frame}[allowframebreaks]{The Equilibrium Constant}
+%	\begin{block}{Law of Mass Action}
+%		\centering
+%		\parbox[c]{0.4\linewidth}{
+%			\begin{center}
+%			\ch{aA + bB <=> cC + dD}
+%			\end{center}
+%			}
+%		\qquad
+%		\parbox[c]{0.4\linewidth}{
+%			\begin{align*}
+%				K = \dfrac{[\ch{C}]^c[\ch{D}]^d}
+%				{[\ch{A}]^a[\ch{B}]^b}
+%			\end{align*}
+%			}
+%	\end{block}
+%
+%	\bigskip
+%
+%	\begin{columns}
+%		\column{0.45\textwidth}
+%			What does it mean if\ldots
+%			\begin{itemize}
+%				\item[\dots] $K < 1$?
+%				\item[\dots] $K > 1$?
+%			\end{itemize}
+%		\column{0.45\textwidth}
+%		$K$ is \alert{dimensionless}:
+%			\begin{equation*}
+%				\ch{[A]} \equiv
+%				\frac{\ch{[A]}}{\ch{[A]^{\standardstate}}}
+%			\end{equation*}
+%	\end{columns}
+%
+%	\framebreak
+%
+%	To maintain the dimensionless character,
+%
+%	\begin{enumerate}
+%		\item The concentrations of all solutes should be express in
+%			\si{\Molar} or \si{\formal}.
+%		\item The concentrations of all gases should be expressed in
+%			bar. (atm are close, but be consistent)
+%		\item The concentrations of pure solids, pure liquids, and
+%			solvents are omitted because they are \alert{invariant}.
+%	\end{enumerate}
+%\end{frame}
+%
+%\begin{frame}[t]{Manipulating Equilibrium Constants}
+%	Consider the following reaction:
+%	\begin{align*}
+%		\ch{HA} &\ch{<=>} \ch{H+ + A-} &&& K_1 &=
+%		\dfrac{[\ch{H+}][\ch{A-}]}{[\ch{HA}]} \\
+%		\visible<+(1)->{%
+%		\intertext{What happens if we reverse it?}
+%	\ch{H+ + A-} &\ch{<=>} \ch{HA} \\}
+%		\visible<+(1)->{%
+%		\intertext{What happens if we add a new reaction to it?}
+%	\ch{{} + H+ + C} &\ch{<=>} \ch{CH+} &&& K_2
+%	}
+%	\end{align*}
+%	\note<+(1)>{%
+%		Reversing the reaction \alert{inverses} the value of
+%		$K$:
+%		\begin{align*}
+%		\ch{H+ + A-} &\ch{<=>} \ch{HA} &&& K_1' &=
+%		\dfrac{[\ch{HA}]}{[\ch{H+}][\ch{A-}]} = \frac{1}{K_1} \\
+%		\intertext{Adding reaction, $K_2$, to $K_1$, the new $K$ is the
+%		product of the two individual values:}
+%		\intertext{\small\centering
+%			\begin{tabularx}{0.3\linewidth} {l c l @{\quad\ch{<=>}\quad} l
+%			c l c}
+%			\ch{HA} & & & \cancel{\ch{H+}} & + & \ch{A-} & $K_1$ \\
+%			\cancel{\ch{H+}} & + & \ch{C} & \ch{CH+} & & & $K_2$ \\ 
+%		\end{tabularx}}
+%		\ch{HA + C} &\ch{<=>} \ch{A- + CH+} &&& K_3 &= 
+%		\dfrac{[\ch{A-}][\ch{CH+}]}{[\ch{HA}][\ch{C}]} = K_1K_2
+%	\end{align*}
+%}
+%\end{frame}
+%
+%\begin{frame}[t]{Manipulation Example}
+%	Find \Keq{} for the reaction,
+%	\begin{reaction*}
+%		CaCO3\sld{} + CO2\aq{} + H2O\lqd{} <=> Ca^{2+}\aq{} + 2 HCO3^{-}\aq{}
+%	\end{reaction*}
+%
+%	\onslide<+(1)->
+%	Consider that we have\ldots
+%	\begin{enumerate}[<+->]
+%		\item Dissolution of \ch{CaCO3} \textrightarrow{} Solubility (\Ksp)
+%		\item Weak base (\ch{CO3^{2-}}) in \water{} \textrightarrow{} Base
+%			dissociation (\Kb)
+%		\item Dissolution of \ch{CO2} \textrightarrow{} Gas solubility (\Kh)
+%		\item Weak acid (\ch{H2CO3}) in \water{} \textrightarrow{} Acid
+%			dissociation (\Ka)
+%     	\end{enumerate}
+%
+%	\note<1>{\scriptsize
+%	\begin{center}
+%		\begin{tabularx}{\textwidth} {c<{.} r @{\ch{<=>}} l
+%		X@{ = }S[table-format=1.2e-2]}
+%		1 &	\ch{CaCO3(s)} & \ch{Ca^{2+}(aq)} + \ch{CO3^{2-}(aq)} & $\Ksp{}$ & 4.5e-9 \\
+%		2 &	\ch{CO3^{2-}(aq)} + \ch{H2O(l)} & \ch{HCO3^{-}(aq)} + \ch{OH^{-}(aq)} & $\Kb{}$ & 2.1e-4 \\
+%		3 &	\ch{CO2(aq)} + \latecancel<7->{\ch{H2O(l)}} & \latecancel<7->{\ch{H2CO3(aq)}} & $K_h$ & 	1.7e-3 \\
+%		4 &	\ch{H2CO3(aq)} + \ch{H2O(l)} & \ch{HCO3^{-}(aq)} + \ch{H3O^{+}(aq)} & $\Ka{}$ & 4.46e-7 \\
+%		5 &	\ch{H3O^{+}(aq)} + \ch{OH^{-}(aq)} & \ch{2 H2O(l)} & $1/\Kw{}$ & 1.0e14  \\ \midrule
+%		6 &	\ch{CaCO3(s) + CO2(aq) + H2O(l)} & \ch{Ca^{2+}(aq) +
+%		2 HCO3^{-}(aq)} & \Keq & 7.2e-8 \\
+%	\end{tabularx}
+%	\end{center}
+%}
+%\end{frame}
+%
+%\begin{frame}[allowframebreaks]{Equilibrium and Thermodynamics}
+%	\begin{itemize}
+%		\item \textbf{Enthalpy} ($\bm{\Delta H}$) is the heat absorbed
+%		or released when a reaction takes place under \alert{constant} applied \alert{pressure}.
+%			\begin{center}
+%				\parbox{0.8\linewidth}{
+%					\begin{itemize}
+%						\item [$+\Delta H$] Heat is
+%							absorbed (endothermic)
+%						\item [$-\Delta H$] Heat is
+%							released (exothermic)
+%					\end{itemize}
+%					}
+%			\end{center}
+%		\item \textbf{Entropy} ($\bm{\Delta S}$) is the heat absorbed
+%			divided by the temperature when a \alert{reversible}
+%			reaction takes place at a \alert{constant temperature}.
+%			\begin{align*}
+%				\Delta S = \dfrac{q_{\text{rev}}}{T}
+%			\end{align*}
+%	\end{itemize}
+%
+%	\framebreak
+%	
+%	\begin{itemize}
+%		\item The \textbf{Gibbs free energy} ($\Delta G$) declares
+%			whether a reaction is favorable:
+%			\begin{align*}
+%				\Delta G = \Delta H - T \Delta S
+%			\end{align*}
+%			\begin{center}
+%				\parbox{0.8\linewidth}{
+%					\begin{itemize}
+%						\item [$+\Delta G$] Unfavorable,
+%							non-spontaneous
+%						\item [$-\Delta G$] Favorable,
+%							spontaneous
+%					\end{itemize}
+%					}
+%			\end{center}
+%			The free energy is related to the equilibrium constant,
+%			\Keq,
+%			\begin{align*}
+%				\Delta G^\circ = -RT \ln \Keq
+%			\end{align*}
+%			where $R$ is the universal gas constant
+%			(\SI{8.314}{\joule\per\mole\per\kelvin})
+%				
+%			Note that this relation is for the
+%			\alert{standard}
+%			Gibbs free energy:
+%			\begin{align*}
+%				\Delta G^\circ = \Delta H^\circ
+%				- T \Delta S^\circ
+%			\end{align*}
+%	\end{itemize}
+%\end{frame}
+%
+%\mode<presentation>{{
+%	\usebackgroundtemplate{\includegraphics[width=\paperwidth]{elephantfoot.jpg}}
+%	\begin{frame}[b,plain]
+%		\begin{block}{Nuclear Meltdown}
+%		The Chernobyl disaster was a \textbf{highly favorable} (in terms of
+%	$\Delta G$) chemical reaction.
+%\end{block}
+%\end{frame}}}
+%
+%\begin{frame}{Le Ch\^atelier's Principle}
+%	\begin{itemize}
+%		\item If stress is applied to a system at equilibrium, the equilibrium will shift in order to reduce the
+%			added stress.
+%		\item The \alert{reaction quotient} predicts the direction of
+%			the reaction when equilibrium is perturbed:
+%			\begin{align*}
+%				\ch{aA + bB <=> cC + dD} \qquad Q =
+%				\dfrac{[\ch{C}]^c[\ch{D}]^d}
+%				{[\ch{A}]^a[\ch{B}]^b}
+%			\end{align*}
+%			What happens when\ldots
+%			\begin{itemize}
+%				\item[\ldots] $Q > K$
+%				\item[\ldots] $Q < K$
+%				\item[\ldots] $Q = K$
+%			\end{itemize}
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}[t]{Reaction Quotient Example}
+%	\begin{align*}
+%		\ch{KNO3(s) <=> K^{+}(aq) + NO3^{-}(aq)}
+%	\end{align*}
+%	If both \ch{K+} and \ch{NO3-} concentrations are \SI{3.30}{\Molar}, are
+%	we at equilibrium at \SI{28.4}{\celsius} where $\Keq = 10.9$?
+%
+%	\mode<article>{\vspace{\stretch{1}}}
+%
+%	\note<1>{
+%		\begin{align*}
+%			Q &= [\ch{K+}][\ch{NO3-}] \\
+%			&= (3.30)(3.30) = 10.9
+%		\end{align*}
+%
+%		\begin{center}
+%			\fbox{$Q = K \therefore$ the reaction is at
+%			equilibrium.}
+%		\end{center}}
+%
+%	\begin{itemize}[<+(1)->]
+%		\item What happens if we make [\ch{K+}] = \SI{5.50}{\Molar}?
+%
+%			\mode<article>{\vspace{\stretch{1}}}
+%
+%	\note<2>{
+%		\begin{align*}
+%			Q &= [\ch{K+}][\ch{NO3-}] \\
+%			&= (5.50)(3.30) = 18.2
+%		\end{align*}
+%
+%		\begin{center}
+%			\fbox{\parbox{0.8\linewidth}{
+%				\centering
+%				$Q \neq K \therefore$ the reaction is not at
+%				equilibrium.
+%		
+%				$Q > K \therefore$ the reaction shifts towards
+%				the reactants.}
+%				}
+%		\end{center}}
+%
+%		\mode<article>{\clearpage}
+%
+%		\item When does it stop?
+%
+%			\mode<article>{\vspace{\stretch{1}}}
+%	\end{itemize}
+%
+%	\note<3>{
+%		\begin{align*}
+%			10.9 &= (5.50 - x)(3.30 - x) \\
+%			10.9 &= x^2 - 8.80x + 18.2 \\
+%			0 &= x^2 - 8.80x + 7.3 \\
+%			x &= 0.93 \text{ or } 7.8
+%		\end{align*}
+%
+%		\begin{center}
+%		\fbox{\parbox{0.8\linewidth}{\centering
+%			The reaction precipitates \SI{0.93}{\mole}~\ch{KNO3},
+%			yielding [\ch{K+}]~=~\SI{4.57}{\Molar} and
+%			[\ch{NO3-}]~=~\SI{2.37}{\Molar}.}}
+%		\end{center}}
+%\end{frame}
+%
+%\begin{frame}{Le Ch\^atelier's Principle: $\Delta T$}
+%	\Keq{} is dependent on temperature as per
+%	\begin{align*}
+%		\Delta G^\circ &= -RT \ln \Keq \\
+%		\intertext{rearranging \ldots}
+%		\Keq{} &= e^{-\Delta G^\circ/RT} = e^{-(\Delta H^\circ -
+%		T\Delta S^\circ)/RT} &= e^{(-\Delta H^\circ/RT + \Delta
+%		S^\circ/R)} \\
+%		& &= e^{-\Delta H^\circ/RT} \cdot e^{\Delta S^\circ/R}
+%	\end{align*}
+%	Therefore,
+%	\begin{itemize}
+%		\item \Keq{} of an endothermic reaction ($\Delta H^\circ > 0$)
+%			increases if $T\uparrow$
+%		\item \Keq{} of an exothermic ($\Delta H^\circ < 0$)
+%			decreases if $T\uparrow$
+%	\end{itemize}
+%\end{frame}
+%
+%\vspace{\stretch{-1}}
+%
+%\frame{\section{Applications of Equilibrium Constants}
+%	\begin{learningobjectives}
+%	\item Create a $K$ expression for any reaction at equilibrium.
+%	\item Understand how to solve specific $K$ equilibria:
+%		\begin{itemize}
+%			\item solubility
+%			\item formation
+%			\item acid-base
+%		\end{itemize}
+%	\end{learningobjectives}
+%}
+%
+%\begin{frame}[t]{Applications of Equilibrium Constants}
+%	\begin{description}
+%		\item<1->[Solubility:]
+%		\ch{Ag2CrO4(s) <=> 2 Ag^{+}(aq) +
+%			CrO4^{2-}(aq)} \quad $\Ksp{} =
+%			\num{1.2e-12}$
+%		\item<2->[Formation:]
+%		\ch{Ca^{2+}(aq) + EDTA^{4-}(aq)
+%			<=> CaEDTA^{2-}(aq)} \quad $\Kf{} =
+%			\num{4.9e10}$
+%		\item<3->[Acid:]
+%		\ch{CH3COOH(aq) + H2O(l) <=>
+%			CH3COO^{-}(aq) + H3O^{+}(aq)} \quad $\Ka{} =
+%			\num{1.8e-5}$
+%		\item<4->[Base:]
+%			\ch{NH3(aq) + H2O(l) <=> NH4^{+}(aq)
+%			+ OH^{-}(aq)} \quad $\Kb{} = \num{1.8e-5}$
+%		\item<5->[Hydrolysis:]
+%		\ch{2 H2O(l) <=> H3O^{+}(aq) +
+%			OH^{-}(aq)} \quad $\Kw{} = \num{1.00e-14}$
+%		\item<6->[Others:]
+%			$	K_{\mathrm{x}} =
+%				\frac{\prod[\text{products}]}
+%				{\prod[\text{reactants}]}$
+%	\end{description}
+%\end{frame}
+%
+%\begin{frame}[t]{Solubility Product Example}
+%	What is the solubility of silver chromate in pure water and in a
+%	solution of \SI{0.0500}{\Molar} aluminum chromate?
+%	\begin{align*}
+%		\ch{Ag2CrO4(s) <=> 2 Ag^{+}(aq) + CrO4^{2-}(aq)} \qquad \Ksp{} =
+%		\num{1.2e-12}
+%	\end{align*}
+%
+%	\note<1>{\footnotesize
+%	\textbf{Pure water:}
+%
+%	\begin{center}
+%		\begin{tabular} {c*{5}{r}}
+%			& \ch{Ag2CrO4(s)} & \ch{<=>} & \ch{2 Ag^{+}(aq)} &+&
+%			\ch{CrO4^{2-}(aq)} \\
+%			I & solid && 0 && 0 \\
+%			C & $-x$ && $+2x$ && $+x$ \\ \midrule
+%			E & $\text{solid}-x$ && $2x$ && $x$
+%		\end{tabular}
+%	\end{center}
+%
+%	\begin{align*}
+%		\Ksp{} &= [\ch{Ag^{+}}]^2[\ch{CrO4^{2-}}] \\
+%		\num{1.2e-12} &= (2x)^2(x) \\
+%		&= 4x^3 \\
+%		x &= \sqrt[3]{\num{1.2e-12}/4} \\
+%		&= \num{6.69e-5} \equiv \num{7e-5}
+%	\end{align*}}
+%
+%	\visible<2-|article:0>{
+%	\begin{center}
+%		\textbf{\usebeamercolor[fg]{alerted text}The common ion effect!}
+%	\end{center}}
+%
+%	\mode<article>{\clearpage}
+%
+%
+%\note<2>{\footnotesize
+%	\textbf{Aluminum chromate solution:}
+%
+%	\begin{center}
+%		\ch{Al2(CrO4)3(s) -> 2 Al^{3+}(aq) + 3 CrO4^{2-}(aq)}
+%
+%		$ \SI{0.0500}{\Molar}~\ch{Al2(CrO4)3} \times
+%		\dfrac{\SI{3}{\mol}~\ch{CrO4^{2-}}}{\SI{1}{\mole}~\ch{Al2(CrO4)3}}$
+%
+%		\begin{tabular} {c*{5}{r}}
+%			& \ch{Ag2CrO4(s)} & \ch{<=>} & \ch{2 Ag^{+}(aq)} &+&
+%			\ch{CrO4^{2-}(aq)} \\
+%			I & solid && 0 && 0.1500 \\
+%			C & $-x$ && $+2x$ && $+x$ \\ \midrule
+%			E & $\text{solid}-x$ && $2x$ && $0.1500 + x$
+%		\end{tabular}
+%	\end{center}
+%
+%	\begin{columns}
+%		\column{0.5\linewidth}
+%		\begin{align*}
+%			\Ksp{} &= [\ch{Ag+}]^2[\ch{CrO4^{2-}}] \\
+%			\num{1.2e-12} &= (2x)^2(0.1500 + x) \\
+%			&= 4x^2 \times 0.1500 \\
+%		\end{align*}
+%		\column{0.5\linewidth}
+%		\begin{align*}
+%			x &= \sqrt{\num{8e-12}/4} \\
+%			&= \num{1.4e-6}
+%		\end{align*}
+%
+%		$x$ is 0.0009\% of 0.1500 -- no worries!
+%
+%	\end{columns}
+%	}
+%
+%
+%\end{frame}
+%
+%\begin{frame}{Formation: Lewis Acid/Base Reactions}
+%	If anion \ch{X-} precipitates metal \ch{M+}, often a high concentration
+%	of \ch{X-} causes solid \ch{MX} to redissolve.
+%	\begin{itemize}
+%		\item Increased solubility is due to formation of \alert{complex
+%			ions}.
+%		\item Lewis acids and bases react to form
+%			\alert{coordinate covalent bonds}.
+%	\end{itemize}
+%
+%	For example,
+%	\begin{align*}
+%		\ch{Pb^{2+}\aq{} + I^{-}\aq{} &<=> PbI^{+}\aq{}} \\
+%		\ch{Pb^{2+}\aq{} + 2 I^-\aq{} &<=> PbI2\aq{} <=> PbI2\sld{}} \\
+%		\ch{Pb^{2+}\aq{} + 3 I^-\aq{} &<=> PbI3^-\aq{}}
+%	\end{align*}
+%
+%	\visible<+(1)->{\textbf{What product is present?}}
+%\end{frame}
+%
+%\begin{frame}{Formation: Stepwise vs Cumulative}
+%	There can only be one concentration of \ch{Pb^{2+}} in solution, so
+%	solving one equilibrium must satisfy all equilibria.
+%	\begin{itemize}[<+(1)->]
+%		\item $K_{\mathrm{i}}$ will be used for \alert{stepwise} formation
+%			constants:
+%			\begin{center}
+%			\begin{tabular} {l@{ + \ch{I^-\aq{} <=>} }l c}
+%				\ch{Pb^{2+}\aq{}} & \ch{PbI^+\aq{}} & $K_1$ \\
+%				\ch{PbI^+\aq{}} & \ch{PbI2\aq{}} & $K_2$ \\
+%				\ch{PbI2\aq{}} & \ch{PbI3^-\aq{}} & $K_3$ \\
+%				\ch{PbI3^-\aq{}} & \ch{PbI4^{2-}\aq{}} & $K_4$
+%			\end{tabular}
+%			\end{center}
+%		\item $\beta_{\mathrm{i}}$ will be used for \alert{cumulative} formation
+%			constants:
+%			\begin{center}
+%				\begin{tabular} {l@{ + }r@{ \ch{<=>}
+%					}l l}
+%					\ch{Pb^{2+}\aq{}} & \ch{I^-\aq{}} &
+%					\ch{PbI^+\aq{}} &
+%					$K_1$ \\
+%					\ch{Pb^{2+}\aq{}} & \ch{2 I^-\aq{}} & \ch{PbI2\aq{}} & $\beta_2 =
+%				K_1K_2$ \\
+%					\ch{Pb^{2+}\aq{}} & \ch{3 I^-\aq{}} &
+%					\ch{PbI3^-\aq{}} & $\beta_3 =
+%				K_1K_2K_3$ \\
+%					\ch{Pb^{2+}\aq{}} & \ch{4 I^-\aq{}} & \ch{PbI4^{2-}\aq{}} &
+%				$\beta_4 = K_1K_2K_3K_4$
+%			\end{tabular}
+%			\end{center}
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Formation: Competing Equilibria}
 %	\begin{columns}
 %		\column{0.5\textwidth}
-%		\includegraphics[width=\textwidth]{equilibrium-poster.jpg}
+%		\begin{itemize}
+%			\item As [\ch{I-}] increases, [\ch{Pb_{total}}]
+%				decreases due to common ion effect.
+%			\item At very high [\ch{I-}], the \ch{PbI2(s)}
+%				redissolves due to complexation.
+%		\end{itemize}
 %		\column{0.5\textwidth}
-%		{\Large
-%		``The only thing more powerful than the system, is the man that
-%		will overthrow it.''}
-%		
-%		\pause
-%
-%		\vspace{3em}
-%
-%		{\small
-%		(But given enough time, the system will return to equilibrium)}
+%		\includegraphics[scale=0.4]{PbI2-complex.jpg}
 %	\end{columns}
 %\end{frame}
-
-\frame{\section{Equilibrium Constant Review}
-	\begin{learningobjectives}
-	\item Manipulate equilibrium constants to describe a specific reaction.
-	\item Explain the relationship between the equilibrium constant and thermodynamics.
-	\item Determine reaction direction due to changes in temperature or species concentration.
-	\item Use a ladder diagram to determine the predominant species in a
-		solution.
-	\end{learningobjectives}
-}
-
-\vspace{\stretch{-1}}
-
-\begin{frame}[allowframebreaks]{The Equilibrium Constant}
-	\begin{block}{Law of Mass Action}
-		\centering
-		\parbox[c]{0.4\linewidth}{
-			\begin{center}
-			\ch{aA + bB <=> cC + dD}
-			\end{center}
-			}
-		\qquad
-		\parbox[c]{0.4\linewidth}{
-			\begin{align*}
-				K = \dfrac{[\ch{C}]^c[\ch{D}]^d}
-				{[\ch{A}]^a[\ch{B}]^b}
-			\end{align*}
-			}
-	\end{block}
-
-	\bigskip
-
-	\begin{columns}
-		\column{0.45\textwidth}
-			What does it mean if\ldots
-			\begin{itemize}
-				\item[\dots] $K < 1$?
-				\item[\dots] $K > 1$?
-			\end{itemize}
-		\column{0.45\textwidth}
-		$K$ is \alert{dimensionless}:
-			\begin{equation*}
-				\ch{[A]} \equiv
-				\frac{\ch{[A]}}{\ch{[A]^{\standardstate}}}
-			\end{equation*}
-	\end{columns}
-
-	\framebreak
-
-	To maintain the dimensionless character,
-
-	\begin{enumerate}
-		\item The concentrations of all solutes should be express in
-			\si{\Molar} or \si{\formal}.
-		\item The concentrations of all gases should be expressed in
-			bar. (atm are close, but be consistent)
-		\item The concentrations of pure solids, pure liquids, and
-			solvents are omitted because they are \alert{invariant}.
-	\end{enumerate}
-\end{frame}
-
-\begin{frame}[t]{Manipulating Equilibrium Constants}
-	Consider the following reaction:
-	\begin{align*}
-		\ch{HA} &\ch{<=>} \ch{H+ + A-} &&& K_1 &=
-		\dfrac{[\ch{H+}][\ch{A-}]}{[\ch{HA}]} \\
-		\visible<+(1)->{%
-		\intertext{What happens if we reverse it?}
-	\ch{H+ + A-} &\ch{<=>} \ch{HA} \\}
-		\visible<+(1)->{%
-		\intertext{What happens if we add a new reaction to it?}
-	\ch{{} + H+ + C} &\ch{<=>} \ch{CH+} &&& K_2
-	}
-	\end{align*}
-	\note<+(1)>{%
-		Reversing the reaction \alert{inverses} the value of
-		$K$:
-		\begin{align*}
-		\ch{H+ + A-} &\ch{<=>} \ch{HA} &&& K_1' &=
-		\dfrac{[\ch{HA}]}{[\ch{H+}][\ch{A-}]} = \frac{1}{K_1} \\
-		\intertext{Adding reaction, $K_2$, to $K_1$, the new $K$ is the
-		product of the two individual values:}
-		\intertext{\small\centering
-			\begin{tabularx}{0.3\linewidth} {l c l @{\quad\ch{<=>}\quad} l
-			c l c}
-			\ch{HA} & & & \cancel{\ch{H+}} & + & \ch{A-} & $K_1$ \\
-			\cancel{\ch{H+}} & + & \ch{C} & \ch{CH+} & & & $K_2$ \\ 
-		\end{tabularx}}
-		\ch{HA + C} &\ch{<=>} \ch{A- + CH+} &&& K_3 &= 
-		\dfrac{[\ch{A-}][\ch{CH+}]}{[\ch{HA}][\ch{C}]} = K_1K_2
-	\end{align*}
-}
-\end{frame}
-
-\begin{frame}[t]{Manipulation Example}
-	Find \Keq{} for the reaction,
-	\begin{reaction*}
-		CaCO3\sld{} + CO2\aq{} + H2O\lqd{} <=> Ca^{2+}\aq{} + 2 HCO3^{-}\aq{}
-	\end{reaction*}
-
-	\onslide<+(1)->
-	Consider that we have\ldots
-	\begin{enumerate}[<+->]
-		\item Dissolution of \ch{CaCO3} \textrightarrow{} Solubility (\Ksp)
-		\item Weak base (\ch{CO3^{2-}}) in \water{} \textrightarrow{} Base
-			dissociation (\Kb)
-		\item Dissolution of \ch{CO2} \textrightarrow{} Gas solubility (\Kh)
-		\item Weak acid (\ch{H2CO3}) in \water{} \textrightarrow{} Acid
-			dissociation (\Ka)
-     	\end{enumerate}
-
-	\note<1>{\scriptsize
-	\begin{center}
-		\begin{tabularx}{\textwidth} {c<{.} r @{\ch{<=>}} l
-		X@{ = }S[table-format=1.2e-2]}
-		1 &	\ch{CaCO3(s)} & \ch{Ca^{2+}(aq)} + \ch{CO3^{2-}(aq)} & $\Ksp{}$ & 4.5e-9 \\
-		2 &	\ch{CO3^{2-}(aq)} + \ch{H2O(l)} & \ch{HCO3^{-}(aq)} + \ch{OH^{-}(aq)} & $\Kb{}$ & 2.1e-4 \\
-		3 &	\ch{CO2(aq)} + \latecancel<7->{\ch{H2O(l)}} & \latecancel<7->{\ch{H2CO3(aq)}} & $K_h$ & 	1.7e-3 \\
-		4 &	\ch{H2CO3(aq)} + \ch{H2O(l)} & \ch{HCO3^{-}(aq)} + \ch{H3O^{+}(aq)} & $\Ka{}$ & 4.46e-7 \\
-		5 &	\ch{H3O^{+}(aq)} + \ch{OH^{-}(aq)} & \ch{2 H2O(l)} & $1/\Kw{}$ & 1.0e14  \\ \midrule
-		6 &	\ch{CaCO3(s) + CO2(aq) + H2O(l)} & \ch{Ca^{2+}(aq) +
-		2 HCO3^{-}(aq)} & \Keq & 7.2e-8 \\
-	\end{tabularx}
-	\end{center}
-}
-\end{frame}
-
-\begin{frame}[allowframebreaks]{Equilibrium and Thermodynamics}
-	\begin{itemize}
-		\item \textbf{Enthalpy} ($\bm{\Delta H}$) is the heat absorbed
-		or released when a reaction takes place under \alert{constant} applied \alert{pressure}.
-			\begin{center}
-				\parbox{0.8\linewidth}{
-					\begin{itemize}
-						\item [$+\Delta H$] Heat is
-							absorbed (endothermic)
-						\item [$-\Delta H$] Heat is
-							released (exothermic)
-					\end{itemize}
-					}
-			\end{center}
-		\item \textbf{Entropy} ($\bm{\Delta S}$) is the heat absorbed
-			divided by the temperature when a \alert{reversible}
-			reaction takes place at a \alert{constant temperature}.
-			\begin{align*}
-				\Delta S = \dfrac{q_{\text{rev}}}{T}
-			\end{align*}
-	\end{itemize}
-
-	\framebreak
-	
-	\begin{itemize}
-		\item The \textbf{Gibbs free energy} ($\Delta G$) declares
-			whether a reaction is favorable:
-			\begin{align*}
-				\Delta G = \Delta H - T \Delta S
-			\end{align*}
-			\begin{center}
-				\parbox{0.8\linewidth}{
-					\begin{itemize}
-						\item [$+\Delta G$] Unfavorable,
-							non-spontaneous
-						\item [$-\Delta G$] Favorable,
-							spontaneous
-					\end{itemize}
-					}
-			\end{center}
-			The free energy is related to the equilibrium constant,
-			\Keq,
-			\begin{align*}
-				\Delta G^\circ = -RT \ln \Keq
-			\end{align*}
-			where $R$ is the universal gas constant
-			(\SI{8.314}{\joule\per\mole\per\kelvin})
-				
-			Note that this relation is for the
-			\alert{standard}
-			Gibbs free energy:
-			\begin{align*}
-				\Delta G^\circ = \Delta H^\circ
-				- T \Delta S^\circ
-			\end{align*}
-	\end{itemize}
-\end{frame}
-
-\mode<presentation>{{
-	\usebackgroundtemplate{\includegraphics[width=\paperwidth]{elephantfoot.jpg}}
-	\begin{frame}[b,plain]
-		\begin{block}{Nuclear Meltdown}
-		The Chernobyl disaster was a \textbf{highly favorable} (in terms of
-	$\Delta G$) chemical reaction.
-\end{block}
-\end{frame}}}
-
-\begin{frame}{Le Ch\^atelier's Principle}
-	\begin{itemize}
-		\item If stress is applied to a system at equilibrium, the equilibrium will shift in order to reduce the
-			added stress.
-		\item The \alert{reaction quotient} predicts the direction of
-			the reaction when equilibrium is perturbed:
-			\begin{align*}
-				\ch{aA + bB <=> cC + dD} \qquad Q =
-				\dfrac{[\ch{C}]^c[\ch{D}]^d}
-				{[\ch{A}]^a[\ch{B}]^b}
-			\end{align*}
-			What happens when\ldots
-			\begin{itemize}
-				\item[\ldots] $Q > K$
-				\item[\ldots] $Q < K$
-				\item[\ldots] $Q = K$
-			\end{itemize}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}[t]{Reaction Quotient Example}
-	\begin{align*}
-		\ch{KNO3(s) <=> K^{+}(aq) + NO3^{-}(aq)}
-	\end{align*}
-	If both \ch{K+} and \ch{NO3-} concentrations are \SI{3.30}{\Molar}, are
-	we at equilibrium at \SI{28.4}{\celsius} where $\Keq = 10.9$?
-
-	\mode<article>{\vspace{\stretch{1}}}
-
-	\note<1>{
-		\begin{align*}
-			Q &= [\ch{K+}][\ch{NO3-}] \\
-			&= (3.30)(3.30) = 10.9
-		\end{align*}
-
-		\begin{center}
-			\fbox{$Q = K \therefore$ the reaction is at
-			equilibrium.}
-		\end{center}}
-
-	\begin{itemize}[<+(1)->]
-		\item What happens if we make [\ch{K+}] = \SI{5.50}{\Molar}?
-
-			\mode<article>{\vspace{\stretch{1}}}
-
-	\note<2>{
-		\begin{align*}
-			Q &= [\ch{K+}][\ch{NO3-}] \\
-			&= (5.50)(3.30) = 18.2
-		\end{align*}
-
-		\begin{center}
-			\fbox{\parbox{0.8\linewidth}{
-				\centering
-				$Q \neq K \therefore$ the reaction is not at
-				equilibrium.
-		
-				$Q > K \therefore$ the reaction shifts towards
-				the reactants.}
-				}
-		\end{center}}
-
-		\mode<article>{\clearpage}
-
-		\item When does it stop?
-
-			\mode<article>{\vspace{\stretch{1}}}
-	\end{itemize}
-
-	\note<3>{
-		\begin{align*}
-			10.9 &= (5.50 - x)(3.30 - x) \\
-			10.9 &= x^2 - 8.80x + 18.2 \\
-			0 &= x^2 - 8.80x + 7.3 \\
-			x &= 0.93 \text{ or } 7.8
-		\end{align*}
-
-		\begin{center}
-		\fbox{\parbox{0.8\linewidth}{\centering
-			The reaction precipitates \SI{0.93}{\mole}~\ch{KNO3},
-			yielding [\ch{K+}]~=~\SI{4.57}{\Molar} and
-			[\ch{NO3-}]~=~\SI{2.37}{\Molar}.}}
-		\end{center}}
-\end{frame}
-
-\begin{frame}{Le Ch\^atelier's Principle: $\Delta T$}
-	\Keq{} is dependent on temperature as per
-	\begin{align*}
-		\Delta G^\circ &= -RT \ln \Keq \\
-		\intertext{rearranging \ldots}
-		\Keq{} &= e^{-\Delta G^\circ/RT} = e^{-(\Delta H^\circ -
-		T\Delta S^\circ)/RT} &= e^{(-\Delta H^\circ/RT + \Delta
-		S^\circ/R)} \\
-		& &= e^{-\Delta H^\circ/RT} \cdot e^{\Delta S^\circ/R}
-	\end{align*}
-	Therefore,
-	\begin{itemize}
-		\item \Keq{} of an endothermic reaction ($\Delta H^\circ > 0$)
-			increases if $T\uparrow$
-		\item \Keq{} of an exothermic ($\Delta H^\circ < 0$)
-			decreases if $T\uparrow$
-	\end{itemize}
-\end{frame}
-
-\vspace{\stretch{-1}}
-
-\frame{\section{Applications of Equilibrium Constants}
-	\begin{learningobjectives}
-	\item Create a $K$ expression for any reaction at equilibrium.
-	\item Understand how to solve specific $K$ equilibria:
-		\begin{itemize}
-			\item solubility
-			\item formation
-			\item acid-base
-		\end{itemize}
-	\end{learningobjectives}
-}
-
-\begin{frame}[t]{Applications of Equilibrium Constants}
-	\begin{description}
-		\item<1->[Solubility:]
-		\ch{Ag2CrO4(s) <=> 2 Ag^{+}(aq) +
-			CrO4^{2-}(aq)} \quad $\Ksp{} =
-			\num{1.2e-12}$
-		\item<2->[Formation:]
-		\ch{Ca^{2+}(aq) + EDTA^{4-}(aq)
-			<=> CaEDTA^{2-}(aq)} \quad $\Kf{} =
-			\num{4.9e10}$
-		\item<3->[Acid:]
-		\ch{CH3COOH(aq) + H2O(l) <=>
-			CH3COO^{-}(aq) + H3O^{+}(aq)} \quad $\Ka{} =
-			\num{1.8e-5}$
-		\item<4->[Base:]
-			\ch{NH3(aq) + H2O(l) <=> NH4^{+}(aq)
-			+ OH^{-}(aq)} \quad $\Kb{} = \num{1.8e-5}$
-		\item<5->[Hydrolysis:]
-		\ch{2 H2O(l) <=> H3O^{+}(aq) +
-			OH^{-}(aq)} \quad $\Kw{} = \num{1.00e-14}$
-		\item<6->[Others:]
-			$	K_{\mathrm{x}} =
-				\frac{\prod[\text{products}]}
-				{\prod[\text{reactants}]}$
-	\end{description}
-\end{frame}
-
-\begin{frame}[t]{Solubility Product Example}
-	What is the solubility of silver chromate in pure water and in a
-	solution of \SI{0.0500}{\Molar} aluminum chromate?
-	\begin{align*}
-		\ch{Ag2CrO4(s) <=> 2 Ag^{+}(aq) + CrO4^{2-}(aq)} \qquad \Ksp{} =
-		\num{1.2e-12}
-	\end{align*}
-
-	\note<1>{\footnotesize
-	\textbf{Pure water:}
-
-	\begin{center}
-		\begin{tabular} {c*{5}{r}}
-			& \ch{Ag2CrO4(s)} & \ch{<=>} & \ch{2 Ag^{+}(aq)} &+&
-			\ch{CrO4^{2-}(aq)} \\
-			I & solid && 0 && 0 \\
-			C & $-x$ && $+2x$ && $+x$ \\ \midrule
-			E & $\text{solid}-x$ && $2x$ && $x$
-		\end{tabular}
-	\end{center}
-
-	\begin{align*}
-		\Ksp{} &= [\ch{Ag^{+}}]^2[\ch{CrO4^{2-}}] \\
-		\num{1.2e-12} &= (2x)^2(x) \\
-		&= 4x^3 \\
-		x &= \sqrt[3]{\num{1.2e-12}/4} \\
-		&= \num{6.69e-5} \equiv \num{7e-5}
-	\end{align*}}
-
-	\visible<2-|article:0>{
-	\begin{center}
-		\textbf{\usebeamercolor[fg]{alerted text}The common ion effect!}
-	\end{center}}
-
-	\mode<article>{\clearpage}
-
-
-\note<2>{\footnotesize
-	\textbf{Aluminum chromate solution:}
-
-	\begin{center}
-		\ch{Al2(CrO4)3(s) -> 2 Al^{3+}(aq) + 3 CrO4^{2-}(aq)}
-
-		$ \SI{0.0500}{\Molar}~\ch{Al2(CrO4)3} \times
-		\dfrac{\SI{3}{\mol}~\ch{CrO4^{2-}}}{\SI{1}{\mole}~\ch{Al2(CrO4)3}}$
-
-		\begin{tabular} {c*{5}{r}}
-			& \ch{Ag2CrO4(s)} & \ch{<=>} & \ch{2 Ag^{+}(aq)} &+&
-			\ch{CrO4^{2-}(aq)} \\
-			I & solid && 0 && 0.1500 \\
-			C & $-x$ && $+2x$ && $+x$ \\ \midrule
-			E & $\text{solid}-x$ && $2x$ && $0.1500 + x$
-		\end{tabular}
-	\end{center}
-
-	\begin{columns}
-		\column{0.5\linewidth}
-		\begin{align*}
-			\Ksp{} &= [\ch{Ag+}]^2[\ch{CrO4^{2-}}] \\
-			\num{1.2e-12} &= (2x)^2(0.1500 + x) \\
-			&= 4x^2 \times 0.1500 \\
-		\end{align*}
-		\column{0.5\linewidth}
-		\begin{align*}
-			x &= \sqrt{\num{8e-12}/4} \\
-			&= \num{1.4e-6}
-		\end{align*}
-
-		$x$ is 0.0009\% of 0.1500 -- no worries!
-
-	\end{columns}
-	}
-
-
-\end{frame}
-
-\begin{frame}{Formation: Lewis Acid/Base Reactions}
-	If anion \ch{X-} precipitates metal \ch{M+}, often a high concentration
-	of \ch{X-} causes solid \ch{MX} to redissolve.
-	\begin{itemize}
-		\item Increased solubility is due to formation of \alert{complex
-			ions}.
-		\item Lewis acids and bases react to form
-			\alert{coordinate covalent bonds}.
-	\end{itemize}
-
-	For example,
-	\begin{align*}
-		\ch{Pb^{2+}\aq{} + I^{-}\aq{} &<=> PbI^{+}\aq{}} \\
-		\ch{Pb^{2+}\aq{} + 2 I^-\aq{} &<=> PbI2\aq{} <=> PbI2\sld{}} \\
-		\ch{Pb^{2+}\aq{} + 3 I^-\aq{} &<=> PbI3^-\aq{}}
-	\end{align*}
-
-	\visible<+(1)->{\textbf{What product is present?}}
-\end{frame}
-
-\begin{frame}{Formation: Stepwise vs Cumulative}
-	There can only be one concentration of \ch{Pb^{2+}} in solution, so
-	solving one equilibrium must satisfy all equilibria.
-	\begin{itemize}[<+(1)->]
-		\item $K_{\mathrm{i}}$ will be used for \alert{stepwise} formation
-			constants:
-			\begin{center}
-			\begin{tabular} {l@{ + \ch{I^-\aq{} <=>} }l c}
-				\ch{Pb^{2+}\aq{}} & \ch{PbI^+\aq{}} & $K_1$ \\
-				\ch{PbI^+\aq{}} & \ch{PbI2\aq{}} & $K_2$ \\
-				\ch{PbI2\aq{}} & \ch{PbI3^-\aq{}} & $K_3$ \\
-				\ch{PbI3^-\aq{}} & \ch{PbI4^{2-}\aq{}} & $K_4$
-			\end{tabular}
-			\end{center}
-		\item $\beta_{\mathrm{i}}$ will be used for \alert{cumulative} formation
-			constants:
-			\begin{center}
-				\begin{tabular} {l@{ + }r@{ \ch{<=>}
-					}l l}
-					\ch{Pb^{2+}\aq{}} & \ch{I^-\aq{}} &
-					\ch{PbI^+\aq{}} &
-					$K_1$ \\
-					\ch{Pb^{2+}\aq{}} & \ch{2 I^-\aq{}} & \ch{PbI2\aq{}} & $\beta_2 =
-				K_1K_2$ \\
-					\ch{Pb^{2+}\aq{}} & \ch{3 I^-\aq{}} &
-					\ch{PbI3^-\aq{}} & $\beta_3 =
-				K_1K_2K_3$ \\
-					\ch{Pb^{2+}\aq{}} & \ch{4 I^-\aq{}} & \ch{PbI4^{2-}\aq{}} &
-				$\beta_4 = K_1K_2K_3K_4$
-			\end{tabular}
-			\end{center}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Formation: Competing Equilibria}
-	\begin{columns}
-		\column{0.5\textwidth}
-		\begin{itemize}
-			\item As [\ch{I-}] increases, [\ch{Pb_{total}}]
-				decreases due to common ion effect.
-			\item At very high [\ch{I-}], the \ch{PbI2(s)}
-				redissolves due to complexation.
-		\end{itemize}
-		\column{0.5\textwidth}
-		\includegraphics[scale=0.4]{PbI2-complex.jpg}
-	\end{columns}
-\end{frame}
-
-\begin{frame}[t]{Formation Example}
-	Find the concentrations of \ch{PbI+}, \ch{PbI2\aq{}}, \ch{PbI3-}, and
-	\ch{PbI4^{2-}} in a solution saturated with \ch{PbI2\sld} and containing
-	dissolved \ch{I-} with a concentration of \SI{0.0010}{\Molar}.
-
-	\medskip
-
-	\begin{tabular}{L @{ $=$ } S[table-format=1.1e-1]}
-		K_\text{sp}  & 7.9e-9 \\
-		K_1     & 1.0e2  \\
-		\beta_2 & 1.4e3  \\
-		\beta_3 & 8.3e3  \\
-		\beta_4 & 3.0e4
-	\end{tabular}
-
-	\mode<article>{\vspace{\stretch{1}}}
-
-	\note{ \small
-		\begin{align*}
-			K_1     &= \frac{[\ch{PbI+     }]}{[\ch{Pb^{2+}}][\ch{I-}]  } &
-			\beta_2 &= \frac{[\ch{PbI2\aq  }]}{[\ch{Pb^{2+}}][\ch{I-}]^2} &
-			\beta_3 &= \frac{[\ch{PbI3-    }]}{[\ch{Pb^{2+}}][\ch{I-}]^3} &
-			\beta_4 &= \frac{[\ch{PbI4^{2-}}]}{[\ch{Pb^{2+}}][\ch{I-}]^4} &
-		\end{align*}
-		\begin{align*}
-			\intertext{We need [\ch{Pb^{2+}}]!}
-			K_\text{sp} &= [\ch{Pb^{2+}}][\ch{I-}]^2 &
-			\therefore [\ch{Pb^{2+}}] &= \frac{K_\text{sp}}{[\ch{I-}]^2}
-			= \frac{\num{7.9e-9}}{\num{0.0010}^2} = \SI{7.9e-3}{\Molar} \\
-			&& [\ch{PbI+}] &= K_1[\ch{Pb^{2+}}][\ch{I-}] = \SI{7.9e-4}{\Molar} \\
-			&& [\ch{PbI2\aq}] &= \beta_2[\ch{Pb^{2+}}][\ch{I-}]^2 = \SI{1.1e-5}{\Molar} \\
-			&& [\ch{PbI3-  }] &= \beta_3[\ch{Pb^{2+}}][\ch{I-}]^3 = \SI{6.6e-8}{\Molar} \\
-			&& [\ch{PbI4^{2+}}] &= \beta_4[\ch{Pb^{2+}}][\ch{I-}]^4 = \SI{2.4e-10}{\Molar} \\
-		\end{align*}
-	}
-\end{frame}
-
-\clearpage
-
-\begin{frame}[t]{Acid Dissociation Example}
-	What is the pH of a 5.0\% (w/w) vinegar solution? ($\Ka{} = \num{1.8e-5}$)
-
-	\mode<article>{\vspace{15em}}
-
-	\note{\footnotesize
-		\vspace{-2em}\begin{align*}
-		\dfrac{\SI{5}{\gram}~\ch{HAc}}{\SI{100.0}{\gram~sol}} \times
-		\overbrace{\dfrac{\SI{1000}{\gram~sol}}{\SI{1}{\liter}}}^{\mathclap{\text{assume}~d = d_{\ch{H2O}} = \SI{1}{\gram\per\milli\liter}}} \times
-		\dfrac{\SI{1}{\mole}~\ch{HAc}}{\SI{60.06}{\gram}} =
-		\SI{0.83}{\Molar}
-	\end{align*}
-
-	\begin{center}
-		\begin{tabular} {@{}c*{5}{r}}
-			& \ch{CH3COOH(aq)} & \ch{+ H2O(l) <=>} &
-			\ch{CH3COO^{-}(aq)} &+& \ch{H3O^{+}(aq)} \\
-			I & 0.83 && 0 && 0 \\
-			C & $-x$ && $+x$ && $+x$ \\ \midrule
-			E & $0.83-x$ && $x$ && $x$
-		\end{tabular}
-	\end{center}
-
-	\begin{columns}
-		\column{0.5\linewidth}
-		\begin{align*}
-			\num{1.8e-5} &= \dfrac{[\ch{CH3COO-}][\ch{H3O+}]}{\ch{CH3COOH}}
-			\\
-			&= \dfrac{(x)(x)}{0.83-x} = \dfrac{x^2}{0.83} \\
-			x &= \SI{3.9e-3}{\Molar}~\ch{H3O+}
-		\end{align*}
-		\column{0.5\linewidth}
-		$x$ is 0.5\% of 0.83
-		\begin{align*}
-			\text{pH} &= -\log [\ch{H3O+}] \\
-			&= -log(0.0039) \\
-			&= 2.41
-		\end{align*}
-	\end{columns}
-	}
-\end{frame}
-
-\begin{frame}[t]{Base Dissociation Example}
-	What is the pH of a solution that is \SI{0.175}{\Molar}~\ch{NH3}? ($\Kb{}
-	= \num{1.8e-5}$)
-
-	\mode<article>{\vspace{18em}}
-
-\note{
-	\begin{center}
-		\begin{tabular} {@{}c*{5}{r}}
-			& \ch{NH3(aq)} & \ch{ + H2O(l) <=>} &
-			\ch{NH4^{+}(aq)} &+& \ch{OH^{-}(aq)} \\
-			I & 0.175 && 0 && 0 \\
-			C & $-x$ && $+x$ && $+x$ \\ \midrule
-			E & $0.175-x$ && $x$ && $x$
-		\end{tabular}
-	\end{center}
-
-	\begin{columns}
-		\column{0.5\linewidth}
-		\begin{align*}
-			\num{1.8e-5} &= \dfrac{[\ch{NH4+}][\ch{OH-}]}{\ch{NH3}}
-			\\
-			&= \dfrac{(x)(x)}{0.175-x} = \dfrac{x^2}{0.175} \\
-			x &= \SI{1.8e-3}{\Molar}~\ch{OH-}
-		\end{align*}
-		\column{0.5\linewidth}
-		\begin{align*}
-			\text{pOH} &= -\log [\ch{OH-}] \\
-			&= -\log(0.0018) = 2.75 \\
-			\text{pH} &= 14.00 - \text{pOH} = 11.25
-		\end{align*}
-	\end{columns}
-	}
-\end{frame}
-
-\begin{frame}{Recall: Acid/Base Strength}
-	\begin{itemize}
-		\item Acid/base dissociation equilibria are considered for
-			\alert{weak} acids and bases.
-		\item Strong acids and bases dissociate \alert{completely} ---
-			i.e. $\Ka{}$ or $\Kb{}$ are so large that it is not worth
-			calculating
-	\end{itemize}
-
-	{\small
-		\begin{tabularx}{\textwidth} {*{2}{l>{\raggedright\arraybackslash}X}}
-		\toprule
-		\multicolumn{2}{l}{\textit{Acids}} &
-		\multicolumn{2}{l}{\textit{Bases}} \\
-		\bfseries Name & \bfseries Formula & \bfseries Name & \bfseries Formula \\
-		\midrule
-		\ch{HCl} & Hydrochloric acid & \ch{LiOH} & Lithium hydroxide \\
-		\ch{HBr} & Hydrogen bromide & \ch{NaOH} & Sodium hydroxide \\
-		\ch{HI} & Hydrogen iodide & \ch{KOH} & Potassium hydroxide \\
-		\ch{H2SO4} & Sulfuric acid & \ch{RbOH} & Rubidium hydroxide \\
-		\ch{HNO3} & Nitric acid & \ch{CsOH} & Cesium hydroxide \\
-		\ch{HClO4} & Perchloric acid & \ch{R4NOH} & Quaternary ammonium
-		hydroxide \\
-		\bottomrule
-	\end{tabularx}
-}
-\end{frame}
-
-\begin{frame}[allowframebreaks]{Polyprotic species}
-	\begin{itemize}
-		\item Some compounds can donate or accept more than one proton.
-			For example,
-			\begin{align*}
-				\ch{H3PO4 + H2O &<=> H3O+ + H2PO4-} \\
-				\ch{H2PO4- + H2O &<=> H3O+ + HPO4^{2-}} \\
-				\ch{HPO4^{2-} + H2O &<=> H3O+ + PO4^{3-}}
-			\end{align*}
-		\item It is harder to remove (or add) each successive proton,
-			thus
-			\begin{equation*}
-				K_\text{a1} >
-				K_\text{a2} >
-				K_\text{a3} > \cdots \quad\text{and}\quad
-				K_\text{b1} >
-				K_\text{b2} >
-				K_\text{b3} > \cdots
-			\end{equation*}
-		\item Which \Ka\ and \Kb\ do we use to calculate \Kw?
-	\end{itemize}
-
-	\framebreak
-
-	For \ch{H3PO4},
-	\begin{reaction*}
-		H3PO4     <=>[ $K$_{a1} ][ $K$_{b3} ]
-		H2PO4-    <=>[ $K$_{a2} ][ $K$_{b2} ]
-		HPO4^{2-} <=>[ $K$_{a3} ][ $K$_{b1} ]
-		PO4^{3-}
-	\end{reaction*}
-	\begin{equation*}
-		K_\text{a1}K_\text{b3} =
-		K_\text{a2}K_\text{b2} =
-		K_\text{a3}K_\text{b1} =
-		K_\text{w}
-	\end{equation*}
-
-	\vspace{2em}
-
-	For EDTA (\ch{H6Y^{2+}}) --- a hexavalent acid,
-
-	\medskip
-
-	\resizebox{\linewidth}{!}{%
-			\ch{%
-			H6Y^{2+} <=>[ $K$_{a1} ][ $K$_{b6} ]
-		H5Y+     <=>[ $K$_{a2} ][ $K$_{b5} ]
-		H4Y      <=>[ $K$_{a3} ][ $K$_{b4} ]
-		H3Y-     <=>[ $K$_{a4} ][ $K$_{b3} ]
-		H2Y^{2-} <=>[ $K$_{a5} ][ $K$_{b2} ]
-		HY^{3-}  <=>[ $K$_{a6} ][ $K$_{b1} ] Y^{4-}
-}}
-
-	\medskip
-
-	\resizebox{\linewidth}{!}{%
-		$K_\text{a1}K_\text{b6} = 
-		K_\text{a2}K_\text{b5} = 
-		K_\text{a3}K_\text{b4} = 
-		K_\text{a4}K_\text{b3} =
-		K_\text{a5}K_\text{b2} = 
-		K_\text{a6}K_\text{b1} =
-		K_\text{w}$
-}
-\end{frame}
-
-\begin{frame}[t]{Ladder Diagrams}
-	An easy way of finding the \alert{predominant} specie in a mixture.
-
-	\begin{example}
-		\begin{columns}
-			\column{0.4\linewidth}
-			\begin{center}
-		\resizebox{!}{20pt}{%
-		\chemfig{^+H_3N-CH(-[::-90]CH_2-[:-90]CH_2-[:-90]CH_2-[:-90]NH
-		-[:-90]C(=[:-90]NH_2^+)-NH_3^+)-C(=[:90]O)-OH}
-	}
-\end{center}
-\column{0.5\linewidth}
-\begin{align*}
-	K_\text{a1} &= \num{1.50e-2} \\
-	K_\text{a2} &= \num{1.02e-9} \\
-	K_\text{a3} &= \num{3.3e-13}
-\end{align*}
-\end{columns}
-	\end{example}
-\end{frame}
-
-%%% END PART 1
-
-\frame{\section{Activity}
-	\begin{learningobjectives}
-	\item Explain why equilibrium constants differ from tabulated values at higher concentrations.
-	\item Calculate ionic strength of solutions.
-	\item Use ionic strength to predict the activity of species in solution.
-	\end{learningobjectives}
-}
-
-\begin{frame}{Why is the equilibrium constant not enough?}
-	\only<1-3>{%
-	Consider the solubility of mercury(I) bromide, $\Ksp{} =
-	\num{5.6e-23}$.
-	\begin{itemize}[<+->]
-		\item The equilibrium is:
-			\begin{align*}
-				\ch{Hg2Br2\sld{} <=> Hg2^{2+}\aq{} + 2
-				Br^{-}\aq{}}
-				\qquad \Ksp{} &= \num{5.6e-23} \\
-				&= [\ch{Hg2^{2+}}][\ch{Br-}]^2
-			\end{align*}
-		\item Using ICE, $x = [\ch{Hg2^{2+}}] = \SI{2.4e-8}{\Molar}$
-		\item Yet when a very soluble salt such as \ch{KNO3} is added,
-			more solid dissolves!
-	\end{itemize}
-	}
-	\only<4->{%
-	\begin{itemize}[<1->]
-		\item This is not a Le Ch\^atelier response since neither
-			\ch{K+} nor \ch{NO3-} is a common ion nor do either
-			react with mercury(I) or bromide ions.
-		\item In fact, if \SI{0.100}{\Molar}~\ch{KNO3} is added, the
-			solubility increases such that $[\ch{Hg2^{2+}}] =
-			\SI{4.1e-8}{\Molar}$, a 46\% increase in solubility!
-		\item We find that whenever an \alert{inert salt} is added to a
-			solution of a sparingly soluble salt, the solubility of
-			the latter is increased.
-	\end{itemize}
-
-	\begin{block}<5->{Inert salt}
-		Any electrolyte that is neither a common ion nor will react with
-		the ions of the sparingly soluble species.
-	\end{block}
-}
-\end{frame}
-
-\begin{frame}{Ionic vs. Hydrated Radii}
-	\only<+>{%
-		\begin{columns}
-			\column{0.5\textwidth}
-			\begin{itemize}
-				\item Every dissolved species is surrounded by water
-					molecules.
-				\item For ionic species, the number of \ch{H2O}
-					molecules depends on the ions charge density.
-			\end{itemize}
-			\column{0.5\textwidth}
-			\includegraphics[scale=0.75]{estimated-hydration.jpg}
-		\end{columns}
-	}
-
-	\only<+>{%
-		\begin{columns}
-			\column{0.5\textwidth}
-			\begin{itemize}
-				\item A smaller ion of like charge has a larger charge
-					density thus \ch{Li+} attracts more water than
-					\ch{K+} and a 3+ ion attracts more than a 2+.
-				\item In fact, the largest hydrated ion is \ch{H3O+} at
-					\SI{900}{\pico\meter}!
-					\begin{itemize}
-						\item By comparison, hydrated \ch{Li+}
-							is only about
-							\SI{600}{\pico\meter}.
-					\end{itemize}
-			\end{itemize}
-			\column{0.5\textwidth}
-			\includegraphics[scale=0.25]{ionic-v-hydrated-radii.jpg}
-		\end{columns}
-	}
-\end{frame}
-
-\begin{frame}{Ionic Atmosphere}
-	\begin{columns}
-		\column{0.6\textwidth}
-	\begin{itemize}[<+->]
-		\item Ions attract (or repel) other ions.
-%			\begin{itemize}
-%				\item Otherwise we would not be able to have
-%					insoluble salts!
-%			\end{itemize}
-		\item What happens when an inert electrolyte is added to the
-			solution?
-			\begin{itemize}
-				\item The ionic atmosphere causes \alert{less}
-					attraction between the ions of the
-					insoluble salt!
-				\item Less attraction means less crashing and a
-					\alert{higher} solubility!
-			\end{itemize}
-		\item The more ions we have in solution, the less attraction we
-			have, thus the greater solubility.
-	\end{itemize}
-		\column{0.4\textwidth}
-		\includegraphics[scale=0.85]{ionic-atmosphere.jpg}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{The Equilibrium ``Constant'' is Not Constant!}
-	\begin{columns}
-		\column{0.6\linewidth}
-		\begin{itemize}
-			\item We will see the same effect for all equilibria.
-			\item For example, from CHEM 116:
-				\begin{align*}
-					\ch{Fe^{3+} + SCN- <=> FeSCN^{2+}}
-				\end{align*}
-			\item Note that as the ionic atmosphere increases, we
-				get more of the reactant ions present shifting
-				the equilibrium position.
-		\end{itemize}
-		\column{0.4\linewidth}
-		\includegraphics[scale=0.35]{FeSCN.jpg}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Ionic Strength}
-	\begin{itemize}
-		\item We will measure the size or strength of the ionic
-			atmosphere by calculating the \alert{ionic strength}
-			($\mu$) of the solution.
-		\item $\mu$ is the total ion concentration in the solution:
-			\begin{align*}
-				\mu = \frac{1}{2}(c_1z_1^2 + c_2z_2^2 + \cdots)
-				= \frac{1}{2}\sum_{i}c_iz_i^2
-			\end{align*}
-			where $c_i$ is the ion concentration of the
-			$i$\textsuperscript{th} species and $z_i$ is its ionic
-			charge.
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Ionic Strength Example}
-	\begin{itemize}
-		\item Find the ionic strength of the following solutions:
-			\begin{itemize}
-				\item \SI{0.10}{\Molar} \ch{AgNO3}
-				\item \SI{0.10}{\Molar} \ch{Na2SO4}
-				\item \SI{0.20}{\Molar} \ch{KCl} and
-					\SI{0.10}{\Molar} \ch{K2SO4}
-			\end{itemize}
-		\item Recognize that these values are approximations. All salts
-			over 1\%~(w/w) will have some soluble ion pairs. Using
-			\SI{0.025}{\formal} solutions as an example,
-			\begin{itemize}
-				\item \ch{NaCl} is 99.6\% dissociated
-				\item \ch{Na2SO4} is 96\%
-				\item \ch{MgSO4} is 65\%
-				\item \ch{La2(SO4)3} is 4\%
-			\end{itemize}
-			See Box 8-1, page 164
-	\end{itemize}
-
-	\mode<article>{\vspace{15em}}
-
-\note{
-	\begin{multicols}{2}
-	\textbf{\ch{AgNO3}}
-	\begin{align*}
-		\mu &= \frac{1}{2} \sum_{i} c_i z_i^2 \\
-		&= \frac{1}{2} (0.10 \times 1^2 + 0.10 \times (-1)^2) \\
-		&= \SI{0.10}{\Molar}
-	\end{align*}
-
-	\textbf{\ch{Na2SO4}}
-	\begin{align*}
-		\mu &= \frac{1}{2} \sum_{i} c_i z_i^2 \\
-		&= \frac{1}{2} (0.20 \times 1^2 + 0.10 \times (-2)^2) \\
-		&= \SI{0.30}{\Molar}
-	\end{align*}
-
-	\textbf{\ch{KCl} and \ch{K2SO4}}
-	\begin{align*}
-		\mu &= \frac{1}{2} \sum_{i} c_i z_i^2 \\
-		&= \frac{1}{2} (0.20 \times 1^2 + 0.2 \times (-1)^2 \\
-		&\qquad {} + 0.20
-		\times 1^2 + 0.10 \times (-2)^2) \\
-		&= \SI{0.5}{\Molar}
-	\end{align*}
-	\end{multicols}
-	}
-\end{frame}
-
-\begin{frame}{Working Ionic Strengths into K's}
-	\begin{itemize}
-		\item To account for the effect ionic strength has on the
-			chemistry of a salt, we replace molar concentrations
-			with activities:
-			\begin{align*}
-				\mathcal{A}_{\ch{C}} = [\ch{C}]\gamma_{\ch{C}}
-			\end{align*}
-			where the molar concentration of species \ch{C}
-			([\ch{C}]) is multiplied by its activity coefficient
-			($\gamma_{\ch{C}}$).
-		\item The extended \alert{Debye-Huckel equation} gives the
-			activity coefficient which is dependent on the size of
-			the ionic strength.
-			\begin{align*}
-				\log \gamma = \dfrac{-0.51z^2\sqrt{\mu}}{1 +
-				(\alpha \sqrt{\mu}/305)} \qquad\text{(at
-				\SI{25}{\celsius})}
-			\end{align*}
-			where $\alpha$ is the size of the ion in
-			\si{\pico\meter}. Note that this relation only works
-			well up to \SI{0.10}{\Molar} ionic strength.
-	\end{itemize}
-\end{frame}
-
-\vspace{\stretch{-1}}
-
-\begin{frame}{The Real Equilibrium Constant}
-	\begin{itemize}
-		\item Consider the solubity of mercury (I) bromide, with
-			equilibrium,
-			\begin{align*}
-				\ch{Hg2Br2(s) <=> Hg2^{2+}(aq) + 2 Br^{-}(aq)}
-			\end{align*}
-		\item The new equilibrium constant including activity
-			coefficients is
-			\begin{align*}
-				\Ksp{} = \mathcal{A}_{\ch{Hg2^{2+}}}
-				\mathcal{A}_{\ch{Br-}}^2 =
-				[\ch{Hg2^{2+}}]\gamma_{\ch{Hg2^{2+}}}
-				[\ch{Br-}]^2\gamma_{\ch{Br-}}^2
-			\end{align*}
-	\end{itemize}
-
-	\pause
-
-	\begin{block}{General Form of the Equilibrium Constant}
-		\begin{align*}
-			K = \dfrac{\mathcal{A}^c_{\ch{C}}
-			\mathcal{A}^d_{\ch{D}}}{\mathcal{A}^a_{\ch{A}}
-			\mathcal{A}^b_{\ch{B}}} = \dfrac{[\ch{C}]^c
-			\gamma_{\ch{C}}^c [\ch{D}]^d \gamma_{\ch{D}}^d}
-			{[\ch{A}]^a \gamma_{\ch{A}}^a [\ch{B}]^b
-			\gamma_{\ch{B}}^b}
-		\end{align*}
-	\end{block}
-\end{frame}
-
-\vspace{\stretch{-1}}
-
-\begin{frame}{Effect of $\mu$, $z_i$, and $\alpha$ on $\gamma$}
-	\begin{columns}
-		\column{0.4\textwidth}
-		\begin{center}
-			\includegraphics[scale=0.85]{activity-v-ionic-strength.png}
-		\end{center}
-		\column{0.6\textwidth}
-		\begin{enumerate}
-			\item<1-> As ionic strength increase, the activity
-				coefficient decreases.
-
-				\only<1|handout:0>{\begin{itemize}
-					\item The activity coefficient
-						($\gamma$) approaches unity as
-						the ionic strength ($\mu$)
-						approaches 0.
-					\item At $\mu \leq \SI{0.0001}{\Molar}$,
-						$\gamma \approx 1$.
-				\end{itemize}}
-
-			\item<2-> As the charge on an ion increases, the
-				departure of its activity coefficient from unity
-				increases.
-
-				\only<2|handout:0>{\begin{itemize}
-					\item Activity coefficients are much
-						more important for highly
-						charged species ($\pm3$ or
-						$\pm4$).
-					\item Let $\gamma_i = 1$ for all
-						uncharged species at any $\mu$.
-				\end{itemize}}
-
-			\item<3-> The smaller the hydrated radius of the ion,
-				the more important the activity coefficient
-				becomes.
-
-				\only<3|handout:0>{\begin{itemize}
-					\item At fixed ionic strength, however,
-						species of similar charge will
-						have similar activity
-						coefficients.
-				\end{itemize}}
-
-			\item<4-> Activity coefficient values are independent of
-				counter ions.
-
-				\only<4|handout:0>{\begin{itemize}
-					\item The key is the species itself --
-						its hydrated size, its charge,
-						its being affected by ionic
-						strength!
-				\end{itemize}}
-		\end{enumerate}
-	\end{columns}
-\end{frame}
-
-\vspace{\stretch{-1}}
-
-\begin{frame}[t]{Activity Example}
-	What is the solubility of calcium fluoride in \SI{0.050}{\formal} sodium
-	fluoride? Calculate the solubility both with and without activity
-	correction.
-
-	\smallskip
-
-	$\Ksp{} = \num{3.9e-11}$ for calcium fluoride
-
-	\mode<article>{\vfill}
-
-\note{
-	\footnotesize
-	\begin{tabular} {c r c r c r}
-		& \ch{CaF2(s)} & \ch{<=>} & \ch{Ca^{2+}(aq)} & \ch{+} &
-		\ch{2 F^{-}(aq)} \\
-		I & & & 0 & & 0.050 \\
-		C & $-x$ & & $+x$ & & $+2x$ \\ \cline{2-5}
-		E & $-x$ & & $x$ & & $0.050 + 2x$
-	\end{tabular}
-
-	\begin{columns}
-		\column{0.5\linewidth}
-		\begin{align*}
-			\Ksp{} &= [\ch{Ca^{2+}}][\ch{F-}]^2 \\
-			\num{3.9e-11} &= (x)(0.050+2x)^2 \\
-			x &= \SI{1.6e-8}{\Molar}
-		\end{align*}
-		\column{0.5\linewidth}
-		\begin{align*}
-			\Ksp{} &= [\ch{Ca^{2+}}]\gamma_{\ch{Ca^{2+}}}
-			[\ch{F-}]^2\gamma_{\ch{F-}}^2 \\
-			\num{3.9e-11} &= (x)(0.050+2x)^2
-			\gamma_{\ch{Ca^{2+}}}\gamma_{\ch{F-}}^2 \\
-			x &= \dfrac{\num{3.9e-11}}{0.050^2 \times 0.485 \times
-			0.81^2} \\
-			&= \SI{4.9e-8}{\Molar}
-		\end{align*}
-	\end{columns}
-
-	\begin{align*}
-		\mu &= 0.5 \left( [\ch{Na+}]\times1^2 +
-		[\ch{F-}]\times-1^2 + [\ch{Ca^{2+}}]\times2^2 \right) \\
-		&= 0.5 \left(0.050 + (0.050+2x) + 4x\right) \\
-		&= \SI{0.050}{\Molar} \text{~and via Table 8-1,~}
-		\gamma_{\ch{Ca^{2+}}} = 0.485 \text{~and~}
-		\gamma_{\ch{F-}} = 0.81
-	\end{align*}
-	}
-\end{frame}
-
-\begin{frame}{pH Revisited}
-	\begin{itemize}
-		\item pH is also affected by ionic strength because it is an
-			equilibrium involving charged species.
-		\item What is the real pH of pure distilled water?
-			\begin{align*}
-				\ch{2 H2O <=> H3O+ + OH-} \qquad \Kw{} =
-				[\ch{H3O+}]\gamma_{\ch{H3O+}}
-				[\ch{OH-}]\gamma_{\ch{OH-}}
-			\end{align*}
-		\item At very low ionic strength, $\gamma \approx 1$
-		\item At \SI{1.0e-7}{\Molar},
-			\begin{align*}
-				\text{pH} &= -\log \mathcal{A}_{\ch{H3O+}} \\
-				&= -\log [\ch{H3O+}]\gamma_{\ch{H3O+}}
-				\\
-				&= -\log (\num{1.0e-7})(1.00) \\
-				&= 7.00
-			\end{align*}
-	\end{itemize}
-\end{frame}
-
-\vspace{\stretch{-1}}
-
-\begin{frame}[t]{pH Example}
-	What is the pH of real distilled water with \SI{0.50}{\Molar}~\ch{KCl}
-	added?
-
-	\mode<article>{\vfill}
-
-	\note{
-	\begin{align*}
-		\ch{2 H2O <=> H3O+ + OH-} \qquad \Kw{} &=
-				[\ch{H3O+}]\gamma_{\ch{H3O+}}
-				[\ch{OH-}]\gamma_{\ch{OH-}} \\
-		\intertext{$\mu$ = \SI{0.50}{\Molar}, $\gamma_{\ch{H3O+}} =
-		0.28$, and $\gamma_{\ch{OH-}} = 0.38$}
-		\num{1.0e-14} &= (0.28x)(0.38x) \\
-		\num{9.4e-14} &= x^2 \\
-		x &= [\ch{H3O+}] = \SI{3.1e-7}{\Molar} \\
-		pH &= -\log \mathcal{A}_{\ch{H3O+}} = -\log
-		[\ch{H3O+}]\gamma_{\ch{H3O+}} \\
-		&= -\log (\num{3.1e-7})(0.28) \\
-		&= 7.06
-	\end{align*}
-	}
-\end{frame}
-
+%
+%\begin{frame}[t]{Formation Example}
+%	Find the concentrations of \ch{PbI+}, \ch{PbI2\aq{}}, \ch{PbI3-}, and
+%	\ch{PbI4^{2-}} in a solution saturated with \ch{PbI2\sld} and containing
+%	dissolved \ch{I-} with a concentration of \SI{0.0010}{\Molar}.
+%
+%	\medskip
+%
+%	\begin{tabular}{L @{ $=$ } S[table-format=1.1e-1]}
+%		K_\text{sp}  & 7.9e-9 \\
+%		K_1     & 1.0e2  \\
+%		\beta_2 & 1.4e3  \\
+%		\beta_3 & 8.3e3  \\
+%		\beta_4 & 3.0e4
+%	\end{tabular}
+%
+%	\mode<article>{\vspace{\stretch{1}}}
+%
+%	\note{ \small
+%		\begin{align*}
+%			K_1     &= \frac{[\ch{PbI+     }]}{[\ch{Pb^{2+}}][\ch{I-}]  } &
+%			\beta_2 &= \frac{[\ch{PbI2\aq  }]}{[\ch{Pb^{2+}}][\ch{I-}]^2} &
+%			\beta_3 &= \frac{[\ch{PbI3-    }]}{[\ch{Pb^{2+}}][\ch{I-}]^3} &
+%			\beta_4 &= \frac{[\ch{PbI4^{2-}}]}{[\ch{Pb^{2+}}][\ch{I-}]^4} &
+%		\end{align*}
+%		\begin{align*}
+%			\intertext{We need [\ch{Pb^{2+}}]!}
+%			K_\text{sp} &= [\ch{Pb^{2+}}][\ch{I-}]^2 &
+%			\therefore [\ch{Pb^{2+}}] &= \frac{K_\text{sp}}{[\ch{I-}]^2}
+%			= \frac{\num{7.9e-9}}{\num{0.0010}^2} = \SI{7.9e-3}{\Molar} \\
+%			&& [\ch{PbI+}] &= K_1[\ch{Pb^{2+}}][\ch{I-}] = \SI{7.9e-4}{\Molar} \\
+%			&& [\ch{PbI2\aq}] &= \beta_2[\ch{Pb^{2+}}][\ch{I-}]^2 = \SI{1.1e-5}{\Molar} \\
+%			&& [\ch{PbI3-  }] &= \beta_3[\ch{Pb^{2+}}][\ch{I-}]^3 = \SI{6.6e-8}{\Molar} \\
+%			&& [\ch{PbI4^{2+}}] &= \beta_4[\ch{Pb^{2+}}][\ch{I-}]^4 = \SI{2.4e-10}{\Molar} \\
+%		\end{align*}
+%	}
+%\end{frame}
+%
+%\clearpage
+%
+%\begin{frame}[t]{Acid Dissociation Example}
+%	What is the pH of a 5.0\% (w/w) vinegar solution? ($\Ka{} = \num{1.8e-5}$)
+%
+%	\mode<article>{\vspace{15em}}
+%
+%	\note{\footnotesize
+%		\vspace{-2em}\begin{align*}
+%		\dfrac{\SI{5}{\gram}~\ch{HAc}}{\SI{100.0}{\gram~sol}} \times
+%		\overbrace{\dfrac{\SI{1000}{\gram~sol}}{\SI{1}{\liter}}}^{\mathclap{\text{assume}~d = d_{\ch{H2O}} = \SI{1}{\gram\per\milli\liter}}} \times
+%		\dfrac{\SI{1}{\mole}~\ch{HAc}}{\SI{60.06}{\gram}} =
+%		\SI{0.83}{\Molar}
+%	\end{align*}
+%
+%	\begin{center}
+%		\begin{tabular} {@{}c*{5}{r}}
+%			& \ch{CH3COOH(aq)} & \ch{+ H2O(l) <=>} &
+%			\ch{CH3COO^{-}(aq)} &+& \ch{H3O^{+}(aq)} \\
+%			I & 0.83 && 0 && 0 \\
+%			C & $-x$ && $+x$ && $+x$ \\ \midrule
+%			E & $0.83-x$ && $x$ && $x$
+%		\end{tabular}
+%	\end{center}
+%
+%	\begin{columns}
+%		\column{0.5\linewidth}
+%		\begin{align*}
+%			\num{1.8e-5} &= \dfrac{[\ch{CH3COO-}][\ch{H3O+}]}{\ch{CH3COOH}}
+%			\\
+%			&= \dfrac{(x)(x)}{0.83-x} = \dfrac{x^2}{0.83} \\
+%			x &= \SI{3.9e-3}{\Molar}~\ch{H3O+}
+%		\end{align*}
+%		\column{0.5\linewidth}
+%		$x$ is 0.5\% of 0.83
+%		\begin{align*}
+%			\text{pH} &= -\log [\ch{H3O+}] \\
+%			&= -log(0.0039) \\
+%			&= 2.41
+%		\end{align*}
+%	\end{columns}
+%	}
+%\end{frame}
+%
+%\begin{frame}[t]{Base Dissociation Example}
+%	What is the pH of a solution that is \SI{0.175}{\Molar}~\ch{NH3}? ($\Kb{}
+%	= \num{1.8e-5}$)
+%
+%	\mode<article>{\vspace{18em}}
+%
+%\note{
+%	\begin{center}
+%		\begin{tabular} {@{}c*{5}{r}}
+%			& \ch{NH3(aq)} & \ch{ + H2O(l) <=>} &
+%			\ch{NH4^{+}(aq)} &+& \ch{OH^{-}(aq)} \\
+%			I & 0.175 && 0 && 0 \\
+%			C & $-x$ && $+x$ && $+x$ \\ \midrule
+%			E & $0.175-x$ && $x$ && $x$
+%		\end{tabular}
+%	\end{center}
+%
+%	\begin{columns}
+%		\column{0.5\linewidth}
+%		\begin{align*}
+%			\num{1.8e-5} &= \dfrac{[\ch{NH4+}][\ch{OH-}]}{\ch{NH3}}
+%			\\
+%			&= \dfrac{(x)(x)}{0.175-x} = \dfrac{x^2}{0.175} \\
+%			x &= \SI{1.8e-3}{\Molar}~\ch{OH-}
+%		\end{align*}
+%		\column{0.5\linewidth}
+%		\begin{align*}
+%			\text{pOH} &= -\log [\ch{OH-}] \\
+%			&= -\log(0.0018) = 2.75 \\
+%			\text{pH} &= 14.00 - \text{pOH} = 11.25
+%		\end{align*}
+%	\end{columns}
+%	}
+%\end{frame}
+%
+%\begin{frame}{Recall: Acid/Base Strength}
+%	\begin{itemize}
+%		\item Acid/base dissociation equilibria are considered for
+%			\alert{weak} acids and bases.
+%		\item Strong acids and bases dissociate \alert{completely} ---
+%			i.e. $\Ka{}$ or $\Kb{}$ are so large that it is not worth
+%			calculating
+%	\end{itemize}
+%
+%	{\small
+%		\begin{tabularx}{\textwidth} {*{2}{l>{\raggedright\arraybackslash}X}}
+%		\toprule
+%		\multicolumn{2}{l}{\textit{Acids}} &
+%		\multicolumn{2}{l}{\textit{Bases}} \\
+%		\bfseries Name & \bfseries Formula & \bfseries Name & \bfseries Formula \\
+%		\midrule
+%		\ch{HCl} & Hydrochloric acid & \ch{LiOH} & Lithium hydroxide \\
+%		\ch{HBr} & Hydrogen bromide & \ch{NaOH} & Sodium hydroxide \\
+%		\ch{HI} & Hydrogen iodide & \ch{KOH} & Potassium hydroxide \\
+%		\ch{H2SO4} & Sulfuric acid & \ch{RbOH} & Rubidium hydroxide \\
+%		\ch{HNO3} & Nitric acid & \ch{CsOH} & Cesium hydroxide \\
+%		\ch{HClO4} & Perchloric acid & \ch{R4NOH} & Quaternary ammonium
+%		hydroxide \\
+%		\bottomrule
+%	\end{tabularx}
+%}
+%\end{frame}
+%
+%\begin{frame}[allowframebreaks]{Polyprotic species}
+%	\begin{itemize}
+%		\item Some compounds can donate or accept more than one proton.
+%			For example,
+%			\begin{align*}
+%				\ch{H3PO4 + H2O &<=> H3O+ + H2PO4-} \\
+%				\ch{H2PO4- + H2O &<=> H3O+ + HPO4^{2-}} \\
+%				\ch{HPO4^{2-} + H2O &<=> H3O+ + PO4^{3-}}
+%			\end{align*}
+%		\item It is harder to remove (or add) each successive proton,
+%			thus
+%			\begin{equation*}
+%				K_\text{a1} >
+%				K_\text{a2} >
+%				K_\text{a3} > \cdots \quad\text{and}\quad
+%				K_\text{b1} >
+%				K_\text{b2} >
+%				K_\text{b3} > \cdots
+%			\end{equation*}
+%		\item Which \Ka\ and \Kb\ do we use to calculate \Kw?
+%	\end{itemize}
+%
+%	\framebreak
+%
+%	For \ch{H3PO4},
+%	\begin{reaction*}
+%		H3PO4     <=>[ $K$_{a1} ][ $K$_{b3} ]
+%		H2PO4-    <=>[ $K$_{a2} ][ $K$_{b2} ]
+%		HPO4^{2-} <=>[ $K$_{a3} ][ $K$_{b1} ]
+%		PO4^{3-}
+%	\end{reaction*}
+%	\begin{equation*}
+%		K_\text{a1}K_\text{b3} =
+%		K_\text{a2}K_\text{b2} =
+%		K_\text{a3}K_\text{b1} =
+%		K_\text{w}
+%	\end{equation*}
+%
+%	\vspace{2em}
+%
+%	For EDTA (\ch{H6Y^{2+}}) --- a hexavalent acid,
+%
+%	\medskip
+%
+%	\resizebox{\linewidth}{!}{%
+%			\ch{%
+%			H6Y^{2+} <=>[ $K$_{a1} ][ $K$_{b6} ]
+%		H5Y+     <=>[ $K$_{a2} ][ $K$_{b5} ]
+%		H4Y      <=>[ $K$_{a3} ][ $K$_{b4} ]
+%		H3Y-     <=>[ $K$_{a4} ][ $K$_{b3} ]
+%		H2Y^{2-} <=>[ $K$_{a5} ][ $K$_{b2} ]
+%		HY^{3-}  <=>[ $K$_{a6} ][ $K$_{b1} ] Y^{4-}
+%}}
+%
+%	\medskip
+%
+%	\resizebox{\linewidth}{!}{%
+%		$K_\text{a1}K_\text{b6} = 
+%		K_\text{a2}K_\text{b5} = 
+%		K_\text{a3}K_\text{b4} = 
+%		K_\text{a4}K_\text{b3} =
+%		K_\text{a5}K_\text{b2} = 
+%		K_\text{a6}K_\text{b1} =
+%		K_\text{w}$
+%}
+%\end{frame}
+%
+%\begin{frame}[t]{Ladder Diagrams}
+%	An easy way of finding the \alert{predominant} specie in a mixture.
+%
+%	\begin{example}
+%		\begin{columns}
+%			\column{0.4\linewidth}
+%			\begin{center}
+%		\resizebox{!}{20pt}{%
+%		\chemfig{^+H_3N-CH(-[::-90]CH_2-[:-90]CH_2-[:-90]CH_2-[:-90]NH
+%		-[:-90]C(=[:-90]NH_2^+)-NH_3^+)-C(=[:90]O)-OH}
+%	}
+%\end{center}
+%\column{0.5\linewidth}
+%\begin{align*}
+%	K_\text{a1} &= \num{1.50e-2} \\
+%	K_\text{a2} &= \num{1.02e-9} \\
+%	K_\text{a3} &= \num{3.3e-13}
+%\end{align*}
+%\end{columns}
+%	\end{example}
+%\end{frame}
+%
+%%%% END PART 1
 \frame{\section{Systematic Treatment of Equilibrium}
 	\begin{learningobjectives}
 	\item Balance all charged particles in a solution.
@@ -1198,17 +787,11 @@
 	\item Determine the concentration of all species in a solution at equilibrium.
 	\end{learningobjectives}
 }
-\vspace{\stretch{-1}}
 
-\mode<article>{\clearpage}
+\begin{frame}[t]{How do we solve complex equilibria?}
+	Recall:
 
-\begin{frame}{Systematic Treatment of Equilibrium}
-	\begin{itemize}
-		\item Many chemical systems are complex due to the number of
-			simultaneous reactions occuring.
-		\item Recall:
-			 \begin{center}
-				 \fontsize{6pt}{0pt}\selectfont
+	\resizebox{\linewidth}{!}{%
                 \begin{tabular} {r @{\ch{<=>}} l               
                 r@{ = }S[table-format=1.2e-2]}
                      \ch{CaCO3(s)} & \ch{Ca^{2+}(aq)} + \ch{CO3^{2-}(aq)} & $\Ksp{}$ & 4.5e-9 \\
@@ -1218,10 +801,13 @@
                      \ch{H3O^{+}(aq)} + \ch{OH^{-}(aq)} & \ch{2 H2O(l)} & $1/\Kw{}$ & 1.0e14  \\ \midrule
                      \ch{CaCO3(s) + CO2(aq) + H2O(l)} & \ch{Ca^{2+}(aq) +    
                 2 HCO3^{-}(aq)} & \Keq & 7.2e-8 \\                          
-        \end{tabular}                                                              
-        \end{center}
-		\item How do we solve a problem with so many unknowns?
-	\end{itemize}
+        \end{tabular}
+	}
+
+	\bigskip
+
+	If you need to solve for the concentration of each species in the above
+	reactions, what do?
 \end{frame}
 
 \begin{frame}{$n$ equations\ldots}
@@ -1278,9 +864,6 @@
 				$m$ & is the charge of each \alert{anion} of
 				concentration \ch{[A]}
 			\end{tabularx}
-	
-		\item Activity coefficients \alert{do not} appear in the charge
-			balance!
 	\end{itemize}
 \end{frame}
 
@@ -1437,28 +1020,26 @@
 
 \begin{frame}{The Systematic Treatment of Equilibrium}
 	\begin{enumerate}
-		\item Write the \alert{pertinent reactions}.
-		\item Write the \alert{charge balance} equation.
-		\item Write the \alert{mass balance} equation(s).
-		\item Write the \alert{equilibrium constant} for each chemical
+		\item Write the \textbf{\usebeamercolor[fg]{alerted text}pertinent reactions}.
+		\item Write the \textbf{\usebeamercolor[fg]{alerted text}charge balance} equation.
+		\item Write the \textbf{\usebeamercolor[fg]{alerted text}mass balance} equation(s).
+		\item Write the \textbf{\usebeamercolor[fg]{alerted text}equilibrium constant} for each chemical
 			reaction.
-			\begin{itemize}
-				\item This is the only step where activity
-					coefficients may appear.
-			\end{itemize}
-		\item \alert{Count} the equations and unknowns.
+		\item \textbf{\usebeamercolor[fg]{alerted text}Count} the equations and unknowns.
 			\begin{itemize}
 				\item The numbers should equal or you need to
-					find more equilibria or fix some
+					find more equilibria or fix/approximate some
 					concentrations.
 			\end{itemize}
-		\item \alert{Solve} for all the unknowns.
+		\item \textbf{\usebeamercolor[fg]{alerted text}Solve} for all the unknowns.
 	\end{enumerate}
 \end{frame}
 
-\vspace{\stretch{-1}}
-
 \begin{frame}[t]{Systematic Treatment Example 1}
+	What is the \pH{} of a \SI{0.50}{\Molar} solution of \ch{HF}?
+\end{frame}
+
+\begin{frame}[t]{Systematic Treatment Example 2}
 	Calculate the solubility of calcium fluoride in a pH 4.00 buffer.
 
 	\mode<article>{\vspace{\stretch{3}}}
@@ -1583,7 +1164,7 @@
 
 		\mode<article>{\clearpage}
 
-\begin{frame}[t]{Systematic Treatment Example 2}
+\begin{frame}[t]{Systematic Treatment Example 3}
 	Calculate the solubility of silver phosphate in a pH~5.00 buffer.
 
 	\mode<article>{\vfill}
@@ -1708,14 +1289,422 @@
 	}
 
 
-\begin{frame}{Some for you to try:}
-	\begin{enumerate}
-		\item Calculate the solubility of aluminum phosphate ($\Ksp{} =
-			\num{9.84e-22}$) at pH~4.00.
-		\item Using a spreadsheet, calculate the solubility of \ch{CaF2}
-			between pH's 1--10. Finally, plot [\ch{Ca^{2+}}] vs pH.
-		\item Calculate the solubility of barium oxalate at pH~2.00.
-	\end{enumerate}
-\end{frame}
+%\begin{frame}{Some for you to try:}
+%	\begin{enumerate}
+%		\item Calculate the solubility of aluminum phosphate ($\Ksp{} =
+%			\num{9.84e-22}$) at pH~4.00.
+%		\item Using a spreadsheet, calculate the solubility of \ch{CaF2}
+%			between pH's 1--10. Finally, plot [\ch{Ca^{2+}}] vs pH.
+%		\item Calculate the solubility of barium oxalate at pH~2.00.
+%	\end{enumerate}
+%\end{frame}
 
+%%% END PART 2
+%
+%\frame{\section{Activity}
+%	\begin{learningobjectives}
+%	\item Explain why equilibrium constants differ from tabulated values at higher concentrations.
+%	\item Calculate ionic strength of solutions.
+%	\item Use ionic strength to predict the activity of species in solution.
+%	\end{learningobjectives}
+%}
+%
+%\begin{frame}[t]{Why is the equilibrium constant not enough?}
+%	Consider the solubility of mercury(I) bromide, $\Ksp{} =
+%	\num{5.6e-23}$.
+%	\note{%
+%	\begin{itemize}
+%		\item The equilibrium is:
+%			\begin{align*}
+%				\ch{Hg2Br2\sld{} <=> Hg2^{2+}\aq{} + 2
+%				Br^{-}\aq{}}
+%				\qquad \Ksp{} &= \num{5.6e-23} \\
+%				&= [\ch{Hg2^{2+}}][\ch{Br-}]^2
+%			\end{align*}
+%		\item Using ICE, $x = [\ch{Hg2^{2+}}] = \SI{2.4e-8}{\Molar}$
+%		\item When \ch{KNO3} is added, the Solubility can increase such that $[\ch{Hg2^{2+}}] =
+%			\SI{4.1e-8}{\Molar}$, a 46\% increase in solubility!
+%		\item We find that whenever an \alert{inert salt} is added to a
+%			solution of a sparingly soluble salt, the solubility of
+%			the latter is increased.
+%	\end{itemize}
+%}
+%
+%	\vfill
+%
+%	\visible<+(1)->{What \emph{should} happen when we add \ch{KNO3}?}
+%
+%	\vfill
+%
+%	\begin{block}<+(1)->{Inert salt}
+%		Any electrolyte that is neither a common ion nor will react with
+%		the ions of the sparingly soluble species.
+%	\end{block}
+%\end{frame}
+%
+%\begin{frame}{Ionic vs. Hydrated Radii}
+%	\only<+>{%
+%		\begin{columns}
+%			\column{0.5\textwidth}
+%			\begin{itemize}
+%				\item Every dissolved species is surrounded by water
+%					molecules.
+%				\item For ionic species, the number of \ch{H2O}
+%					molecules depends on the ions charge density.
+%			\end{itemize}
+%			\column{0.5\textwidth}
+%			\includegraphics[scale=0.75]{estimated-hydration.jpg}
+%		\end{columns}
+%	}
+%
+%	\only<+>{%
+%		\begin{columns}
+%			\column{0.5\textwidth}
+%			\begin{itemize}
+%				\item A smaller ion of like charge has a larger charge
+%					density thus \ch{Li+} attracts more water than
+%					\ch{K+} and a 3+ ion attracts more than a 2+.
+%				\item In fact, the largest hydrated ion is \ch{H3O+} at
+%					\SI{900}{\pico\meter}!
+%					\begin{itemize}
+%						\item By comparison, hydrated \ch{Li+}
+%							is only about
+%							\SI{600}{\pico\meter}.
+%					\end{itemize}
+%			\end{itemize}
+%			\column{0.5\textwidth}
+%			\includegraphics[scale=0.25]{ionic-v-hydrated-radii.jpg}
+%		\end{columns}
+%	}
+%\end{frame}
+%
+%\begin{frame}{Ionic Atmosphere}
+%	\begin{columns}
+%		\column{0.6\textwidth}
+%	\begin{itemize}[<+->]
+%		\item Ions attract (or repel) other ions.
+%%			\begin{itemize}
+%%				\item Otherwise we would not be able to have
+%%					insoluble salts!
+%%			\end{itemize}
+%		\item What happens when an inert electrolyte is added to the
+%			solution?
+%			\begin{itemize}
+%				\item The ionic atmosphere causes \alert{less}
+%					attraction between the ions of the
+%					insoluble salt!
+%				\item Less attraction means less crashing and a
+%					\alert{higher} solubility!
+%			\end{itemize}
+%		\item The more ions we have in solution, the less attraction we
+%			have, thus the greater solubility.
+%	\end{itemize}
+%		\column{0.4\textwidth}
+%		\includegraphics[scale=0.85]{ionic-atmosphere.jpg}
+%	\end{columns}
+%\end{frame}
+%
+%\begin{frame}{The Equilibrium ``Constant'' is Not Constant!}
+%	\begin{columns}
+%		\column{0.6\linewidth}
+%		\begin{itemize}
+%			\item We will see the same effect for all equilibria.
+%			\item For example, from CHEM 116:
+%				\begin{align*}
+%					\ch{Fe^{3+} + SCN- <=> FeSCN^{2+}}
+%				\end{align*}
+%			\item Note that as the ionic atmosphere increases, we
+%				get more of the reactant ions present shifting
+%				the equilibrium position.
+%		\end{itemize}
+%		\column{0.4\linewidth}
+%		\includegraphics[scale=0.35]{FeSCN.jpg}
+%	\end{columns}
+%\end{frame}
+%
+%\begin{frame}{Ionic Strength}
+%	\begin{itemize}
+%		\item We will measure the size or strength of the ionic
+%			atmosphere by calculating the \alert{ionic strength}
+%			($\mu$) of the solution.
+%		\item $\mu$ is the total ion concentration in the solution:
+%			\begin{align*}
+%				\mu = \frac{1}{2}(c_1z_1^2 + c_2z_2^2 + \cdots)
+%				= \frac{1}{2}\sum_{i}c_iz_i^2
+%			\end{align*}
+%			where $c_i$ is the ion concentration of the
+%			$i$\textsuperscript{th} species and $z_i$ is its ionic
+%			charge.
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Ionic Strength Example}
+%	\begin{itemize}
+%		\item Find the ionic strength of the following solutions:
+%			\begin{itemize}
+%				\item \SI{0.10}{\Molar} \ch{AgNO3}
+%				\item \SI{0.10}{\Molar} \ch{Na2SO4}
+%				\item \SI{0.20}{\Molar} \ch{KCl} and
+%					\SI{0.10}{\Molar} \ch{K2SO4}
+%			\end{itemize}
+%		\item Recognize that these values are approximations. All salts
+%			over 1\%~(w/w) will have some soluble ion pairs. Using
+%			\SI{0.025}{\formal} solutions as an example,
+%			\begin{itemize}
+%				\item \ch{NaCl} is 99.6\% dissociated
+%				\item \ch{Na2SO4} is 96\%
+%				\item \ch{MgSO4} is 65\%
+%				\item \ch{La2(SO4)3} is 4\%
+%			\end{itemize}
+%			See Box 8-1, page 164
+%	\end{itemize}
+%
+%	\mode<article>{\vspace{15em}}
+%
+%\note{
+%	\begin{multicols}{2}
+%	\textbf{\ch{AgNO3}}
+%	\begin{align*}
+%		\mu &= \frac{1}{2} \sum_{i} c_i z_i^2 \\
+%		&= \frac{1}{2} (0.10 \times 1^2 + 0.10 \times (-1)^2) \\
+%		&= \SI{0.10}{\Molar}
+%	\end{align*}
+%
+%	\textbf{\ch{Na2SO4}}
+%	\begin{align*}
+%		\mu &= \frac{1}{2} \sum_{i} c_i z_i^2 \\
+%		&= \frac{1}{2} (0.20 \times 1^2 + 0.10 \times (-2)^2) \\
+%		&= \SI{0.30}{\Molar}
+%	\end{align*}
+%
+%	\textbf{\ch{KCl} and \ch{K2SO4}}
+%	\begin{align*}
+%		\mu &= \frac{1}{2} \sum_{i} c_i z_i^2 \\
+%		&= \frac{1}{2} (0.20 \times 1^2 + 0.2 \times (-1)^2 \\
+%		&\qquad {} + 0.20
+%		\times 1^2 + 0.10 \times (-2)^2) \\
+%		&= \SI{0.5}{\Molar}
+%	\end{align*}
+%	\end{multicols}
+%	}
+%\end{frame}
+%
+%\begin{frame}{Working Ionic Strengths into K's}
+%	\begin{itemize}
+%		\item To account for the effect ionic strength has on the
+%			chemistry of a salt, we replace molar concentrations
+%			with activities:
+%			\begin{align*}
+%				\mathcal{A}_{\ch{C}} = [\ch{C}]\gamma_{\ch{C}}
+%			\end{align*}
+%			where the molar concentration of species \ch{C}
+%			([\ch{C}]) is multiplied by its activity coefficient
+%			($\gamma_{\ch{C}}$).
+%		\item The extended \alert{Debye-Huckel equation} gives the
+%			activity coefficient which is dependent on the size of
+%			the ionic strength.
+%			\begin{align*}
+%				\log \gamma = \dfrac{-0.51z^2\sqrt{\mu}}{1 +
+%				(\alpha \sqrt{\mu}/305)} \qquad\text{(at
+%				\SI{25}{\celsius})}
+%			\end{align*}
+%			where $\alpha$ is the size of the ion in
+%			\si{\pico\meter}. Note that this relation only works
+%			well up to \SI{0.10}{\Molar} ionic strength.
+%	\end{itemize}
+%\end{frame}
+%
+%\vspace{\stretch{-1}}
+%
+%\begin{frame}{The Real Equilibrium Constant}
+%	\begin{itemize}
+%		\item Consider the solubity of mercury (I) bromide, with
+%			equilibrium,
+%			\begin{align*}
+%				\ch{Hg2Br2(s) <=> Hg2^{2+}(aq) + 2 Br^{-}(aq)}
+%			\end{align*}
+%		\item The new equilibrium constant including activity
+%			coefficients is
+%			\begin{align*}
+%				\Ksp{} = \mathcal{A}_{\ch{Hg2^{2+}}}
+%				\mathcal{A}_{\ch{Br-}}^2 =
+%				[\ch{Hg2^{2+}}]\gamma_{\ch{Hg2^{2+}}}
+%				[\ch{Br-}]^2\gamma_{\ch{Br-}}^2
+%			\end{align*}
+%	\end{itemize}
+%
+%	\pause
+%
+%	\begin{block}{General Form of the Equilibrium Constant}
+%		\begin{align*}
+%			K = \dfrac{\mathcal{A}^c_{\ch{C}}
+%			\mathcal{A}^d_{\ch{D}}}{\mathcal{A}^a_{\ch{A}}
+%			\mathcal{A}^b_{\ch{B}}} = \dfrac{[\ch{C}]^c
+%			\gamma_{\ch{C}}^c [\ch{D}]^d \gamma_{\ch{D}}^d}
+%			{[\ch{A}]^a \gamma_{\ch{A}}^a [\ch{B}]^b
+%			\gamma_{\ch{B}}^b}
+%		\end{align*}
+%	\end{block}
+%\end{frame}
+%
+%\vspace{\stretch{-1}}
+%
+%\begin{frame}{Effect of $\mu$, $z_i$, and $\alpha$ on $\gamma$}
+%	\begin{columns}
+%		\column{0.4\textwidth}
+%		\begin{center}
+%			\includegraphics[scale=0.85]{activity-v-ionic-strength.png}
+%		\end{center}
+%		\column{0.6\textwidth}
+%		\begin{enumerate}
+%			\item<1-> As ionic strength increase, the activity
+%				coefficient decreases.
+%
+%				\only<1|handout:0>{\begin{itemize}
+%					\item The activity coefficient
+%						($\gamma$) approaches unity as
+%						the ionic strength ($\mu$)
+%						approaches 0.
+%					\item At $\mu \leq \SI{0.0001}{\Molar}$,
+%						$\gamma \approx 1$.
+%				\end{itemize}}
+%
+%			\item<2-> As the charge on an ion increases, the
+%				departure of its activity coefficient from unity
+%				increases.
+%
+%				\only<2|handout:0>{\begin{itemize}
+%					\item Activity coefficients are much
+%						more important for highly
+%						charged species ($\pm3$ or
+%						$\pm4$).
+%					\item Let $\gamma_i = 1$ for all
+%						uncharged species at any $\mu$.
+%				\end{itemize}}
+%
+%			\item<3-> The smaller the hydrated radius of the ion,
+%				the more important the activity coefficient
+%				becomes.
+%
+%				\only<3|handout:0>{\begin{itemize}
+%					\item At fixed ionic strength, however,
+%						species of similar charge will
+%						have similar activity
+%						coefficients.
+%				\end{itemize}}
+%
+%			\item<4-> Activity coefficient values are independent of
+%				counter ions.
+%
+%				\only<4|handout:0>{\begin{itemize}
+%					\item The key is the species itself --
+%						its hydrated size, its charge,
+%						its being affected by ionic
+%						strength!
+%				\end{itemize}}
+%		\end{enumerate}
+%	\end{columns}
+%\end{frame}
+%
+%\vspace{\stretch{-1}}
+%
+%\begin{frame}[t]{Activity Example}
+%	What is the solubility of calcium fluoride in \SI{0.050}{\formal} sodium
+%	fluoride? Calculate the solubility both with and without activity
+%	correction.
+%
+%	\smallskip
+%
+%	$\Ksp{} = \num{3.9e-11}$ for calcium fluoride
+%
+%	\mode<article>{\vfill}
+%
+%\note{
+%	\footnotesize
+%	\begin{tabular} {c r c r c r}
+%		& \ch{CaF2(s)} & \ch{<=>} & \ch{Ca^{2+}(aq)} & \ch{+} &
+%		\ch{2 F^{-}(aq)} \\
+%		I & & & 0 & & 0.050 \\
+%		C & $-x$ & & $+x$ & & $+2x$ \\ \cline{2-5}
+%		E & $-x$ & & $x$ & & $0.050 + 2x$
+%	\end{tabular}
+%
+%	\begin{columns}
+%		\column{0.5\linewidth}
+%		\begin{align*}
+%			\Ksp{} &= [\ch{Ca^{2+}}][\ch{F-}]^2 \\
+%			\num{3.9e-11} &= (x)(0.050+2x)^2 \\
+%			x &= \SI{1.6e-8}{\Molar}
+%		\end{align*}
+%		\column{0.5\linewidth}
+%		\begin{align*}
+%			\Ksp{} &= [\ch{Ca^{2+}}]\gamma_{\ch{Ca^{2+}}}
+%			[\ch{F-}]^2\gamma_{\ch{F-}}^2 \\
+%			\num{3.9e-11} &= (x)(0.050+2x)^2
+%			\gamma_{\ch{Ca^{2+}}}\gamma_{\ch{F-}}^2 \\
+%			x &= \dfrac{\num{3.9e-11}}{0.050^2 \times 0.485 \times
+%			0.81^2} \\
+%			&= \SI{4.9e-8}{\Molar}
+%		\end{align*}
+%	\end{columns}
+%
+%	\begin{align*}
+%		\mu &= 0.5 \left( [\ch{Na+}]\times1^2 +
+%		[\ch{F-}]\times-1^2 + [\ch{Ca^{2+}}]\times2^2 \right) \\
+%		&= 0.5 \left(0.050 + (0.050+2x) + 4x\right) \\
+%		&= \SI{0.050}{\Molar} \text{~and via Table 8-1,~}
+%		\gamma_{\ch{Ca^{2+}}} = 0.485 \text{~and~}
+%		\gamma_{\ch{F-}} = 0.81
+%	\end{align*}
+%	}
+%\end{frame}
+%
+%\begin{frame}{pH Revisited}
+%	\begin{itemize}
+%		\item pH is also affected by ionic strength because it is an
+%			equilibrium involving charged species.
+%		\item What is the real pH of pure distilled water?
+%			\begin{align*}
+%				\ch{2 H2O <=> H3O+ + OH-} \qquad \Kw{} =
+%				[\ch{H3O+}]\gamma_{\ch{H3O+}}
+%				[\ch{OH-}]\gamma_{\ch{OH-}}
+%			\end{align*}
+%		\item At very low ionic strength, $\gamma \approx 1$
+%		\item At \SI{1.0e-7}{\Molar},
+%			\begin{align*}
+%				\text{pH} &= -\log \mathcal{A}_{\ch{H3O+}} \\
+%				&= -\log [\ch{H3O+}]\gamma_{\ch{H3O+}}
+%				\\
+%				&= -\log (\num{1.0e-7})(1.00) \\
+%				&= 7.00
+%			\end{align*}
+%	\end{itemize}
+%\end{frame}
+%
+%\vspace{\stretch{-1}}
+%
+%\begin{frame}[t]{pH Example}
+%	What is the pH of real distilled water with \SI{0.50}{\Molar}~\ch{KCl}
+%	added?
+%
+%	\mode<article>{\vfill}
+%
+%	\note{
+%	\begin{align*}
+%		\ch{2 H2O <=> H3O+ + OH-} \qquad \Kw{} &=
+%				[\ch{H3O+}]\gamma_{\ch{H3O+}}
+%				[\ch{OH-}]\gamma_{\ch{OH-}} \\
+%		\intertext{$\mu$ = \SI{0.50}{\Molar}, $\gamma_{\ch{H3O+}} =
+%		0.28$, and $\gamma_{\ch{OH-}} = 0.38$}
+%		\num{1.0e-14} &= (0.28x)(0.38x) \\
+%		\num{9.4e-14} &= x^2 \\
+%		x &= [\ch{H3O+}] = \SI{3.1e-7}{\Molar} \\
+%		pH &= -\log \mathcal{A}_{\ch{H3O+}} = -\log
+%		[\ch{H3O+}]\gamma_{\ch{H3O+}} \\
+%		&= -\log (\num{3.1e-7})(0.28) \\
+%		&= 7.06
+%	\end{align*}
+%	}
+%\end{frame}
+%
 \end{document}
