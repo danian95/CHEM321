@@ -1,8 +1,8 @@
 % !TEX program = xelatex
 %\documentclass[notes=onlyslideswithnotes,notes=hide]{beamer}
-\documentclass[notes=hide]{beamer}
+%\documentclass[notes=hide]{beamer}
 %\documentclass[notes=show]{beamer}
-%\documentclass[notes=only]{beamer}
+\documentclass[notes=only]{beamer}
 %\documentclass[handout]{beamer}
 %\documentclass[letterpaper,11pt]{article}
 %\usepackage{beamerarticle}
@@ -1037,6 +1037,43 @@
 
 \begin{frame}[t]{Systematic Treatment Example 1}
 	What is the \pH{} of a \SI{0.50}{\Molar} solution of \ch{HF}?
+
+	\note{%
+	\begin{multicols}{2}
+		\footnotesize
+		\begin{enumerate}
+			\item Pertinent reactions
+				\begin{reactions*}
+					HF + H2O &<=> H3O+ + F- \\
+					2 H2O &<=> H3O+ + OH-
+				\end{reactions*}
+			\item Charge balance
+				\begin{align*}
+					[\Oxo] &= [\Hyd] + [\ch{F-}]
+				\end{align*}
+			\item Mass balance
+				\begin{align*}
+					\SI{0.50}{\Molar} &= [\ch{HF}] +
+					[\ch{F-}]
+				\end{align*}
+			\item Equilibrium constants
+				\begin{align*}
+					\Ka{} &=
+					\dfrac{[\ch{F-}][\Oxo]}{[\ch{HF}]} =
+					\num{6.8e-4} \\
+					\Kw{} &= [\ch{H3O+}][\ch{OH-}] =
+					\num{1.0e-14}
+				\end{align*}
+			\item Count equations and unknowns
+				\begin{itemize}
+					\item 4 unknowns 
+					\item 4 equations
+				\end{itemize}
+			\item Solve
+		\end{enumerate}
+	\end{multicols}
+	}
+
 \end{frame}
 
 \begin{frame}[t]{Systematic Treatment Example 2}
