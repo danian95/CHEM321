@@ -1,10 +1,10 @@
 % !TEX program = xelatex
-\documentclass[notes=hide]{beamer}
-%\documentclass[notes=onlyslideswithnotes,notes=hide]{beamer}
+%\documentclass[notes=hide]{beamer}
+%\documentclass[notes=show]{beamer}
 %\documentclass[notes=only]{beamer}
-%\documentclass[11pt,letterpaper]{article}
-%\usepackage{beamerarticle}
+\documentclass[handout]{beamer}
 
+\usepackage{newtxtext}
 \usepackage{analchem}
 \usepackage{lecture}
 \usepackage{multicol}
@@ -13,11 +13,10 @@
 \pgfplotsset{compat=1.3}
 \usepackage{cancel}
 
-\title{Acid-Base Equilibria}
-\subtitle{Chapters 9-11}
+\title{Acid-Base Equilibria and Titrations}
 \institute{CHEM321 --- Analytical Chemistry I \\ Bloomsburg University}
 \author{D.A. McCurry}
-\date{Fall 2020}
+\date{Fall 2021}
 
 \begin{document}
 
@@ -31,49 +30,20 @@
 	\end{learningobjectives}
 }
 
-\begin{frame}{\ch{HNO3} --- One of our Strong Acids}
-	\begin{columns}
-		\column{0.5\linewidth}
-		\begin{center}
-			\includegraphics[scale=0.3]{HNO3Raman.jpeg}
-			*undissociated \ch{HNO3}
-		\end{center}
-		\column{0.5\linewidth}
-		\begin{center}
-			\includegraphics[scale=0.5]{HNO3Dissociation.jpeg}
-			\includegraphics[scale=0.5]{HNO3TempKa.jpeg}
-		\end{center}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{The Hazard of $\text{pH} = -\log[\ch{H3O+}]$}
-	As we've seen, calculating pH of strong acids and bases is very easy
-	because they dissociate 100\%:
-	\begin{reaction*}
-		!( "\SI{0.0100}{\Molar}" )( HNO3 ) -> !( "\SI{0.0100}{\Molar}" )( H3O+ ) + !( "\SI{0.0100}{\Molar}" )( NO3- )
-	\end{reaction*}
-	\begin{equation*}
-		\therefore \pH = -\log(0.0100) = 2.000
-	\end{equation*}
+\begin{frame}[t]{The Hazard of $\text{pH} = -\log[\ch{H3O+}]$}
+	\begin{example}
+		What is the \pH{} of \SI{0.0100}{\Molar} \ch{HNO3}?
+	\end{example}
 
 	\pause
 
-	\begin{reaction*}
-		!( "\SI{1.00e-8}{\Molar}" )( HNO3 ) -> !( "\SI{1.00e-8}{\Molar}" )( H3O+ ) + !( "\SI{1.00e-8}{\Molar}" )( NO3- )
-	\end{reaction*}
-	\begin{equation*}
-		\therefore \pH = -\log(\num{1.00e-8}) = 8.000
-	\end{equation*}
+	\bigskip
 
-	\pause
+	\begin{example}
+		What is the \pH{} of \SI{1.00e-8}{\Molar} \ch{HNO3}?
+	\end{example}
 
-	What happened? Why did this stop working?
-\end{frame}
-
-\vspace{\stretch{-1}}
-
-\begin{frame}{A Systematic Approach to pH}
-	\note{
+	\note<2>{%
 	\begin{enumerate}
 		\item Pertinent Reactions
 			\begin{align*}
@@ -101,7 +71,6 @@
 		\end{enumerate}
 	\end{multicols}
 	}
-
 \end{frame}
 
 \note{\footnotesize
@@ -121,75 +90,8 @@
 	and the water.
 }
 
-\clearpage
+\note{Show spreadsheet. How do we figure out how much \Oxo{} comes from water?}
 
-\begin{frame}[shrink]{Spreadsheet software aids in pH determination}
-	\begin{tabular} {S[table-format=1.1e-2] *{2}{S[table-format=2.2]} || S[table-format=1.1e-2]
-		*{2}{S[table-format=2.2]}}
-		\toprule
-		{[Strong Acid]} & {$\approx$ pH} & {$=$ pH} & {[Strong Base]} & {$\approx$ pH} & {$=$ pH} \\ \midrule
-		1.0e-1 & 1.00 & 1.00   & 1.0e-1 & 13.00 & 13.00 \\
-		1.0e-2 & 2.00 & 2.00   & 1.0e-2 & 12.00 & 12.00 \\
-		1.0e-3 & 3.00 & 3.00   & 1.0e-3 & 11.00 & 11.00 \\
-		1.0e-4 & 4.00 & 4.00   & 1.0e-4 & 10.00 & 10.00 \\
-		1.0e-5 & 5.00 & 5.00   & 1.0e-5 & 9.00 & 9.00   \\
-		1.0e-6 & 6.00 & 6.00   & 1.0e-6 & 8.00 & 8.00   \\
-		1.0e-7 & 7.00 & 6.79   & 1.0e-7 & 7.00 & 7.21   \\
-		1.0e-8 & 8.00 & 6.98   & 1.0e-8 & 6.00 & 7.02   \\
-		1.0e-9 & 9.00 & 7.00   & 1.0e-9 & 5.00 & 7.00   \\
-		1.0e-10 & 10.00 & 7.00 & 1.0e-10 & 4.00 & 7.00  \\
-		1.0e-11 & 11.00 & 7.00 & 1.0e-11 & 3.00 & 7.00  \\
-		1.0e-12 & 12.00 & 7.00 & 1.0e-12 & 2.00 & 7.00  \\
-		\bottomrule
-	\end{tabular}
-\end{frame}
-
-
-\begin{frame}{Even better\ldots we can plot it!}
-	\centering
-	\includegraphics[width=\textwidth]{strongacid-base.eps}
-\end{frame}
-
-
-\begin{frame}[shrink]{How much \ch{H3O+} comes from water?}
-	\only<+>{%
-	\begin{tabular} {S[table-format=1.1e-2]
-		S[table-format=1.1e-2] S[table-format=3.3]
-		S[table-format=1.1e-2] S[table-format=3.10]}
-		\toprule
-		& \multicolumn{2}{c}{From acid} & \multicolumn{2}{c}{From
-		water} \\
-		{[Strong Acid]} & [\ch{H3O+}] & \% & [\ch{H3O+}] & \% \\ \midrule
-		1.0e-1 & 1.0e-1 & 100 & 1.0e-13 & 0.0000000001 \\
-		1.0e-2 & 1.0e-2 & 100 & 1.0e-12 & 0.00000001 \\
-		1.0e-3 & 1.0e-3 & 100 & 1.0e-11 & 0.000001 \\
-		1.0e-4 & 1.0e-4 & 100 & 1.0e-10 & 0.0001 \\
-		1.0e-5 & 1.0e-5 & 100 & 1.0e-9 & 0.01 \\
-		1.0e-6 & 1.0e-6 & 99 & 9.9e-9 & 1 \\
-		1.0e-7 & 1.0e-7 & 62 & 6.2e-8 & 38 \\
-		1.0e-8 & 1.0e-8 & 10 & 9.5e-8 & 90 \\
-		1.0e-9 & 1.0e-9 & 1 & 1.0e-7 & 99 \\
-		1.0e-10 & 1.0e-10 & 0.1 & 1.0e-7 & 100 \\
-		1.0e-11 & 1.0e-11 & 0.01 & 1.0e-7 & 100 \\
-		1.0e-12 & 1.0e-12 & 0.001 & 1.0e-7 & 100 \\
-		\bottomrule
-	\end{tabular}
-}
-
-\only<+>{%
-	\noindent
-	If we have \SI{1.0e-2}{\Molar} \ch{HNO3}, the \ch{OH-} concentration
-	follows,
-
-	\begin{align*}
-		[\ch{OH-}] &= \dfrac{\num{1.0e-14}}{[\ch{H3O+}]} \\
-		&= \dfrac{\num{1.0e-14}}{\num{1.0e-2}} = \SI{1.0e-12}{\Molar}
-	\end{align*}
-
-	The \alert{only} source of \ch{OH-} is the dissociation of water, so
-	water must \emph{also} contribute \SI{1.0e-12}{\Molar} \ch{H3O+}!
-}
-\end{frame}
 
 \frame{\section{Weak Acids and Bases}
 	\begin{learningobjectives}
@@ -217,15 +119,11 @@
 	Conjugate Acid-Base Pairs: $K_a \times K_b = K_w$
 \end{frame}
 
-\vspace{\stretch{-1}}
-
 \begin{frame}[t]{A Typical Weak Acid Problem}
-	Find the pH of a solution of the weak acid, HA, given the formal
+	Find the \pH{} of a solution of the weak acid, HA, given the formal
 	concentration of HA and the value of \Ka.
 
-	\mode<article>{\vfill}
-
-	\note{
+	\note<1>{
 		\begin{multicols}{2}
 		\begin{enumerate}
 			\item Pertinent equations:
@@ -259,67 +157,65 @@
 			[\Oxo](\si{\formal}\Ka + \Kw) - \Kw\Ka
 		\end{align*}
 	}
-\end{frame}
 
-\begin{frame}[t]{``Wait!''}
-	The Good Chemist comes galloping down from the mountain on her white
-	stallion to rescue us. ``There is no reason to solve a cubic equation.
-	We can make an excellent, simplifying approximation.''
+	\pause
 
-	\begin{itemize}
-		\item The amount of \ch{H3O+} from the acid is much larger than
-			that from water at \alert{normal lab concentrations}.
-			\begin{align*}
-				[\ch{A-}] >> [\ch{OH-}] \qquad\therefore [\ch{H3O+}]
-				\approx [\ch{A-}]
-			\end{align*}
-		\item Let $x = [\Oxo] = [\ch{A-}]$
-%			If $x = [\ch{H3O+}]$, then
-%			\begin{align*}
-%				[\ch{H3O+}] &= [\ch{A-}] = x \\
-%				\textsc{F} &= [\ch{A-}] + [\ch{HA}] \qquad\therefore
-%				[\ch{HA}] = \textsc{F} - x \\
-%				K_a &= \dfrac{[\ch{H+}][\ch{A-}]}{[\ch{HA}]} =
-%				\dfrac{x^2}{\textsc{F}-x}
-%			\end{align*}
-	\end{itemize}
+	\bigskip
 
-	\clearpage
+	Can we make any approximations?
 
-	\mode<article>{\vspace*{\stretch{0.5}}}
-
-	\note{\begin{multicols}{2}
-		\begin{enumerate}
-			\item Pertinent equations:
-				{\footnotesize
+	\note<2>{%
+		\begin{itemize}
+			\item The amount of \ch{H3O+} from the acid is much larger than
+				that from water at \alert{normal lab concentrations}.
 				\begin{align*}
-					\ch{HA + H2O &<=>[ $K_a$ ] H3O+ + A-} \\
-					\ch{2 H2O &<=>[ $K_w$ ] H3O+ + OH-}
-				\end{align*}}
-			\item Charge Balance:
-				{\footnotesize
-				\begin{align*}
-					x &= [\Hyd] + x \\
-					\therefore [\Hyd] &= 0
-				\end{align*}}
-			\item Mass Balance:
-				{\footnotesize
-				\begin{align*}
-					\si{\formal} &= x + [\ch{HA}] \\
-					\therefore [\ch{HA}] &= \si{\formal} - x
-				\end{align*}}
-			\item Equilibria:
-				{\footnotesize
-				\begin{align*}
-					\Ka &= \frac{x^2}{[\ch{HA}]} = \boxed{\frac{x^2}{\si{\formal} - x}} \\
-					\Kw &= x [\ch{OH-}] \approx 0
-				\end{align*}}
-			\item Count: 4 unknowns and 4 equations, then
-			\item Solve!
-		\end{enumerate}
-		\end{multicols}
+					[\ch{A-}] >> [\ch{OH-}] \qquad\therefore [\ch{H3O+}]
+					\approx [\ch{A-}]
+				\end{align*}
+			\item Let $x = [\Oxo] = [\ch{A-}]$
+	%			If $x = [\ch{H3O+}]$, then
+	%			\begin{align*}
+	%				[\ch{H3O+}] &= [\ch{A-}] = x \\
+	%				\textsc{F} &= [\ch{A-}] + [\ch{HA}] \qquad\therefore
+	%				[\ch{HA}] = \textsc{F} - x \\
+	%				K_a &= \dfrac{[\ch{H+}][\ch{A-}]}{[\ch{HA}]} =
+	%				\dfrac{x^2}{\textsc{F}-x}
+	%			\end{align*}
+		\end{itemize}
 	}
 \end{frame}
+
+\note{\begin{multicols}{2}
+	\begin{enumerate}
+		\item Pertinent equations:
+			{\footnotesize
+			\begin{align*}
+				\ch{HA + H2O &<=>[ $K_a$ ] H3O+ + A-} \\
+				\ch{2 H2O &<=>[ $K_w$ ] H3O+ + OH-}
+			\end{align*}}
+		\item Charge Balance:
+			{\footnotesize
+			\begin{align*}
+				x &= [\Hyd] + x \\
+				\therefore [\Hyd] &= 0
+			\end{align*}}
+		\item Mass Balance:
+			{\footnotesize
+			\begin{align*}
+				\si{\formal} &= x + [\ch{HA}] \\
+				\therefore [\ch{HA}] &= \si{\formal} - x
+			\end{align*}}
+		\item Equilibria:
+			{\footnotesize
+			\begin{align*}
+				\Ka &= \frac{x^2}{[\ch{HA}]} = \boxed{\frac{x^2}{\si{\formal} - x}} \\
+				\Kw &= x [\ch{OH-}] \approx 0
+			\end{align*}}
+		\item Count: 4 unknowns and 4 equations, then
+		\item Solve!
+	\end{enumerate}
+	\end{multicols}
+}
 
 \begin{frame}[t]{Weak Acid Example}
 	What is the \pH{} of a \SI{0.0500}{\Molar} \para-hydroxybenzoic acid ($\pKa =
@@ -600,60 +496,6 @@ assumption that 100\% of \ch{H3O+} comes from HA and none from \ch{H2O}!}
 	%		\end{align*}}
 	\end{itemize}
 \end{frame}
-
-\begin{frame}[allowframebreaks]{Some Titration Shortcuts}
-	\begin{itemize}
-		\item Before anything happens:
-			\begin{itemize}
-				\item Equilibria follows weak acid/base
-					\begin{align*}
-						\ch{HA + H2O &<=> A- + H3O+} \\
-						\ch{B + H2O &<=> BH+ + OH-}
-					\end{align*}
-			\end{itemize}
-		\item In buffer regions (where both conjugate species are
-			present):
-			\begin{itemize}
-				\item Follow Henderson-Hasselbalch:
-					\begin{align*}
-						\text{pH} = \text{p}K_a +
-						\log\dfrac{[\ch{A-}]}{[\ch{HA}]}
-					\end{align*}
-				\item Recognize that $\text{pH} = \text{p}K_a$
-					at [\ch{HA}] = [\ch{A-}] \textit{or}
-					[\ch{B}] = [\ch{BH+}]!
-			\end{itemize}
-
-			\framebreak
-
-		\item At equivalence point(s):
-			\begin{itemize}
-				\item Assume all of previous species has been
-					neutralized
-					\begin{align*}
-						[\ch{HA}] &= [\ch{OH-}] \\
-						[\ch{B}] &= [\ch{H3O+}]
-					\end{align*}
-				\item Recognize that this is now follows
-					\alert{weak acid/base equilibria}!
-				\item Note that $\text{pH} =
-					\frac{1}{2}(\text{p}K_{a1} +
-					\text{p}K_{a2})$
-				\item $V_{e2} = 2V_{e1}$ \alert{always}!
-			\end{itemize}
-		\item After all equivalence point(s):
-			\begin{itemize}
-				\item Just excess titrant
-				\item pH of a strong acid/base
-			\end{itemize}
-	\end{itemize}
-
-	\begin{block}{Chapter 11 Note}
-		These shortcuts are very useful in simplifying the math, but it
-		would serve you very well to understand the underlying concepts.
-	\end{block}
-\end{frame}
-
 \begin{frame}[allowframebreaks]{Diprotic Acids and Bases}
 	Look at amino acids as examples:
 
@@ -851,19 +693,14 @@ assumption that 100\% of \ch{H3O+} comes from HA and none from \ch{H2O}!}
 
 \begin{frame}[t]{The Intermediate Forms:}
 	\begin{columns}
-		\usebeamercolor{frametitle}
 		\column{0.6\linewidth}
-		{\color{fg}Glutamic Acid (\ch{H2E})}
-		
 		\begin{center}
-			\chemfig{NH_3^+-C(-[2]H)(-[6]COO{^-})-[0]CH_2CH_2COOH}
-		\end{center}
-
-		{\color{fg}Sodium glutamate (\ch{NaE})}
-	
-		\begin{center}
-			\chemfig{NH_3^+-C(-[2]H)(-[6]COO{^-})-[0]CH_2CH_2COO^{-}}
-			\quad \chemfig{Na^+}
+			\begin{tikzpicture}
+			\node[label=above:{Glutamic Acid (\ch{H2E})}](H2E){\chemfig{NH_3^+-C(-[2]H)(-[6]COO{^-})-[0]CH_2CH_2COOH}};
+			\node[below=of H2E,label=above:{Sodium glutamate
+			(\ch{NaE})}]{\chemfig{NH_3^+-C(-[2]H)(-[6]COO{^-})-[0]CH_2CH_2COO^{-}}
+		\quad \chemfig{Na^+}};
+		\end{tikzpicture}
 		\end{center}
 		\column{0.3\linewidth}
 		How are we going to find the pH of \SI{0.25}{\Molar} solutions
@@ -871,7 +708,7 @@ assumption that 100\% of \ch{H3O+} comes from HA and none from \ch{H2O}!}
 	\end{columns}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Systematic Treatment of Intermediate Species}
+\begin{frame}[t]{Systematic Treatment of Intermediate Species}
 	For glutamic acid (\ch{H2E}),
 	\begin{align*}
 		\ch{H2E + H2O &<=> H3O+ + HE-} &\qquad K_{a2} &=
@@ -880,29 +717,23 @@ assumption that 100\% of \ch{H3O+} comes from HA and none from \ch{H2O}!}
 		\frac{[\ch{OH-}][\ch{H3E+}]}{[\ch{H2E}]}
 	\end{align*}
 
-	Following some charge balance and $K$ rearrangements (pg. 221--224
-	10\textsuperscript{th} Ed.), we arrive at
-
-	\begin{align*}
-		[\ch{H+}] = \sqrt{\frac{K_1K_2[\ch{H2E}] + K_1K_w}{K_1 +
-		[\ch{H2E}]}}
-	\end{align*}
-
-	\framebreak
-
-	\begin{columns}
-		\column{0.45\linewidth}
-		Note:
+	\note{%
 		\begin{align*}
-			K_{a2} &= \num{5.0e-5} \\
-			K_{b3} &= \num{1.4e-12}
+			[\ch{H+}] = \sqrt{\frac{K_1K_2[\ch{H2E}] + K_1K_w}{K_1 +
+			[\ch{H2E}]}}
 		\end{align*}
-		\column{0.45\linewidth}
-		Neither reaction procedes very far, thus
-		$[\ch{H2E}] \approx \si{\formal}$
-	\end{columns}
 
-	\bigskip
+		\begin{columns}
+			\column{0.45\linewidth}
+			Note:
+			\begin{align*}
+				K_{a2} &= \num{5.0e-5} \\
+				K_{b3} &= \num{1.4e-12}
+			\end{align*}
+			\column{0.45\linewidth}
+			Neither reaction procedes very far, thus
+			$[\ch{H2E}] \approx \si{\formal}$
+		\end{columns}
 
 	\begin{block}{Intermediate form of diprotic acid}
 		\begin{align*}
@@ -910,9 +741,10 @@ assumption that 100\% of \ch{H3O+} comes from HA and none from \ch{H2O}!}
 			+ \si{\formal}}}
 		\end{align*}
 	\end{block}
+}
+\end{frame}
 
-	\framebreak
-
+\note{%
 	\begin{align*}
 		\intertext{Generally, $K_2\si{\formal} \gg K_w$, so}
 		[\ch{H+}] &= \sqrt{\frac{K_1K_2\si{\formal} +
@@ -928,33 +760,27 @@ assumption that 100\% of \ch{H3O+} comes from HA and none from \ch{H2O}!}
 			\text{pH} \approx \frac{1}{2}(\text{p}K_1 + \text{p}K_2)
 		\end{align*}
 	\end{block}
-\end{frame}
+}
 
-\begin{frame}{The Intermediate Forms: Solutions}
-	\begin{columns}
-		\usebeamercolor{frametitle}
-		\column{0.45\linewidth}
-		{\color{fg} Glutamic Acid (\ch{H2E})}
-
+\note{%
+	\begin{multicols}{2}
+		Glutamic Acid (\ch{H2E})
 		\begin{align*}
 			\text{pH} &= \frac{1}{2}(\text{p}K_{a1} +
 			\text{p}K_{a2}) \\
 			&= \frac{1}{2}(2.16 + 4.30) \\
 			\text{pH} &= \fbox{3.23}
 		\end{align*}
-		\column{0.45\linewidth}
-		{\color{fg} Sodium Glutamate (\ch{NaE})}
 
+		Sodium Glutamate (\ch{NaE})
 		\begin{align*}
 			\text{pH} &= \frac{1}{2}(\text{p}K_{a2} +
 			\text{p}K_{a3}) \\
 			&= \frac{1}{2}(4.30 + 9.96) \\
 			\text{pH} &= \fbox{7.13}
 		\end{align*}
-	\end{columns}
-\end{frame}
-
-\vspace{\stretch{-1}}
+	\end{multicols}
+}
 
 \begin{frame}{Where is $\text{pH} = \frac{1}{2} (\text{p}K_1 + \text{p}K_2)$
 	true?}
@@ -964,11 +790,60 @@ assumption that 100\% of \ch{H3O+} comes from HA and none from \ch{H2O}!}
 	\end{center}
 \end{frame}
 
+\begin{frame}[allowframebreaks]{Some Titration Shortcuts}
+	\begin{itemize}
+		\item Before anything happens:
+			\begin{itemize}
+				\item Equilibria follows weak acid/base
+					\begin{align*}
+						\ch{HA + H2O &<=> A- + H3O+} \\
+						\ch{B + H2O &<=> BH+ + OH-}
+					\end{align*}
+			\end{itemize}
+		\item In buffer regions (where both conjugate species are
+			present):
+			\begin{itemize}
+				\item Follow Henderson-Hasselbalch:
+					\begin{align*}
+						\text{pH} = \text{p}K_a +
+						\log\dfrac{[\ch{A-}]}{[\ch{HA}]}
+					\end{align*}
+				\item Recognize that $\text{pH} = \text{p}K_a$
+					at [\ch{HA}] = [\ch{A-}] \textit{or}
+					[\ch{B}] = [\ch{BH+}]!
+			\end{itemize}
+
+			\framebreak
+
+		\item At equivalence point(s):
+			\begin{itemize}
+				\item Assume all of previous species has been
+					neutralized
+					\begin{align*}
+						[\ch{HA}] &= [\ch{OH-}] \\
+						[\ch{B}] &= [\ch{H3O+}]
+					\end{align*}
+				\item Recognize that this is now follows
+					\alert{weak acid/base equilibria}!
+				\item $V_{e2} = 2V_{e1}$ \alert{always}!
+				\item Note that $\text{pH} =
+					\frac{1}{2}(\text{p}K_{a1} +
+					\text{p}K_{a2})$
+			\end{itemize}
+		\item After all equivalence point(s):
+			\begin{itemize}
+				\item Just excess titrant
+				\item pH of a strong acid/base
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
 \vspace{\stretch{-1}}
 
 \begin{frame}{A Recap}
 	\renewcommand\arraystretch{2}
-	\begin{tabularx}{\linewidth} {@{}X@{\qquad}l}
+	\begin{tabularx}{\linewidth} {@{}>{\raggedright\arraybackslash}X@{\qquad}l}
 		For all polyprotic species (except \ch{H2SO4}), we will treat
 		them as monoprotic & $K_{a1} = K_a =
 		\dfrac{x^2}{\si{\formal}-x}$ \\
@@ -979,455 +854,454 @@ assumption that 100\% of \ch{H3O+} comes from HA and none from \ch{H2O}!}
 	\end{tabularx}
 \end{frame}
 
-\frame{\section{Principal Species in Polyprotic Buffers}
-	\begin{learningobjectives}
-	\item Calculate the expected \pH{} of a polyprotic buffer solution based
-		on species present.
-	\item Identify the principal (or predominant) species in solution given
-		a \pH.
-	\item Draw fractional composition diagrams.
-	\end{learningobjectives}
-}
-
-\vspace{\stretch{-1}}
-
-\begin{frame}{Polyprotic Buffers}
-	Glutamic acid has three weak acids and three conjugate bases, thus can
-	make three buffers!
-
-	\bigskip
-
-	\begin{tabular} {@{}r@{/}l r@{ }l}
-		\ch{H3E+} & \ch{H2E} & pH = & $\text{p}K_{a1} +
-		\log\frac{[\ch{H2E}]}{[\ch{H3E+}]}$ \\
-		\multicolumn{3}{c}{} & $\text{p}K_{a1} = 2.16$ \\ 
-		\multicolumn{3}{c}{} \\
-		\ch{H2E} & \ch{HE-} & pH = & $\text{p}K_{a2} +
-		\log\frac{[\ch{HE-}]}{[\ch{H2E}]}$ \\
-		\multicolumn{3}{c}{} & $\text{p}K_{a2} = 4.30$ \\
-		\multicolumn{3}{c}{} \\
-		\ch{HE-} & \ch{E^{2-}} & pH = & $\text{p}K_{a3} +
-		\log\frac{[\ch{E^{2-}}]}{[\ch{HE-}]}$ \\
-		\multicolumn{3}{c}{} & $\text{p}K_{a3} = 9.96$
-	\end{tabular}
-\end{frame}
-
-\vspace{\stretch{-1}}
-
-\begin{frame}[t]{A buffer challenge!}
-	How much \SI{1.125}{\formal}~\ch{KOH} must be added to \SI{18.36}{\gram}
-	glutamic acid hydrochloride to make a solution of pH 9.50?
-
-	\begin{tabular} {@{}r@{/}l r@{ }l}
-		\ch{HE-} & \ch{E^{2-}} & pH = & $9.96 +
-		\log\frac{[\ch{E^{2-}}]}{[\ch{HE-}]}$
-	\end{tabular}
-
-	\note{{The problem has two parts:}
-	\begin{enumerate}
-		\item We must get the appropriate species in solution
-			\begin{align*}
-				\SI{18.36}{\gram}~\ch{H3E+} \times
-				\frac{\SI{1}{\mole}}{\SI{183.59}{\gram}} =
-				\SI{0.1000}{\mole}~\ch{H3E+}
-			\end{align*}
-			\begin{itemize}
-				\item We will need \SI{0.1000}{\mole}~\ch{OH-}
-					to make \SI{0.1000}{\mole}~\ch{H2E}.
-					\begin{align*}
-						\ch{H3E+ + OH- &-> H2E + H2O} \\
-					%\end{align*}
-					\intertext{\item We will need
-						\SI{0.1000}{\mole}~\ch{OH-}
-					to make \SI{0.1000}{\mole}~\ch{HE-}.}
-					%\begin{align*}
-						\ch{H2E + OH- &-> HE- + H2O}
-					\end{align*}
-			\end{itemize}
-	\end{enumerate}}
-\end{frame}
-
-\note{
-	\begin{enumerate}
-		\item[2.] We must get the proper ratio of those species
-			\begin{align*}
-				9.50 &= 9.96 +
-				\log\frac{[\ch{E^{2-}}]}{[\ch{HE-}]} \\
-				9.50 - 9.96 &=
-				\log\frac{[\ch{E^{2-}}]}{[\ch{HE-}]} \\
-				10^{-0.46} &=
-				\frac{[\ch{E^{2-}}]}{[\ch{HE-}]} =
-				\frac{x}{0.1000-x} \\
-				x &= \SI{0.026}{\mole}~\ch{OH-}
-			\end{align*}
-	\end{enumerate}}
-
-
-\note{
-	\begin{align*}
-		\text{Total \si{\mole}~\ch{OH-}} &= 0.1000 + 0.1000 +
-		0.026 \\
-		&= 0.226 \\
-		\intertext{With \SI{1.125}{\formal}~\ch{KOH},}
-		\SI{0.226}{\mole} \times
-		\frac{\SI{1000}{\milli\liter}}{\SI{1.125}{\mole}} &=
-		\fbox{\SI{201}{\milli\liter}~\ch{KOH}}
-	\end{align*}
-
-\begin{block}{Note:}
-If we dissolved \SI{0.1000}{\mole} glutamic acid (\SI{18.36}{\gram}) in
-\SI{201}{\milli\liter} solution, we obtain \SI{0.499}{\Molar} buffer.
-This is the \alert{maximum} mass balance we can make!
-\end{block}}
-
-\mode<article>{\vfill\clearpage}
-
-\begin{frame}{What is the principal species?}
-	\only<+>{%
-		By measuring the pH, we should be able to determine the species that is
-		present in the \alert{highest} concentration.
-	
-		\input{Figures/strongbase-weakacid}
-	}
-
-	\only<+>{%
-	Consider acetic acid, \ch{CH3COOH}, $\text{p}K_a = 4.747$.
-
-	\begin{center}
-	\begin{tikzpicture}
-		\draw[thick,fill=red!30] (0,0) rectangle (4,1) node[pos=0.5]
-		{\ch{CH3COOH}};
-		\draw[thick,fill=blue!30] (4,0) rectangle (8,1) node[pos=0.5]
-		{\ch{CH3COO-}};
-		\draw[->,>=stealth,ultra thick,red] (4,-1) -- (4,-0.05)
-		node[pos=0,black,below,align=center] {$\text{p}K_a = 4.747$ \\
-		1:1 mix of \\ \ch{HAc} and \ch{Ac-}};
-		\draw[->,>=stealth,ultra thick,gray] (2,-3.5) -- (2,-0.05)
-		node[pos=0,black,below,align=center] {10:1 \ch{HAc}};
-		\draw[->,>=stealth,ultra thick,gray] (6,-3.5) -- (6,-0.05)
-		node[pos=0,black,below,align=center] {1:10 \ch{Ac-}};
-		\draw[<->,>=stealth,thick,black] (2,-3) -- (6,-3)
-		node[midway,below] {$\text{p}K_a \pm 1$};
-	\end{tikzpicture}
-	\end{center}
-
-	For a monoprotic species, the weak acid predominates when $\text{pH} <
-	\text{p}K_a$ and the weak base predominates when $\text{pH} >
-	\text{p}K_a$.
-	}
-
-
-	\only<+>{%
-	What about polyprotic species?
-
-	\begin{center}
-	\begin{tikzpicture}
-		\draw[thick,fill=red!50] (0,0) rectangle (2,1) node[pos=0.5]
-		{\ch{H3A}};
-		\draw[thick,fill=red!30] (2,0) rectangle (4,1) node[pos=0.5]
-		{\ch{H2A-}};
-		\draw[thick,fill=blue!30] (4,0) rectangle (6,1) node[pos=0.5]
-		{\ch{HA^{2-}}};
-		\draw[thick,fill=blue!50] (6,0) rectangle (8,1) node[pos=0.5]
-		{\ch{A^{3-}}};
-		\draw[->,>=stealth,ultra thick,gray] (2,-1) -- (2,-0.05)
-		node[pos=0,black,below] {$\text{p}K_1$};
-		\draw[->,>=stealth,ultra thick,gray] (4,-1) -- (4,-0.05)
-		node[pos=0,black,below] {$\text{p}K_2$};
-		\draw[->,>=stealth,ultra thick,gray] (6,-1) -- (6,-0.05)
-		node[pos=0,black,below] {$\text{p}K_3$};
-		\draw[->,>=stealth,ultra thick,gray] (3,-3) -- (3,-0.05)
-		node[pos=0,black,left,align=right] {$\text{pH} =
-		\frac{1}{2}(\text{p}K_1 + \text{p}K_2)$ \\ $[\ch{H3A}] =
-		[\ch{HA^{2-}}]$};
-		\draw[->,>=stealth,ultra thick,gray] (5,-3) -- (5,-0.05)
-		node[pos=0,black,right,align=left] {$\text{pH} =
-		\frac{1}{2}(\text{p}K_2 + \text{p}K_3)$ \\ $[\ch{H2A-}] =
-		[\ch{A^{3-}}]$};
-		\node at (4,1.5) {pH};
-		\draw[->,>=stealth,ultra thick] (2,1.5) -- (1,1.5)
-		node[pos=0,right,align=center] {More \\ acidic};
-		\draw[->,>=stealth,ultra thick] (6,1.5) -- (7,1.5)
-		node[pos=0,left,align=center] {More \\ basic};
-	\end{tikzpicture}
-	\end{center}
-}
-\end{frame}
-
-\begin{frame}[t]{What about all of the other species?}
-	We can use \alert{fractional composition} equations and diagrams!
+%%% END PART 1
+%
+%\frame{\section{Principal Species in Polyprotic Buffers}
+%	\begin{learningobjectives}
+%	\item Calculate the expected \pH{} of a polyprotic buffer solution based
+%		on species present.
+%	\item Identify the principal (or predominant) species in solution given
+%		a \pH.
+%	\item Draw fractional composition diagrams.
+%	\end{learningobjectives}
+%}
+%
+%\vspace{\stretch{-1}}
+%
+%\begin{frame}{Polyprotic Buffers}
+%	Glutamic acid has three weak acids and three conjugate bases, thus can
+%	make three buffers!
 %
 %	\bigskip
 %
-%	For monoprotic systems: 
+%	\begin{tabular} {@{}r@{/}l r@{ }l}
+%		\ch{H3E+} & \ch{H2E} & pH = & $\text{p}K_{a1} +
+%		\log\frac{[\ch{H2E}]}{[\ch{H3E+}]}$ \\
+%		\multicolumn{3}{c}{} & $\text{p}K_{a1} = 2.16$ \\ 
+%		\multicolumn{3}{c}{} \\
+%		\ch{H2E} & \ch{HE-} & pH = & $\text{p}K_{a2} +
+%		\log\frac{[\ch{HE-}]}{[\ch{H2E}]}$ \\
+%		\multicolumn{3}{c}{} & $\text{p}K_{a2} = 4.30$ \\
+%		\multicolumn{3}{c}{} \\
+%		\ch{HE-} & \ch{E^{2-}} & pH = & $\text{p}K_{a3} +
+%		\log\frac{[\ch{E^{2-}}]}{[\ch{HE-}]}$ \\
+%		\multicolumn{3}{c}{} & $\text{p}K_{a3} = 9.96$
+%	\end{tabular}
+%\end{frame}
+%
+%\vspace{\stretch{-1}}
+%
+%\begin{frame}[t]{A buffer challenge!}
+%	How much \SI{1.125}{\formal}~\ch{KOH} must be added to \SI{18.36}{\gram}
+%	glutamic acid hydrochloride to make a solution of pH 9.50?
+%
+%	\begin{tabular} {@{}r@{/}l r@{ }l}
+%		\ch{HE-} & \ch{E^{2-}} & pH = & $9.96 +
+%		\log\frac{[\ch{E^{2-}}]}{[\ch{HE-}]}$
+%	\end{tabular}
+%
+%	\note{{The problem has two parts:}
+%	\begin{enumerate}
+%		\item We must get the appropriate species in solution
+%			\begin{align*}
+%				\SI{18.36}{\gram}~\ch{H3E+} \times
+%				\frac{\SI{1}{\mole}}{\SI{183.59}{\gram}} =
+%				\SI{0.1000}{\mole}~\ch{H3E+}
+%			\end{align*}
+%			\begin{itemize}
+%				\item We will need \SI{0.1000}{\mole}~\ch{OH-}
+%					to make \SI{0.1000}{\mole}~\ch{H2E}.
+%					\begin{align*}
+%						\ch{H3E+ + OH- &-> H2E + H2O} \\
+%					%\end{align*}
+%					\intertext{\item We will need
+%						\SI{0.1000}{\mole}~\ch{OH-}
+%					to make \SI{0.1000}{\mole}~\ch{HE-}.}
+%					%\begin{align*}
+%						\ch{H2E + OH- &-> HE- + H2O}
+%					\end{align*}
+%			\end{itemize}
+%	\end{enumerate}}
+%\end{frame}
+%
+%\note{
+%	\begin{enumerate}
+%		\item[2.] We must get the proper ratio of those species
+%			\begin{align*}
+%				9.50 &= 9.96 +
+%				\log\frac{[\ch{E^{2-}}]}{[\ch{HE-}]} \\
+%				9.50 - 9.96 &=
+%				\log\frac{[\ch{E^{2-}}]}{[\ch{HE-}]} \\
+%				10^{-0.46} &=
+%				\frac{[\ch{E^{2-}}]}{[\ch{HE-}]} =
+%				\frac{x}{0.1000-x} \\
+%				x &= \SI{0.026}{\mole}~\ch{OH-}
+%			\end{align*}
+%	\end{enumerate}}
+%
+%
+%\note{
 %	\begin{align*}
-%		\ch{HA + H2O <=> H3O+ + A-} \qquad K_a =
-%		\frac{[\ch{H3O+}][\ch{A-}]}{[\ch{HA}]}
+%		\text{Total \si{\mole}~\ch{OH-}} &= 0.1000 + 0.1000 +
+%		0.026 \\
+%		&= 0.226 \\
+%		\intertext{With \SI{1.125}{\formal}~\ch{KOH},}
+%		\SI{0.226}{\mole} \times
+%		\frac{\SI{1000}{\milli\liter}}{\SI{1.125}{\mole}} &=
+%		\fbox{\SI{201}{\milli\liter}~\ch{KOH}}
+%	\end{align*}
+%
+%\begin{block}{Note:}
+%If we dissolved \SI{0.1000}{\mole} glutamic acid (\SI{18.36}{\gram}) in
+%\SI{201}{\milli\liter} solution, we obtain \SI{0.499}{\Molar} buffer.
+%This is the \alert{maximum} mass balance we can make!
+%\end{block}}
+%
+%\mode<article>{\vfill\clearpage}
+%
+%\begin{frame}[allowframebreaks]{What is the principal species?}
+%	By measuring the pH, we should be able to determine the species that is
+%	present in the \alert{highest} concentration.
+%
+%	\input{Figures/strongbase-weakacid}
+%
+%	\framebreak
+%
+%	Consider acetic acid, \ch{CH3COOH}, $\text{p}K_a = 4.747$.
+%
+%	\begin{center}
+%	\begin{tikzpicture}
+%		\draw[thick,fill=red!30] (0,0) rectangle (4,1) node[pos=0.5]
+%		{\ch{CH3COOH}};
+%		\draw[thick,fill=blue!30] (4,0) rectangle (8,1) node[pos=0.5]
+%		{\ch{CH3COO-}};
+%		\draw[->,>=stealth,ultra thick,red] (4,-1) -- (4,-0.05)
+%		node[pos=0,black,below,align=center] {$\text{p}K_a = 4.747$ \\
+%		1:1 mix of \\ \ch{HAc} and \ch{Ac-}};
+%		\draw[->,>=stealth,ultra thick,gray] (2,-3.5) -- (2,-0.05)
+%		node[pos=0,black,below,align=center] {10:1 \ch{HAc}};
+%		\draw[->,>=stealth,ultra thick,gray] (6,-3.5) -- (6,-0.05)
+%		node[pos=0,black,below,align=center] {1:10 \ch{Ac-}};
+%		\draw[<->,>=stealth,thick,black] (2,-3) -- (6,-3)
+%		node[midway,below] {$\text{p}K_a \pm 1$};
+%	\end{tikzpicture}
+%	\end{center}
+%
+%	For a monoprotic species, the weak acid predominates when $\text{pH} <
+%	\text{p}K_a$ and the weak base predominates when $\text{pH} >
+%	\text{p}K_a$.
+%
+%	\framebreak
+%
+%	What about polyprotic species?
+%
+%	\begin{center}
+%	\begin{tikzpicture}
+%		\draw[thick,fill=red!50] (0,0) rectangle (2,1) node[pos=0.5]
+%		{\ch{H3A}};
+%		\draw[thick,fill=red!30] (2,0) rectangle (4,1) node[pos=0.5]
+%		{\ch{H2A-}};
+%		\draw[thick,fill=blue!30] (4,0) rectangle (6,1) node[pos=0.5]
+%		{\ch{HA^{2-}}};
+%		\draw[thick,fill=blue!50] (6,0) rectangle (8,1) node[pos=0.5]
+%		{\ch{A^{3-}}};
+%		\draw[->,>=stealth,ultra thick,gray] (2,-1) -- (2,-0.05)
+%		node[pos=0,black,below] {$\text{p}K_1$};
+%		\draw[->,>=stealth,ultra thick,gray] (4,-1) -- (4,-0.05)
+%		node[pos=0,black,below] {$\text{p}K_2$};
+%		\draw[->,>=stealth,ultra thick,gray] (6,-1) -- (6,-0.05)
+%		node[pos=0,black,below] {$\text{p}K_3$};
+%		\draw[->,>=stealth,ultra thick,gray] (3,-3) -- (3,-0.05)
+%		node[pos=0,black,left,align=right] {$\text{pH} =
+%		\frac{1}{2}(\text{p}K_1 + \text{p}K_2)$ \\ $[\ch{H3A}] =
+%		[\ch{HA^{2-}}]$};
+%		\draw[->,>=stealth,ultra thick,gray] (5,-3) -- (5,-0.05)
+%		node[pos=0,black,right,align=left] {$\text{pH} =
+%		\frac{1}{2}(\text{p}K_2 + \text{p}K_3)$ \\ $[\ch{H2A-}] =
+%		[\ch{A^{3-}}]$};
+%		\node at (4,1.5) {pH};
+%		\draw[->,>=stealth,ultra thick] (2,1.5) -- (1,1.5)
+%		node[pos=0,right,align=center] {More \\ acidic};
+%		\draw[->,>=stealth,ultra thick] (6,1.5) -- (7,1.5)
+%		node[pos=0,left,align=center] {More \\ basic};
+%	\end{tikzpicture}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}[t]{What about all of the other species?}
+%	We can use \alert{fractional composition} equations and diagrams!
+%%
+%%	\bigskip
+%%
+%%	For monoprotic systems: 
+%%	\begin{align*}
+%%		\ch{HA + H2O <=> H3O+ + A-} \qquad K_a =
+%%		\frac{[\ch{H3O+}][\ch{A-}]}{[\ch{HA}]}
+%%	\end{align*}
+%%	\begin{align*}
+%%		\shortintertext{Mass balance:}
+%%		\si{\formal} &= [\ch{HA}] + [\ch{A-}] \\
+%%		\shortintertext{Some substitution:}
+%%		K_a &= \frac{[\ch{H3O+}](\si{\formal} - [\ch{HA}])}{[\ch{HA}]}
+%%		\\
+%%		\shortintertext{And rearranging:}
+%%		[\ch{HA}] &= \frac{[\ch{H3O+}]\si{\formal}}{[\ch{H3O+}] + K_a}
+%%		\\
+%%		\shortintertext{\framebreak If we divide by \si{\formal}\ldots}
+%%		\underbrace{\frac{[\ch{HA}]}{\si{\formal}}}_{\mathclap{\alpha_{\ch{HA}}
+%%		= \frac{[\ch{HA}]}{\si{\formal}}}}% \\ \text{Fraction of
+%%		%Dissociation!}}}
+%%		&= \frac{[\ch{H3O+}]}{[\ch{H3O+}] + K_a} \\
+%%		\shortintertext{Thus,}
+%%		\alpha_{\ch{HA}} &= \frac{[\ch{H3O+}]}{[\ch{H3O+}] + K_a} \\
+%%		\shortintertext{and}
+%%		\alpha_{\ch{A-}} &= \frac{K_a}{[\ch{H3O+}] + K_a}
+%%	\end{align*}
+%\end{frame}
+%
+%\begin{frame}{Fractional Composition of Acetic Acid}
+%	\begin{columns}
+%		\column{0.3\textwidth}
+%		\begin{align*}
+%			\alpha_{\ch{HA}} &= \frac{[\ch{H3O+}]}{[\ch{H3O+}] +
+%			K_a} \\
+%			\alpha_{\ch{A-}} &= \frac{K_a}{[\ch{H3O+}] + K_a}
+%		\end{align*}
+%		\column{0.6\textwidth}
+%		\begin{center}
+%		\input{Figures/aceticacidfrac}
+%		\end{center}
+%	\end{columns}
+%\end{frame}
+%
+%\vspace{\stretch{-1}}
+%\clearpage
+%
+%\begin{frame}[allowframebreaks]{Fractional Composition of Diprotic Systems}
+%	\begin{align*}
+%		\ch{H2A + H2O &<=> H3O+ + HA-} \qquad &K_{a1} &=
+%		\frac{[\ch{H3O+}][\ch{HA-}]}{[\ch{H2A}]} \\
+%		\ch{HA- + H2O &<=> H3O+ + A^{2-}} \qquad &K_{a2} &=
+%		\frac{[\ch{H3O+}][\ch{A^{2-}}]}{[\ch{HA-}]}
 %	\end{align*}
 %	\begin{align*}
-%		\shortintertext{Mass balance:}
-%		\si{\formal} &= [\ch{HA}] + [\ch{A-}] \\
-%		\shortintertext{Some substitution:}
-%		K_a &= \frac{[\ch{H3O+}](\si{\formal} - [\ch{HA}])}{[\ch{HA}]}
-%		\\
-%		\shortintertext{And rearranging:}
-%		[\ch{HA}] &= \frac{[\ch{H3O+}]\si{\formal}}{[\ch{H3O+}] + K_a}
-%		\\
-%		\shortintertext{\framebreak If we divide by \si{\formal}\ldots}
-%		\underbrace{\frac{[\ch{HA}]}{\si{\formal}}}_{\mathclap{\alpha_{\ch{HA}}
-%		= \frac{[\ch{HA}]}{\si{\formal}}}}% \\ \text{Fraction of
-%		%Dissociation!}}}
-%		&= \frac{[\ch{H3O+}]}{[\ch{H3O+}] + K_a} \\
-%		\shortintertext{Thus,}
-%		\alpha_{\ch{HA}} &= \frac{[\ch{H3O+}]}{[\ch{H3O+}] + K_a} \\
-%		\shortintertext{and}
-%		\alpha_{\ch{A-}} &= \frac{K_a}{[\ch{H3O+}] + K_a}
+%		\shortintertext{Mass Balance:}
+%		\si{\formal} &= [\ch{H2A}] + [\ch{HA-}] + [\ch{A^{2-}}] \\
+%		\shortintertext{Rearranging $K_{a1}$:}
+%		[\ch{HA-}] &= \frac{[\ch{H2A}]K_{a1}}{[\ch{H3O+}]} \\
+%		\shortintertext{Rearranging $K_{a2}$:}
+%		[\ch{A^{2-}}] &= \frac{[\ch{HA-}]K_{a2}}{[\ch{H3O+}]} =
+%		\frac{[\ch{H2A}]K_{a1}K_{a2}}{[\ch{H3O+}]} \\
+%		\shortintertext{\framebreak So the mass balance becomes:}
+%		\si{\formal} &= [\ch{H2A}] +
+%		\frac{[\ch{H2A}]K_{a1}}{[\ch{H3O+}]} +
+%		\frac{[\ch{H2A}]K_{a1}K_{a2}}{[\ch{H3O+}]} \\
+%		\shortintertext{or}
+%		\si{\formal} &= [\ch{H2A}]\bigg(1 + \frac{K_{a1}}{[\ch{H3O+}]}
+%		+ \frac{K_{a1}K_{a2}}{[\ch{H3O+}]}\bigg) \\
+%		\shortintertext{Therefore,}
+%		\alpha_{\ch{H2A}} &= \frac{[\ch{H2A}]}{\si{\formal}} =
+%		\frac{[\ch{H3O+}]^2}{[\ch{H3O+}]^2 + [\ch{H3O+}]K_{a1} +
+%		K_{a1}K_{a2}} \\[0.5em]
+%		\alpha_{\ch{HA-}} &= \frac{[\ch{HA-}]}{\si{\formal}} =
+%		\frac{K_{a1}[\ch{H3O+}]}{[\ch{H3O+}]^2 + [\ch{H3O+}]K_{a1} +
+%		K_{a1}K_{a2}} \\[0.5em]
+%		\alpha_{\ch{A^{2-}}} &= \frac{[\ch{A^{2-}}]}{\si{\formal}} =
+%		\frac{K_{a1}K_{a2}}{[\ch{H3O+}]^2 + [\ch{H3O+}]K_{a1} +
+%		K_{a1}K_{a2}}
 %	\end{align*}
-\end{frame}
-
-\begin{frame}{Fractional Composition of Acetic Acid}
-	\begin{columns}
-		\column{0.3\textwidth}
-		\begin{align*}
-			\alpha_{\ch{HA}} &= \frac{[\ch{H3O+}]}{[\ch{H3O+}] +
-			K_a} \\
-			\alpha_{\ch{A-}} &= \frac{K_a}{[\ch{H3O+}] + K_a}
-		\end{align*}
-		\column{0.6\textwidth}
-		\begin{center}
-		\input{Figures/aceticacidfrac}
-		\end{center}
-	\end{columns}
-\end{frame}
-
-\vspace{\stretch{-1}}
-\clearpage
-
-\begin{frame}[allowframebreaks]{Fractional Composition of Diprotic Systems}
-	\begin{align*}
-		\ch{H2A + H2O &<=> H3O+ + HA-} \qquad &K_{a1} &=
-		\frac{[\ch{H3O+}][\ch{HA-}]}{[\ch{H2A}]} \\
-		\ch{HA- + H2O &<=> H3O+ + A^{2-}} \qquad &K_{a2} &=
-		\frac{[\ch{H3O+}][\ch{A^{2-}}]}{[\ch{HA-}]}
-	\end{align*}
-	\begin{align*}
-		\shortintertext{Mass Balance:}
-		\si{\formal} &= [\ch{H2A}] + [\ch{HA-}] + [\ch{A^{2-}}] \\
-		\shortintertext{Rearranging $K_{a1}$:}
-		[\ch{HA-}] &= \frac{[\ch{H2A}]K_{a1}}{[\ch{H3O+}]} \\
-		\shortintertext{Rearranging $K_{a2}$:}
-		[\ch{A^{2-}}] &= \frac{[\ch{HA-}]K_{a2}}{[\ch{H3O+}]} =
-		\frac{[\ch{H2A}]K_{a1}K_{a2}}{[\ch{H3O+}]} \\
-		\shortintertext{\framebreak So the mass balance becomes:}
-		\si{\formal} &= [\ch{H2A}] +
-		\frac{[\ch{H2A}]K_{a1}}{[\ch{H3O+}]} +
-		\frac{[\ch{H2A}]K_{a1}K_{a2}}{[\ch{H3O+}]} \\
-		\shortintertext{or}
-		\si{\formal} &= [\ch{H2A}]\bigg(1 + \frac{K_{a1}}{[\ch{H3O+}]}
-		+ \frac{K_{a1}K_{a2}}{[\ch{H3O+}]}\bigg) \\
-		\shortintertext{Therefore,}
-		\alpha_{\ch{H2A}} &= \frac{[\ch{H2A}]}{\si{\formal}} =
-		\frac{[\ch{H3O+}]^2}{[\ch{H3O+}]^2 + [\ch{H3O+}]K_{a1} +
-		K_{a1}K_{a2}} \\[0.5em]
-		\alpha_{\ch{HA-}} &= \frac{[\ch{HA-}]}{\si{\formal}} =
-		\frac{K_{a1}[\ch{H3O+}]}{[\ch{H3O+}]^2 + [\ch{H3O+}]K_{a1} +
-		K_{a1}K_{a2}} \\[0.5em]
-		\alpha_{\ch{A^{2-}}} &= \frac{[\ch{A^{2-}}]}{\si{\formal}} =
-		\frac{K_{a1}K_{a2}}{[\ch{H3O+}]^2 + [\ch{H3O+}]K_{a1} +
-		K_{a1}K_{a2}}
-	\end{align*}
-\end{frame}
-
-\begin{frame}{Fractional Composition of Fumaric Acid}
-	\begin{center}
-		\input{Figures/fumaricacidfrac}
-	\end{center}
-\end{frame}
-
-\begin{frame}{What about polyprotic species?}
-	\begin{block}{General Form for \ch{H_{$n$}A}}
-		\begin{align*}
-		\alpha_{\ch{H_{$n-j$}A}} = \frac{K_1 K_2 \cdots K_j
-		[\ch{H3O+}]^{n-j}}{
-			\begin{multlined}
-				[\ch{H3O+}]^n + K_1 [\ch{H3O+}]^{n-1} + K_1K_2
-				[\ch{H3O+}]^{n-2} \\ + \cdots + K_1 K_2 K_3
-				\cdots K_n
-			\end{multlined}
-			}
-		\end{align*}
-
-		\bigskip
-
-		\begin{center}
-			(or take a look at Table 11-5, pg. 264,
-			10\textsuperscript{th} Ed.)
-		\end{center}
-	\end{block}
-\end{frame}
-
-\begin{frame}{Fractional Composition of Glutamic Acid}
-	\begin{center}
-		\input{Figures/glutamicacidfrac}
-	\end{center}
-\end{frame}
-
-\begin{frame}{Can we draw a diagram without all of the equations?}
-	\pause
-
-	\alert{Yes!}
-
-	\begin{itemize}
-		\item At every $\alpha_n = 0.50$, $\text{pH} = \text{p}K_a$.
-		\item From Henderson-Hasselbalch, we know
-			\begin{itemize}
-				\item at $\text{pH} = \text{p}K_a \pm 1$, we
-					have 10:1 excess of something.
-				\item at $\text{pH} = \text{p}K_a \pm 2$, we
-					have 100:1 excess of something.
-				\item at $\text{pH} = \text{p}K_a \pm 3$, we
-					assume that we must be nearing
-					\alert{100\%} of a principal component.
-			\end{itemize}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{An Example: Drawing $\alpha_{\text{Histidine}}$}
-	\begin{center}
-		\only<1>{\includegraphics[width=0.6\textwidth]{histidine.png}}
-		
-		\only<2>{\input{Figures/emptyfrac}}
-		\note<2>{\input{Figures/histidinefrac}}
-%		\only<2->{\input{Figures/histidinefrac}}
-	\end{center}
-
-%	\note<2>{
-%		\input{histidinefrac}
+%\end{frame}
+%
+%\begin{frame}{Fractional Composition of Fumaric Acid}
+%	\begin{center}
+%		\input{Figures/fumaricacidfrac}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}{What about polyprotic species?}
+%	\begin{block}{General Form for \ch{H_{$n$}A}}
+%		\begin{align*}
+%		\alpha_{\ch{H_{$n-j$}A}} = \frac{K_1 K_2 \cdots K_j
+%		[\ch{H3O+}]^{n-j}}{
+%			\begin{multlined}
+%				[\ch{H3O+}]^n + K_1 [\ch{H3O+}]^{n-1} + K_1K_2
+%				[\ch{H3O+}]^{n-2} \\ + \cdots + K_1 K_2 K_3
+%				\cdots K_n
+%			\end{multlined}
+%			}
+%		\end{align*}
+%
+%		\bigskip
+%
+%		\begin{center}
+%			(or take a look at Table 11-5, pg. 264,
+%			10\textsuperscript{th} Ed.)
+%		\end{center}
+%	\end{block}
+%\end{frame}
+%
+%\begin{frame}{Fractional Composition of Glutamic Acid}
+%	\begin{center}
+%		\input{Figures/glutamicacidfrac}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}{Can we draw a diagram without all of the equations?}
+%	\pause
+%
+%	\alert{Yes!}
+%
+%	\begin{itemize}
+%		\item At every $\alpha_n = 0.50$, $\text{pH} = \text{p}K_a$.
+%		\item From Henderson-Hasselbalch, we know
+%			\begin{itemize}
+%				\item at $\text{pH} = \text{p}K_a \pm 1$, we
+%					have 10:1 excess of something.
+%				\item at $\text{pH} = \text{p}K_a \pm 2$, we
+%					have 100:1 excess of something.
+%				\item at $\text{pH} = \text{p}K_a \pm 3$, we
+%					assume that we must be nearing
+%					\alert{100\%} of a principal component.
+%			\end{itemize}
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{An Example: Drawing $\alpha_{\text{Histidine}}$}
+%	\begin{center}
+%		\only<1>{\includegraphics[width=0.6\textwidth]{histidine.png}}
+%		
+%		\only<2>{\input{Figures/emptyfrac}}
+%		\note<2>{\input{Figures/histidinefrac}}
+%%		\only<2->{\input{Figures/histidinefrac}}
+%	\end{center}
+%
+%%	\note<2>{
+%%		\input{histidinefrac}
+%%	}
+%\end{frame}
+%
+%\begin{frame}{What purpose does this serve besides titrations?}
+%	Proteins can be separated by charge.
+%	\begin{center}
+%		\includegraphics[width=0.6\textwidth]{alanine.png}
+%	\end{center}
+%
+%	\begin{itemize}
+%			\only<1>{
+%		\item Isoionic Point
+%			\begin{itemize}
+%				\item the pH of the pure, neutral, polyprotic
+%					acid (the neutral zwitterion).
+%					\only<1|handout:0>{
+%					\begin{itemize}
+%						\item[Example:] Alanine
+%							dissolved in pure water
+%							is neutral and
+%							equilibrium creates
+%							\alert{non-equal}
+%							concentrations of
+%							\ch{H2A+} and \ch{A-}.
+%					\end{itemize}
+%					}
+%			\end{itemize}}
+%			\only<2>{
+%		\item Isoelectric Point
+%			\begin{itemize} 
+%				\item the pH at which average charge of the
+%					polyprotic acid is 0.
+%					\only<2|handout:0>{
+%					\begin{itemize}
+%						\item[Example:] Alanine is
+%							dissolved in pure water,
+%							but NaOH/HCl is added to
+%							adjust the pH so that
+%							\alert{[\ch{H2A+}] =
+%							[\ch{A-}]}.
+%					\end{itemize}
+%					}
+%			\end{itemize}}
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Isoionic and Isoelectric Points of Alanine}
+%\note{
+%	\begin{itemize}
+%		\item \textbf{Isoionic Point:}
+%			\begin{align*}
+%				[\ch{H3O+}] &= \sqrt{\frac{K_1K_2\si{\formal} +
+%				K_1K_w}{K_1 + \si{\formal}}} \\
+%				\intertext{For \SI{0.10}{\Molar} alanine,}
+%				[\ch{H3O+}] &= \SI{7.7e-7}{\Molar} \therefore
+%				\text{pH} = \fbox{6.11}
+%			\end{align*}
+%\end{itemize}}
+%\end{frame}
+%
+%\note{\begin{itemize}
+%		\item \textbf{Isoelectric Point:}
+%			\begin{align*}
+%				\shortintertext{We need}
+%				[\ch{H2A+}] &= [\ch{A-}] \\
+%				\shortintertext{Rearranging $K$,}
+%				[\ch{H2A+}] &=
+%				\frac{[\ch{H3O+}][\ch{HA}]}{K_1} \\
+%				[\ch{A-}] &= \frac{K_2[\ch{HA}]}{[\ch{H3O+}]}
+%				\\
+%				\shortintertext{Setting the two equal to each
+%				other,} \frac{[\ch{H3O+}][\ch{HA}]}{K_1} =
+%				\frac{K_2[\ch{HA}]}{[\ch{H3O+}]} &\rightarrow
+%				[\ch{H3O+}] = \sqrt{K_1K_2} \\
+%				\shortintertext{\textit{This looks
+%				familiar\ldots}}
+%				\text{pH} &= \frac{1}{2}(\text{p}K_1 +
+%				\text{p}K_2) = \fbox{6.10}
+%			\end{align*}
+%	\end{itemize}}
+%
+%	\mode<article>{\vfill}
+%
+%\begin{frame}{Isoelectric Focusing of Proteins}
+%	\only<+>{%
+%	\begin{columns}
+%		\column{0.45\textwidth}
+%		\begin{enumerate}
+%			\item A gel is submerged in a conducting solution and
+%				several hundred volts are applied.
+%			\item The potential difference introduces a pH gradient
+%				across the gel.
+%			\item The proteins distribute themselves according to
+%				isoelectric point because.
+%				%, as neutral species,
+%				%they are no longer attracted to either
+%				%electrode.
+%		\end{enumerate}
+%		\column{0.45\textwidth}
+%		\begin{center}
+%		\includegraphics[scale=0.85]{whitford-isoelectric.png}
+%	\end{center}
+%
+%		\bigskip
+%
+%		{\footnotesize Whitford, D. \textit{Proteins: Structure and
+%		Function}; Wiley: Hoboken, NJ, 2005.}
+%
+%	\end{columns}
 %	}
-\end{frame}
-
-\begin{frame}{What purpose does this serve besides titrations?}
-	Proteins can be separated by charge.
-	\begin{center}
-		\includegraphics[width=0.6\textwidth]{alanine.png}
-	\end{center}
-
-	\begin{itemize}
-			\only<1>{
-		\item Isoionic Point
-			\begin{itemize}
-				\item the pH of the pure, neutral, polyprotic
-					acid (the neutral zwitterion).
-					\only<1|handout:0>{
-					\begin{itemize}
-						\item[Example:] Alanine
-							dissolved in pure water
-							is neutral and
-							equilibrium creates
-							\alert{non-equal}
-							concentrations of
-							\ch{H2A+} and \ch{A-}.
-					\end{itemize}
-					}
-			\end{itemize}}
-			\only<2>{
-		\item Isoelectric Point
-			\begin{itemize} 
-				\item the pH at which average charge of the
-					polyprotic acid is 0.
-					\only<2|handout:0>{
-					\begin{itemize}
-						\item[Example:] Alanine is
-							dissolved in pure water,
-							but NaOH/HCl is added to
-							adjust the pH so that
-							\alert{[\ch{H2A+}] =
-							[\ch{A-}]}.
-					\end{itemize}
-					}
-			\end{itemize}}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Isoionic and Isoelectric Points of Alanine}
-\note{
-	\begin{itemize}
-		\item \textbf{Isoionic Point:}
-			\begin{align*}
-				[\ch{H3O+}] &= \sqrt{\frac{K_1K_2\si{\formal} +
-				K_1K_w}{K_1 + \si{\formal}}} \\
-				\intertext{For \SI{0.10}{\Molar} alanine,}
-				[\ch{H3O+}] &= \SI{7.7e-7}{\Molar} \therefore
-				\text{pH} = \fbox{6.11}
-			\end{align*}
-\end{itemize}}
-\end{frame}
-
-\note{\begin{itemize}
-		\item \textbf{Isoelectric Point:}
-			\begin{align*}
-				\shortintertext{We need}
-				[\ch{H2A+}] &= [\ch{A-}] \\
-				\shortintertext{Rearranging $K$,}
-				[\ch{H2A+}] &=
-				\frac{[\ch{H3O+}][\ch{HA}]}{K_1} \\
-				[\ch{A-}] &= \frac{K_2[\ch{HA}]}{[\ch{H3O+}]}
-				\\
-				\shortintertext{Setting the two equal to each
-				other,} \frac{[\ch{H3O+}][\ch{HA}]}{K_1} =
-				\frac{K_2[\ch{HA}]}{[\ch{H3O+}]} &\rightarrow
-				[\ch{H3O+}] = \sqrt{K_1K_2} \\
-				\shortintertext{\textit{This looks
-				familiar\ldots}}
-				\text{pH} &= \frac{1}{2}(\text{p}K_1 +
-				\text{p}K_2) = \fbox{6.10}
-			\end{align*}
-	\end{itemize}}
-
-	\mode<article>{\vfill}
-
-\begin{frame}{Isoelectric Focusing of Proteins}
-	\only<+>{%
-	\begin{columns}
-		\column{0.45\textwidth}
-		\begin{enumerate}
-			\item A gel is submerged in a conducting solution and
-				several hundred volts are applied.
-			\item The potential difference introduces a pH gradient
-				across the gel.
-			\item The proteins distribute themselves according to
-				isoelectric point because.
-				%, as neutral species,
-				%they are no longer attracted to either
-				%electrode.
-		\end{enumerate}
-		\column{0.45\textwidth}
-		\begin{center}
-		\includegraphics[scale=0.85]{whitford-isoelectric.png}
-	\end{center}
-
-		\bigskip
-
-		{\footnotesize Whitford, D. \textit{Proteins: Structure and
-		Function}; Wiley: Hoboken, NJ, 2005.}
-
-	\end{columns}
-	}
-
-	\only<+>{%
-	\mode<presentation>{
-	\begin{center}
-		\includegraphics[width=\linewidth]{harris-isoelectric.png}
-	\end{center}
-	{\footnotesize Harris, 9\textsuperscript{th} Ed.}
-
-	\bigskip
-
-	\begin{itemize}
-		\item A similar effect can be acheived in microfluidic channels
-			using \alert{much smaller} sample volumes.
-\end{itemize}}
-}
-\end{frame}
-
+%
+%	\only<+>{%
+%	\mode<presentation>{
+%	\begin{center}
+%		\includegraphics[width=\linewidth]{harris-isoelectric.png}
+%	\end{center}
+%	{\footnotesize Harris, 9\textsuperscript{th} Ed.}
+%
+%	\bigskip
+%
+%	\begin{itemize}
+%		\item A similar effect can be acheived in microfluidic channels
+%			using \alert{much smaller} sample volumes.
+%\end{itemize}}
+%}
+%\end{frame}
+%
 \end{document}
