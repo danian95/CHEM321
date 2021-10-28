@@ -1,8 +1,8 @@
 % !TEX program = xelatex
-\documentclass[notes=show]{beamer}
+%\documentclass[notes=show]{beamer}
 %\documentclass[notes=hide]{beamer}
 %\documentclass[notes=only]{beamer}
-%\documentclass[handout]{beamer}
+\documentclass[handout]{beamer}
 
 \usepackage{newtxtext}
 \usepackage{analchem}
@@ -861,7 +861,6 @@
 \end{frame}
 
 \begin{frame}[t]{Measuring Equilibrium Constants}
-	\only<+>{%
 	If we can measure the \alert{ratio} of species throughout
 	a reaction, we should be able to determine the
 	\alert{ratio} of species once equilibrium is reached
@@ -873,9 +872,8 @@
 	\end{equation*}
 	Note that a true value of $K$ is determined with
 	activities!
-}
 
-\note<.>{%
+\note{%
 	\begin{enumerate}
 		\item Let's assume that small increments of \ch{X} are added to
 			a constant amount of \ch{P}.
@@ -901,7 +899,9 @@
 	\end{enumerate}
 }
 
-\only<+>{%
+\end{frame}
+
+\begin{frame}[t]{Scatchard Plots}
 	\begin{tikzpicture}
 		\node(scatchard){\includegraphics[width=0.6\textwidth]{scatchard.png}};
 		\node[right = 0.02\textwidth of scatchard, text
@@ -912,13 +912,12 @@
 			the slope, the binding constant for the reaction \ch{P +
 		X <=> PX} is $K = \SI{4.0e9}{\per\Molar}$.};
 	\end{tikzpicture}
-}
 
-\only<+>{%
+\only{%
 	What happens if P and PX absorb at \textlambda, but X does not?
 }
 
-\note<.>{%
+\note{%
 	\begin{enumerate}
 		\item The total absorbance at \textlambda{} will be
 			\begin{equation*}
@@ -1042,14 +1041,14 @@
 
 \begin{frame}{Job's Method}
 	\begin{center}
-		\includegraphics[scale=0.25]{harveyJobs.png}
+		\includegraphics[scale=0.45]{harveyJobs.png}
 	\end{center}
-	\begin{align*}
-		\text{corrected absorbance}
-		&= A_\text{measured} - \epsilon_{\ch{P}}b\ch{P_T} -
-		\epsilon_{\ch{X}}b\ch{X_T} \\ \text{mole fraction of \ch{X} in
-		\ch{P_{$a$}X_{$b$}}} &= \frac{b}{b + a}
-	\end{align*}
+%	\begin{align*}
+%		\text{corrected absorbance}
+%		&= A_\text{measured} - \epsilon_{\ch{P}}b\ch{P_T} -
+%		\epsilon_{\ch{X}}b\ch{X_T} \\ \text{mole fraction of \ch{X} in
+%		\ch{P_{$a$}X_{$b$}}} &= \frac{b}{b + a}
+%	\end{align*}
 \end{frame}
 
 \begin{frame}{Job's Method Example}
@@ -1311,7 +1310,6 @@
 \end{frame}
 
 \begin{frame}{Immunoassays}
-	\only<+>{%
 	\begin{columns}
 		\column{0.55\textwidth}
 		\begin{itemize}
@@ -1329,9 +1327,9 @@
 			\includegraphics[scale=0.65]{elisa1.png}
 		\end{center}
 	\end{columns}
-}
+\end{frame}
 
-\only<+>{%
+\begin{frame}
 	\begin{center}
 		\includegraphics[width=0.7\linewidth]{elisa2.png}
 	\end{center}
@@ -1344,7 +1342,7 @@
 		\item The higher the concentration of analyte in solution, the
 			greater the extent of the enzyme-catalyzed reaction.
 	\end{itemize}
-}
+
 \end{frame}
 
 %\begin{frame}{Pregnancy Tests}
@@ -1385,7 +1383,8 @@
 			\includegraphics[scale=0.5]{johnbrown.png}
 
 		\end{center}
-		\footnotesize{Chapter 3 opening.}
+		\footnotesize{D.C.\ Harris, \textit{Quantitative Chemical
+		Analysis}, Chapter 3 opening.}
 		\column{0.6\textwidth}
 		\begin{itemize}
 			\item Because our analyte itself is not producing the
