@@ -1,8 +1,8 @@
 % !TEX program = xelatex
-%\documentclass[notes=show]{beamer}
+\documentclass[notes=show]{beamer}
 %\documentclass[notes=hide]{beamer}
 %\documentclass[notes=only]{beamer}
-\documentclass[handout]{beamer}
+%\documentclass[handout]{beamer}
 
 \usepackage{newtxtext}
 \usepackage{analchem}
@@ -18,659 +18,659 @@
 \begin{document}
 
 %% PART 1
-%
-%\maketitle
-%\mode<article>{\thispagestyle{fancy}}
-%
-%\frame{\section{Fundamentals}
-%	\begin{learningobjectives}
-%	\item Relate wavelength of light to energy.
-%	\item Identify regions of electromagnetic radiation suitable for
-%		particular analyses.
-%	\item Qualitatively describe how light can be absorbed by molecules.
-%	\end{learningobjectives}
-%}
-%
-%\begin{frame}{Spectrophotometry}
-%	Any procedure that uses light (electromagnetic radiation) to measure
-%	chemical concentrations.
-%
-%	\bigskip
-%
-%	\begin{block}{Electromagnetic Radiation (EMR)}
-%		\begin{itemize}
-%			\item Energy radiated in the form of a \alert{wave}
-%				caused by an electric field interacting with a
-%				magnetic field.
-%			\item Result of the acceleration of a charged particle.
-%			\item Does not require a material medium and can travel
-%				through a vacuum.
-%		\end{itemize}
-%	\end{block}
-%\end{frame}
-%
-%
-%\begin{frame}{Properties of EMR}
-%	\note{%
-%	\begin{center}
-%		\begin{tabularx}{0.8\linewidth} {>{$}r<{$}@{ = }X}
-%			\multicolumn{2}{c}{$c = \nu \lambda_i$} \\[1em]
-%			c & speed of light in vacuum,
-%			\SI{2.998e8}{\meter\per\second} \\
-%			\nu & frequency \\
-%			\lambda_i & wavelength \\[1.5em]
-%			\multicolumn{2}{c}{$E = h\nu$} \\[1em]
-%			E & energy of radiation \\
-%			h & Planck's constant, \SI{6.626e-34}{\joule\second}
-%			\\[2em]
-%		\end{tabularx}
-%		\fbox{Combining yields: $E = \dfrac{hc}{\lambda_i}$}
-%	\end{center}
-%}
-%
-%	\begin{center}
-%		\includegraphics[width=\linewidth]{EMRproperties.png}
-%	\end{center}
-%\end{frame}
-%
-%\begin{frame}{Regions of the Electromagnetic Spectrum}
-%	\includegraphics[width=\linewidth]{EM_Spectrum_Properties_edit.pdf}
-%
-%	\footnotesize{By Inductiveload, NASA [GFDL
-%	(http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0
-%	(http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia
-%	Commons}
-%\end{frame}
-%
-%\begin{frame}[allowframebreaks]{Molecular Processes}
-%	The net energy ($E$) of a molecule consists of all energies applied to
-%	it: \alert{translational}, \alert{rotational}, \alert{vibrational}, and
-%	\alert{electronic energy} (major terms).
-%	\begin{multline*}
-%		E_\text{molecule} = E_\text{nuclear spin} + E_\text{electron
-%		spin} + E_\text{translational} \\ + E_\text{rotation} +
-%		E_\text{vibration} + E_\text{electronic}
-%	\end{multline*}
-%
-%	\begin{description}
-%		\item[Spin       ] nuclear and electron spin
-%		\item[Translation] movement of the molecule through space
-%		\item[Rotation   ] rotation of the molecule
-%		\item[Vibration  ] vibration of the atoms with respect to each other
-%		\item[Electronic ] mutual interactions of the electrons and nuclei
-%\end{description}
-%
-%\framebreak
-%
-%	\begin{tikzpicture}
-%		\node(molproc)
-%			{\includegraphics[width=\linewidth,trim={0 120pt 0
-%			0},clip]{EMRmolecules.png}};
-%		\node[below = 0pt of molproc,text width=\linewidth,align=center]
-%			{All these energy states \alert{except} translational
-%				(stationary states) are
-%		\alert{quantized}.};
-%	\end{tikzpicture}
-%\end{frame}
-%
-%\begin{frame}[allowframebreaks]{Absorption of Light}
-%	\begin{columns}
-%		\column{0.5\linewidth}
-%		\begin{center}
-%			\scalebox{0.75}{
-%				\input{absorption}}
-%		\end{center}
-%		\column{0.4\linewidth}
-%		\begin{itemize}
-%			\item When EMR is \alert{absorbed}, the molecule is
-%				\alert{excited} to a higher \alert{energy
-%				state}.
-%			\item Relaxation, or \alert{emission}, is associated
-%				with the release of a photon (or heat).
-%		\end{itemize}
-%	\end{columns}
-%
-%	\framebreak
-%
-%	Consider formaldehyde, \ch{CH2O}:
-%	\begin{center}
-%		\includegraphics[width=0.6\linewidth]{formaldehyde.png}
-%	\end{center}
-%	The \alert{excited state}, $S_1$, has a slightly different geometry due
-%	to an \alert{electronic transition} of an electron from one
-%	\alert{molecular orbital} to another.
-%	\begin{center}
-%		\begin{tabular} {>{$}c<{$} c l}
-%			S_i & \alert{singlet} state & electron spins opposed \\
-%			T_i & \alert{triplet} state & electron spins parallel
-%		\end{tabular}
-%	\end{center}
-%
-%	\framebreak
-%
-%	\begin{columns}
-%		\column{0.5\textwidth}
-%		\includegraphics[width=\linewidth]{formaldehyde-mo.png}
-%		\column{0.5\textwidth}
-%		\begin{itemize}
-%			\item Absorption of UV and visible light promotes
-%				electronic transitions in formaldehyde.
-%			\item Microwave or infrared radiation do not contain
-%				enough energy to induce such transitions.
-%				\begin{itemize}
-%					\item They \alert{can} change the
-%						vibrational or rotational motion
-%						of the molecule, however!
-%				\end{itemize}
-%		\end{itemize}
-%	\end{columns}
-%
-%	\framebreak
-%
-%	\begin{center}
-%		\includegraphics[width=0.8\linewidth]{formaldehyde-vibration.png}
-%	\end{center}
-%
-%	Vibrational transitions usually involve simultaneous rotational
-%	transitions. Electronic transitions usually involve simultaneous
-%	vibrational and rotational transitions.
-%
-%	\framebreak
-%
-%	We can measure the amount of incident EMR absorbed using a
-%	spectrophotometer:
-%	\begin{center}
-%		\includegraphics[width=0.8\linewidth]{spectrometer.png}
-%	\end{center}
-%
-%	\begin{tabularx}{\linewidth} {>{$}r<{$}@{ = }X}
-%		P_0 & Incident \alert{irradiance} (energy per second per unit
-%		area, \si{\watt\per\meter\squared}) \\
-%		P & Irradiance leaving sample \\
-%		b & length of path through sample
-%	\end{tabularx}
-%
-%	\begin{center}
-%		\fbox{We can measure the relationship between $P_0$ and $P$!}
-%	\end{center}
-%\end{frame}
-%
-%\frame{\section{Absorbance}
-%	\begin{learningobjectives}
-%	\item Relate the transmittance of light to absorbance.
-%	\item Use and understand the Beer-Lambert Law (including limitations!).
-%	\item Quickly estimate changes in absorbance based on experimental
-%		conditions.
-%	\end{learningobjectives}
-%}
-%
-%\begin{frame}{Absorbance}
+
+\maketitle
+\mode<article>{\thispagestyle{fancy}}
+
+\frame{\section{Fundamentals}
+	\begin{learningobjectives}
+	\item Relate wavelength of light to energy.
+	\item Identify regions of electromagnetic radiation suitable for
+		particular analyses.
+	\item Qualitatively describe how light can be absorbed by molecules.
+	\end{learningobjectives}
+}
+
+\begin{frame}{Spectrophotometry}
+	Any procedure that uses light (electromagnetic radiation) to measure
+	chemical concentrations.
+
+	\bigskip
+
+	\begin{block}{Electromagnetic Radiation (EMR)}
+		\begin{itemize}
+			\item Energy radiated in the form of a \alert{wave}
+				caused by an electric field interacting with a
+				magnetic field.
+			\item Result of the acceleration of a charged particle.
+			\item Does not require a material medium and can travel
+				through a vacuum.
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{Properties of EMR}
+	\note{%
+	\begin{center}
+		\begin{tabularx}{0.8\linewidth} {>{$}r<{$}@{ = }X}
+			\multicolumn{2}{c}{$c = \nu \lambda_i$} \\[1em]
+			c & speed of light in vacuum,
+			\SI{2.998e8}{\meter\per\second} \\
+			\nu & frequency \\
+			\lambda_i & wavelength \\[1.5em]
+			\multicolumn{2}{c}{$E = h\nu$} \\[1em]
+			E & energy of radiation \\
+			h & Planck's constant, \SI{6.626e-34}{\joule\second}
+			\\[2em]
+		\end{tabularx}
+		\fbox{Combining yields: $E = \dfrac{hc}{\lambda_i}$}
+	\end{center}
+}
+
+	\begin{center}
+		\includegraphics[width=\linewidth]{EMRproperties.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Regions of the Electromagnetic Spectrum}
+	\includegraphics[width=\linewidth]{EM_Spectrum_Properties_edit.pdf}
+
+	\footnotesize{By Inductiveload, NASA [GFDL
+	(http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0
+	(http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia
+	Commons}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Molecular Processes}
+	The net energy ($E$) of a molecule consists of all energies applied to
+	it: \alert{translational}, \alert{rotational}, \alert{vibrational}, and
+	\alert{electronic energy} (major terms).
+	\begin{multline*}
+		E_\text{molecule} = E_\text{nuclear spin} + E_\text{electron
+		spin} + E_\text{translational} \\ + E_\text{rotation} +
+		E_\text{vibration} + E_\text{electronic}
+	\end{multline*}
+
+	\begin{description}
+		\item[Spin       ] nuclear and electron spin
+		\item[Translation] movement of the molecule through space
+		\item[Rotation   ] rotation of the molecule
+		\item[Vibration  ] vibration of the atoms with respect to each other
+		\item[Electronic ] mutual interactions of the electrons and nuclei
+\end{description}
+
+\framebreak
+
+	\begin{tikzpicture}
+		\node(molproc)
+			{\includegraphics[width=\linewidth,trim={0 120pt 0
+			0},clip]{EMRmolecules.png}};
+		\node[below = 0pt of molproc,text width=\linewidth,align=center]
+			{All these energy states \alert{except} translational
+				(stationary states) are
+		\alert{quantized}.};
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Absorption of Light}
+	\begin{columns}
+		\column{0.5\linewidth}
+		\begin{center}
+			\scalebox{0.75}{
+				\input{absorption}}
+		\end{center}
+		\column{0.4\linewidth}
+		\begin{itemize}
+			\item When EMR is \alert{absorbed}, the molecule is
+				\alert{excited} to a higher \alert{energy
+				state}.
+			\item Relaxation, or \alert{emission}, is associated
+				with the release of a photon (or heat).
+		\end{itemize}
+	\end{columns}
+
+	\framebreak
+
+	Consider formaldehyde, \ch{CH2O}:
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{formaldehyde.png}
+	\end{center}
+	The \alert{excited state}, $S_1$, has a slightly different geometry due
+	to an \alert{electronic transition} of an electron from one
+	\alert{molecular orbital} to another.
+	\begin{center}
+		\begin{tabular} {>{$}c<{$} c l}
+			S_i & \alert{singlet} state & electron spins opposed \\
+			T_i & \alert{triplet} state & electron spins parallel
+		\end{tabular}
+	\end{center}
+
+	\framebreak
+
+	\begin{columns}
+		\column{0.5\textwidth}
+		\includegraphics[width=\linewidth]{formaldehyde-mo.png}
+		\column{0.5\textwidth}
+		\begin{itemize}
+			\item Absorption of UV and visible light promotes
+				electronic transitions in formaldehyde.
+			\item Microwave or infrared radiation do not contain
+				enough energy to induce such transitions.
+				\begin{itemize}
+					\item They \alert{can} change the
+						vibrational or rotational motion
+						of the molecule, however!
+				\end{itemize}
+		\end{itemize}
+	\end{columns}
+
+	\framebreak
+
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{formaldehyde-vibration.png}
+	\end{center}
+
+	Vibrational transitions usually involve simultaneous rotational
+	transitions. Electronic transitions usually involve simultaneous
+	vibrational and rotational transitions.
+
+	\framebreak
+
+	We can measure the amount of incident EMR absorbed using a
+	spectrophotometer:
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{spectrometer.png}
+	\end{center}
+
+	\begin{tabularx}{\linewidth} {>{$}r<{$}@{ = }X}
+		P_0 & Incident \alert{irradiance} (energy per second per unit
+		area, \si{\watt\per\meter\squared}) \\
+		P & Irradiance leaving sample \\
+		b & length of path through sample
+	\end{tabularx}
+
+	\begin{center}
+		\fbox{We can measure the relationship between $P_0$ and $P$!}
+	\end{center}
+\end{frame}
+
+\frame{\section{Absorbance}
+	\begin{learningobjectives}
+	\item Relate the transmittance of light to absorbance.
+	\item Use and understand the Beer-Lambert Law (including limitations!).
+	\item Quickly estimate changes in absorbance based on experimental
+		conditions.
+	\end{learningobjectives}
+}
+
+\begin{frame}{Absorbance}
+	\begin{itemize}
+		\item \textbf{Transmittance} is the fraction of the original
+			light that passes through the sample.
+			\begin{equation*}
+				T = \frac{P}{P_0}
+			\end{equation*}
+			\alert{$T$} ranges from $0 \rightarrow 1$, \alert{$\%T$}
+			ranges from $0\% \rightarrow 100\%$.
+		\item \textbf{Absorbance}, or optical density, is the
+			logarithmic relation to transmittance:
+			\begin{equation*}
+				A = \log \bigg( \frac{P_0}{P} \bigg) = -\log T
+			\end{equation*}
+			
+			\begin{center}
+				\fbox{When no light is absorbed, $P = P_0$ and
+				$A = 0$.}
+			\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[c]{Transmittance and Concentration}
+	\begin{quote}
+		The deeper the mug, the darker the brew, the less light shines
+		through to you.
+	\end{quote}
+
+	\bigskip
+
+	\begin{block}{Beer-Lambert Law (Beer's Law)}
+		\begin{equation*}
+			A_\lambda = \epsilon_\lambda b c
+		\end{equation*}
+
+		\begin{center}
+			\begin{tabular} {>{$}r<{$}@{ = }l}
+			\epsilon_\lambda & molar absorptivity
+			(\si{\per\Molar\per\centi\meter}) \\
+			b & path length (\si{\centi\meter}) \\
+			c & concentration (\si{\Molar})
+		\end{tabular}
+		\end{center}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Notes on Beer's Law}
+	\begin{itemize}
+		\item Beer's Law is \alert{additive}.
+			\begin{itemize}
+				\item We saw this with the caffeine/benzoic acid
+					experiment!
+				\item If two compounds, A and X, both absorb at
+					wavelength, $\lambda_1$, then the
+					absorbance of the solution is
+					\begin{equation*}
+						A_{\lambda_1} =
+						\epsilon_{\ch{A},\lambda_1} b
+						[\ch{A}] +
+						\epsilon_{\ch{X},\lambda_1} b
+						[\ch{X}]
+					\end{equation*}
+			\end{itemize}
+		\item Beer's Law works well in \alert{dilute} ($\lesssim
+			\SI{0.01}{\Molar}$) solutions.
+			\begin{itemize}
+				\item At high concentrations, solute molecules
+					may interact with each other (think
+					activity).
+			\end{itemize}
+		\item Beer's Law requires \alert{monochromatic} light.
+			\begin{itemize}
+				\item Polychromatic light may introduce
+					additional values of molar absorptivity.
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Beer's Law Color Examples}
+	\begin{columns}
+		\column{0.4\textwidth}
+		\begin{enumerate}[<+->]
+			\item How will the absorbance change if a solution of the
+				\emph{same color} as the light is placed in the
+				cuvette?
+				\note<.>{%
+					\begin{center}
+						\includegraphics[width=\linewidth]{spec/same.png}
+					\end{center}
+				}
+			\item How will the absorbance change if a solution of the
+				\emph{opposite color} as the light is placed in the
+				cuvette?
+			\note<.>{%
+				\begin{center}
+					\includegraphics[width=\linewidth]{spec/opposite.png}
+				\end{center}
+			}
+		\end{enumerate}
+		\column{0.5\textwidth}
+		\onslide<+->
+		\resizebox{\linewidth}{!}{%
+				\begin{tabular}
+					{r@{--}l l l}
+					\toprule
+					\multicolumn{2}{l}{\bfseries
+					\textlambda\textsubscript{max}
+				(\si{\nano\meter})} &
+					\bfseries Absorbed & \bfseries Observed
+					 \\ \midrule
+					380 & 420 & violet & green-yellow \\
+					420 & 440 & violet-blue & yellow \\
+					440 & 470 & blue & orange \\
+					470 & 500 & blue-green & red \\
+					500 & 520 & green & purple \\
+					520 & 550 & yellow-green & violet \\
+					550 & 580 & yellow & violet-blue \\
+					580 & 620 & orange & blue \\
+					620 & 680 & red & blue-green \\
+					680 & 780 & red & green \\
+					\bottomrule
+				\end{tabular}
+		}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[t]{Beer's Law Path Length Examples}
+	\begin{enumerate}
+		\item How will the absorbance change with respect to the
+			\emph{path length} of the cuvette if $b$ is doubled?
+			\note<.>{%
+				\begin{center}
+					\includegraphics[width=\linewidth]{spec/path2.png}
+				\end{center}
+			}
+		\item How will the absorbance change with respect to the
+			\emph{path length} of the cuvette if $b$ is tripled?
+			\note<.>{%
+				\begin{center}
+					\includegraphics[width=\linewidth]{spec/path3.png}
+				\end{center}
+			}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{Beer's Law Concentration Examples}
+	\begin{enumerate}
+		\item How will the absorbance change with respect to the
+			\emph{concentration} of the solution?
+	\end{enumerate}
+\end{frame}
+
+\frame{\section{Luminescence}
+	\begin{learningobjectives}
+	\item Identify both radiative and nonradiative paths of relaxation.
+	\item Explain the origin of luminescence.
+	\item Describe key experimental differences between luminescence and
+		absorbance.
+	\item Understand the utility of chromophores.
+	\end{learningobjectives}
+}
+
+\begin{frame}[allowframebreaks]{Where does all this absorbed energy go?}
+	\begin{center}
+		\includegraphics[width=0.75\linewidth]{relaxation.png}
+	\end{center}
+
+	\framebreak
+
+	\begin{itemize}
+		\item \textbf{Internal conversion} is a \alert{nonradiative}
+			transition between states with the same spin (e.g.,
+			$S_1 \rightarrow S_0$).
+		\item \textbf{Intersystem crossing} is a \alert{nonradiative}
+			transition between states with different spin (e.g.,
+			$T_1 \rightarrow S_0$).
+		\item \textbf{Fluorescence} is the \alert{emission} of a photon
+			during transition between states with the same spin
+			(e.g., $S_1 \rightarrow S_0$).
+		\item \textbf{Phosphorescence} is the \alert{emission} of a
+			photon during transition between states with different
+			spin (e.g., $T_1 \rightarrow S_0$).
+	\end{itemize}
+\end{frame}
+
+	\note{%
+	So, nonradiative means nothing happens. The energy just disappears!
+
+	\begin{center}
+		\color{alert}
+		\includegraphics[width=0.6\linewidth]{no.pdf}
+	\end{center}
+
+		Nonradiative energy is transferred through collisions with other
+		molecules in solution. This has the effect of spreading
+		\alert{heat} throughout the medium.
+	}
+
+	\begin{frame}[allowframebreaks]{Radiative Transitions (Luminescence)}
+	\begin{columns}
+		\column{0.55\textwidth}
+	\begin{itemize}
+		\item Luminescence techniques are inherently more sensitive than absorption.
+			\begin{itemize}
+				\item So sensitive that \alert{single molecule}
+					tracking is possible!
+			\end{itemize}
+		\item Luminescence \alert{always} exhibits a \alert{lower}
+			wavelength than the absorption spectrum.
+			\begin{itemize}
+				\item Some nonradiative relaxation occurs prior
+					to emission of the photon.
+			\end{itemize}
+	\end{itemize}
+		\column{0.45\textwidth}
+		\includegraphics[width=\linewidth]{luminescence-energylevels.png}
+	\end{columns}
+
+	\framebreak
+
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{bisbenzylimidoperylene.png}
+	\end{center}
+	
+	The emission spectrum is roughly the mirror image of the absorption
+	spectrum.
+\end{frame}
+
+\begin{frame}{How do we measure luminescence in practice?}
+	\begin{itemize}[<+->]
+		\item For absorbance, we measure the irradiance from the sample
+			(i.e., the light that was \alert{not} absorbed).
+		\item For luminescence, we \alert{do not} want any of the
+			original incicdent light to be included in the
+			measurement.
+			\begin{center}
+				\includegraphics[width=0.8\linewidth]{luminescence-instrument.png}
+			\end{center}
+		\item<.-> Detection occurs at \alert{\SI{90}{\degree}} from the
+			incident beam.
+	\end{itemize}
+\end{frame}
+
+%\begin{frame}{Rayleigh and Raman Scattering}
 %	\begin{itemize}
-%		\item \textbf{Transmittance} is the fraction of the original
-%			light that passes through the sample.
-%			\begin{equation*}
-%				T = \frac{P}{P_0}
-%			\end{equation*}
-%			\alert{$T$} ranges from $0 \rightarrow 1$, \alert{$\%T$}
-%			ranges from $0\% \rightarrow 100\%$.
-%		\item \textbf{Absorbance}, or optical density, is the
-%			logarithmic relation to transmittance:
-%			\begin{equation*}
-%				A = \log \bigg( \frac{P_0}{P} \bigg) = -\log T
-%			\end{equation*}
-%			
-%			\begin{center}
-%				\fbox{When no light is absorbed, $P = P_0$ and
-%				$A = 0$.}
-%			\end{center}
-%	\end{itemize}
-%\end{frame}
-%
-%\begin{frame}[c]{Transmittance and Concentration}
-%	\begin{quote}
-%		The deeper the mug, the darker the brew, the less light shines
-%		through to you.
-%	\end{quote}
-%
-%	\bigskip
-%
-%	\begin{block}{Beer-Lambert Law (Beer's Law)}
-%		\begin{equation*}
-%			A_\lambda = \epsilon_\lambda b c
-%		\end{equation*}
-%
-%		\begin{center}
-%			\begin{tabular} {>{$}r<{$}@{ = }l}
-%			\epsilon_\lambda & molar absorptivity
-%			(\si{\per\Molar\per\centi\meter}) \\
-%			b & path length (\si{\centi\meter}) \\
-%			c & concentration (\si{\Molar})
-%		\end{tabular}
-%		\end{center}
-%	\end{block}
-%\end{frame}
-%
-%\begin{frame}{Notes on Beer's Law}
-%	\begin{itemize}
-%		\item Beer's Law is \alert{additive}.
-%			\begin{itemize}
-%				\item We saw this with the caffeine/benzoic acid
-%					experiment!
-%				\item If two compounds, A and X, both absorb at
-%					wavelength, $\lambda_1$, then the
-%					absorbance of the solution is
-%					\begin{equation*}
-%						A_{\lambda_1} =
-%						\epsilon_{\ch{A},\lambda_1} b
-%						[\ch{A}] +
-%						\epsilon_{\ch{X},\lambda_1} b
-%						[\ch{X}]
-%					\end{equation*}
-%			\end{itemize}
-%		\item Beer's Law works well in \alert{dilute} ($\lesssim
-%			\SI{0.01}{\Molar}$) solutions.
-%			\begin{itemize}
-%				\item At high concentrations, solute molecules
-%					may interact with each other (think
-%					activity).
-%			\end{itemize}
-%		\item Beer's Law requires \alert{monochromatic} light.
-%			\begin{itemize}
-%				\item Polychromatic light may introduce
-%					additional values of molar absorptivity.
-%			\end{itemize}
-%	\end{itemize}
-%\end{frame}
-%
-%\begin{frame}{Beer's Law Color Examples}
-%	\begin{columns}
-%		\column{0.4\textwidth}
-%		\begin{enumerate}[<+->]
-%			\item How will the absorbance change if a solution of the
-%				\emph{same color} as the light is placed in the
-%				cuvette?
-%				\note<.>{%
-%					\begin{center}
-%						\includegraphics[width=\linewidth]{spec/same.png}
-%					\end{center}
-%				}
-%			\item How will the absorbance change if a solution of the
-%				\emph{opposite color} as the light is placed in the
-%				cuvette?
-%			\note<.>{%
-%				\begin{center}
-%					\includegraphics[width=\linewidth]{spec/opposite.png}
-%				\end{center}
-%			}
-%		\end{enumerate}
-%		\column{0.5\textwidth}
-%		\onslide<+->
-%		\resizebox{\linewidth}{!}{%
-%				\begin{tabular}
-%					{r@{--}l l l}
-%					\toprule
-%					\multicolumn{2}{l}{\bfseries
-%					\textlambda\textsubscript{max}
-%				(\si{\nano\meter})} &
-%					\bfseries Absorbed & \bfseries Observed
-%					 \\ \midrule
-%					380 & 420 & violet & green-yellow \\
-%					420 & 440 & violet-blue & yellow \\
-%					440 & 470 & blue & orange \\
-%					470 & 500 & blue-green & red \\
-%					500 & 520 & green & purple \\
-%					520 & 550 & yellow-green & violet \\
-%					550 & 580 & yellow & violet-blue \\
-%					580 & 620 & orange & blue \\
-%					620 & 680 & red & blue-green \\
-%					680 & 780 & red & green \\
-%					\bottomrule
-%				\end{tabular}
-%		}
-%	\end{columns}
-%\end{frame}
-%
-%\begin{frame}[t]{Beer's Law Path Length Examples}
+%		\item Measuring at \SI{90}{\degree} is not perfect --
+%			oscillating electrons and small
+%			particles can \alert{scatter} the incident \textlabmda,
+%			leading to a large intensity peak at \textlambda.
+%			(\alert{Rayleigh})
+%		\item The \alert{gratings} present in the instrument 
+
+\begin{frame}{Luminescence Intensity}
+	\begin{center}
+		\includegraphics[width=0.75\linewidth,trim={0 0 3.3in 1.15in},clip]{luminescence-instrument.png}
+	\end{center}
+
+	\note{%
+	\begin{itemize}
+		\item The emission intensity should be proportional to the
+			irradiance absorbed by the sample.
+		\item Some light is absorbed over pathlength, $b_1$.
+			\begin{equation*}
+				\underbrace{P'_0}_{\mathclap{\text{\footnotesize
+				$P_0$ striking central region
+				}}} = P_0 \cdot
+				10^{-\epsilon_\text{ex}b_1c}
+			\end{equation*}
+		\item The irradiance of the beam when it has traveled the
+			additional distance, $b_2$ is
+			\begin{equation*}
+				P' = P'_0 \cdot
+				10^{-\epsilon_\text{ex}b_2c}
+			\end{equation*}
+		\end{itemize}
+	}
+\end{frame}
+
+\note{%
+	\begin{itemize}
+		\item Emission intensity, $I$ is proportional to the irradiance
+			absorbed in the \alert{central region}:
+			\begin{equation*}
+				I' = k'(P'_0 - P')
+			\end{equation*}
+				where $k'$ is a constant.
+		\item Not all radiation emitted reaches the detector -- some is
+			further absorbed by solution over path length, $b_3$.
+				\begin{equation*}
+					I = k'(P'_0 -
+					P')10^{-\epsilon_\text{em}b_3c}
+				\end{equation*}
+		\end{itemize}
+	}
+	\note{%
+		\begin{itemize}
+		\item Substituting $P'_0$ and $P'$,
+			\begin{align*}
+				I &= k'(P'_0 \cdot 10^{-\epsilon_\text{ex}b_1c} -
+				P_0 \cdot 10^{-\epsilon_\text{ex}b_1c} \cdot
+				10^{-\epsilon_\text{ex}b_2c})10^{-\epsilon_\text{em}b_3c}
+				\\
+				&= k'P'_0 \cdot
+				\underbrace{10^{\epsilon_\text{ex}b_1c}}_{\mathclap{\text{Loss
+				of intensity in region 1}}}
+				\overbrace{(-1
+				-10^{-\epsilon_\text{ex}b_2c})}^{\mathclap{\text{Absorption
+				in region 2}}}
+				\underbrace{10^{-\epsilon_\text{em}b_3c}}_{\mathclap{\text{Loss
+				of intensity in region 3}}}
+			\end{align*}
+		\item Using fancy math, we can simplify this equation at
+			\alert{low concentration} to be
+			\begin{equation*}
+				k'P_0(\epsilon_\text{ex}b_2c \ln 10) = \fbox{$I =
+				kP_0c$}
+			\end{equation*}
+			where $k'\epsilon_\text{ex}b_2 \ln 10$ is a constant,
+			$k$.
+		\end{itemize}
+	}
+
+\begin{frame}{Luminescence Intensity is Proportional to $c$}
+	\begin{equation*}
+		I = kP_0c
+	\end{equation*}
+
+	\begin{itemize}
+		\item At \alert{low concentration}, $I$ varies with $c$ by a
+			factor of $kP_0$.
+			\begin{itemize}
+				\item Increasing $P_0$ therefore increases the
+					emission intensity!
+				\item For absorbance, increasing $P_0$
+					has no effect.
+				\item What effect might this have on
+					\alert{sensitivity}?
+			\end{itemize}
+		\item At \alert{high concentration}, we cannot simplify the
+			equation (and we may even need more accurate equations).
+			\begin{itemize}
+				\item Ultimately, a maximum emission is reached,
+					after which emission decreases due to
+					absorption.
+				\item The emission is \alert{quenched} by
+					\alert{self-absorption} -- analyte
+					molecules themselves are absorbing the
+					excitation and emission energy.
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\vspace{\stretch{-1}}
+
+\begin{frame}[allowframebreaks]{Use of Chromophores in Analytical Chemistry}
+	\begin{itemize}
+		\item Not all materials absorb or luminesce in readily
+			accessible regions of the electromagnetic spectrum.
+		\item A \alert{moiety} that absorbs in a region of interest is
+			termed a \alert{chromophore}.
+			\begin{description}
+				\item[UV:] conjugated \textpi{} bonds (e.g., aromatic
+				compounds)
+			\item[Visible:] transition metals (e.g., \ch{Cu^{2+}},
+				\ch{Ni^{2+}})
+			\item[IR:] stretching/vibrations (e.g., \ch{C-C},
+				\ch{C=O} \textsigma{} bonds)
+			\item[Radio:] magnetic fields (NMR)
+			\end{description}
+		\item Whereas all compounds absorb at some \textlambda, not all
+			luminesce.
+			\begin{itemize}
+				\item Specially developed \alert{fluorescent
+					tags} are often employed that bond or
+					coordinate with the analyte of interest.
+			\end{itemize}
+	\end{itemize}
+
+	\framebreak
+
+	\begin{center}
+		\includegraphics[width=\linewidth]{attomole-dna-fluorescence.jpeg}
+	\end{center}
+
+	{\footnotesize
+	``\ldots DNA hybridization induced an optically detectable
+	conformational change \ldots %in conjugated polythiophene derivatives\ldots
+	%from
+	%forming single-stranded DNA-polymer complexes to forming double-stranded
+	%DNA-polymer ones.
+	The results show \alert{attomole detection
+	sensitivity} \ldots''\footnote{Zheng, W.; He, L. \textit{J. Am. Chem.
+	Soc.} \textbf{2009}, 131 (10), 3432–3433.}}
+\end{frame}
+
+\vspace{\stretch{-1}}
+
+\begin{frame}{A Note on Chemiluminescence}
+	\begin{itemize}
+		\item An even more sensitive technique is
+			\alert{chemiluminescence}.
+
+			\begin{reaction*}
+				A + B -> C + D + $h\nu$
+			\end{reaction*}
+
+		\item A \alert{stoichiometric} amount of light is produced
+			through the relaxation of an excited product from a
+			chemical reaction.
+		\item Rather than any dependence on some incident irradiance,
+			the sole source of detectable light is the analyte
+			itself.
+	\end{itemize}
+\end{frame}
+
+\vspace{\stretch{-1}}
+
+\begin{frame}{Electrogenerated Chemiluminescence}
+	\begin{itemize}
+		\item<1-> Molecules absorb or emit light through the transition of
+			\visible<2->{\alert{electrons}}.
+		\item<3-> Oxidation-reduction reactions involve the transfer of
+			\visible<4->{\alert{electrons}}.
+		\item<5-> If an electric potential is applied across two electrodes
+			in solution, we can induce the flow of
+			\visible<6->{\alert{electrons}}.
+		\item<7-> We should be able to perform oxidation/reduction
+			reactions where species in solution can luminesce.
+			\visible<8->{
+				\begin{reactions*}
+					\text{Anode:} && A &-> A^{.+} + \el{} \\
+					\text{Cathode:} && B + \el{} &-> B^{.-} \\
+					\text{Radical~Annihilation:} && A^{.+} +
+					B^{.-} &-> A^* + B \\
+					\text{Relaxation:} && A^* &-> A + $h\nu$
+				\end{reactions*}
+				}
+	\end{itemize}
+\end{frame}
+
+%\begin{frame}{Quiz!}
 %	\begin{enumerate}
-%		\item How will the absorbance change with respect to the
-%			\emph{path length} of the cuvette if $b$ is doubled?
-%			\note<.>{%
-%				\begin{center}
-%					\includegraphics[width=\linewidth]{spec/path2.png}
-%				\end{center}
-%			}
-%		\item How will the absorbance change with respect to the
-%			\emph{path length} of the cuvette if $b$ is tripled?
-%			\note<.>{%
-%				\begin{center}
-%					\includegraphics[width=\linewidth]{spec/path3.png}
-%				\end{center}
-%			}
+%		\item A \SI{3.96e-4}{\Molar} solution of compound \ch{A}
+%			exhibited an absorbance of 0.624 at
+%			\SI{238}{\nano\meter} in a \SI{1.000}{\centi\meter}
+%			cuvet; a blank solution containing only solvent had an
+%			absorbance of 0.029 at the same wavelength. Find the
+%			molar absorptivity of compound \ch{A}.
+%		\item The absorbance of an unknown solution of compound \ch{A}
+%			in the same solvent and cuvet was 0.375 at
+%			\SI{238}{\nano\meter}. Find the concentration of \ch{A}
+%			in the unknown.
+%		\item A concentrated solution of compound \ch{A} in the same
+%			solvent was diluted from an initial volume of
+%			\SI{2.00}{\milli\liter} to a final volume of
+%			\SI{25.00}{\milli\liter} and then had an absorbance of
+%			0.733. What is the concentration of \ch{A} in the
+%			concentrated solution?
+%		\item In preparing another sample of compound \ch{A}, a student
+%			mistakenly performed a dilution using ethanol rather
+%			than water. Both ethanol and water do not absorb at
+%			\SI{238}{\nano\meter}, so will this cause any issues?
+%			Should the student remake the solution?
 %	\end{enumerate}
 %\end{frame}
-%
-%\begin{frame}[t]{Beer's Law Concentration Examples}
-%	\begin{enumerate}
-%		\item How will the absorbance change with respect to the
-%			\emph{concentration} of the solution?
-%	\end{enumerate}
-%\end{frame}
-%
-%\frame{\section{Luminescence}
-%	\begin{learningobjectives}
-%	\item Identify both radiative and nonradiative paths of relaxation.
-%	\item Explain the origin of luminescence.
-%	\item Describe key experimental differences between luminescence and
-%		absorbance.
-%	\item Understand the utility of chromophores.
-%	\end{learningobjectives}
-%}
-%
-%\begin{frame}[allowframebreaks]{Where does all this absorbed energy go?}
-%	\begin{center}
-%		\includegraphics[width=0.75\linewidth]{relaxation.png}
-%	\end{center}
-%
-%	\framebreak
-%
-%	\begin{itemize}
-%		\item \textbf{Internal conversion} is a \alert{nonradiative}
-%			transition between states with the same spin (e.g.,
-%			$S_1 \rightarrow S_0$).
-%		\item \textbf{Intersystem crossing} is a \alert{nonradiative}
-%			transition between states with different spin (e.g.,
-%			$T_1 \rightarrow S_0$).
-%		\item \textbf{Fluorescence} is the \alert{emission} of a photon
-%			during transition between states with the same spin
-%			(e.g., $S_1 \rightarrow S_0$).
-%		\item \textbf{Phosphorescence} is the \alert{emission} of a
-%			photon during transition between states with different
-%			spin (e.g., $T_1 \rightarrow S_0$).
-%	\end{itemize}
-%\end{frame}
-%
-%	\note{%
-%	So, nonradiative means nothing happens. The energy just disappears!
-%
-%	\begin{center}
-%		\color{alert}
-%		\includegraphics[width=0.6\linewidth]{no.pdf}
-%	\end{center}
-%
-%		Nonradiative energy is transferred through collisions with other
-%		molecules in solution. This has the effect of spreading
-%		\alert{heat} throughout the medium.
-%	}
-%
-%	\begin{frame}[allowframebreaks]{Radiative Transitions (Luminescence)}
-%	\begin{columns}
-%		\column{0.55\textwidth}
-%	\begin{itemize}
-%		\item Luminescence techniques are inherently more sensitive than absorption.
-%			\begin{itemize}
-%				\item So sensitive that \alert{single molecule}
-%					tracking is possible!
-%			\end{itemize}
-%		\item Luminescence \alert{always} exhibits a \alert{lower}
-%			wavelength than the absorption spectrum.
-%			\begin{itemize}
-%				\item Some nonradiative relaxation occurs prior
-%					to emission of the photon.
-%			\end{itemize}
-%	\end{itemize}
-%		\column{0.45\textwidth}
-%		\includegraphics[width=\linewidth]{luminescence-energylevels.png}
-%	\end{columns}
-%
-%	\framebreak
-%
-%	\begin{center}
-%		\includegraphics[width=0.6\linewidth]{bisbenzylimidoperylene.png}
-%	\end{center}
-%	
-%	The emission spectrum is roughly the mirror image of the absorption
-%	spectrum.
-%\end{frame}
-%
-%\begin{frame}{How do we measure luminescence in practice?}
-%	\begin{itemize}[<+->]
-%		\item For absorbance, we measure the irradiance from the sample
-%			(i.e., the light that was \alert{not} absorbed).
-%		\item For luminescence, we \alert{do not} want any of the
-%			original incicdent light to be included in the
-%			measurement.
-%			\begin{center}
-%				\includegraphics[width=0.8\linewidth]{luminescence-instrument.png}
-%			\end{center}
-%		\item<.-> Detection occurs at \alert{\SI{90}{\degree}} from the
-%			incident beam.
-%	\end{itemize}
-%\end{frame}
-%
-%%\begin{frame}{Rayleigh and Raman Scattering}
-%%	\begin{itemize}
-%%		\item Measuring at \SI{90}{\degree} is not perfect --
-%%			oscillating electrons and small
-%%			particles can \alert{scatter} the incident \textlabmda,
-%%			leading to a large intensity peak at \textlambda.
-%%			(\alert{Rayleigh})
-%%		\item The \alert{gratings} present in the instrument 
-%
-%\begin{frame}{Luminescence Intensity}
-%	\begin{center}
-%		\includegraphics[width=0.75\linewidth,trim={0 0 3.3in 1.15in},clip]{luminescence-instrument.png}
-%	\end{center}
-%
-%	\note{%
-%	\begin{itemize}
-%		\item The emission intensity should be proportional to the
-%			irradiance absorbed by the sample.
-%		\item Some light is absorbed over pathlength, $b_1$.
-%			\begin{equation*}
-%				\underbrace{P'_0}_{\mathclap{\text{\footnotesize
-%				$P_0$ striking central region
-%				}}} = P_0 \cdot
-%				10^{-\epsilon_\text{ex}b_1c}
-%			\end{equation*}
-%		\item The irradiance of the beam when it has traveled the
-%			additional distance, $b_2$ is
-%			\begin{equation*}
-%				P' = P'_0 \cdot
-%				10^{-\epsilon_\text{ex}b_2c}
-%			\end{equation*}
-%		\end{itemize}
-%	}
-%\end{frame}
-%
-%\note{%
-%	\begin{itemize}
-%		\item Emission intensity, $I$ is proportional to the irradiance
-%			absorbed in the \alert{central region}:
-%			\begin{equation*}
-%				I' = k'(P'_0 - P')
-%			\end{equation*}
-%				where $k'$ is a constant.
-%		\item Not all radiation emitted reaches the detector -- some is
-%			further absorbed by solution over path length, $b_3$.
-%				\begin{equation*}
-%					I = k'(P'_0 -
-%					P')10^{-\epsilon_\text{em}b_3c}
-%				\end{equation*}
-%		\end{itemize}
-%	}
-%	\note{%
-%		\begin{itemize}
-%		\item Substituting $P'_0$ and $P'$,
-%			\begin{align*}
-%				I &= k'(P'_0 \cdot 10^{-\epsilon_\text{ex}b_1c} -
-%				P_0 \cdot 10^{-\epsilon_\text{ex}b_1c} \cdot
-%				10^{-\epsilon_\text{ex}b_2c})10^{-\epsilon_\text{em}b_3c}
-%				\\
-%				&= k'P'_0 \cdot
-%				\underbrace{10^{\epsilon_\text{ex}b_1c}}_{\mathclap{\text{Loss
-%				of intensity in region 1}}}
-%				\overbrace{(-1
-%				-10^{-\epsilon_\text{ex}b_2c})}^{\mathclap{\text{Absorption
-%				in region 2}}}
-%				\underbrace{10^{-\epsilon_\text{em}b_3c}}_{\mathclap{\text{Loss
-%				of intensity in region 3}}}
-%			\end{align*}
-%		\item Using fancy math, we can simplify this equation at
-%			\alert{low concentration} to be
-%			\begin{equation*}
-%				k'P_0(\epsilon_\text{ex}b_2c \ln 10) = \fbox{$I =
-%				kP_0c$}
-%			\end{equation*}
-%			where $k'\epsilon_\text{ex}b_2 \ln 10$ is a constant,
-%			$k$.
-%		\end{itemize}
-%	}
-%
-%\begin{frame}{Luminescence Intensity is Proportional to $c$}
-%	\begin{equation*}
-%		I = kP_0c
-%	\end{equation*}
-%
-%	\begin{itemize}
-%		\item At \alert{low concentration}, $I$ varies with $c$ by a
-%			factor of $kP_0$.
-%			\begin{itemize}
-%				\item Increasing $P_0$ therefore increases the
-%					emission intensity!
-%				\item For absorbance, increasing $P_0$
-%					has no effect.
-%				\item What effect might this have on
-%					\alert{sensitivity}?
-%			\end{itemize}
-%		\item At \alert{high concentration}, we cannot simplify the
-%			equation (and we may even need more accurate equations).
-%			\begin{itemize}
-%				\item Ultimately, a maximum emission is reached,
-%					after which emission decreases due to
-%					absorption.
-%				\item The emission is \alert{quenched} by
-%					\alert{self-absorption} -- analyte
-%					molecules themselves are absorbing the
-%					excitation and emission energy.
-%			\end{itemize}
-%	\end{itemize}
-%\end{frame}
-%
-%\vspace{\stretch{-1}}
-%
-%\begin{frame}[allowframebreaks]{Use of Chromophores in Analytical Chemistry}
-%	\begin{itemize}
-%		\item Not all materials absorb or luminesce in readily
-%			accessible regions of the electromagnetic spectrum.
-%		\item A \alert{moiety} that absorbs in a region of interest is
-%			termed a \alert{chromophore}.
-%			\begin{description}
-%				\item[UV:] conjugated \textpi{} bonds (e.g., aromatic
-%				compounds)
-%			\item[Visible:] transition metals (e.g., \ch{Cu^{2+}},
-%				\ch{Ni^{2+}})
-%			\item[IR:] stretching/vibrations (e.g., \ch{C-C},
-%				\ch{C=O} \textsigma{} bonds)
-%			\item[Radio:] magnetic fields (NMR)
-%			\end{description}
-%		\item Whereas all compounds absorb at some \textlambda, not all
-%			luminesce.
-%			\begin{itemize}
-%				\item Specially developed \alert{fluorescent
-%					tags} are often employed that bond or
-%					coordinate with the analyte of interest.
-%			\end{itemize}
-%	\end{itemize}
-%
-%	\framebreak
-%
-%	\begin{center}
-%		\includegraphics[width=\linewidth]{attomole-dna-fluorescence.jpeg}
-%	\end{center}
-%
-%	{\footnotesize
-%	``\ldots DNA hybridization induced an optically detectable
-%	conformational change \ldots %in conjugated polythiophene derivatives\ldots
-%	%from
-%	%forming single-stranded DNA-polymer complexes to forming double-stranded
-%	%DNA-polymer ones.
-%	The results show \alert{attomole detection
-%	sensitivity} \ldots''\footnote{Zheng, W.; He, L. \textit{J. Am. Chem.
-%	Soc.} \textbf{2009}, 131 (10), 3432–3433.}}
-%\end{frame}
-%
-%\vspace{\stretch{-1}}
-%
-%\begin{frame}{A Note on Chemiluminescence}
-%	\begin{itemize}
-%		\item An even more sensitive technique is
-%			\alert{chemiluminescence}.
-%
-%			\begin{reaction*}
-%				A + B -> C + D + $h\nu$
-%			\end{reaction*}
-%
-%		\item A \alert{stoichiometric} amount of light is produced
-%			through the relaxation of an excited product from a
-%			chemical reaction.
-%		\item Rather than any dependence on some incident irradiance,
-%			the sole source of detectable light is the analyte
-%			itself.
-%	\end{itemize}
-%\end{frame}
-%
-%\vspace{\stretch{-1}}
-%
-%\begin{frame}{Electrogenerated Chemiluminescence}
-%	\begin{itemize}
-%		\item<1-> Molecules absorb or emit light through the transition of
-%			\visible<2->{\alert{electrons}}.
-%		\item<3-> Oxidation-reduction reactions involve the transfer of
-%			\visible<4->{\alert{electrons}}.
-%		\item<5-> If an electric potential is applied across two electrodes
-%			in solution, we can induce the flow of
-%			\visible<6->{\alert{electrons}}.
-%		\item<7-> We should be able to perform oxidation/reduction
-%			reactions where species in solution can luminesce.
-%			\visible<8->{
-%				\begin{reactions*}
-%					\text{Anode:} && A &-> A^{.+} + \el{} \\
-%					\text{Cathode:} && B + \el{} &-> B^{.-} \\
-%					\text{Radical~Annihilation:} && A^{.+} +
-%					B^{.-} &-> A^* + B \\
-%					\text{Relaxation:} && A^* &-> A + $h\nu$
-%				\end{reactions*}
-%				}
-%	\end{itemize}
-%\end{frame}
-%
-%%\begin{frame}{Quiz!}
-%%	\begin{enumerate}
-%%		\item A \SI{3.96e-4}{\Molar} solution of compound \ch{A}
-%%			exhibited an absorbance of 0.624 at
-%%			\SI{238}{\nano\meter} in a \SI{1.000}{\centi\meter}
-%%			cuvet; a blank solution containing only solvent had an
-%%			absorbance of 0.029 at the same wavelength. Find the
-%%			molar absorptivity of compound \ch{A}.
-%%		\item The absorbance of an unknown solution of compound \ch{A}
-%%			in the same solvent and cuvet was 0.375 at
-%%			\SI{238}{\nano\meter}. Find the concentration of \ch{A}
-%%			in the unknown.
-%%		\item A concentrated solution of compound \ch{A} in the same
-%%			solvent was diluted from an initial volume of
-%%			\SI{2.00}{\milli\liter} to a final volume of
-%%			\SI{25.00}{\milli\liter} and then had an absorbance of
-%%			0.733. What is the concentration of \ch{A} in the
-%%			concentrated solution?
-%%		\item In preparing another sample of compound \ch{A}, a student
-%%			mistakenly performed a dilution using ethanol rather
-%%			than water. Both ethanol and water do not absorb at
-%%			\SI{238}{\nano\meter}, so will this cause any issues?
-%%			Should the student remake the solution?
-%%	\end{enumerate}
-%%\end{frame}
-%
-%%%% END PART 1
+
+%%% END PART 1
 
 %%% PART 2
 
