@@ -1,61 +1,38 @@
 % !TEX program = xelatex
 %\documentclass[notes=show]{beamer}
 %\documentclass[notes=hide]{beamer}
-%\documentclass[notes=only]{beamer}
-\documentclass[11pt,letterpaper]{article}
-\usepackage{beamerarticle}
+\documentclass[notes=only]{beamer}
+%\documentclass[handout]{beamer}
 
+\usepackage{newtxtext}
+\usepackage{bucolors}
 \usepackage{analchem}
 \usepackage{lecture}
 \usepackage{pgfplots}
 \usepackage{multicol}
 
 \title{Introduction to Analytical Separations}
-\subtitle{Chapter 23}
 \institute{Bloomsburg University}
 \author{CHEM321 --- Analytical Chemistry I}
-\date{Fall 2020}
+\date{Fall 2021}
 
 \begin{document}
 
 \maketitle
 \mode<article>{\thispagestyle{fancy}}
 
-\begin{frame}{Fall 2018 UV/Vis Beverage Lab}
-	Sodium benzoate and caffeine concentrations were determined using
-	UV-visible spectroscopy. For the sodium benzoate:
-
-	\begin{tabularx}{\linewidth} {p{0.5\linewidth} *{3}{S[table-format=3.0]}}
-		\toprule & \multicolumn{2}{c}{\bfseries mg/12 fl oz} \\
-		\cline{2-3}
-		{\bfseries Soda} & {\bfseries Class} &
-		{\bfseries Reported} & {\bfseries \% Diff} \\ \midrule
-		Cherry Vanilla Pepsi &		230 &   38 & 600 \\
-		Mountain Dew Kickstart	&	430 &	54 & 800 \\
-		Mountain Dew	&		210 &	54 & 390 \\
-		Mountain Dew Ice &		18  &   54 & 33  \\
-		Pepsi		&		110 &	38 & 280 \\
-		\bottomrule
-	\end{tabularx}
-
-	\begin{itemize}[<+->]
-		\item What went wrong?
-		\item We need some way to \alert{separate} the components.
-	\end{itemize}
-\end{frame}
-
 \begin{frame}{How do we separate things?}
 	\begin{itemize}[<+->]
 		\item Filtration
-			\begin{itemize}
+			\begin{itemize}[<1->]
 				\item Good for separate states of matter.
 			\end{itemize}
 		\item Evaporation/Distillation
-			\begin{itemize}
+			\begin{itemize}[<1->]
 				\item Need good range of boiling points.
 			\end{itemize}
 		\item Solvent Extraction
-			\begin{itemize}
+			\begin{itemize}[<1->]
 				\item Requires differences in solubility between
 					different compounds.
 				\item With an infinite range of solvents, we can
@@ -109,22 +86,19 @@
 
 \vspace{\stretch{-1}}
 
-\begin{frame}{Extraction Efficiency}
-	\only<+>{%
-		If solute S in $V_1$ \si{\mL} of solvent 1 is extracted
-			with $V_2$ \si{\mL} of solvent 2, we can calculate the
-			\alert{fraction} of S remaining in solvent 1:
-			\begin{align*}
-				K = \frac{[\ch{S}]_2}{[\ch{S}]_1} &= \frac{(1 -
-				q)m/V_2}{qm/V_1}
-				\intertext{where $m$ is the number of moles of S
-				and $q$ is the fraction remaining ---
-				rearranging:}
-				q &= \frac{V_1}{V_1 + KV_2}
-			\end{align*}
-		}
+\begin{frame}[allowframebreaks]{Extraction Efficiency}
+	If solute S in $V_1$ \si{\mL} of solvent 1 is extracted
+		with $V_2$ \si{\mL} of solvent 2, we can calculate the
+		\alert{fraction} of S remaining in solvent 1:
+		\begin{align*}
+			K = \frac{[\ch{S}]_2}{[\ch{S}]_1} &= \frac{(1 -
+			q)m/V_2}{qm/V_1}
+			\intertext{where $m$ is the number of moles of S
+			and $q$ is the fraction remaining ---
+			rearranging:}
+			q &= \frac{V_1}{V_1 + KV_2}
+		\end{align*}
 
-		\only<+>{%
 		If we replace solvent 2 and run another extraction, we are
 			taking a ``fraction of a fraction''. In other words, we
 			multiply:
@@ -138,10 +112,8 @@
 		So the amount of solute remaining in a phase is
 			\alert{exponentially} related to the number of
 			extractions we perform.
-		}
 \end{frame}
 
-\vspace{\stretch{-1}}
 
 \begin{frame}[t]{Extraction Efficiency Example}
 	Solute A has a partition coefficient of 3 between toluene and water,
@@ -166,43 +138,38 @@
 	It is more efficient to do several small extractions than one big one.
 	}
 
-\begin{frame}{Effects of Charge on Partition Coefficients}
-	\begin{itemize}[<+->]
-		\item Charged species prefer polar solvents.
-		\item pH can alter charge:
-			\begin{reaction*}
-				HA + H2O <=> A- + \Oxo 
-			\end{reaction*}
-				The conjugate base is more soluble in more
-					polar solvents.
-				\item The different species can be
-					\alert{distributed} between two phases:
-					\begin{align*}
-						\text{Distribution Coefficient}
-						= D &= \frac{\text{total
-						concentration in phase
-						2}}{\text{total concentration in
-						phase 1}} \\
-						&=
-						\frac{[\ch{HA}]_2}{[\ch{HA}]_1 +
-						[\ch{A-}]_1}
-					\end{align*}
+	\begin{frame}[allowframebreaks]{Effects of Charge on Partition Coefficients}
+	Charged species prefer polar solvents. \pH can alter charge:
+	\begin{reaction*}
+		HA + H2O <=> A- + \Oxo 
+	\end{reaction*}
+	The conjugate base is more soluble in more polar solvents.
+
+	The different species can be \alert{distributed} between two phases:
+	\begin{align*}
+		\text{Distribution Coefficient}
+		= D &= \frac{\text{total
+		concentration in phase
+		2}}{\text{total concentration in
+		phase 1}} \\
+		&=
+		\frac{[\ch{HA}]_2}{[\ch{HA}]_1 +
+		[\ch{A-}]_1}
+	\end{align*}
 %					{\footnotesize (See the
 %					\alert{Challenge} on page 606 -- good
 %					math manipulation practice for the
 %					final!)}
-		\item Similarly, chelation of metals can alter charge:
-			\begin{reactions*}
-				$n$L- + M^{$n+$} &<=> ML_{$n$} \\
-				Ca^2+ + EDTA^4- &<=> CaEDTA^2-
-			\end{reactions*}
-			This is a great method of \alert{preconcentration} from
-			environmental samples.
-	\end{itemize}
-\end{frame}
 
-\vspace{\stretch{-1}}
-\clearpage
+	\framebreak
+        Similarly, chelation of metals can alter charge:
+	\begin{reactions*}
+		$n$L- + M^{$n+$} &<=> ML_{$n$} \\
+		Ca^2+ + EDTA^4- &<=> CaEDTA^2-
+	\end{reactions*}
+	This is a great method of \alert{preconcentration} from
+	environmental samples.
+\end{frame}
 
 \begin{frame}{Issues with Solvent Extractions}
 	\begin{itemize}
@@ -229,10 +196,7 @@
 	\end{itemize}
 \end{frame}
 
-\vspace{\stretch{-1}}
-
-\begin{frame}{Chromatography}
-	\only<+>{%
+\begin{frame}[allowframebreaks=1]{Chromatography}
 	\begin{columns}
 		\column{0.6\linewidth}
 		Pigments from plants could be separated as
@@ -253,11 +217,11 @@
 						\alert{mobile} solvent.
 				\end{itemize}
 		\column{0.3\linewidth}
-		\mode<presentation>{\includegraphics[scale=0.5]{tlc.jpg}}
+		\includegraphics[scale=0.5]{tlc.jpg}
 	\end{columns}
-}
 
-\only<+>{%
+	\framebreak
+
 		Rather than a small plate, we can fill a column with the
 			\alert{stationary phase} and continuously run the
 			\alert{mobile phase} through it.
@@ -266,22 +230,25 @@
 			\end{center}
 		A detector placed at the end of the column can be used to
 			quantify analyte.
-}
 \end{frame}
 
-\begin{frame}{Stationary Phases for Different Applications}
+\begin{frame}[allowframebreaks]{Stationary Phases for Different Applications}
 	\begin{center}
-		\only<+>{\includegraphics[scale=0.8]{fig23-6-1.png}}
+		\includegraphics[scale=0.8]{fig23-6-1.png}
+	\end{center}
 
-		\mode<article>{\clearpage}
+		\framebreak
+	
+	\begin{center}
+		\includegraphics[scale=0.8]{fig23-6-2.png}
+	\end{center}
 
-		\only<+>{\includegraphics[scale=0.8]{fig23-6-2.png}}
+		\framebreak
 
-		\only<+>{\includegraphics[scale=0.8]{fig23-6-3.png}}
+	\begin{center}
+		\includegraphics[scale=0.8]{fig23-6-3.png}
 	\end{center}
 \end{frame}
-
-\vspace{\stretch{-1}}
 
 \frame{\section{Physical Basis of Chromatography}
 	\begin{learningobjectives}
@@ -293,10 +260,7 @@
 	\end{learningobjectives}
 }
 
-\vspace{\stretch{-1}}
-
-\begin{frame}{Chromatography Parameters}
-	\only<+>{%
+\begin{frame}[allowframebreaks=1]{Chromatography Parameters}
 	Consider a column with an inner diameter of \SI{0.60}{\cm} in which
 	\SI{20}{\percent} of the volume is occupied by
 	the mobile phase, thus the volume of the column is
@@ -308,9 +272,9 @@
 	and the volume occupied by the mobile phase is $
 		\SI{20}{\percent} \times \SI{0.283}{\mL\per\cm} =
 		\SI{0.0565}{\mL}$.
-	}
 
-	\only<+>{%
+		\framebreak
+
 	\begin{itemize}
 		\item The \alert{volume flow rate} is the volume of
 			solvent that travels per minute through the
@@ -325,9 +289,9 @@
 				\SI{5.3}{\cm\per\minute}
 			\end{align*}
 	\end{itemize}
-}
+
+	\framebreak
 	
-\only<+>{%	
 	\begin{itemize}
 		\item The column geometry/material and mobile phase flow rate
 			directly affect the \alert{time} that the solute is
@@ -339,20 +303,16 @@
 	\end{itemize}
 	
 	\begin{center}
-		\includegraphics[width=0.8\linewidth]{retention.png}
+		\includegraphics[width=0.7\linewidth]{retention.png}
 	\end{center}
-}
 \end{frame}
 
-\vspace{\stretch{-1}}
-
-\begin{frame}{Retention Time}
-	\only<1-3>{%
+\begin{frame}[allowframebreaks=1]{Retention Time}
 	\begin{center}
 		\includegraphics[scale=0.55]{retention.png}
 	\end{center}
 
-	\begin{description}[<+->]
+	\begin{description}
 		\item[Retention time ($\bm{t_r}$):] The time
 			elapsed between injection and arrival at the
 			detector.
@@ -368,11 +328,6 @@
 			\begin{equation*}
 				t'_r = t_r - t_m
 			\end{equation*}
-	\end{description}
-}
-
-\only<4->{%
-	\begin{description}
 		\item[Relative retention ($\bm{\alpha}$):] The ratio of
 			\alert{adjusted} retention times for two components.
 			\begin{equation*}
@@ -386,13 +341,9 @@
 				k = \frac{t_r - t_m}{t_m} = \frac{t'_r}{t_m}
 			\end{equation*}
 	\end{description}
-}
 \end{frame}
 
-\vspace{\stretch{-1}}
-
-\begin{frame}{How is $t_r$ Related to $K$?}
-	\only<+>{%
+\begin{frame}[allowframebreaks]{How is $t_r$ Related to $K$?}
 		If the solute is not retained at all, $t_r = t_m$,
 		thus
 	\begin{align*}
@@ -407,9 +358,9 @@
 		k &= \frac{\text{time solute spends in stationary
 		phase}}{\text{time solute spends in mobile phase}}
 	\end{align*}
-}
 
-\only<+>{%
+	\framebreak
+
 At any given time, there are a certain number of
 		moles in each phase. If a solute spends more time in a specific
 		phase, there should be more moles of solute in that phase.
@@ -426,9 +377,9 @@ Recall that the partition coefficient is the ratio of
 		k &= K\frac{V_\text{s}}{V_\text{m}} = \frac{t_r - t_m}{t_m} =
 		\frac{t'_r}{t_m}
 	\end{align*}
-}
 
-\only<+>{%
+	\framebreak
+
 	Because $t'_r \propto k \propto K$, relative retention can be expressed
 	as
 	\begin{align*}
@@ -441,7 +392,6 @@ Recall that the partition coefficient is the ratio of
 		and stationary phases, the greater the separation between two
 		components of a mixture.
 	\end{block}
-}
 \end{frame}
 
 %\begin{frame}[t]{Retention Time Example}
@@ -465,29 +415,32 @@ Recall that the partition coefficient is the ratio of
 }
 
 \begin{frame}{Efficiency of Separations}
-	\only<1>{
 	There are two factors that contribute to separation efficiency:
 	\begin{enumerate}
 		\item Difference in retention time between compounds.
 		\item Broadness of the peaks
 	\end{enumerate}
-	}
 
 	\begin{center}
 		\includegraphics[width=0.9\linewidth]{gaussianpeak.png}
 	\end{center}
 
-	\only<1>{Ideal peaks demonstrate a Gaussian shape.}
+	Ideal peaks demonstrate a Gaussian shape.
+\end{frame}
 
-	\only<2->{
-		Broadness is measured in terms of width, either
+\begin{frame}{Peak Broadness}
+	\begin{center}
+		\includegraphics[width=0.9\linewidth]{gaussianpeak.png}
+	\end{center}
+
+	Broadness is measured in terms of width, either
 		\begin{enumerate}
 			\item at the \alert{baseline} between tangents drawn to
 				the steepest parts of the peak, $w = 4\sigma$.
 			\item at \alert{half height}, $w_{1/2} = 2.35\sigma$.
 				\visible<3>{\textbf{Why?}}
 		\end{enumerate}
-		}
+
 \end{frame}
 
 \begin{frame}{Resolution}
@@ -551,10 +504,7 @@ Recall that the partition coefficient is the ratio of
 			peaks!
 \end{frame}
 
-\vspace{\stretch{-1}}
-
-\begin{frame}{Height Equivalent to a Theoretical Plate (HETP)}
-	\only<+>{%
+\begin{frame}[allowframebreaks=1]{Height Equivalent to a Theoretical Plate (HETP)}
 	\begin{columns}
 		\column{0.6\textwidth}
 		\begin{itemize}
@@ -575,9 +525,9 @@ Recall that the partition coefficient is the ratio of
 		{\tiny https://en.wikipedia.org/wiki/Distillation}
 		\end{center}
 	\end{columns}
-}
 
-\only<+>{%
+	\framebreak
+
 	\begin{itemize}
 		\item In terms of chromatography, if we assume that solute
 			travels a distance $x$ at linear velocity $u_x$, then
@@ -597,9 +547,9 @@ Recall that the partition coefficient is the ratio of
 		\item Common values are \SIrange{\sim0.1}{1}{\mm} in GC,
 			\SI{\sim10}{\um} in HPLC, and \SI{<1}{\um} in CE.
 	\end{itemize}
-}
 
-\only<+>{%
+	\framebreak
+
 	\begin{itemize}
 		\item Provided that plate height is in terms of distance
 			traveled, we can calculate the number of plates, $N$, in
@@ -621,9 +571,9 @@ Recall that the partition coefficient is the ratio of
 			We can calculate the number of plates based on the
 			analytes we are trying to separate.
 	\end{itemize}
-}
 
-\only<+>{%
+	\framebreak
+
 	\begin{itemize}
 		\item Because plate height is a result of peak broadness and
 			separation time, it can be related directly to
@@ -644,9 +594,9 @@ Recall that the partition coefficient is the ratio of
 					\frac{t'_r}{t_m}$)
 			\end{itemize}
 	\end{itemize}
-}
 
-\only<+>{%
+	\framebreak
+
 	\begin{equation*}
 		\text{Resolution} = \frac{\sqrt{N}}{4}
 		\frac{\alpha - 1}{\alpha} \bigg( \frac{k_2}{1 +
@@ -663,7 +613,6 @@ Recall that the partition coefficient is the ratio of
 			temperature or mobile phase), the peaks move apart and
 			resolution improves.
 	\end{itemize}
-}
 \end{frame}
 
 \begin{frame}{Diffusion is Not the Only Reason for Broadening}
@@ -780,9 +729,12 @@ Recall that the partition coefficient is the ratio of
 \end{frame}
 
 %\begin{frame}{Let's take a look at the AOAC lab\ldots}
-\begin{frame}{Separation of Ethanol and Isopropanol}
-	\only<1|article:0>{\input{beer-gc}}
-	\only<2>{\input{beer-gc-expand}}
+\begin{frame}[allowframebreaks]{Separation of Ethanol and Isopropanol}
+	\input{beer-gc}
+
+	\framebreak
+
+	\input{beer-gc-expand}
 
 	What is the number of theoretical plates?
 \end{frame}
