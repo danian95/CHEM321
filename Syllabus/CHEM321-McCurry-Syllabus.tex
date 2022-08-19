@@ -1,6 +1,7 @@
 % !TeX program = lualatex
 \documentclass[11pt,letterpaper]{article}
 
+\usepackage{fontspec}
 \usepackage{tabularx}
 \usepackage{booktabs}
 \usepackage{bucolors}
@@ -8,18 +9,23 @@
 \usepackage{mathtools}
 \usepackage{mdframed}
 \usepackage{titling}
-\usepackage{newtxtext}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage[english]{babel}
 \usepackage[sf,bf]{titlesec}
-\usepackage{enumitem}
+\usepackage[inline]{enumitem}
 \usepackage[margin=1in,letterpaper]{geometry}
 \usepackage{multicol}
+\usepackage{soul}
+\usepackage{nameref}
+
+\setmainfont{TeX Gyre Termes}[Ligatures=TeX]
+\setsansfont{TeX Gyre Heros}[Ligatures=TeX]
+\setmonofont{TeX Gyre Cursor}
 
 \title{Analytical Chemistry 1}
 \author{Dr.\ Daniel A.\ McCurry}
-\date{Fall 2021}
+\date{Fall 2022}
 
 \newcommand{\classnum}{CHEM321}
 
@@ -27,7 +33,7 @@
 \lhead{}
 \chead{}
 \rhead{}
-\lfoot{\footnotesize\sffamily McCurry --- \classnum\ --- FA21}
+\lfoot{\footnotesize\sffamily McCurry --- \classnum\ --- FA22}
 \cfoot{}
 \rfoot{\footnotesize\sffamily\thepage~of~\pageref{LastPage}}
 \renewcommand{\headrulewidth}{0pt}
@@ -35,7 +41,7 @@
 
 \pretitle{\noindent\color{bumaroon}
 	\sffamily\bfseries\Large
-	\classnum\newline
+	\classnum~Lecture\newline
 	\LARGE\expandafter\MakeUppercase\expandafter}
 \posttitle{\par\medskip}
 \preauthor{\noindent\sffamily}
@@ -46,7 +52,7 @@
 \setlength{\droptitle}{-2em}
 
 \setcounter{secnumdepth}{0}
-\setlist[description]{font=\sffamily\bfseries}
+\setlist[description]{font=\sffamily\bfseries\small}
 \urlstyle{same}
 
 \begin{document}
@@ -56,12 +62,14 @@
 
 \noindent
 \begin{tabularx}{\linewidth} {@{\qquad}>{\bfseries\sffamily}r
-	>{\raggedright\arraybackslash}X@{\qquad}}
+	>{\raggedright\arraybackslash}X}
 	\toprule
-	Lecture: & TR, 12:30 pm -- 1:45 pm \\
-			    & HSC G42 \\ \\
-	Lab:     & W, 2:00 pm -- 5:50 pm \\ 
-		 & HSC 209 \\ \\
+	Time: & Mon./Wed./Fri., 9:00 am -- 9:50 am \\ \\
+	Location: & HSC G42 (BU) \\
+		  & Grant 140 (MU) \\ 
+		  & Zoom Meeting ID provided with instructor approval \\ \\
+		  %& Zoom Meeting ID \href{https://bloomu.zoom.us/j/91337754874}{913 3775 4874} (MU
+		% only) \\ \\
         Instructor: & Dr.\ Daniel A. McCurry\\
 		    & 	Assistant Professor of Chemistry\\
 		    & 	HSC 240\\
@@ -70,36 +78,33 @@
 		    & 	\href{https://bloomu.starfishsolutions.com/starfish-ops/dl/instructor/serviceCatalog.html?bookmark=connection/20001}{HuskySuccess
 		     	Profile} \\ \\
 	Office Hours: & \begin{minipage}[t]{\linewidth}
-		\begin{tabular}[t] {@{}lr@{\,--\,}l@{~@~}l}
-			Mon./Tues.  & 4:00 & 6:00\,p.m. & Andruss Library
-			(1\textsuperscript{st} floor) \\
-			Fri. & 9:00 & 10:00\,a.m. & HSC 240\\
+		\begin{tabular}[t] {@{}lr@{\,--\,}l}
+			Mon./Tue.  & 3:00 & 5:00\,p.m. \\
+			Thur. & 4:00 & 5:00\,p.m. \\
 				\end{tabular}
 			\end{minipage} \\
 		      &   In-Person or via Zoom Meeting ID
                           ``\href{https://bloomu.zoom.us/my/dmccurry}{dmccurry}''\\
                       &    \href{https://bloomu.starfishsolutions.com/starfish-ops/dl/instructor/serviceCatalog.html?bookmark=connection/20001/schedule}{Schedule
 		      an Appointment} (not required) \\ \\
-		Text: & Harvey, D. \textit{Analytical Chemistry 2.1} \\
-	      & \footnotesize Open-access available at no cost
-	      \href{https://chem.libretexts.org/@go/page/122341}{online}
+		Text: & Harvey, D. \textit{Analytical Chemistry 2.1}
+		(\href{https://chem.libretexts.org/@go/page/122341}{Open
+		Access}) \\
+		      & Harris, D.C. \textit{Quantitative Chemical Analysis},
+		      10\textsuperscript{th} Ed. (Optional, opt out by
+		      \textbf{8/29})
 	      \\ \\
-	Lab Text: & McCurry, D.A.; Hallen, C.P. \textit{Back to the CHEM321
-	Analytical Chemistry Laboratory}, Fall 2021 Ed. \\
-	       	      & \footnotesize Available for purchase during the first
-		      week of laboratory. \\ \\
 	Materials: & Scientific or graphing calculator (simpler calculators
 	are not appropriate). \\
-		   & USB flash drive for transferring laboratory data \\
-		   & Carbon- or carbonless-copy laboratory notebook \\
-		   & Safety goggles \\
+		   & Laptop for spreadsheet manipulation (certain topics only)
+		   \\
 	\bottomrule
 \end{tabularx}
 
 \section{Course Description}
 Analytical Chemistry studies the methods of analysis useful in today's science
 laboratories. In fact, you have used numerous analytical methods already in your
-previous chemistry courses. The course stresses the theory and laboratory
+previous chemistry courses. This course stresses the theory and laboratory
 practices of these analytical methods. In other words, is the difference between
 two results \emph{significant}? What caused the results between two
 \emph{identical} samples to differ? How can we report our results to a specific
@@ -108,46 +113,29 @@ analysis, and method advantages and limitations are emphasized throughout the
 lecture and laboratory.
 
 \subsection{Learning Objectives}
-With all of the techniques and methods for statistical analysis we'll cover this
-semester, it can be easy to lose sight of the goals for the course. By the end
-of the semester, you should be able to\ldots
+By the end
+of the semester, you should be able to\ldots\ (in no particular order)
 \begin{itemize}[noitemsep]
-	\item Identify results that are significantly different to a specific
-		confidence interval.
-	\item Identify appropriate measurement techniques to suit a particular
+	\item Propose potential solution interferents and identify sample
+		considerations in order to judge appropriate routes of chemical
 		analysis.
-	\item Consider all aspects of chemical equilibrium that may affect your
-		measurements.
-	\item Exhibit healthy skepticism when confronted with data.
+	\item Apply statistical tests to data to determine significant
+		differences or identify outliers that may skew results.
+	\item Explain why proper sample handling and collection is imperative to
+		delivering meaningful results.
+	\item Summarize and organize equilibrium phenomena in solution to assess
+		the validity of analytical techniques.
+	\item Compare and contrast different analytical techniques
+		(spectrophotometry, chromatography, potentiometry, titrations)
+		and assess their suitability for particular analyses.
+	\item Report experimental results to levels appropriate for the analysis
+		used and consistent with the use objective.
+	\item Verify experimental procedures with appropriate methods of
+		standardization and quality control (matrix spike, external
+		standard, internal standard, standard additions).
+	\item Choose an appropriate analytical technique for a specific analysis
+		and justify the choice using sound chemical knowledge.
 \end{itemize}
-
-\subsection{Laboratory Overview}
-
-The laboratory for analytical chemistry studies the theory and practice of
-several common methods used to determine how much analyte is in a particular
-sample of material. In several of the experiments that you will do this
-semester, some component of a commercial product will be analyzed. In other
-experiments, specially purchased or prepared unknowns will be used. For the
-latter experiments, 20--50\,\% of your laboratory report grade will
-depend simply on the accuracy and precision of your work. Why are these analyses
-so rigorous (or why are analytical chemists so rigorous)? When you leave this
-educational institution, it is possible that thousands of dollars or someone's
-life will depend upon your analysis. Before you are certified capable of such
-analyses by a grade and/or a letter of recommendation, you must prove yourself
-worthy of that grade/recommendation.
-
-In doing these experiments, you will touch upon some classical wet chemistry
-methods of analysis as well as some modern instrumental techniques. Many
-experiments also use statistical analysis to illustrate how good (or bad)
-the results actually are. Some of these labs are designed to be long to see how
-well you plan ahead for an analysis. Some are designed to be worked in groups of
-two or three to see how well you can work with others. Still others are vague to
-allow you the freedom to use your ingenuity and common sense to solve the
-problem.
-
-You are expected to be prepared to do an experiment when you arrive in the
-laboratory. The instructor reserves the right to quiz at any time. These
-quizzes will count as part of the lab grade.
 
 \subsection{Course Community and Communication}
 \emph{Your active involvement in the course is important for your success!}
@@ -159,7 +147,7 @@ Discussion Board, rather than sending an individual email to directly to me. I
 would also be happy to help organize study groups if you are interested. Please
 let me know if you would like to chat with other classmates and I will put you
 in touch. Learning occurs best when it is driven by your own motivation and
-curiosity, not by passively absorbing information I share in a brief 75-minute
+curiosity, not by passively absorbing information I share in a brief 50-minute
 period!
 
 All course announcements will be delivered on the BOLT course page. It is your
@@ -170,6 +158,40 @@ information significantly decreases any confusion. If you would like push
 notifications on your phone when announcements are posted, please download the
 \href{https://documentation.brightspace.com/EN/brightspace/requirements/all/pulse.htm}{Brightspace
 Pulse} app.
+
+\subsection{Textbook}
+You are expected to read the textbook along with lecture. This course is using an open access
+textbook, \textit{Analytical Chemistry 2.1} by David Harvey. Open access means
+that it is freely available online. I opted to use this textbook because it
+\begin{enumerate*}[label={(\arabic*)}]
+	\item offers the same information as other textbooks,
+	\item has received positive feedback from other analytical chemistry
+		instructors,
+	\item is more affordable (free) than traditional textbooks, and
+	\item is in line with my teaching philosophy that education should be
+		attainable that all who want it.
+\end{enumerate*}
+You may find the textbook on BOLT or online at
+\url{https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_(Harvey)}.
+
+Many other institutions use Daniel C. Harris's \textit{Quantitative Chemical
+Analysis}. Based on feedback from students, I have decided to \emph{optionally
+recommend} this textbook for those seeking more information. 
+This \emph{optional} textbook was selected as ``Inclusive Access,'' which
+significantly lowers the cost of accessing the textbook \emph{for the semester}
+(you do not own it and you will lose access after the semester). Unfortunately,
+Inclusive Access is explicitly ``Opt Out.'' As such, the cost of this
+\emph{optional} textbook will be automatically charged to your BU student
+account under “misc.\ charges”.  If you decide that you do not want to use this
+\emph{optional} textbook, you may Opt Out by \textbf{August 29}.  If you ``Opt
+Out'', you will not be charged for the textbook and will no longer have access.
+If you have any questions, please contact
+\href{mailto:inclusiveaccess@bloomu.edu}{inclusiveaccess@bloomu.edu}.
+
+If you plan on attending graduate school in chemistry, I suggest opting out of
+Inclusive Access and purchasing the
+hard copy of \textit{Quantitative Chemical Analysis}. Older editions are most
+likely cheaper and will contain most of the same information.
 
 \section{Evaluations and Grading}
 Unfortunately, we do need to include a metric for assessing your understanding
@@ -183,18 +205,19 @@ understand correctly in order to award you full credit.
 
 \begin{multicols}{2}
 	\subsection{Point Distribution}
-	\begin{tabular} {>{\sffamily\bfseries}l l r<{\,\%}}
-		Lecture:    & Exams               & 35 \\
-			    & Homework \& Quizzes     & 15 \\
-			    & Final Exam               & 25 \\
-		Laboratory: & Reports & 25 \\ \midrule
-			    & & 100
+	\begin{tabular} {l r<{\,\%}}
+		Exams               & 30 \\
+		Homework      & 10 \\
+		Lecture Assignments & 10 \\
+		Final Exam               & 25 \\
+		Laboratory & 25 \\ \midrule
+		& 100
 	\end{tabular}
 
 	\subsection{Grade Assignment}%
 	\begin{tabular} {r@{\,--\,}l<{\,\%} l@{\hspace{0.5in}}r@{\,--\,}l<{\,\%} l}
 		\multicolumn{3}{c}{} & 75 & 77 & C+ \\
-		91 & 97 & A  & 71 & 74 & C  \\
+		91 & 100 & A  & 71 & 74 & C  \\
 		88 & 90 & A- & 68 & 70 & C- \\
 		\multicolumn{6}{c}{} \\
 		85 & 87 & B+ & 65 & 67 & D+ \\
@@ -205,64 +228,54 @@ understand correctly in order to award you full credit.
 
 \subsection{Graded Items}
 \begin{description}
-	\item[Exams:] There will be three (3) 70 minute exams held during our
+	\item[Exams:] There will be three (3) 50 minute exams held during our
 		regularly scheduled lecture time. Tardiness will not extend your
 		exam time. If accommodations must be made, it is your
 		responsibility to alert the instructor at least 72 hours
 		\emph{before} the exam.
-	\item[Quizzes:] Quizzes will be held randomly throughout the semester
-		in lecture and lab; the amount depends on class participation.
-		In other words, if it seems like everyone is following along, I
-		won't need many quizzes to gauge progress!
-	\item[Homework:] There will be a few homework assignments announced in
-		lecture to help guide your practice of the material. Generally,
-		these will be reserved for in-depth problems that I anticipate
-		being a bit challenging on an exam.
-	\item[Final Exam:] The final exam will consist of two parts:
-		\begin{enumerate}
-			\item A standardized American Chemical Society
-				Analytical Exam held during the last week of
-				laboratory. This is to compare our class with
-				the national standards as set by the ACS. These
-				are often a bit difficult (the national average
-				for these tends to hover around 50\,\%), so your
-				score will be adjusted to accommodate the topics
-				we covered in class. This section of the final
-				is worth 20\,\% of your final exam grade (5\,\%
-				of your final grade).
-			\item A \emph{comprehensive} 115 minute final exam
-				during the final exam week. This will be of a
-				similar format to all of the lecture exams held
-				throughout the semester and will constitute
-				80\,\% of your final exam grade (20\,\% of your
-				final grade).
-		\end{enumerate}
-	\item[Laboratory:] Laboratory attendance is mandatory. Reports will be
-		graded for format (see laboratory manual), grammar, spelling,
-		chemical logic, and accuracy of the analysis. Reports will be
-		due at the \emph{beginning} of laboratory in a format as listed
-		in the laboratory schedule.  It is expected that all data
-		reduction and plotting be performed with modern spreadsheet
-		software and presented in a logical table format.  Reports will
-		be in three styles:
-		\begin{center}
-			\begin{tabularx}{\linewidth} {r >{\raggedright\arraybackslash}X}
-			Formal or Long Form Reports: & all sections as listed in the lab manual \\ Informal or Short Form Reports: & Abstract,
-			Results, Discussion, References, and
-		Appendix (including answers to appropriate questions) \\
-			Spreadsheet Reports: & results as a spreadsheet
-		\end{tabularx}
-		\end{center}
-		Only electronic copies will be accepted through the appropriate
-		BOLT assignment submission. Spreadsheets are to be submitted in
-		their raw form, as a *.xlsx, *.xls, or *.ods. \emph{Be careful
-			that you are, in fact, saving as one of these listed
-		formats and not as *.csv!} It is \emph{strongly} recommended
-		that you submit your long and short reports in PDF format
-		(*.pdf) as this will ensure all of your formatting is kept.  A
-		late lab report will be graded with a 20\,\% penalty for every
-		24 hours after the deadline.
+		\begin{description}
+			\item[MU:] Exams will be proctored at the Testing Center (South
+		Hall, 2\textsuperscript{nd} floor, room 210) at the time of our
+		regularly scheduled lecture.
 \end{description}
+	\item[Lecture Assignments:] It is impossible to learn by passively
+		absorbing information. Although I will run through examples and
+		practice with you, you will work in groups to solve some brief
+		assignments regularly. Work will be collected and graded, with
+		an emphasis placed on participation and attempts.
+	\item[Homework:] There will be regular homework assignments posted to
+		LON-CAPA (see the \nameref{homework} section below). You will have sufficient
+		opportunities to resubmit answers without penalty before the
+		deadline. Make sure to start early so you can come to office
+		hours with questions. Essentially, the only reason why you
+		should lose points on homework is because you did not turn it in
+		on time!
+	\item[Final Exam:] The final exam will consist of a \emph{comprehensive}
+		115 minute final exam during the final exam week. This will be
+		of a similar format to all of the lecture exams held throughout
+		the semester.
+	\item[Laboratory:] Please see your laboratory syllabus and instructor
+		for specific laboratory requirements. Your lab instructor will
+		assign a laboratory grade that will contribute towards 25\% of
+		your final grade in this course.
+\end{description}
+
+\subsection{Homework}\label{homework}
+This course is using LON-CAPA (\url{https://lon-capa.bloomu.edu}) for homework
+assignments. You will be sent an email with your initial username and password.
+Unfortunately, it is impossible for me to personally return timely feedback on
+homework in addition to grading lab reports, lecture assignments, exams and
+materials from other classes. LON-CAPA is able to automatically grade your
+answers and will provide you multiple opportunities without penalty to answer
+homework questions correctly. This will allow you ample time to seek extra help
+if needed. Feel free to work with others (in fact, I encourage it!), but do note
+that on most questions, everyone will have different answers.
+
+LON-CAPA may be very different than other homework systems you have used in the
+past. All content has been coded and tested by your instructor. If you are
+having any issues with any specific problems or the website itself, please reach
+out to me as soon as possible. I am using LON-CAPA for its incredible
+flexibility in designing problems as well as its cost to students --- free.
 
 \subsection{Grading Errors}
 Did I make a mistake? Let me know within 72 hours from the return of the graded
@@ -274,23 +287,22 @@ errors (e.g., I typed a grade incorrectly into BOLT) to my attention.
 \section{Important Dates}\label{importantdates}
 \begin{center}
 	\begin{tabular} {l l l}
-		September 14 & Tuesday    & Exam 1 \\
-		October 19   & Tuesday    & Exam 2 \\
-		November 16  & Tuesday    & Exam 3 \\
-		November 23  & Tuesday   & Thanksgiving Recess (No Class) \\
-		November 24  & Wednesday & Thanksgiving Recess (No Class) \\
-		November 25  & Thursday    & Thanksgiving Recess (No Class) \\
-		December 1   & Wednesday & ACS Analytical Exam (in lab) \\
-		December 2   & Thursday    & Last Day of Class \\
-		December 8   & Tuesday    & Final Examination (10:15\,am --
-		12:15\,pm)
+		September 5  & Monday     & Labor Day (No Class) \\
+		September 12 & Monday     & Exam 1 \\
+		October 17   & Monday     & Exam 2 \\
+		November 21  & Monday     & Exam 3 \\
+		November 23  & Wednesday  & Thanksgiving Recess (No Class) \\
+		November 25  & Friday     & Thanksgiving Recess (No Class) \\
+		December 2   & Friday     & Last Day of Class \\
+		December 5   & Monday     & Final Examination (8:00\,am --
+		10:00\,am)
 	\end{tabular}
 \end{center}
 
-Please note, if you are unable to take an examination or quiz at
+Please note, if you are unable to take an examination at
 its scheduled time due to some unavoidable circumstance, you are obligated to
 provide a documented valid excuse to your instructor. \emph{Failure to provide a
-valid excuse on these terms will result in a score of zero for the quiz or
+valid excuse on these terms will result in a score of zero for the 
 exam.}
 
 	\begin{center}
@@ -322,19 +334,20 @@ In order to maintain an atmosphere that is conducive to learning, all members
 of the class are expected to demonstrate common courtesy during the lecture,
 including but not exclusively:
 \begin{enumerate}
-	\item \textbf{Wear a mask that covers your nose and mouth.} Not all
-		students are vaccinated and other, more infectious variants pose
-		a health risk to all individuals. In order to ensure the
-		wellbeing of your fellow classmates, please wear a well-fitting
-		mask while inside.
+	\item \textbf{Following university protocol, when necessary, wear a mask
+		that covers your nose and mouth.} Not all students are
+		vaccinated and other, more infectious variants pose a health
+		risk to all individuals. In order to ensure the well-being of
+		your fellow classmates, please wear a well-fitting mask while
+		inside.
 	\item \textbf{Be on time for class.} If you are unavoidably late, enter
 		the room quietly and quickly choose a seat.  Tardiness will not
-		extend your exam or quiz time. We will not return to missed
-		quizzes.
+		extend your exam time. We will not return to any missed lecture
+		assignments.
 	\item \textbf{Once in class, stay for the duration.} If you must leave
-		early, give me advance warning. If you become ill during an exam
-		or quiz, the missed graded event policy will take effect with
-		the consent of the professor. In either case, you will not be
+		early, give me advance warning. If you become ill during an
+		exam, the missed graded event policy will take effect with the
+		consent of the professor. In either case, you will not be
 		allowed to return that day. Take care of your personal needs
 		\emph{before class}.
 	\item \textbf{Silence your cell phone and/or other electronic devices.}
@@ -358,25 +371,14 @@ lecture.  You do not need to understand everything on the first perusal. Many
 of your questions will probably be answered by the lecture or as you work the
 problems.
 
-\subsection{Lab Notebooks and Technique}
-To prepare you for scientific investigations in the future, you will be
-required to keep a laboratory notebook which will be graded for completeness,
-legibility, and timeliness. The lab manual has
-complete instructions for the care and feeding of a laboratory notebook.  One
-primary aim of the course is to help you improve your competence with
-analytical manipulations.  The instructor will review your technique throughout
-the semester. Your grade will be based upon the competence, dexterity, and
-speed of your manipulations as well as your apparent preparedness upon arrival.
-You are expected to come to lab prepared to do the days experiment with the
-procedure outlined in your notebook.
-
 \section{Academic Dishonesty}
 \emph{Academic dishonesty is not tolerated.} If you are unclear about what is
 dishonest, please see 
 \href{https://www.bloomu.edu/prp-3512-academic-integrity-policy}{PRP 3512
-Academic Integrity Policy} for clarification. Please note that your lab reports
-must be your own work even if you are working with a partner. If you are unsure
-about my specific instructions, ask me.
+Academic Integrity Policy} for clarification. All exam work must be your own.
+You are permitted to work with others on lecture assignments and homework. Do
+note that homework answers are randomized and you will most likely not have the
+same answers as your classmates.
 
 \begin{mdframed}
 	\centering\bfseries The minimum penalty for academic dishonesty is a
@@ -385,8 +387,8 @@ about my specific instructions, ask me.
 
 \section{Class Cancellation}
 If class is canceled on the day of an exam, it will be administered the next
-time class meets.  If class is canceled the period before an exam, it will
-still be administered on its scheduled day. If compression
+time class meets.  If class is canceled the period before an exam, anticipate
+that it will still be administered on its scheduled day. If compression
 (see \href{https://www.bloomu.edu/documents/prp5205}{PRP 5205 University Closing
 Policy})
 occurs on an exam day, the exam will be held as scheduled (with
@@ -394,14 +396,18 @@ grading adjusted to allow for the shortened time period).
 
 \section{Fire Alarms}
 In the event of a building evacuation, calmly and quickly leave the building via
-the nearest exit. In the event of an evacuation during laboratory, ensure all
-hot plates or other possible hazards are turned off and unplugged prior to
-leaving. Your instructor will point exits out the first week of class.  Gather
-with your class on the quad lawn in front of Bakeless. In the case of inclement
-weather, we will meet in the Kehr Union Ballroom. Do not re-enter the
-building for any reason. Do not gather around the exits. Do not enter a
-building that has an alarm sounding. There is one, and only one, drill the first
-week of the semester. There are \emph{no} random drills.
+the nearest exit. 
+\begin{description}
+	\item[BU:] Your instructor will point exits out the first week of class.
+		Gather with your class on the quad lawn in front of Bakeless. In
+		the case of inclement weather, we will meet in the Kehr Union
+		Ballroom. Do not re-enter the building for any reason. Do not
+		gather around the exits. Do not enter a building that has an
+		alarm sounding. There is one, and only one, drill the first week
+		of the semester. There are \emph{no} random drills.
+	\item[MU:] Please follow instructions given per Mansfield campus fire
+		policies.
+\end{description}
 
 
 \section{Last Day to Withdraw}
@@ -414,6 +420,10 @@ Repeat}) policies of the
 University prior to that date as there are strict limits on the number of
 repeats one can have. 
 
+Note that withdrawal should be taken as a \emph{last resort}. Your instructor
+maintains 5 office hours per week and is willing to meet for additional
+appointments to help you succeed in this class. Do not wait until the last minute to seek help.
+
 \begin{mdframed}
 	\centering
 	All policies, rules, and procedures (PRP) are available at
@@ -421,15 +431,16 @@ repeats one can have.
 \end{mdframed}
 
 \section{Accommodations}
-Bloomsburg University provides reasonable accommodations to students who have
-documented disabilities. If you have a documented disability that requires
-academic accommodations and are not registered with 
+Reasonable accommodations may be made to students who have documented
+disabilities. If you have a documented disability that requires academic
+accommodations and are not registered with
 \href{https://bloomu.prod.acquia-sites.com/offices-directory/disability-services}{University
-Disability Services}
-please contact this office as soon as possible to establish your
-eligibility. Please also provide documentation to Dr.\ McCurry as promptly as
-possible.
-
+Disability Services}, it is recommended that you contact the Disability Services office during
+the \textit{first two weeks of classes} or immediately upon diagnosis to ensure
+accommodations are met in an efficient, appropriate, and timely manner.
+Note that you must contact the Disability Services office to renew accommodation
+letters at the start of each semester. Please also provide documentation to Dr.\
+McCurry as promptly as possible.
 
 \vfill
 
@@ -440,14 +451,14 @@ possible.
 	the above course/semester. These materials cannot be used without the
 	expressed written consent of Dr.\ McCurry.
 
+	\bigskip
+
 	\noindent
-	The source code for some material has been licensed under the Creative
-	Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC
-	BY-NC-SA 4.0) license to provide you with an opportunity to view the
+	The source code for some material has been licensed under the CC
+	BY-NC-SA 4.0 license to provide you with an opportunity to view the
 	original source materials and contribute to the content. If you would
 	like to view the material and suggest improvements, please visit
-	\url{https://git.damccurry.com/dan/CHEM321}. Ask Dr.\ McCurry for an
-	account!
+	\url{https://github.com/danian95/CHEM321}.
 \end{mdframed}
 
 \end{document}

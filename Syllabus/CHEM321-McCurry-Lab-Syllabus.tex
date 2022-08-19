@@ -1,0 +1,334 @@
+% !TeX program = lualatex
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage{fontspec}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{bucolors}
+\usepackage[colorlinks=true,allcolors=black,urlcolor=bugold]{hyperref}
+\usepackage{mathtools}
+\usepackage{mdframed}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage[english]{babel}
+\usepackage[sf,bf]{titlesec}
+\usepackage[inline]{enumitem}
+\usepackage[margin=1in,letterpaper]{geometry}
+\usepackage{multicol}
+\usepackage{soul}
+
+\setmainfont{TeX Gyre Termes}[Ligatures=TeX]
+\setsansfont{TeX Gyre Heros}[Ligatures=TeX]
+\setmonofont{TeX Gyre Cursor}
+
+\title{Analytical Chemistry 1}
+\author{Dr.\ Daniel A.\ McCurry}
+\date{Fall 2022}
+
+\newcommand{\classnum}{CHEM321}
+
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{\footnotesize\sffamily McCurry --- \classnum\ --- FA22}
+\cfoot{}
+\rfoot{\footnotesize\sffamily\thepage~of~\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\pretitle{\noindent\color{bumaroon}
+	\sffamily\bfseries\Large
+	\classnum~Lab\newline
+	\LARGE\expandafter\MakeUppercase\expandafter}
+\posttitle{\par\medskip}
+\preauthor{\noindent\sffamily}
+\postauthor{ --- }
+\predate{\sffamily}
+\postdate{}
+
+\setlength{\droptitle}{-2em}
+
+\setcounter{secnumdepth}{0}
+\setlist[description]{font=\sffamily\bfseries\small}
+\urlstyle{same}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+
+\noindent
+\begin{tabularx}{\linewidth} {@{\qquad}>{\bfseries\sffamily}r
+	>{\raggedright\arraybackslash}X@{\qquad}}
+	\toprule
+	Day and Time: & Wed., 3:00 pm -- 6:50 pm \\ 
+		  & HSC 209 \\ \\
+        Instructor: & Dr.\ Daniel A. McCurry\\
+		    & 	Assistant Professor of Chemistry\\
+		    & 	HSC 240\\
+		    & 	(570) 389-5320\\
+		    & 	\href{mailto:dmccurry@bloomu.edu}{\nolinkurl{dmccurry@bloomu.edu}}\\
+		    & 	\href{https://bloomu.starfishsolutions.com/starfish-ops/dl/instructor/serviceCatalog.html?bookmark=connection/20001}{HuskySuccess
+		     	Profile} \\ \\
+	Office Hours: & \begin{minipage}[t]{\linewidth}
+		\begin{tabular}[t] {@{}lr@{\,--\,}l}
+			Mon./Tue.  & 3:00 & 5:00\,p.m. \\
+			Thur. & 4:00 & 5:00\,p.m. \\
+				\end{tabular}
+			\end{minipage} \\
+		      &   In-Person or via Zoom Meeting ID
+                          ``\href{https://bloomu.zoom.us/my/dmccurry}{dmccurry}''\\
+                      &    \href{https://bloomu.starfishsolutions.com/starfish-ops/dl/instructor/serviceCatalog.html?bookmark=connection/20001/schedule}{Schedule
+		      an Appointment} (not required) \\ \\
+		Text: & McCurry, D.A.; Hallen, C.P. \textit{CHEM321
+	Analytical Chemistry Laboratory Manual}, Fall 2022 Ed. \\
+	       	      & \footnotesize Available for purchase during the first
+		      week of laboratory. \\ \\
+	Materials: & Scientific or graphing calculator (simpler calculators
+	are not appropriate). \\
+		   & USB flash drive for transferring laboratory data \\
+		   & Carbon- or carbonless-copy laboratory notebook \\
+		   & Safety goggles \\
+		   & Black or blue ink \emph{ballpoint} pen \\
+		   & Permanent marker \\
+	\bottomrule
+\end{tabularx}
+\begin{mdframed}
+	Note that this lab syllabus \emph{expands} on the CHEM321 lecture
+	syllabus. All policies and expectations from the lecture syllabus apply
+	to the laboratory as well. This syllabus serves as an addendum to
+	provide additional information pertinent only to students at the
+	Bloomsburg campus.
+\end{mdframed}
+
+\section{Laboratory Overview}
+The laboratory for analytical chemistry studies the theory and practice of
+several common methods used to determine how much analyte is in a particular
+sample of material. In several of the experiments that you will do this
+semester, some component of a commercial product will be analyzed. In other
+experiments, specially purchased or prepared unknowns will be used. For the
+latter experiments, 20--50\,\% of your laboratory report grade will
+depend simply on the accuracy and precision of your work. Why are these analyses
+so rigorous (or why are analytical chemists so rigorous)? When you leave this
+educational institution, it is possible that thousands of dollars or someone's
+life will depend upon your analysis. 
+
+In doing these experiments, you will touch upon some classical wet chemistry
+methods of analysis as well as some modern instrumental techniques. Many
+experiments also use statistical analysis to illustrate how good (or bad)
+the results actually are. Some of these labs are designed to be long to see how
+well you plan ahead for an analysis. Some are designed to be worked in groups of
+two or three to see how well you can work with others. Still others are vague to
+allow you the freedom to use your ingenuity and common sense to solve the
+problem.
+
+You are expected to be prepared to do an experiment when you arrive in the
+laboratory. The instructor reserves the right to quiz at any time. These
+quizzes will count as part of the lab grade.
+
+\section{Evaluations and Grading}
+
+Laboratory attendance is mandatory. If you do not attend a laboratory and do not
+have a valid excuse, you will not be able to receive credit for the experiment
+performed that day. The laboratory is graded as follows:
+
+\subsection{Point Distribution}
+\begin{tabular} {l r@{~}l r<{\,\%} | r<{\,\%}}
+	&&& \multicolumn{1}{c}{\sffamily\textbf{Lab Grade}} &
+	\multicolumn{1}{c}{\sffamily\textbf{Lecture Grade}} \\ \midrule
+	Notebook            & & &  5 & 1.25 \\
+	Cleanliness         & & &  5 & 1.25 \\
+	Long Reports        & 2 @ & 10\,\% each & 20 & 2.50 \\
+	Short Reports       & 5 @ & 7\,\% each & 35  & 5.00 \\
+	Spreadsheet Reports & 5 @ & 5\,\% each & 25  & 8.75 \\
+	ACS Exam            & & & 10               & 6.25 \\ \midrule
+			    &&& 100 & 25
+\end{tabular}
+
+\subsection{Graded Items}
+
+\begin{description}
+	\item[Lab Notebook:] The carbon-/carbonless-copies from your laboratory
+		notebook will be collected at the end of each laboratory. These
+		will be graded on legibility, completeness (procedure, materials
+		and equipment used), and quality of observations. 
+	\item[Cleanliness:] You are responsible for keeping your bench and
+		balance clean. Generally, if you exhibit good laboratory hygiene
+		by cleaning up spills and putting materials back where they came
+		from, you should anticipate receiving full credit for
+		cleanliness.
+	\item[Reports:] Reports will be graded for format (see laboratory
+		manual), grammar, spelling, chemical logic, and accuracy of the
+		analysis. Reports will be due at the \emph{beginning} of
+		laboratory in a format as listed in the laboratory schedule.  It
+		is expected that all data reduction and plotting be performed
+		with modern spreadsheet software and presented in a logical
+		table format.  Reports will be in three styles: long, short, and
+		spreadsheet. See your laboratory manual for more details about
+		the requirements for each report.
+		
+		Only electronic copies will be accepted through the appropriate
+		BOLT assignment submission. Spreadsheets are to be submitted in
+		their raw form, as a *.xlsx, *.xls, or *.ods. \emph{Be careful
+			that you are, in fact, saving as one of these listed
+		formats and not as *.csv!} You must submit your long and short
+		reports in PDF format (*.pdf) as this will ensure all of your
+		formatting is kept.  A late lab report will be graded with a
+		25\,\% penalty for every 24 hours after the deadline, including
+		weekends. Note that after the third late day, you cannot score
+		above a 0\,\%, so the report will not be graded and no feedback
+		will be provided.
+
+	\item[ACS Final:] A standardized American Chemical Society Analytical
+		Exam will be held during the last week of laboratory. This is to compare
+		our class with the national standards as set by the ACS. These
+		are often a bit difficult (the national average for these tends
+		to hover around 50\,\%), so your score will be adjusted to
+		accommodate the topics we covered in class. 
+\end{description}
+
+\section{Policies and Expectations}
+All material from the lecture syllabus applies here, but do note the additional
+safety information presented in your laboratory manual. You will be required to
+sign a safety policy on the first day of laboratory acknowledging that you have
+read and agreed to the laboratory safety policies and procedures.
+
+In order to attend the laboratory, you must receive at least a 80\% on the
+Laboratory Safety Module on BOLT by the second week of classes. This grade will
+not factor in to your final grade for the laboratory.
+
+\subsection{Attire}
+The official ``uniform'' of lab is a t-shirt, jeans/khakis, and tennis shoes.
+\begin{itemize}[nosep]
+	\item A well-fitting sweatshirt is allowed.
+	\item Exposed shoulders, mid-riff, and legs are \emph{never} acceptable.
+	\item Safety glasses (with side shields, not screens) or goggles are
+		required.
+	\item If face masks are required, the mask must cover both your mouth
+		and nose.
+\end{itemize}
+Your lab instructor has the right to deny admittance for clothing deemed
+``unsafe'' for lab.
+
+\subsection{Denial of Admission to or Removal from Laboratory}
+The lab instructor has the authority to deny admission to lab to any student who
+\begin{enumerate*}[label={(\arabic*)}]
+	\item does not have the proper materials,
+	\item is not properly clothed and equipped with safety glasses and a
+		face mask (if required), 
+	\item has not properly prepared for lab as evidenced by incompletion
+		of assignments or unmaintained laboratory notebook,
+	\item is in a condition that would pose a safety hazard to themself or others in the lab, or
+	\item any other circumstance as deemed by the instructor (e.g.\ chronic lateness).
+\end{enumerate*}
+The instructor also has the authority to ask students to leave the lab who are
+acting in a manner deemed unsafe by the instructor. Arrangements to do a lab make-up are at the
+discretion of the instructor and may not be granted. 
+
+\subsection{Use of Cell Phones and Smart Watches in Lab}
+Use of your cell phone or a smart watch is prohibited in the laboratory. They
+must be stowed in your bag until you leave the laboratory. Commonly used bases
+in the laboratory will damage the touchscreen on these devices, rendering them
+unusable. Further, accidental contamination of your device with a harmful
+compound can cause severe bodily harm the next time you use it. Should you
+disregard this rule, you will be asked to leave the laboratory and will lose
+credit for all assessments for the day. There are no exceptions unless provided
+for by Disability Services.
+
+\subsection{Attendance and Participation}
+You must attend the laboratory in order to receive credit for an experiment. If
+you know you will be absent, please let your instructor know \emph{as soon as
+possible}. Make-ups will be granted on a case-by-case basis. Laboratories
+require additional setup time by the instructor, so early notification is
+absolutely required if possible.
+
+\subsection{Lab Notebooks and Technique}
+To prepare you for scientific investigations in the future, you will be
+required to keep a laboratory notebook which will be graded for completeness,
+legibility, and timeliness. The lab manual has
+complete instructions for the care and feeding of a laboratory notebook.  One
+primary aim of the course is to help you improve your competence with
+analytical manipulations.  The instructor will review your technique throughout
+the semester. Your grade will be based upon the competence, dexterity, and
+speed of your manipulations as well as your apparent preparedness upon arrival.
+You are expected to come to lab prepared to do the days experiment with the
+procedure outlined in your notebook.
+
+\begin{mdframed}
+	Again, you are expected to come to lab prepared \emph{with the procedure
+	outlined in your notebook}. The time you have to perform the laboratory
+	\emph{does not include} time to organize your notebook during lab. You
+	are ultimately responsible for using the approximately 4 hours of
+	laboratory time effectively. If you cannot complete your analysis within
+	the time allotted, you have not planned adequately and you will not be
+	granted any additional time to complete the analysis.
+\end{mdframed}
+
+\section{Academic Dishonesty}
+\emph{Academic dishonesty is not tolerated.} If you are unclear about what is
+dishonest, please see 
+\href{https://www.bloomu.edu/prp-3512-academic-integrity-policy}{PRP 3512
+Academic Integrity Policy} for clarification. Please note that your lab reports
+must be your own work even if you are working with a partner. You must prepare
+your own graphs, tables, and other figures.
+Turnitin\texttrademark{} will be used to check submissions for similarity. Note
+that there is not a specific threshold that you must remain under --- I will check
+all similarities and will assess plagiarism based on my own discretion. Quoting
+entire passages from literature sources is not appropriate in scientific
+disciplines. You must paraphrase and use your own wording to demonstrate your
+understanding of the material. If you are unsure
+about my specific instructions, ask me.
+
+\begin{mdframed}
+	\centering\bfseries The minimum penalty for academic dishonesty is a
+	course assignment of ``F'' for \emph{all} students involved.
+\end{mdframed}
+
+\section{Class Cancellation}
+Please see BOLT for class updates if lab is canceled. In some instances, we may
+skip the lab altogether, which means grade percentages will have to change. In
+other cases, your instructor may provide data or an alternative assignment to
+practice the skills that would otherwise be missed. If compression (see
+\href{https://www.bloomu.edu/documents/prp5205}{PRP 5205 University Closing
+Policy}) occurs, the lab will still be held as scheduled, with the number of
+required trials shortened and grading adjusted appropriately to compensate.
+
+\section{Fire Alarms}
+In the event of a building evacuation, calmly and quickly leave the building via
+the nearest exit. Ensure all
+hot plates or other possible hazards are turned off and unplugged prior to
+leaving. Your instructor will point exits out the first week of class.  Gather
+with your class on the quad lawn in front of Bakeless. In the case of inclement
+weather, we will meet in the Kehr Union Ballroom. Do not re-enter the
+building for any reason. Do not gather around the exits. Do not enter a
+building that has an alarm sounding. There is one, and only one, drill the first
+week of the semester. There are \emph{no} random drills.
+
+\section{Accommodations}
+Please see the lecture syllabus regarding documented accommodations with 
+\href{https://bloomu.prod.acquia-sites.com/offices-directory/disability-services}{University
+Disability Services}. The laboratory requires specific practical skills, so your
+instructor will make the best effort to accommodate individuals when possible.
+
+\vfill
+
+\begin{mdframed}
+	\noindent
+	The materials contained in this syllabus, in the lab manual, and the
+	BOLT webpage for this course are intended only for those registered for
+	the above course/semester. These materials cannot be used without the
+	expressed written consent of Dr.\ McCurry.
+
+	\bigskip
+
+	\noindent
+	The source code for some material has been licensed under the CC
+	BY-NC-SA 4.0 license to provide you with an opportunity to view the
+	original source materials and contribute to the content. If you would
+	like to view the material and suggest improvements, please visit
+	\url{https://github.com/danian95/CHEM321}.
+\end{mdframed}
+
+\end{document}
