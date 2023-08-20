@@ -1,26 +1,33 @@
 % !TEX program = xelatex
 %\documentclass[11pt,letterpaper]{article}
 %\usepackage{beamerarticle}
-\documentclass[notes=hide]{beamer}
-%\documentclass[notes=show]{beamer}
+%\documentclass[notes=hide]{beamer}
+\documentclass[notes=show]{beamer}
 %\documentclass[handout]{beamer}
 
-\usepackage{newtxtext}
 \usepackage{bucolors}
 \usepackage{analchem}
 \usepackage{lecture}
-\usepackage{pdfpages}
 \usepackage{ccicons}
+\usepackage{amsmath}
+\usepackage{mathspec}
+\setmainfont[Ligatures=TeX]{Georgia}
+\setsansfont[Ligatures=TeX]{Arial}
+\usepackage{tabularx}
+\usepackage{import}
+\usepackage{tikz}
 \usepackage{multicol}
+\usepackage{elements}
+\usepackage{collcell}
 
 \graphicspath{{./Figures/}}
 
 \title{Introduction to Analytical Chemistry}
 \author{D.A.\ McCurry}
-\institute[Bloomsburg University] % (optional)
-{Department of Chemistry and Biochemistry\\
-  Bloomsburg University}
-\date{Fall 2021}
+\institute[Commonwealth University] % (optional)
+{Department of Biochemistry, Chemistry, Enginnering, and Physics \\
+  Commonwealth University --- Bloomsburg}
+\date{Fall 2023}
 
 \begin{document}
 
@@ -68,12 +75,75 @@
 }
 
 \begin{frame}{Why is analytical chemistry important?}
-	\mode<presentation>{%
-		\centering
-		\includegraphics[width=\textwidth,trim={0.75in 4.25in 0.75in 1.5in},clip]{COVIDsensor.pdf}
-	}
-	\mode<article>{\textit{Anal. Chem.} \textbf{2020}, 92, 7226-7231}
+	\centering
+	\includegraphics[width=\textwidth,trim={0.75in 4.25in 0.75in 1.5in},clip]{COVIDsensor.pdf}
 \end{frame}
+
+\begin{frame}{Why is analytical chemistry important?}
+	\centering
+	\includegraphics[width=0.8\textwidth]{sewage.png}
+
+	\footnotetext{\tiny
+	\url{http://www.nydailynews.com/new-york/suburban-floaters-spoil-triathlon-article-1.1133003}}
+\end{frame}
+
+\begin{frame}{Why is analytical chemistry important?}
+	\begin{center}
+		\includegraphics[width=0.9\linewidth]{Map_of_US_state_cannabis_laws.png}
+	\end{center}
+	\footnotetext{\url{https://disa.com/marijuana-legality-by-state}}
+\end{frame}
+
+\begin{frame}{Some facts about THC}
+	\begin{columns}
+		\column{0.45\textwidth}
+	\begin{center}
+		\includegraphics[scale=0.4]{THC.png}
+	\end{center}
+
+	\column{0.45\textwidth}
+	\begin{itemize}
+		\item Fat soluble -- it leaches out over time.
+		\item Experienced users may not be affected as much as new or
+			occasional users.
+		\item THC can be detected long after impairment wears off.
+	\end{itemize}
+	\end{columns}
+
+	\pause
+
+	\begin{center}
+		How can you \emph{objectively} detect driver impairment?
+	\end{center}
+
+	\footnotetext{\url{https://cen.acs.org/articles/94/i13/Working-help-police-detect-drugged.html}}
+\end{frame}
+
+\begin{frame}{A ``Breathalyzer-Type Instrument''}
+	\centering
+
+	\only<1>{\includegraphics[width=\linewidth]{THC-TOC.jpeg}}
+
+	\pause
+	
+	\only<2->{\includegraphics[width=\linewidth]{THC-breathalyzer.jpeg}}
+
+	\pause
+
+	What issues might this device have?
+
+	\footnotetext{Hwang, S. I. et al. \textit{ACS Sens.} \textbf{2019}, 4
+	(8), 2084–2093.}
+\end{frame}
+
+\begin{frame}
+	\includegraphics[width=\linewidth]{shimadzu-cannabis.png}
+
+	\footnotetext{https://www.ssi.shimadzu.com/industry/cannabis-testing-solutions.html
+	(August 26, 2019)}
+\end{frame}
+
+
 
 \begin{frame}{Steps in Chemical Analysis}
 	\begin{center}
