@@ -1,28 +1,43 @@
 % !TEX program = xelatex
 \PassOptionsToPackage{table}{xcolor}
+%\documentclass[11pt,letterpaper]{article}
+%\usepackage{beamerarticle}
 %\documentclass[notes=hide]{beamer}
 %\documentclass[notes=show]{beamer}
-%\documentclass[handout]{beamer}
-\documentclass[notes=only]{beamer}
-%\documentclass[letterpaper,11pt]{article}
-%\usepackage{beamerarticle}
+%\documentclass[notes=only]{beamer}
+\documentclass[handout]{beamer}
 
-\usepackage{newtxtext}
+\usepackage{bucolors}
 \usepackage{analchem}
 \usepackage{lecture}
+\usepackage{ccicons}
+\usepackage{amsmath}
+\usepackage{mathspec}
+\setmainfont[Ligatures=TeX]{Georgia}
+\setsansfont[Ligatures=TeX]{Arial}
+\usepackage{tabularx}
+\usepackage{import}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{elements}
+\usepackage{collcell}
 \sisetup{
 	separate-uncertainty=true,
 	multi-part-units=single,
-	add-decimal-zero=false,
-	round-mode=off}
+add-decimal-zero=false,}
+%	round-mode=off}
 \usepackage{bigdelim}
 \usepgfplotslibrary{fillbetween}
-\usepackage{bucolors}
+
+\graphicspath{{./Figures/}}
+
 
 \title{Data Processing}
 \author{D.A.\ McCurry}
-\institute{Department of Chemistry and Biochemistry \\ Bloomsburg University}
-\date{Fall 2021}
+\institute[Commonwealth University] % (optional)
+{Department of Biochemistry, Chemistry, Enginnering, and Physics \\
+  Commonwealth University --- Bloomsburg}
+\date{Fall 2023}
 
 \begin{document}
 
@@ -31,11 +46,9 @@
 \frame{\section{Significant Figure Review}
 	\begin{learningobjectives}
 		\item Perform calculations to the correct number of significant figures.
-		\item Understand why certain digits are significant.
+		\item Explain why certain digits are significant.
 	\end{learningobjectives}
 }
-
-\vspace{\stretch{-1}}
 
 \begin{frame}{Where is the error?}
 	What is the volume according to the following graduated cylinder?
@@ -106,15 +119,15 @@
 			significant figures,
 			\begin{center}
 				\begin{tabular} {S[table-format=1.9] @{~$=$~} l}
-					0.794999999 & \visible<2-|handout:0>{0.79} \\
-					0.795000001 & \visible<3-|handout:0>{0.80} \\
-					0.795000000 & \visible<4-|handout:0>{0.80}
+					0.794999999 &  \\
+					0.795000001 &  \\
+					0.795000000 & 
 				\end{tabular}
 			\end{center}
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Calculations with SF}
+\begin{frame}[t]{Addition/Subtraction with SF}
 	\begin{example}
 		Add \numlist[list-final-separator={, and }]{1.234e-4;5.67e-6;8.90e-1}:
 	\end{example}
@@ -129,11 +142,9 @@
 		\end{tabular}
 	\end{center}
 	}
+\end{frame}
 
-	\bigskip
-
-	\pause
-
+\begin{frame}[t]{Multiplication/Addition with SF}
 	\begin{Example}
 		Perform the following calculation:
 		\begin{align*}
@@ -196,13 +207,13 @@
 
 \frame{\section{Error}
 	\begin{learningobjectives}
-		\item Recognize the types and causes of experimental error.
-		\item Understand the difference between accuracy and precision.
+		\item Explain the types and causes of experimental error.
+		\item Explain the difference between accuracy and precision.
 		\item Propagate experimental error through calculations.
 	\end{learningobjectives}
 }
 
-\begin{frame}[c,allowframebreaks]{Types of Error}
+\begin{frame}[c]{Types of Error}
 	\note{\alert{Every} measurement has some uncertainty related to
 	it.}
 
@@ -236,9 +247,9 @@
 					\end{itemize}
 			\end{itemize}
 		\end{block}
+	\end{frame}
 
-		\framebreak
-
+	\begin{frame}[c]{Types of Error}
 			\begin{block}{Random \emph{or} indeterminate error}
 				\begin{itemize}
 					\item uncontrolled variables; not reproducible; equal chance of being positive or negative; can be minimized but not eliminated
@@ -318,12 +329,18 @@
 \end{frame}
 
 \begin{frame}{Propagation of Uncertainty}
-	For every measurement, error becomes compounded. Consider the following:
+	For every measurement, error becomes compounded.
+
+	\bigskip
+
+	\begin{example}
+	Consider the following:
 	\begin{itemize}
 		\item A \SI{10.00(2)}{\mL} pipet is used 4 times to deliver \SI{40.00}{\mL}.
 		\item The mass limit on a balance (\SI{\pm0.0005}{\gram}) was \SI{200}{\gram}, so it was used twice for
 			a total mass of \SI{350.0000}{\gram}.
 	\end{itemize}
+	\end{example}
 
 	\bigskip
 
@@ -340,6 +357,7 @@
 
 \begin{block}{Tolerances of Class A burets}
 	\centering
+	\resizebox{0.9\linewidth}{!}{
 	\begin{tabular} {@{}S[table-format=3]
 		S[table-format=1.2] S[table-format=-1.2]}
 		{Buret volume (\si{mL})} & {Smallest graduation
@@ -350,16 +368,18 @@
 		50 & 0.1 & +-0.05 \\
 		100 & 0.2 & +-0.10
 	\end{tabular}
+}
 \end{block}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Propagation of Random Error}
-		Systematic error can be removed by \emph{calibrating} glassware, but one can \emph{never} remove
-		\alert{random error}.
+\begin{frame}{Propagation of Random Error}
+		Systematic error can be removed by \emph{calibrating} glassware,
+		but one can \emph{never} remove \alert{random error}.
 
 %		We can assume that the contribution of random error will be much smaller than that of systematic error.
 %		We do \alert{not} add random error!
 		\begin{center}
+			\resizebox{0.9\linewidth}{!}{
 			\begin{tabular} {>{$}p{0.4\linewidth}<{$} >{$}p{0.5\linewidth}<{$} }
 				\toprule
 				\text{\bfseries Function} &
@@ -384,11 +404,13 @@
 					$e_x/x$ is the relative error in $x$ and $\%e_x$ is
 					$100 \times e_x/x$.}
 			\end{tabular}
+		}
 	\end{center}
+\end{frame}
 
-	\framebreak
-
+\begin{frame}{More Propagation of Random Error}
 	\begin{center}
+		\resizebox{0.9\linewidth}{!}{
 		\renewcommand\arraystretch{0.9}
 		\begin{tabular} {>{$}p{0.4\linewidth}<{$} >{$}p{0.5\linewidth}<{$} }
 			\toprule
@@ -417,6 +439,7 @@
 					$100 \times e_x/x$.}
 
 		\end{tabular}
+	}
 \end{center}
 
 %%	\begin{itemize}
@@ -432,77 +455,78 @@
 %%	\end{itemize}
 \end{frame}
 
-\begin{frame}[t]{Consider the Synthesis of Au NP Lab}
-	For the \SI{1.0}{\milli\Molar} Au sol'n,
-		\begin{itemize}
-			\item An analytical balance was used to weigh
-				\SI{0.0396(5)}{\gram} \ch{HAuCl4 * 3 H2O} (FW =
-				\SI{393.83(3)}{\gram\per\mole})
-
-			\item A \SI{100}{\mL} volumetric flask was
-				used with a tolerance of \SI{+-0.08}{\mL}
-		\end{itemize}
-
-		\note<1>{%
-			There was a \emph{big} problem with these calculations
-			REVIEW
-			\begin{align*}
-				[\ch{Au}] &= \frac{\text{g~Au}
-				}{(\text{volume \ch{H2O}})(\text{g/mol~\ch{HAuCl4}})} \\
-					  &=
-					  \frac{\SI{0.0396}{\gram}}{(\SI{0.10000}{\liter})(\SI{393.83}{\gram\per\mole})}
-					  = \SI{1.00551}{\milli\Molar}
-			\end{align*}
-		}
-
-		\begin{enumerate}[<+->]
-			\item Assuming an \emph{uncalibrated} balance and flask, what
-				error is present in the recorded concentration?
-				\note<2>{%
-					\begin{align*}
-						e_{[\ch{Au}]} &= 
-						\frac{\SI{0.0005}{\gram}}{(\SI{0.08}{\liter})(\SI{0.03}{\gram\per\mole})}
-						= \boxed{\SI{0.2083}{\milli\Molar}}
-					\end{align*}
-				}
-
-			\item Assuming a \emph{calibrated} balance and flask, what
-				error is present in the recorded concentration?
-				\note<3>{%
-					\begin{align*}
-						\%e_{\text{g}/\text{L}} &= \sqrt{\%e^2_{\text{g~Au}} +
-					\%e^2_{\text{volume~\ch{H2O}}}} \\
-								   &= \sqrt{\left(\frac{0.0005}{0.0396}\times 100\right)^2 +
-									   \left(\frac{0.00008}{0.10000}\times
-								   100\right)^2}
-										   \\
-								   &=
-								   \SI{1.265158124}{\percent}
-								   \qquad \therefore
-								   e_{\text{g}/\text{L}}
-								   =
-								   \frac{1.265158124}{100}
-								   \times
-								   \frac{\SI{0.0396}{\gram}}{\SI{0.10000}{\liter}}
-								   =
-								   \SI{0.005010026}{\gram\per\liter} \\
-							e_{\ch{[Au]}} &=
-							\frac{\SI{0.005010026}{\gram\per\liter}}{\SI{0.03}{\gram\per\mole}}
-							= \boxed{\SI{0.1670}{\milli\Molar}}
-				\end{align*}
-}
-\item How would you \emph{report} this concentration?
-
-	\note<4>{\boxed{\SI{1.0(2)}{\milli\Molar}}}
-\end{enumerate}
-
-
+%\begin{frame}[t]{Propagation of Error Example}
+%	For a \SI{1.0}{\milli\Molar} Au sol'n,
+%		\begin{itemize}
+%			\item An analytical balance was used to weigh
+%				\SI{0.0396(5)}{\gram} \ch{HAuCl4 * 3 H2O} (FW =
+%				\SI{393.82}{\gram\per\mole})\footnote{Error in
+%					molar mass is often much smaller than
+%				our laboratory error.}
+%
+%			\item A \SI{100}{\mL} volumetric flask was
+%				used with a tolerance of \SI{+-0.08}{\mL}
+%		\end{itemize}
+%
+%		\begin{enumerate}[<+->]
+%			\item Assuming an \emph{uncalibrated} balance and flask, what
+%				error is present in the recorded concentration?
+%				\note<1>{%
+%				\begin{align*}
+%				[\ch{Au}] &= \frac{\text{g~Au}
+%				}{(\text{volume \ch{H2O}})(\text{g/mol~\ch{HAuCl4}})} \\
+%					  &=
+%					  \frac{\SI{0.0396}{\gram}}{(\SI{0.10000}{\liter})(\SI{393.83}{\gram\per\mole})}
+%					  = \SI{1.00554}{\milli\Molar}
+%				\end{align*}
+%
+%					\begin{align*}
+%						e_{[\ch{Au}]} &= 
+%						\frac{\SI{0.0005}{\gram}}{(\SI{0.08}{\liter})(\SI{0.03}{\gram\per\mole})}
+%						= \boxed{\SI{0.2083}{\milli\Molar}}
+%					\end{align*}
+%				}
+%
+%			\item Assuming a \emph{calibrated} balance and flask, what
+%				error is present in the recorded concentration?
+%				\note<2>{%
+%					\begin{align*}
+%						\%e_{\text{g}/\text{L}} &= \sqrt{\%e^2_{\text{g~Au}} + \%e^2_{\text{volume~\ch{H2O}}}} \\
+%								   &= \sqrt{\left(\frac{0.0005}{0.0396}\times 100\right)^2 +
+%									   \left(\frac{0.00008}{0.10000}\times
+%								   100\right)^2}
+%										   \\
+%								   &=
+%								   \sqrt{1.594225
+%									   +
+%								   0.0064} =
+%								   \sqrt{1.600625}
+%								   \\
+%								   &=
+%								   \SI{1.265158124}{\percent}
+%								   \qquad \therefore
+%								   e_{\text{g}/\text{L}}
+%								   =
+%								   \frac{1.265158124}{100}
+%								   \times
+%								   \frac{\SI{0.0396}{\gram}}{\SI{0.10000}{\liter}}
+%								   =
+%								   \SI{0.005010026}{\gram\per\liter} \\
+%							e_{\ch{[Au]}} &=
+%							\frac{\SI{0.005010026}{\gram\per\liter}}{\SI{0.03}{\gram\per\mole}}
+%							= \boxed{\SI{0.1670}{\milli\Molar}}
+%				\end{align*}
+%}
+%\item How would you \emph{report} this concentration?
+%
+%	\note<4>{\boxed{\SI{1.0(2)}{\milli\Molar}}}
+%\end{enumerate}
 
 %	\begin{block}<only@+(1)>{The \alert{REAL} Rule for Significant Figures:}
 %		The first digit of the absolute uncertainty is the last
 %		significant digit in the answer.
 %	\end{block}
-\end{frame}
+%\end{frame}
 
 %\note{Determining Mass Error
 %
@@ -657,7 +681,7 @@
 %%	this experiment provides a better example for error propagation!}
 %\end{frame}
 
-\begin{frame}[allowframebreaks]{Order of Operations}
+\begin{frame}{Order of Operations}
 %	Calculate using molar mass from periodic table ($\pm$?~g) to find
 %	\si{\Molar}~\ch{HCl}.
 %
@@ -807,7 +831,7 @@
 
 \frame{\section{Statistics}
 	\begin{learningobjectives}
-		\item Understand the Gaussian distribution.
+		\item Define the Gaussian distribution.
 		\item Explain the source of certainty of your measurements.
 		\item Determine experimental uncertainty from repeated
 			measurements.
@@ -817,7 +841,7 @@
 {
 	\usebackgroundtemplate{\includegraphics[height=\paperheight]{redbloodcells.jpg}}
 	\begin{frame}
-		\begin{exampleblock}{Harris, pg. 64}
+		\begin{exampleblock}{Harris, 9\textsuperscript{th} ed., pg. 64}
 			so it is never possible to be completely certain of a result.
 			Nevertheless, we often seek the answers to questions such as
 			``Is my red blood count today higher than usual?'' If today's
@@ -896,7 +920,7 @@
 		\begin{center}
 		\begin{tabular} {@{$\pm$}l@{$\sigma$ covers }r@{\%
 			of peak width}}
-			1 & 63.8 \\
+			1 & 68.3 \\
 			2 & 95.5 \\
 			3 & 99.7
 		\end{tabular}
@@ -989,7 +1013,7 @@
 	The more times you perform an experiment, the more certain you are that
 	the mean is close to the population mean.
 	\begin{align*}
-		\sigma_n = \dfrac{\sigma}{\sqrt{n}}
+		u_x = \dfrac{s}{\sqrt{n}}
 	\end{align*}
 
 %	\pause
@@ -1008,11 +1032,11 @@
 
 \frame{\section{Comparison of Means}
 	\begin{learningobjectives}
-		\item Know how to compare results with a ``known'' or previously
+		\item Compare results with a ``known'' or previously
 			obtained value(s).
-		\item Read $F$ and $t$ tables for a particular confidence interval.
+		\item Identify $F$ and $t$ in tables for a particular confidence interval.
 		\item Explain if a result significantly differs from another.
-		\item Be able to identify and eliminate outliers.
+		\item Identify and eliminate outliers.
 	\end{learningobjectives}
 }
 
@@ -1073,26 +1097,26 @@
 	\end{center}
 \end{frame}
 
-\begin{frame}[t]{Measurement of \ch{HCO3-} in Horse Blood}
-	\begin{center}
-		\footnotesize
-		\begin{tabular} {l@{}*{2}{S[table-format=2.2]}}
-			\toprule
-			& \bfseries Original Instrument & \bfseries Substitute Instrument \\
-			\cmidrule{2-3}
-			Mean ($\bar{X}$, \si{\milli\Molar}) & 36.14 & 36.20 \\
-			Standard deviation ($s$, \si{\milli\Molar}) & 0.28 & 0.47 \\
-			Number of measurements ($n$) & 10 & 4 \\
-			\bottomrule
-			\multicolumn{3}{l}{\tiny Data from M.\ Jarrett,
-			D.B.\ Hibbert, R.\ Osborne, and E.B.\ Young.
-		\textit{Anal.\ Bioanal.\ Chem.} \textbf{2010}, 397, 717.}
-		\end{tabular}
-	\end{center}
-
-	Is the standard deviation from the substitute instrument significantly
-	greater than that of the original instrument?
-\end{frame}
+%\begin{frame}[t]{Measurement of \ch{HCO3-} in Horse Blood}
+%	\begin{center}
+%		\footnotesize
+%		\begin{tabular} {l@{}*{2}{S[table-format=2.2]}}
+%			\toprule
+%			& \bfseries Original Instrument & \bfseries Substitute Instrument \\
+%			\cmidrule{2-3}
+%			Mean ($\bar{X}$, \si{\milli\Molar}) & 36.14 & 36.20 \\
+%			Standard deviation ($s$, \si{\milli\Molar}) & 0.28 & 0.47 \\
+%			Number of measurements ($n$) & 10 & 4 \\
+%			\bottomrule
+%			\multicolumn{3}{l}{\tiny Data from M.\ Jarrett,
+%			D.B.\ Hibbert, R.\ Osborne, and E.B.\ Young.
+%		\textit{Anal.\ Bioanal.\ Chem.} \textbf{2010}, 397, 717.}
+%		\end{tabular}
+%	\end{center}
+%
+%	Is the standard deviation from the substitute instrument significantly
+%	greater than that of the original instrument?
+%\end{frame}
 
 \note{%
 	\begin{align*}
@@ -1296,7 +1320,7 @@
 	\end{description}
 \end{frame}
 
-\begin{frame}{Case 1: Comparing a measured result with a ``known'' value}
+\begin{frame}{Case 1: Comparing to a ``known'' value}
 	\begin{itemize}
 		\item Replication of \alert{one} sample using \alert{one}
 			technique
@@ -1388,7 +1412,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Case 2: Comparing replicate measurements
+\begin{frame}{Case 2: Replicate measurements
 	(Unpaired)}
 	\begin{itemize}
 		\item Comparing two \alert{sets} of data to determine if they
@@ -1416,9 +1440,10 @@
 			standard deviations.};
 		\end{tikzpicture} 
 	\end{block}
+\end{frame}
 
-	\framebreak%
-	
+\begin{frame}{Case 2: Replicate measurements
+	(Unpaired)}
 	\begin{block}{If significantly different,}
 		\begin{align*}
 			t_{\text{calculated}} &= \dfrac{|\bar{x}_1 -
@@ -1622,7 +1647,7 @@
 }
 \end{frame}
 
-\begin{frame}{Case 3: Comparing Individual Differences (Paired)}
+\begin{frame}{Case 3: Individual Differences (Paired)}
 	\begin{itemize}
 		\item Comparing two measurements performed with two different
 			methods --- no measurement performed twice!
@@ -1736,8 +1761,8 @@
 
 \frame{\section{Methods of Calibration}
 \begin{learningobjectives}
-\item Be familiar with the different types of calibration methods.
-\item Know when a certain curve may be perferable over other
+\item Explain the different types of calibration methods.
+\item Identify when a certain curve may be perferable over other
 	calibration methods.
 	\item Identify and explain the limits of calibration curves.
 \end{learningobjectives}
@@ -1912,7 +1937,7 @@ What is the concentration of the unknown?
 \end{frame}
 
 
-\begin{frame}[allowframebreaks=1]{Internal Standards Curve}
+\begin{frame}{Internal Standards Curve}
 	A known amount of compound \alert{different} than the analyte is added
 	to the unknown.
 
@@ -1928,9 +1953,9 @@ What is the concentration of the unknown?
 
 		where $F$ = Response factor.
 	\end{block}
+\end{frame}
 
-	\framebreak
-
+\begin{frame}{Internal Standards Curve}
 	\begin{columns}
 		\column{0.5\linewidth}
 		The ratio of $X$ to $S$ will change based on $[X]$.
@@ -1939,8 +1964,9 @@ What is the concentration of the unknown?
 			\includegraphics[scale=1]{internalstandard.png}
 		\end{center}
 	\end{columns}
+\end{frame}
 
-	\framebreak
+\begin{frame}{Internal Standards Curve}
 
 	\begin{columns}
 		\column{0.5\linewidth}
@@ -2007,17 +2033,15 @@ What is the concentration of the unknown?
 
 \begin{frame}
 	\frametitle{Where can we determine [analyte]?}
-	\begin{center}
-		\alt<2>{%
-			\includegraphics[width=\linewidth]{range-trendline.png}
-		}{%
-			\includegraphics[width=\linewidth]{range-trendline-full.png}
-		}
-	\end{center}
-
+		\includegraphics[width=\linewidth]{range-trendline.png}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Limit of Detection (LOD)}
+\begin{frame}<handout:0>
+	\frametitle{Be wary of points beyond!}
+	\includegraphics[width=\linewidth]{range-trendline-full.png}
+\end{frame}
+
+\begin{frame}{Limit of Detection (LOD)}
 	The smallest quantity of analyte that is ``significantly different''
 	from the blank.
 
@@ -2037,9 +2061,9 @@ What is the concentration of the unknown?
 			\includegraphics[scale=0.5]{LOD-Harvey.png}
 		\end{center}
 %	\end{columns}
+	\end{frame}
 
-	\framebreak
-
+\begin{frame}{Limit of Detection (LOD)}
 	\begin{align*}
 		\intertext{\textit{Signal detection limit:}}
 		y_\text{dl} &= y_\text{blank} + 3s \\
