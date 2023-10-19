@@ -2,7 +2,7 @@
 %\documentclass[11pt,letterpaper]{article}
 %\usepackage{beamerarticle}
 %\documentclass[notes=hide]{beamer}
-\documentclass[notes=show]{beamer}
+\documentclass[notes=only]{beamer}
 %\documentclass[handout]{beamer}
 
 \usepackage{bucolors}
@@ -46,7 +46,7 @@
 	\section{What is Analytical Chemistry?}
 \end{frame}
 
-\mode<article>{%
+\note{%
 	Analytical chemistry deals with the
 	identification and separation of materials \alert{and} the
 	determination of its relative amount.
@@ -183,7 +183,7 @@
 	\end{center}
 
 	\begin{block}{Syst\`{e}me International d'Unit\'{e}s (SI units)}
-		see Chapter 2, Section 1 in the text
+		see Chapter 1 in the text
 	\end{block}
 	\end{itemize}
 \end{frame}
@@ -229,9 +229,8 @@
 	\begin{center}
 		\includegraphics[width=\linewidth]{formality-scale.png}
 	\end{center}
-\end{frame}
 
-\mode<article>{%
+\note{%
 		\begin{itemize}
 		\item Long answer: it is more reflective of the actual
 			concentration of the species present in solution
@@ -254,14 +253,14 @@
 		\item Short answer: most often we don't --- it is widely understood that molarity $\equiv$ formality.
 	\end{itemize}
 }
+\end{frame}
 
 \begin{frame}<presentation>{Why bother with normality?}
 	\begin{center}
 		\includegraphics[scale=0.5]{normality.jpg}
 	\end{center}
-\end{frame}
 
-\mode<article>{%
+	\note{%
 	\begin{itemize}
 		\item For some reactions, it may be more convenient to consider
 			the \alert{reactive equivalents} offered by a reactant
@@ -280,15 +279,15 @@
 			\end{align*}
 	\end{itemize}
 }
+\end{frame}
 
 
 \begin{frame}[t]{Conversions}
 	A concentrated HF solution is \SI{48.1}{\percent} by weight \ch{HF} and
 	has a density of \SI{1.15}{\gram\per\milli\liter}. What are the formal
 	and molal concentrations of \ch{HF}?
-\end{frame}
 
-\mode<article>{%
+\note{%
 	\begin{enumerate}
 		\item Assume \SI{100.0}{\gram}~solution $\therefore$
 			\SI{48.1}{\gram}~HF and \SI{51.9}{\gram}~\ch{H2O}
@@ -312,6 +311,7 @@
 			\end{align*}
 	\end{enumerate}
 }
+\end{frame}
 
 \begin{frame}[t]{Exponent Removal}
 	The concentration of barium ion in a produced water sample was found to
@@ -358,9 +358,8 @@
 		\bfseries
 		Why is \SI{1}{\milli\gram\per\liter} = \SI{1}{ppm}?
 	\end{center}
-\end{frame}
 
-\mode<article>{%
+\note<+>{%
 	\begin{align*}
 		\text{ppm} &= \dfrac{\SI{1}{part}}{\SI[inter-unit-product={ }]{1}{million~parts}} =
 			\dfrac{\SI{1}{part}}{\SI{e6}{parts}} \\
@@ -374,6 +373,7 @@
 
 	$\therefore$ in \SI{1}{\liter}~\ch{H2O}, we have
 \SI{e6}{\milli\gram}~\ch{H2O}, or ``\SI[inter-unit-product={ }]{1}{million~parts}''.}
+\end{frame}
 
 \begin{frame}[t]{Dilutions}
 	\begin{align*}
@@ -387,7 +387,7 @@
 
 	\mode<presentation>{\vskip0pt plus 1filll}
 
-	\mode<article>{%
+	\note<+>{%
 	\begin{align*}
 		(\SI{11.8}{\formal})(V_\text{conc}) &=
 		(\SI{0.200}{\formal})(\SI{1.00}{\liter}) \\
@@ -416,9 +416,8 @@
 	\begin{center}
 		(The density of hexane is \SI{0.6548}{\gram\per\milli\liter})
 	\end{center}
-\end{frame}
 
-\mode<article>{%
+	\note<+>{%
 	\begin{align*}
 		\si{ppb} &= \dfrac{\text{mass of substance}}{\text{mass of sample}} \times \num{e9} \\
 	\text{mass of sample}  &= \SI{25.00}{\milli\liter}~\text{hexane} \times \dfrac{\SI{0.6548}{\gram}}{\SI{1}{\milli\liter}} = \SI{16.37}{\gram}~\text{hexane} \\
@@ -427,6 +426,7 @@
 		& \therefore \fbox{\SI{2.09e-9}{\Molar} or \SI{2.09}{\nano\Molar}}
 	\end{align*}
 }
+\end{frame}
 
 \begin{frame}<1-4>[label=vocab]
 	\section{The Vocabulary of Analytical Chemistry}
@@ -447,7 +447,7 @@
 	\end{center}
 \end{frame}
 
-\mode<article>{%
+\note{%
 	\begin{itemize}
 		\item The analyte is what we're trying to measure. Ideally, it
 			provides some type of signal that is proportional to its
@@ -463,7 +463,6 @@
 		\item When we run an analysis, we often want it to be
 			\emph{accurate}. Furthermore, when we run some over and
 			over again, we expect to get the same results!
-		\item 
 	\end{itemize}
 }
 
