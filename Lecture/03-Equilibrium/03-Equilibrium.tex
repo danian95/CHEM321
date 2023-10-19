@@ -1,25 +1,34 @@
 % !TEX program = xelatex
-%\documentclass[notes=onlyslideswithnotes,notes=hide]{beamer}
-%\documentclass[notes=hide]{beamer}
-\documentclass[notes=show]{beamer}
-%\documentclass[notes=only]{beamer}
-%\documentclass[handout]{beamer}
-%\documentclass[letterpaper,11pt]{article}
+\PassOptionsToPackage{table}{xcolor}
+%\documentclass[11pt,letterpaper]{article}
 %\usepackage{beamerarticle}
+%\documentclass[notes=hide]{beamer}
+%\documentclass[notes=show]{beamer}
+%\documentclass[notes=only]{beamer}
+\documentclass[handout]{beamer}
 
 %\usepackage{cancel}
 \newcommand<>{\latecancel}[1]{\alt#2{\cancel{#1}}{\vphantom{\cancel{#1}}{#1}}}
 
-\usepackage{newtxtext}
 \usepackage{bucolors}
-\usepackage{multicol}
 \usepackage{analchem}
 \usepackage{lecture}
+\usepackage{ccicons}
+\usepackage{amsmath}
+\usepackage{mathspec}
+\setmainfont[Ligatures=TeX]{Georgia}
+\setsansfont[Ligatures=TeX]{Arial}
+\usepackage{tabularx}
+\usepackage{import}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{elements}
+\usepackage{collcell}
 \sisetup{
 	separate-uncertainty=true,
 	multi-part-units=single,
 add-decimal-zero=false,}
-	%round-mode=off}
+%	round-mode=off}
 \usepackage{bigdelim}
 \usepgfplotslibrary{fillbetween}
 \NewChemEqConstant{\Kh}{K-gas}{\ensuremath{\mathrm{h}}}
@@ -27,10 +36,13 @@ add-decimal-zero=false,}
 
 \graphicspath{{./Figures/}}
 
+
 \title{Equilibrium}
-\author{D.A. McCurry}
-\institute{Department of Chemistry and Biochemistry \\ Bloomsburg University}
-\date{Fall 2021}
+\author{D.A.\ McCurry}
+\institute[Commonwealth University] % (optional)
+{Department of Biochemistry, Chemistry, Enginnering, and Physics \\
+  Commonwealth University --- Bloomsburg}
+\date{Fall 2023}
 
 \begin{document}
 
@@ -76,7 +88,7 @@ add-decimal-zero=false,}
 
 \vspace{\stretch{-1}}
 
-\begin{frame}[allowframebreaks]{The Equilibrium Constant}
+\begin{frame}{The Equilibrium Constant}
 	\begin{block}{Law of Mass Action}
 		\centering
 		\parbox[c]{0.4\linewidth}{
@@ -95,49 +107,44 @@ add-decimal-zero=false,}
 
 	\bigskip
 
-	\begin{columns}
-		\column{0.45\textwidth}
-			What does it mean if\ldots
-			\begin{itemize}
-				\item[\dots] $K < 1$?
-				\item[\dots] $K > 1$?
-			\end{itemize}
-		\column{0.45\textwidth}
-		$K$ is \alert{dimensionless}:
-			\begin{equation*}
-				\ch{[A]} \equiv
-				\frac{\ch{[A]}}{\ch{[A]^{\standardstate}}}
-			\end{equation*}
-	\end{columns}
+	What does it mean if\ldots
+	\begin{itemize}
+		\item[\dots] $K < 1$?
+		\item[\dots] $K > 1$?
+	\end{itemize}
+\end{frame}
 
-	\framebreak
+\begin{frame}{The Equilibrium Constant is Dimenionless}
+	\begin{equation*}
+		\ch{[A]} \equiv
+		\frac{\ch{[A]}}{\ch{[A]^{\standardstate}}}
+	\end{equation*}
 
-	To maintain the dimensionless character,
+	\bigskip
 
-	\begin{enumerate}
-		\item The concentrations of all solutes should be express in
+	\begin{itemize}
+		\item The concentrations of all solutes should be expressed in
 			\si{\Molar} or \si{\formal}.
 		\item The concentrations of all gases should be expressed in
 			bar. (atm are close, but be consistent)
 		\item The concentrations of pure solids, pure liquids, and
 			solvents are omitted because they are \alert{invariant}.
-	\end{enumerate}
+	\end{itemize}
 \end{frame}
 
 \begin{frame}[t]{Manipulating Equilibrium Constants}
 	Consider the following reaction:
 	\begin{align*}
-		\ch{HA} &\ch{<=>} \ch{H+ + A-} &&& K_1 &=
-		\dfrac{[\ch{H+}][\ch{A-}]}{[\ch{HA}]} \\
+		\ch{HA} &\ch{<=>} \ch{H+ + A-}
 		\visible<+(1)->{%
 		\intertext{What happens if we reverse it?}
-	\ch{H+ + A-} &\ch{<=>} \ch{HA} \\}
+	\ch{H+ + A-} &\ch{<=>} \ch{HA} }
 		\visible<+(1)->{%
 		\intertext{What happens if we add a new reaction to it?}
-	\ch{{} + H+ + C} &\ch{<=>} \ch{CH+} &&& K_2
+	\ch{{} + H+ + C} &\ch{<=>} \ch{CH+}
 	}
 	\end{align*}
-	\note<+(1)>{%
+	\note<+>{%
 		Reversing the reaction \alert{inverses} the value of
 		$K$:
 		\begin{align*}
@@ -190,11 +197,10 @@ add-decimal-zero=false,}
 }
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Equilibrium and Thermodynamics}
-	\begin{itemize}
-		\item \textbf{Enthalpy} ($\bm{\Delta H}$) is the heat absorbed
-		or released when a reaction takes place under \alert{constant} applied \alert{pressure}.
-			\begin{center}
+\begin{frame}{Thermodynamics}
+	\begin{block}{Enthalpy ($\Delta H$)}
+		 The heat absorbed or released when a reaction takes place under
+		 \alert{constant} applied \alert{pressure}. \begin{center}
 				\parbox{0.8\linewidth}{
 					\begin{itemize}
 						\item [$+\Delta H$] Heat is
@@ -204,18 +210,20 @@ add-decimal-zero=false,}
 					\end{itemize}
 					}
 			\end{center}
-		\item \textbf{Entropy} ($\bm{\Delta S}$) is the heat absorbed
+		\end{block}
+
+		\begin{block}{Entropy ($\Delta S$)}
+			The heat absorbed
 			divided by the temperature when a \alert{reversible}
 			reaction takes place at a \alert{constant temperature}.
 			\begin{align*}
 				\Delta S = \dfrac{q_{\text{rev}}}{T}
 			\end{align*}
-	\end{itemize}
+		\end{block}
+\end{frame}
 
-	\framebreak
-	
-	\begin{itemize}
-		\item The \textbf{Gibbs free energy} ($\Delta G$) declares
+\begin{frame}{Equilibrium and Thermodynamics}
+	The \textbf{Gibbs free energy} ($\Delta G$) declares
 			whether a reaction is favorable:
 			\begin{align*}
 				\Delta G = \Delta H - T \Delta S
@@ -245,7 +253,6 @@ add-decimal-zero=false,}
 				\Delta G^\circ = \Delta H^\circ
 				- T \Delta S^\circ
 			\end{align*}
-	\end{itemize}
 \end{frame}
 
 \mode<presentation>{{
@@ -366,7 +373,7 @@ add-decimal-zero=false,}
 \frame{\section{Applications of Equilibrium Constants}
 	\begin{learningobjectives}
 	\item Create a $K$ expression for any reaction at equilibrium.
-	\item Understand how to solve specific $K$ equilibria:
+	\item Solve specific $K$ equilibria:
 		\begin{itemize}
 			\item solubility
 			\item formation
@@ -1363,9 +1370,7 @@ add-decimal-zero=false,}
 		\end{align*}
 	}
 
-	\vspace{\stretch{2}}
-
-	\begin{block}<+(2)->{The Henderson-Hasselbalch Equation}
+	\begin{block}<+(1)->{The Henderson-Hasselbalch Equation}
 		\begin{columns}
 			\column{0.45\linewidth}
 			\begin{align*}
